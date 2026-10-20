@@ -11,3 +11,6 @@ __pycache__/
 *.pyc
 .next/
 coverage/
+
+# B 仓本地暂存（独立 Git 仓，不入父仓）
+agent-system-v2-rundata/
