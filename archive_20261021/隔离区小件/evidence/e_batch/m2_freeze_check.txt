@@ -1,0 +1,14 @@
+chars=['队长', '通信员', '守军'] lang=Mandarin Chinese
+s01_c01: src=- ff=- ffBasis=N 
+s01_c02: src=- ff=Y ffBasis=N 
+s02_c01: src=- ff=- ffBasis=N 
+s02_c02: src=- ff=Y ffBasis=N 
+s03_c01: src=- ff=- ffBasis=N 
+s03_c02: src=- ff=Y ffBasis=N 
+s04_c01: src=- ff=- ffBasis=N 
+s04_c02: src=- ff=Y ffBasis=N 
+s05_c01: src=- ff=- ffBasis=N 
+s05_c02: src=- ff=Y ffBasis=N 
+s06_c01: src=- ff=- ffBasis=N 
+s06_c02: src=- ff=- ffBasis=N 
+chains: {}

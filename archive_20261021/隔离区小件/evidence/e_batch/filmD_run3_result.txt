@@ -1,0 +1,38 @@
+status=completed_with_issues
+--- assistant tail ---
+tain`
+    - `s03 sciv_67c4179fde65`：仍 `uncertain`
+    - `s04 sciv_8ba857d44b72`：仍 `uncertain`
+    - `s06 sciv_632131b89e4f`：仍 `uncertain`
+  - 也就是说：场景线部分推进，但除 `s01` 外仍有缺口。
+- **分镜绑定**：
+  - `s01_c01` 已成功建立正式 binding：
+    - 角色绑定：Holt / Rico / Yuki 均已绑 approved Look
+    - 场景绑定：`scin_9e5b6be4f096` + `view_d28c03c2ce79`
+    - 当前 readiness：`READY`
+    - resolved scene reference：`sciv_a6a81eafed32`
+- **首帧**：
+  - 已真实生成 `s01_c01` 首帧：
+    - `local: projects\P56_E_FULL_D\output\frames\s01_c01_first_v1.png`
+    - `status=done`
+- **校准 trace**：
+  - 已创建 run：`cal_20261019_115306_8f88`
+
+## 未完成 / 阻塞
+
+- **视频线仍无法推进**：  
+  `shot.generate_videos` 对 `s01_c01` 实际预检返回 `language_missing`，原因是系统要求可确定的对白语言设置，但当前项目没有 `project.native_av.spoken_language`，请求里也没有可识别的语言 override。  
+  我连续重试了两次，仍被同一预检拦下，**未消耗视频额度**。
+- **装配线因此也未完成**：  
+  没有 `final_video`，就没有可渲染成片候选；所以 sequence/render 这一轮没有发生。
+- **场景缺口**：
+  - 只有 `s01` 当前已 ready
+  - `s02/s03/s04/s06` 的 SceneInstanceView 仍未过审，后续对应镜头若要正式 BOUND 生产，还必须先补齐这些场景参考
+
+## 我现在能给你的结论
+
+- 本轮实际推进到的边界是：**s01 已具备正式生产条件（Look + 场景 + 绑定 + 首帧）**。
+- 但按你要求“逐镜视频 + 装配至成片”，**目前还没有达成**，因为视频生成在系统预检阶段被 `language_missing` fail closed 拦住。
+- 需要你先给一个明确输入：**本片刻/对白语言到底是什么（例如 zh / en）**。给到之后，我才能继续从 `s01_c01` 
+--- review ---
+{"batch_id": "rvw_afb6639b", "shots_reviewed": 6, "hard_error_shots": [], "minor_shots": [], "incomplete_shots": ["s01_c01", "s02_c01", "s03_c01", "s04_c01", "s05_c01", "s06_c01"], "report_path": "projects\\P56_E_FULL_D\\output\\agents\\review_pipeli

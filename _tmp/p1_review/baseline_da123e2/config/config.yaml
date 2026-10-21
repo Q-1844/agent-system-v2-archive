@@ -1,0 +1,106 @@
+# 动画分镜工作流 - 全局配置
+
+agnes:
+  base_url: "https://api.agnes-ai.cn"   # 2026-08-26：国内新入口（apihub.agnes-ai.cn 源站变慢/520，改用 api.agnes-ai.cn）。客户端自动拼 /v1/chat/completions，此处不带 /v1
+  api_key: ${AGNES_API_KEY}  # 从环境变量读取
+  proxy: ""  # 国内入口直连，留空=不走代理。若改回国际站 .com 需配 Clash 代理 http://127.0.0.1:7890
+
+  models:
+    text: "agnes-3.0-flash"   # 2026-10-02 用户指令：全部 Agent 文本模型切 agnes-3.0-flash（较 2.5 更强）。
+                              # 切换前实证：/v1/models 在列 + function-calling 探针通过（tool_calls 正确返回，1.2s）。
+                              # 前值 agnes-2.5-flash（2026-08-07 起）。注意：Director Vision 审查另有显式
+                              # VISION_MODEL=agnes-2.5-flash（director_vision_review.py，探针定版），不受本项影响。
+    image: "agnes-image-2.1-flash"
+    video: "agnes-video-2.5-flash"  # 2026-09-28：唯一视频模型（v2.0 官方 2026-09-25 23:59 下线 + 用户指令从系统删除；
+                                    #  AgnesClient 对非 2.5 模型 id 显式拒绝。新契约 mode text/keyframe/reference
+                                    #  + seconds 字符串 4-12s，720P，2026-09-06 实测 + 2026-09-28 官方文档核读）
+
+  # 🔴 限流器分桶 RPM（AGNES_API_FACTS §4.1 免费用户实际 RPM）。一般不用改。
+  # 视频就是 1，别调大——并发提交视频 = 全部 429。
+  rpm:
+    text: 20
+    image_1k: 20
+    image_2k: 16   # Token Plan 入门版 2K 可达约 80 RPM；按用户指引不过度并发，取 16（约 2.5 倍提速）。免费档实测值见 §4.1 勘误
+    image_3k: 1
+    image_4k: 1
+    video: 1
+
+  # 新档位制（AGNES_API_FACTS §2.3）：本项目一律用 1K 档
+  image:
+    size_tier: "1K"       # 16:9 -> 1312x736
+    ratio: "16:9"
+    timeout: 300
+
+  video:
+    frame_rate: 24
+    polling_interval: 5   # 🔴 从 10 改为 5（官方建议）
+    max_wait: 3600
+
+# ============ 文本 LLM provider 配置（SenseNova 接入，2026-08-29）============
+# 两层语义：
+#   1) text_provider = 全局文本默认路由（主客户端）。agnes = 原有行为（当前默认）；
+#      sensenova = 所有未单独选择模型的文本调用走 sensenova.models.text。
+#   2) Script Writer 的模型由 Agent 输入区滑动开关（Agent 设置 model_profile_id）运行时
+#      选择，下一次对话起生效——默认 Agnes，可切 SenseNova 6.8 Flash Lite；不影响图片/视频。
+# 原有 provider 全部保留；不做自动模型路由/按任务切换/fallback。
+text_provider: agnes         # 默认回到 Agnes（SenseNova 实测偏慢，按需在 UI 手动切）
+
+sensenova:
+  # OpenAI-compatible Chat Completions；客户端自动拼 /v1/chat/completions，此处不带 /v1
+  # （2026-08-29 实测 GET /v1/models 两个 key 均可用，模型列表含 sensenova-6.8-flash-lite / sensenova-u1-fast）
+  base_url: "https://token.sensenova.cn"
+  api_key: ${SENSENOVA_API_KEY}   # 从环境变量读取（.env）；可用独立切换按钮热切换（见 README）
+  models:
+    # UI 开关当前只提供 sensenova-6.8-flash-lite。
+    # "sensenova-u1-fast" 保留配置（改这里即切），但 2026-08-29 实测 chat 端点 404
+    # model is not found（虽在 /v1/models 列表中，疑似需控制台开通），故不作为 UI 可选项。
+    text: "sensenova-6.8-flash-lite"
+
+# ImageHost：把本地图片变成 Agnes 服务端能访问的公网 URL。
+# 🔴 默认 imgbb（2026-07-31 实测唯一可用方案：Agnes .cn 服务端能下载 imgbb URL，i2v 成功）。
+#    imgbb 上传原字节 100% 保真，URL 长期有效（吻合 project.json 持久化 + 崩溃恢复设计）。
+#    按文件 sha1 哈希缓存（cache/imgbb_cache.json），同图重试只传一次。
+# agnes_rehost：不保真（i2i 重采样改比例），仅参考图用，默认不启用，不在此配置。
+# tunnel：URL 不稳定（重启换域名），降级调试用，不做默认。
+# passthrough：不能上传本地图，仅复用 Agnes 原始 URL。
+image_host:
+  # 🔴 2026-09-24 起 github_pages 为默认（i.ibb.co SNI 级线路阻断，35.md）；
+  # imgbb 保留为回退开关：kind 改回 "imgbb" 一行即切回（线路恢复后可用）。
+  kind: "github_pages"
+  github_pages:
+    owner: "Q-1844"
+    repo: "agnes-frame-host"
+    branch: "main"
+    token: "${GITHUB_TOKEN}"   # fine-grained PAT：仅该仓库 + Contents: RW（.env）
+  imgbb:
+    api_key: "${IMGBB_API_KEY}"
+    expiration: 0          # 0=永不过期
+  # r2:        # 未配置
+  #   account_id / access_key / secret_key / bucket / public_base
+  # tunnel:    # 未启用（降级调试）
+  #   public_base / serve_root
+
+# 每日配额账本（Token Plan 口径，2026-09-20 用户核对官方文档确认）：
+#   视频 500 秒/天；生图 4000 张/天；文本 1500 次/5 小时（账本按日计，7200=滚动窗口的 24h 理论上限）
+quota:
+  video_seconds: 500
+  images: 4000
+  text_calls: 7200
+
+# 并发档位（Phase55 C）：媒体在途上限——默认 1 = 既有串行基线，逐级试 2/3 须以
+# 真机验证推进（探针已实证 Agnes 允许 ≥3 outstanding/约 2 路并行，但非所有账户/
+# 端点均可无限并发）。AGNES_VIDEO_INFLIGHT env 为最高优先逃生口；提交频率仍由
+# rpm.video 桶独立约束（限流与在途是两个维度，不得混同）。
+concurrency:
+  video_inflight: 1
+
+mimo:
+  base_url: "https://token-plan-cn.xiaomimimo.com/v1/chat/completions"
+  api_key: ${MIMO_API_KEY}
+
+  models:
+    tts: "mimo-v2.5-tts"
+
+project:
+  base_dir: "./projects"
+  log_dir: "./logs"

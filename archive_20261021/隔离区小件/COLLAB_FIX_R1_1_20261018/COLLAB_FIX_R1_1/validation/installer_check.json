@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "case": "roundtrip",
+      "result": "passed"
+    },
+    {
+      "case": "base_conflict",
+      "result": "passed"
+    },
+    {
+      "case": "payload_tamper",
+      "result": "passed"
+    },
+    {
+      "case": "traversal",
+      "result": "passed"
+    },
+    {
+      "case": "rollback_conflict",
+      "result": "passed"
+    },
+    {
+      "case": "partial_failure",
+      "result": "passed"
+    },
+    {
+      "case": "new_file_conflict",
+      "result": "passed"
+    },
+    {
+      "case": "symlink_escape",
+      "result": "passed"
+    },
+    {
+      "case": "wrong_root",
+      "result": "passed"
+    },
+    {
+      "case": "actual_payload_apply_and_rollback",
+      "result": "passed",
+      "files": 22
+    }
+  ],
+  "platform": "Linux; Windows requires local verification"
+}

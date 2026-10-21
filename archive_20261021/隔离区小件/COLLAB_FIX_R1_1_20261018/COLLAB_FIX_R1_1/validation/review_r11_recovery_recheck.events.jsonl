@@ -1,0 +1,9 @@
+{"nodeid": "tests/test_project_autopilot.py::test_case4_recover_rebinds_child", "when": "setup", "outcome": "passed", "duration": 0.8516334619998815, "failure": null}
+{"nodeid": "tests/test_project_autopilot.py::test_case4_recover_rebinds_child", "when": "call", "outcome": "passed", "duration": 8.728460598999845, "failure": null}
+{"nodeid": "tests/test_project_autopilot.py::test_case4_recover_rebinds_child", "when": "teardown", "outcome": "passed", "duration": 0.0009561800006849808, "failure": null}
+{"nodeid": "tests/test_project_autopilot.py::test_case6_run_consistency", "when": "setup", "outcome": "passed", "duration": 0.004265085000042745, "failure": null}
+{"nodeid": "tests/test_project_autopilot.py::test_case6_run_consistency", "when": "call", "outcome": "passed", "duration": 9.305910965000294, "failure": null}
+{"nodeid": "tests/test_project_autopilot.py::test_case6_run_consistency", "when": "teardown", "outcome": "passed", "duration": 0.0013896930004193564, "failure": null}
+{"nodeid": "tests/test_full_project_autopilot.py::test_case7_production_child_crash_rebind", "when": "setup", "outcome": "passed", "duration": 0.00038063399915699847, "failure": null}
+{"nodeid": "tests/test_full_project_autopilot.py::test_case7_production_child_crash_rebind", "when": "call", "outcome": "passed", "duration": 6.6585026250004375, "failure": null}
+{"nodeid": "tests/test_full_project_autopilot.py::test_case7_production_child_crash_rebind", "when": "teardown", "outcome": "passed", "duration": 0.002472825000040757, "failure": null}

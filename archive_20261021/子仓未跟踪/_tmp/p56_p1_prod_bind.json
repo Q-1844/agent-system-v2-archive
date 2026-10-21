@@ -1,0 +1,1 @@
+{"content": "【生产绑定任务（已授权直接执行，Phase56 P1 批准工作包）】请对五镜 s01_c01~s01_c05 逐一执行 shot.production.bind（真实绑定+就绪检查）：每镜绑定该镜 characters 清单内全部角色的 approved Look（调查员=look_341d5a08d727 / 工程师=look_d6eaaa920b3f / 安保负责人=look_6d9dcb16b3c5——按各镜 characters 过滤）+ 场景实例视图 sciv_6752ae905441 钉扎。完成后对五镜逐一 shot.production.inspect 确认 readiness=READY，汇报每镜绑定摘要。不要生成图片或视频。"}

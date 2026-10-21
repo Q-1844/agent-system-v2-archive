@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "patch_id": "COLLAB_FIX_R1_TO_R1_1_20261018",
+  "files": [
+    {
+      "path": "routers/shots.py",
+      "before_sha256": "ab2dd0780e4302e311c37fe007359ce771ac9810df1aca08e59382ec8b01e808",
+      "after_sha256": "a263994e1fd7936ca0d1e6036db2518dfdcddc1b1f18b35343c39c627b19a0ac"
+    },
+    {
+      "path": "services/lifecycle.py",
+      "before_sha256": "72d772e3acab1a37d41462bc6fe86f0b2cb41843278dfedf0784b985421f1a39",
+      "after_sha256": "a94b98261f6fd351378f5a1dbd01f79d001c1692016e3d891b4720f14c613480"
+    },
+    {
+      "path": "src/agents/review_pipeline.py",
+      "before_sha256": "e88580d298cab5c7fa897a368bd8d65a8ef9ceab0d7a0fbc85f7840fbd3e8fc4",
+      "after_sha256": "85b936653d4226cce3c1619f3b29c4a877d6193a212464a42199819b7815d9d4"
+    },
+    {
+      "path": "tests/test_collab_safety_revision.py",
+      "before_sha256": "4ac6d2c3f1c6fe7428f50ba8793ab460e9fb283298c65b721363c06510cb06c9",
+      "after_sha256": "98164cb52d309493758b4c81332739e386763d321183170c89768770395d7353"
+    }
+  ]
+}

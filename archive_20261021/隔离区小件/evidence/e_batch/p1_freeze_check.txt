@@ -1,0 +1,7 @@
+chars=['调查员', '工程师', '安保负责人']
+s01_c01: 0f src=- ff=Y ffBasis=Y speaker='调查员（左侧，面向工程师）' match=False
+s01_c02: 0f src=- ff=- ffBasis=N speaker='工程师（中间，圆框眼镜反光）' match=False
+s01_c03: 0f src=- ff=Y ffBasis=Y speaker='本镜无对白（' match=False
+s01_c04: 0f src=- ff=Y ffBasis=Y speaker='调查员（左侧，指尖点向读卡器）' match=False
+s01_c05: 0f src=- ff=Y ffBasis=Y speaker='安保负责人（右侧，推开关时低声）' match=False
+ISSUES: s01_c01 speaker '调查员（左侧，面向工程师）' 不在 ['调查员', '工程师', '安保负责人']; s01_c02 speaker '工程师（中间，圆框眼镜反光）' 不在 ['调查员', '工程师', '安保负责人']; s01_c03 speaker '本镜无对白（' 不在 ['调查员', '工程师', '安保负责人']; s01_c04 speaker '调查员（左侧，指尖点向读卡器）' 不在 ['调查员', '工程师', '安保负责人']; s01_c05 speaker '安保负责人（右侧，推开关时低声）' 不在 ['调查员', '工程师', '安保负责人']

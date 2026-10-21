@@ -1,0 +1,119 @@
+{
+  "format_version": 1,
+  "patch_id": "COLLAB_FIX_R1_1_20261018",
+  "base_commit": "82e305019f37a089f6499504954b5abfc4a4cb9b + provided working-tree changes",
+  "input_zip_sha256": "e30b1f782a2d7bafe0c63b2b6c1cfc009238a1c9b3a51395e10a09a9c7c5b9a6",
+  "files": [
+    {
+      "path": "routers/shots.py",
+      "before_sha256": "6fc66b6bdb09676df4c3a2251f93d4ea3a7ac4dee8e0bcbacd0e94fc167b42a0",
+      "after_sha256": "a263994e1fd7936ca0d1e6036db2518dfdcddc1b1f18b35343c39c627b19a0ac"
+    },
+    {
+      "path": "services/lifecycle.py",
+      "before_sha256": "a9f516cb5aeec2fb484802678e46736ac746cf62d9a9f2c6df41a5b7a4b58525",
+      "after_sha256": "a94b98261f6fd351378f5a1dbd01f79d001c1692016e3d891b4720f14c613480"
+    },
+    {
+      "path": "src/agents/change_protocol/execution_service.py",
+      "before_sha256": "4e6b8688893e452252c9ce5b0ef367a96edb3f817d564a1efa1cfd475a95f49e",
+      "after_sha256": "0bf8162cfe8ec17e38d2304bd49959d80cd13e9f5b88b2807456ab56e7b0d1ce"
+    },
+    {
+      "path": "src/agents/collab_modes.py",
+      "before_sha256": "c92497f82797648dbc120e504939456ec0a07eab2d382e0cc099e069266b7a11",
+      "after_sha256": "ffc8e289e5dc59e2699fcfd780659e4cd693fb40527f762f72c14805325b90af"
+    },
+    {
+      "path": "src/agents/director_visual.py",
+      "before_sha256": "de94b28445f75d50e332fc526d0ecfb662170ecfdcb888d23e48a74f508ba3cf",
+      "after_sha256": "7bbe5ca79d2b914edfb6c5b1d2f26649a1289291c148cfed0157f86ee4666f4f"
+    },
+    {
+      "path": "src/agents/master_lease.py",
+      "before_sha256": "e83a00906f24d96650628e839965f9295e333d90874eebc52b5ccbaede65d343",
+      "after_sha256": "08904069e5e7267c302fd7f3816ab6b781fd24a59e16add736c77b8743bc88aa"
+    },
+    {
+      "path": "src/agents/producer.py",
+      "before_sha256": "8a27f0b82ad88667a9d824ee3c6a3206bf1a9cde4c3c77dfbd076419fadb9206",
+      "after_sha256": "0e15ab8f5eb40024e34c2ef97829df4bd9ebe8613c564ec1fa2b2b08379badef"
+    },
+    {
+      "path": "src/agents/review_pipeline.py",
+      "before_sha256": "393ff1beceeca523285dd27f6136a5d96cdba913117dbf3a5b858ce2e3f8a2b2",
+      "after_sha256": "85b936653d4226cce3c1619f3b29c4a877d6193a212464a42199819b7815d9d4"
+    },
+    {
+      "path": "src/api/agnes_client.py",
+      "before_sha256": "556afcbab0625e04b427816ac5302f6bce8516d7529e3666bdccd38475fe02f9",
+      "after_sha256": "7270261e4139104f6143c2aa76b35ac03097c4cf8dade4bd715e04f52d5f0917"
+    },
+    {
+      "path": "src/components/agent/CollabRunPanel.vue",
+      "before_sha256": "f83143e9817e4d5807de8aa229a43b3dd9167024a7155d877705b5e47e194c08",
+      "after_sha256": "2115879e884f432596faf9125118a2ae635e57cd01f29408c3faac8b793215fc"
+    },
+    {
+      "path": "src/core/file_lock.py",
+      "before_sha256": null,
+      "after_sha256": "bcdfdfce77543f2b8df603d5d8bd04bb2668f687c61b537c7516fcf72fdaf2d4"
+    },
+    {
+      "path": "src/core/job_queue.py",
+      "before_sha256": "2a1e0a7d7085c68a09648efb90ac11fe53f78fc7e81c83f91c62c540be063d4a",
+      "after_sha256": "461305c12a15179f3236daabe015e1e18792b25e2c8586f2c2d05823f6c98c00"
+    },
+    {
+      "path": "src/core/store.py",
+      "before_sha256": "b2a887ed5009ccd3064f49bbcf5646328f378def0cd20f71ed7e4c07fa817689",
+      "after_sha256": "ce84db10827fdf7f945f6bfc7707a80b5fb64c858570d333f07782c8d48c9ef7"
+    },
+    {
+      "path": "src/generation/dialogue_control.py",
+      "before_sha256": "ae343a9338a0f024b6033f1336c4cffeb421aab74e1107d43272cd164d1d4cf5",
+      "after_sha256": "b9f7234a39cbd823a2593d27139bd525ffdb37c82e9743d1dd8dbb2978918ca8"
+    },
+    {
+      "path": "src/generation/video_commit.py",
+      "before_sha256": null,
+      "after_sha256": "c463def0332fdd5b09f9863c82cf36c056ab5e7293f8299beb7a4d544c09a0e9"
+    },
+    {
+      "path": "src/storyboard/continuity_service.py",
+      "before_sha256": "4d5cfe958e26279709987e70ce51f0d3558b343e586b26bfcd9f911dfe93cf7d",
+      "after_sha256": "a0829cbfc66ea3c005c8c3157e01be512def25ac26f19c48eff01cda0c96b40a"
+    },
+    {
+      "path": "tests/test_ai_6f_real_pipeline.py",
+      "before_sha256": "ef54c3b11410e1cebcb69df59797584969eb58f993b4aef21df618308f23d493",
+      "after_sha256": "596aec03796745bbe3c571760ba8ce01252a279b1a047ba294dd00748499904e"
+    },
+    {
+      "path": "tests/test_ai_6f_shutdown.py",
+      "before_sha256": "152bda884cac168a7dde4d4d34829f50b6d5ee95572d537d5a6a0321ad35b494",
+      "after_sha256": "22a50a4ed46e30f7ee8b8e09c533a59985afcb2fb318542cb200a1b6c7594345"
+    },
+    {
+      "path": "tests/test_collab_safety_revision.py",
+      "before_sha256": null,
+      "after_sha256": "98164cb52d309493758b4c81332739e386763d321183170c89768770395d7353"
+    },
+    {
+      "path": "tests/test_interface.py",
+      "before_sha256": "d82b873dc5d5a667f6e2d95a430cb91d6791fac9324d7b2a4cd9a5aa13463c7b",
+      "after_sha256": "d77b38482c127aca2ab7995a63b1c578e0824c0091dceaebf47d0a621a49b4b4"
+    },
+    {
+      "path": "tests/test_p39e_trace_hints.py",
+      "before_sha256": "576318c28ef2ba3c16c081415fc78c72850599ca98f2cea4ea8d990602bc4526",
+      "after_sha256": "03b3634d36d82ae29ecf68c2625bfd11fc879146a575d92bb93ec532f96fa787"
+    },
+    {
+      "path": "tests/test_p56_a_mechanism.py",
+      "before_sha256": "25817951d5a470087bf7ddd7c583b501df73a6722e36739aff8633861d61e90d",
+      "after_sha256": "17ff8a436ebaea8c2b26ec7df641008861007a26c0ba5e488b32c0ac3e59a6e6"
+    }
+  ],
+  "supersedes": "COLLAB_FIX_R1_20261018"
+}

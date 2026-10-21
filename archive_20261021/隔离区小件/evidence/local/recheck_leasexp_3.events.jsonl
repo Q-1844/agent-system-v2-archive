@@ -1,0 +1,3 @@
+{"nodeid": "tests/test_collab_safety_revision.py::test_lease_cross_process_unique_holder", "when": "setup", "outcome": "passed", "duration": 0.01128829998197034, "failure": null}
+{"nodeid": "tests/test_collab_safety_revision.py::test_lease_cross_process_unique_holder", "when": "call", "outcome": "passed", "duration": 1.7777019999921322, "failure": null}
+{"nodeid": "tests/test_collab_safety_revision.py::test_lease_cross_process_unique_holder", "when": "teardown", "outcome": "passed", "duration": 0.0006105999927967787, "failure": null}

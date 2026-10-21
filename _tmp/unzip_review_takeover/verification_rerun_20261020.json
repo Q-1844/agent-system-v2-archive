@@ -1,0 +1,105 @@
+{
+  "scope": "attached storage helper and supplied evidence only; no app integration, provider calls, production writes, or R2 source audit",
+  "source_sha256": "a508a24b09d9d621ec03938937d422696b09d8c52a8c7dafd537602c5e704d47",
+  "source_bytes": 53561,
+  "storage_probes": [
+    {
+      "id": "ordinary_stale_snapshot",
+      "category": "positive_control",
+      "guard_preserved_terminal_and_reason": true,
+      "observed": {
+        "run_id": "run_probe",
+        "status": "cancelled",
+        "result": {
+          "cancel_reason": "user stopped"
+        },
+        "finished_at": 100
+      }
+    },
+    {
+      "id": "same_terminal_metadata_loss",
+      "category": "reproduced_limit",
+      "terminal_reason_and_timestamp_lost": true,
+      "observed": {
+        "run_id": "run_probe",
+        "status": "cancelled",
+        "finished_at": null,
+        "result": {}
+      }
+    },
+    {
+      "id": "unreadable_existing_state",
+      "category": "reproduced_limit",
+      "unreadable_state_overwritten_without_error": true,
+      "observed": {
+        "run_id": "run_probe",
+        "status": "running",
+        "result": {}
+      }
+    },
+    {
+      "id": "interleaved_read_check_write",
+      "category": "reproduced_limit",
+      "cancelled_state_replaced_with_running": true,
+      "scope": "controlled concurrent writers; not a frequency estimate or proof of current event-loop interleaving",
+      "before_stale_write": {
+        "run_id": "run_probe",
+        "status": "cancelled",
+        "finished_at": 100,
+        "result": {
+          "cancel_reason": "user stopped"
+        }
+      },
+      "observed": {
+        "run_id": "run_probe",
+        "status": "running",
+        "result": {}
+      }
+    }
+  ],
+  "feedback_counts": {
+    "FEEDBACK_E_R11.json": {
+      "rated_entries": 12,
+      "picture_ratings": {
+        "差": 3,
+        "可以": 3,
+        "好": 6
+      },
+      "continuity_field_missing": 0
+    },
+    "FEEDBACK_E_FULL.json": {
+      "rated_entries": 22,
+      "picture_ratings": {
+        "好": 9,
+        "可以": 13
+      },
+      "continuity_field_missing": 22
+    },
+    "FEEDBACK_E_FULL_F.json": {
+      "rated_entries": 18,
+      "picture_ratings": {
+        "可以": 7,
+        "好": 9,
+        "差": 2
+      },
+      "continuity_field_missing": 18
+    }
+  },
+  "total_rated_entries": 52,
+  "anchor_verdict_counts": {
+    "approved": {
+      "pass": 7,
+      "hard_error": 3
+    },
+    "NO_VIEW": {
+      "hard_error": 3,
+      "pass": 4,
+      "incomplete": 1,
+      "uncertain": 1
+    },
+    "unreviewed": {
+      "pass": 4
+    }
+  },
+  "all_probe_assertions_passed": true
+}

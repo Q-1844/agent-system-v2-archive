@@ -1,0 +1,60 @@
+{
+  "kind": "read_only_router_contract_smoke",
+  "checks": [
+    {
+      "transport": "ASGI",
+      "method": "GET",
+      "path": "/api/health",
+      "status": 200,
+      "result": "passed"
+    },
+    {
+      "transport": "ASGI",
+      "method": "GET",
+      "path": "/api/project/handoff_smoke/collab-modes",
+      "status": 200,
+      "result": "passed"
+    },
+    {
+      "transport": "ASGI",
+      "method": "GET",
+      "path": "/api/project/handoff_smoke/collab-runs",
+      "status": 200,
+      "result": "passed"
+    },
+    {
+      "transport": "ASGI",
+      "method": "GET",
+      "path": "/api/project/handoff_smoke/jobs",
+      "status": 200,
+      "result": "passed"
+    },
+    {
+      "transport": "ASGI",
+      "method": "GET",
+      "path": "/api/project/handoff_smoke/agents/producer/grant",
+      "status": 200,
+      "result": "passed"
+    },
+    {
+      "transport": "ASGI",
+      "method": "GET",
+      "path": "/api/project/handoff_smoke/collab-runs/missing",
+      "status": 404,
+      "result": "passed"
+    },
+    {
+      "transport": "direct_generator",
+      "path": "/api/jobs/stream",
+      "result": "passed",
+      "scope": "SSE first snapshot and generator cleanup only"
+    }
+  ],
+  "network_attempts": 0,
+  "provider_calls": 0,
+  "limits": [
+    "fake project manager, queue and controller readiness",
+    "real routers; no api_server lifespan/startup",
+    "no browser, production environment or R2 feature verification"
+  ]
+}

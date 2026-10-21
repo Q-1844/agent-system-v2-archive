@@ -1,0 +1,14 @@
+{
+  "upgrade_files": 4,
+  "result": "passed",
+  "checks": [
+    "R1 apply",
+    "R1.1 upgrade dry-run",
+    "R1.1 upgrade apply",
+    "all 22 final hashes",
+    "upgrade idempotency",
+    "rollback upgrade to R1",
+    "rollback R1 to handoff",
+    "reject unpatched handoff as upgrade base"
+  ]
+}

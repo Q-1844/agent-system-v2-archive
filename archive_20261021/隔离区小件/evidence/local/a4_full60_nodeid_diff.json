@@ -1,0 +1,36 @@
+{
+  "counts": {
+    "local_nodes": 2847,
+    "delivery_final_nodes": 2847,
+    "local_failed_or_error": 286,
+    "delivery_failed_or_error": 288
+  },
+  "nodeids_only_in_local": [],
+  "nodeids_only_in_delivery": [],
+  "status_diff_local_vs_delivery_final": [
+    {
+      "nodeid": "tests/test_ai_7ch_cancel_race.py::test_case1_stale_object_resurrection",
+      "local": "call:failed",
+      "delivery_final": "passed",
+      "delivery_baseline": "passed"
+    },
+    {
+      "nodeid": "tests/test_full_project_autopilot.py::test_case1_e2e_mixed_project",
+      "local": "passed",
+      "delivery_final": "call:failed",
+      "delivery_baseline": "call:failed"
+    },
+    {
+      "nodeid": "tests/test_full_project_autopilot.py::test_case5_planner_failed_resume_continues",
+      "local": "passed",
+      "delivery_final": "call:failed",
+      "delivery_baseline": "call:failed"
+    },
+    {
+      "nodeid": "tests/test_project_autopilot.py::test_case6_run_consistency",
+      "local": "passed",
+      "delivery_final": "call:failed",
+      "delivery_baseline": "passed"
+    }
+  ]
+}

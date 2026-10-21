@@ -1,0 +1,2341 @@
+--- a/routers/shots.py
++++ b/routers/shots.py
+@@ -11,7 +11,7 @@
+ import uuid
+ import base64 as _base64
+ from pathlib import Path
+-from typing import Optional
++from typing import Optional, Literal
+ 
+ from fastapi import APIRouter, Body, HTTPException, BackgroundTasks, Request
+ from pydantic import BaseModel
+@@ -599,6 +599,8 @@
+         candidates=[Candidate(candidate_id=cand_id, local=local, url=url,
+                               status=ShotStatus.DONE.value, created_at=now)])
+     def _mut(s):
++        if s.final_video != version_id:
++            return
+         s.first_frame_batches.append(batch)
+         s.selected_first_frame = cand_id
+         s.first_frame.mark_done(local=local or "", url=url)
+@@ -897,8 +899,8 @@
+     # Phase56 B：BOUND 首帧参考模式显式传入（handler 本就消费 job.params——
+     # REST 面补齐；缺省 auto=确定性导演映射不变）。v2 接续链契约下批准包统一
+     # 用 full（场景图真实进首帧）。
+-    scene_reference_mode: Optional[str] = None
+-    human_reference_mode: Optional[str] = None
++    scene_reference_mode: Optional[Literal["full", "context_only", "auto"]] = None
++    human_reference_mode: Optional[Literal["keep", "drop", "auto"]] = None
+     population_constraint: Optional[bool] = None
+ 
+ 
+@@ -1575,10 +1577,11 @@
+     if shot is None:
+         raise RuntimeError(f"镜头 {job.shot_id} 不存在")
+ 
++    recovering_video = bool(shot.video.video_id and shot.video.status not in ("done", "failed"))
+     # 🔴 自动重新托管：首帧 local 有 / url 空（v1 迁移数据）-> imgbb 补公网 URL（100% 保真，不丢画面）。
+     #  inherit_previous 不使用本镜 first_frame（开场来自来源镜头末帧），跳过。
+     sel_ff = shot.first_frame.selected
+-    if (shot.opening_source != OpeningSource.INHERIT_PREVIOUS.value
++    if (not recovering_video and shot.opening_source != OpeningSource.INHERIT_PREVIOUS.value
+             and shot.first_frame.status == "done" and sel_ff and sel_ff.local
+             and not sel_ff.url):
+         await emit("rehost", f"{shot.shot_id} 首帧重新托管中（补公网 URL）", 3)
+@@ -1614,25 +1617,60 @@
+         planned = snap_num_frames(int(round(4 * fps0)), w, h)
+     else:
+         planned = shot.video.num_frames
+-    if planned != shot.video.num_frames:
++    if not recovering_video and planned != shot.video.num_frames:
+         store.update_shot(job.shot_id, lambda s, nf=planned: setattr(s.video, "num_frames", nf))
+         shot = store.load().get_shot(job.shot_id)
+ 
+     # effective 首帧（inherit_previous -> 来源末帧；其余 -> 本镜已选首帧）。preflight/提交统一用此，避免前后端不一致。
+-    eff_ff_url = _effective_first_frame_url(project, shot)
++    eff_ff_url = None if recovering_video else _effective_first_frame_url(project, shot)
+     seconds = shot.video.num_frames / max(shot.video.frame_rate, 1)
+-    ok, why = _video_preflight(shot, get_agnes_client().quota, seconds, bool(eff_ff_url))
+-    if not ok:
++    ok, why = ((True, "recover existing task") if recovering_video else
++               _video_preflight(shot, get_agnes_client().quota, seconds, bool(eff_ff_url)))
++    if not ok and not recovering_video:
+         raise RuntimeError(why)   # 不发起 API 请求
+ 
+     mode = ("keyframes" if shot.link_mode == "keyframes"
+             else "multi" if shot.link_mode == "multi" else "i2v")
+     # keyframes 尾帧 in-progress 有界等待
+-    if mode == "keyframes" and not shot.last_frame.url_ready:
++    if not recovering_video and mode == "keyframes" and not shot.last_frame.url_ready:
+         await emit("wait", f"{shot.shot_id} 等待尾帧就绪", 5)
+         if not await _await_last_frame_url(store, job.shot_id, emit):
+             raise RuntimeError("等待尾帧超时（尾帧尚未生成完成），请重试")
+         shot = store.load().get_shot(job.shot_id)   # 取最新
++
++    if not recovering_video:
++        # Finish asynchronous input preparation before taking the single snapshot
++        # used for prompt, dimensions, timing, references and dispatch signature.
++        preparation = store.load().get_shot(job.shot_id)
++        if (preparation.link_mode == "multi" and
++                shot_has_visual_production_binding(project_dir, preparation.shot_id)):
++            await _ensure_multi_video_prompt(job.project, job.shot_id, emit)
++        project = store.load()
++        shot = project.get_shot(job.shot_id)
++        if shot is None:
++            raise RuntimeError(f"镜头 {job.shot_id} 不存在")
++        ratio = project.style.aspect_ratio or "16:9"
++        w, h = ((1280, 704) if ratio == "16:9" else
++                tuple(map(int, _resolve_size(project.style.size_tier or "1K", ratio).split("x"))))
++        fps0 = max(shot.video.frame_rate, 1)
++        if shot.target_duration_s is not None:
++            planned = snap_num_frames(int(round(shot.target_duration_s * fps0)), w, h)
++        elif not shot.video.num_frames:
++            planned = snap_num_frames(int(round(4 * fps0)), w, h)
++        else:
++            planned = shot.video.num_frames
++        if planned != shot.video.num_frames:
++            store.update_shot(job.shot_id,
++                lambda s, nf=planned: setattr(s.video, "num_frames", nf),
++                expected_signature=project._store_signature)
++            shot.video.num_frames = planned
++        mode = ("keyframes" if shot.link_mode == "keyframes" else
++                "multi" if shot.link_mode == "multi" else "i2v")
++        eff_ff_url = _effective_first_frame_url(project, shot)
++        seconds = shot.video.num_frames / max(shot.video.frame_rate, 1)
++        ok, why = _video_preflight(shot, get_agnes_client().quota, seconds, bool(eff_ff_url))
++        if not ok:
++            raise RuntimeError(why)
+ 
+     prompt = build_video_prompt(shot, mode)
+     # Phase51 B（E2 实证 + P50 用户观察）：视频层人数纪律——job.params 开启时按
+@@ -1664,6 +1702,7 @@
+     # 模型随 shot.video.model 落库，恢复/续轮询必须用同一 model_name 轮询，
+     # 否则 2.5 任务查不到。
+     video_model = (((job.params or {}).get("video_model") or None)
++                   or (getattr(shot.video, "model", None) if recovering_video else None)
+                    or (getattr(get_agnes_client(), "models", None) or {}).get("video")
+                    or "agnes-video-2.5-flash")
+ 
+@@ -1709,6 +1748,9 @@
+         # Phase55 C：provider task ID 随 job 落档——watchdog 据此识别「本地失联≠
+         # provider 失败」（休眠/断网不作废不补交，M5 事故路径修复）。
+         job.params["provider_task_id"] = vid
++        native_generation_basis = dict(job.params.get("dispatch_native_basis") or {})
++        provider_options = dict(job.params.get("dispatch_provider_options") or provider_options)
++        prompt = job.params.get("dispatch_prompt") or "[recovered: original prompt not recorded]"
+         await emit("recover", f"{shot.shot_id} 续轮询 video_id={vid}（不重提交）", 10)
+     else:
+         # 42.md §二缺陷④：提交结果不明——generating 且无 video_id = 早前一次
+@@ -1735,13 +1777,6 @@
+             logger.warning(
+                 "%s 显式确认重发（上次提交结果不明 generating 无 video_id）——"
+                 "已标注 previous_submit_uncertain", job.shot_id)
+-        # 37.md §1.1：multi 生成前自动重建过期 video prompt（36.md §1.2.3 缺口闭环）。
+-        # 仅 fresh-submit 且 BOUND（multi 生成走 BOUND path；unbound multi 本就
+-        # fail closed，不白烧 LLM）。恢复/续轮询不重建（无新生成输入）。
+-        if mode == "multi" and shot_has_visual_production_binding(project_dir, shot.shot_id):
+-            _rebuild_receipt = await _ensure_multi_video_prompt(job.project, job.shot_id, emit)
+-            if _rebuild_receipt["rebuilt"]:
+-                shot = store.load().get_shot(job.shot_id)   # 重建后取最新
+         # S3C.2 双路径（§21）：BOUND 视频重提交走 Binding-aware path（READY→Pack→
+         # Adapter：boundary selection truth + generation_basis freshness + pre-dispatch
+         # race guard；NOT_READY→BLOCK，绝不 fallback legacy）；UNBOUND 保持 legacy 行为
+@@ -1793,6 +1828,9 @@
+                 language_override=ndc_lang)
+             prompt = compile_native_av_prompt(nav_pack, prompt)
+             native_generation_basis = dict(nav_pack.generation_basis)
++        from src.generation.video_commit import video_input_signature
++        compiled_signature = video_input_signature(project, shot)
++        compiled_final_video = shot.final_video
+         await emit("submit", f"{shot.shot_id} 提交中（视频 1 RPM，可能等约 60s）", 10)
+         kwargs = dict(num_frames=shot.video.num_frames, frame_rate=shot.video.frame_rate,
+                       width=w, height=h, seed=shot.seed,
+@@ -1817,10 +1855,49 @@
+                                          native_generation_basis,
+                                          language_override=ndc_lang,
+                                          provider_options=dict(provider_options))
++        job.params["dispatch_input_signature"] = compiled_signature
++        job.params["dispatch_final_video"] = compiled_final_video
++        job.params["dispatch_native_basis"] = dict(native_generation_basis)
++        job.params["dispatch_provider_options"] = dict(provider_options)
++        job.params["dispatch_prompt"] = prompt
++        job.params["submission_intent_id"] = uuid.uuid4().hex
++        job.params["provider_submit_state"] = "submitting"
++        def _claim_submit(current):
++            if current.video.status == ShotStatus.GENERATING.value:
++                if current.video.video_id or not (job.params or {}).get("confirm_uncertain_resubmit"):
++                    raise RuntimeError("video submit already active or uncertain; reconcile before resubmitting")
++            current.video.status = ShotStatus.GENERATING.value
++            current.video.video_id = None
++            current.video.task_id = None
++        def _guard_submit(current_project, current):
++            if (video_input_signature(current_project, current) != compiled_signature or
++                    current.final_video != compiled_final_video):
++                raise RuntimeError("video inputs/selection changed before submit; recompile before retry")
++            if native_generation_basis:
++                native_av_pre_dispatch_check(project_dir, current_project, current,
++                    native_generation_basis, language_override=ndc_lang,
++                    provider_options=dict(provider_options))
++        store.update_shot(job.shot_id, _claim_submit, guard=_guard_submit)
++        await emit("submit_intent", f"{shot.shot_id} 提交意图已持久化", 10)
+         try:
+             created = await get_agnes_client().create_video(prompt, mode=mode, **kwargs)
+         except Exception as _sub_err:
+-            _dns_classify(str(_sub_err))   # DNS 熔断计数（提交阶段失败）
++            from src.api.agnes_client import VideoSubmissionUncertain
++            status = getattr(_sub_err, "status", None)
++            known_rejection = (isinstance(_sub_err, AgnesError)
++                               and not isinstance(_sub_err, VideoSubmissionUncertain)
++                               and status is not None and 400 <= status < 500 and status != 408)
++            job.params["provider_submit_state"] = "rejected" if known_rejection else "unknown"
++            if known_rejection:
++                def _reject_if_current(current):
++                    if (current.final_video == compiled_final_video and
++                            current.video.status == ShotStatus.GENERATING.value and
++                            not current.video.video_id):
++                        current.video.status = ShotStatus.FAILED.value
++                store.update_shot(job.shot_id, _reject_if_current)
++            await emit("submit_rejected" if known_rejection else "submit_unknown",
++                       f"{shot.shot_id} 提交失败；" + ("远端明确拒绝" if known_rejection else "结果待核验，禁止自动补交"), None)
++            _dns_classify(str(_sub_err))
+             raise
+         _dns_classify("")   # 提交成功 → 清零连续失败计数
+         vid = created.get("video_id") or created.get("task_id") or created.get("id")
+@@ -1828,14 +1905,28 @@
+             raise RuntimeError(f"视频任务创建无 video_id: {created}")
+         # Phase55 C：provider task ID 随 job 落档（同恢复分支；watchdog 休眠保护）
+         job.params["provider_task_id"] = vid
+-        # 🔴 提交成功立刻落库 video_id（崩了重启能接着轮询，不重提交、不重扣配额）
+-        store.update_shot(job.shot_id, lambda s, v=vid, c=created, m=video_model: (
+-            setattr(s.video, "video_id", v),
+-            setattr(s.video, "task_id", c.get("task_id")),
+-            setattr(s.video, "status", ShotStatus.GENERATING.value),
+-            setattr(s.video, "attempts", s.video.attempts + 1),
+-            setattr(s.video, "model", m),
+-        ))
++        job.params["provider_submit_state"] = "accepted"
++        # Persist the known Provider ID even if a user changed selection while
++        # the submission request was in flight; never overwrite that selection.
++        await emit("provider_receipt", f"{shot.shot_id} Provider 回执已持久化", 12)
++        def _guard_receipt(current_project, current):
++            if (current.final_video != compiled_final_video or
++                    current.video.status != ShotStatus.GENERATING.value or
++                    current.video.video_id not in (None, vid)):
++                raise RuntimeError("video selection/active task changed during submit; Provider receipt retained unattached")
++        try:
++            store.update_shot(job.shot_id, lambda s, v=vid, c=created, m=video_model: (
++                setattr(s.video, "video_id", v),
++                setattr(s.video, "task_id", c.get("task_id")),
++                setattr(s.video, "status", ShotStatus.GENERATING.value),
++                setattr(s.video, "attempts", s.video.attempts + 1),
++                setattr(s.video, "model", m),
++            ), guard=_guard_receipt)
++        except Exception as exc:
++            job.params["unattached_provider_receipt"] = {"provider_task_id": vid,
++                "model": video_model, "reason": str(exc)[:300]}
++            await emit("detached_receipt", "已保留 Provider 回执，未覆盖当前选版；需要按 ID 核对", None)
++            raise
+         await emit("submit", f"{shot.shot_id} 已提交 video_id={vid}", 15)
+         _tl_record("video_submitted", project=job.project, shot_id=job.shot_id,
+                    job_id=getattr(job, "job_id", None), video_id=vid, model=video_model, mode=mode,
+@@ -1859,8 +1950,11 @@
+     except AgnesError as e:
+         # 服务端明确失败 / video_id 不存在：标 failed，retry 时走 else 重新提交
+         _dns_classify(str(e))
+-        store.update_shot(job.shot_id,
+-                          lambda s: setattr(s.video, "status", ShotStatus.FAILED.value))
++        def _fail_if_current(current):
++            if (current.video.video_id == vid and current.final_video ==
++                    job.params.get("dispatch_final_video", shot.final_video)):
++                current.video.status = ShotStatus.FAILED.value
++        store.update_shot(job.shot_id, _fail_if_current)
+         _tl_record("video_failed", project=job.project, shot_id=job.shot_id,
+                    job_id=getattr(job, "job_id", None), video_id=vid, model=video_model,
+                    error=str(e)[:200])
+@@ -1871,26 +1965,12 @@
+                seconds_returned=res.get("seconds"),
+                size=res.get("size"))
+ 
+-    # C1 §16 pre-commit（21.md）：provider 完成后、attach 前重算 Native AV 依赖键——
+-    # 生成窗口内 dialogue/speaker/language/visual/provider 事实已变 → 拒绝
+-    # attach（不建 VideoVersion、不设 final_video、不冒充 CURRENT）。
+-    if native_generation_basis:
+-        from src.generation.native_av_pack import native_av_pre_commit_check
+-        shot = store.load().get_shot(job.shot_id)
+-        project = store.load()
+-        native_av_pre_commit_check(project_dir, project, shot,
+-                                   native_generation_basis,
+-                                   language_override=ndc_lang,
+-                                   provider_options=dict(provider_options))
+-
+-    # 下载
+-    dest = project_dir / "output" / "videos" / f"{shot.shot_id}.mp4"
++    # Every receipt gets its own immutable artifact, including rejected/stale results.
++    from src.core.models import VideoVersion
++    from src.generation.video_commit import video_input_signature
++    vvid = f"vv_{uuid.uuid4().hex[:12]}"
++    dest = project_dir / "output" / "videos" / f"{shot.shot_id}_{vvid}.mp4"
+     await get_agnes_client().download(res["url"], dest)
+-
+-    # 取最新 shot（含 submit 写入的 video_id/task_id），写视频版本 + 设 final_video + 同步旧 video
+-    shot = store.load().get_shot(job.shot_id)
+-    from src.core.models import VideoVersion
+-    vvid = f"vv_{uuid.uuid4().hex[:8]}"
+     now = _time.time()
+     char_snap = {name: {"url": project.get_character(name).ref_url()}
+                  for name in shot.characters if project.get_character(name)}
+@@ -1904,38 +1984,55 @@
+                           num_frames=shot.video.num_frames, frame_rate=shot.video.frame_rate,
+                           origin_run_id=job.params.get("origin_run_id"),
+                           model=poll_model or getattr(shot.video, "model", None),
+-                          generation_basis={
+-                              **dict(native_generation_basis),
+-                              # Phase55 A：统一输入依据清单随版本落档（additive，
+-                              # 不参与 Native AV freshness 依赖键比对）。
+-                              **({"input_manifest": job.params.get("input_manifest")}
++                          generation_basis={**dict(native_generation_basis),
++                              **({"input_manifest": job.params["input_manifest"]}
+                                  if (job.params or {}).get("input_manifest") else {})},
+-                          input_visuals=_build_input_visuals(
+-                              mode=mode, first_url=first_url, last_url=last_url,
+-                              bound_video=bound_video),
++                          input_visuals=_build_input_visuals(mode=mode, first_url=first_url,
++                              last_url=last_url, bound_video=bound_video),
+                           previous_submit_uncertain=previous_submit_uncertain)
+-    def mut(s, vv=new_vv, d=str(dest), r=res):
+-        # Phase55 C：收货幂等——同一 provider video_id 只正式收货一次（重复通知/
+-        # 双路径完成/晚到回执不再落重复版本；历史结果与费用保留）。指针指向
+-        # 实际保留的版本（去重时=既有版本，绝不留悬空指针）。
+-        s.existing = next((x for x in s.video_versions if x.video_id == vid), None)
+-        if s.existing is None:
+-            s.video_versions.append(vv)
+-            s.final_video = vv.version_id
+-        else:
+-            s.final_video = s.existing.version_id
+-        s.video.mark_done(d, r["url"])           # 同步旧字段（管线/导出读旧）
+-        setattr(s.video, "seconds_returned", r["seconds"])
+-        setattr(s.video, "size_returned", r["size"])
+-    store.update_shot(job.shot_id, mut)
+-    shot = store.load().get_shot(job.shot_id)
+-    dup = next((x for x in shot.video_versions if x.video_id == vid
+-                and x.version_id != vvid), None)
+-    if dup is not None:
+-        await emit("warn", f"{shot.shot_id} 检测到重复收货（video_id={vid} 已有版本 "
+-                           f"{dup.version_id}）——本次仅刷新指针，不落重复版本", None)
+-        logger.warning("%s 重复收货 video_id=%s：已存在版本 %s（幂等去重）",
+-                       job.shot_id, vid, dup.version_id)
++    retained = {}
++    def guard(current_project, current_shot):
++        # Validate at the actual commit point, after every asynchronous download.
++        if ("dispatch_final_video" in job.params and
++                current_shot.final_video != job.params["dispatch_final_video"]):
++            raise RuntimeError("video selection changed during generation/download; result retained unattached")
++        if native_generation_basis:
++            from src.generation.native_av_pack import native_av_pre_commit_check
++            native_av_pre_commit_check(project_dir, current_project, current_shot,
++                native_generation_basis, language_override=ndc_lang,
++                provider_options=dict(provider_options))
++        expected = job.params.get("dispatch_input_signature")
++        if expected and video_input_signature(current_project, current_shot) != expected:
++            raise RuntimeError("video inputs changed during generation/download; result retained unattached")
++    def mut(current):
++        existing = next((v for v in current.video_versions if v.video_id == vid), None)
++        if existing is not None:
++            retained["version"] = existing
++            retained["duplicate"] = True
++            selected = next((v for v in current.video_versions if v.version_id == current.final_video), None)
++            if selected is not None:
++                current.video.mark_done(selected.local, selected.url)
++                current.video.video_id = selected.video_id
++                current.video.task_id = selected.task_id
++                current.video.seconds_returned = selected.seconds_returned
++                current.video.size_returned = selected.size_returned
++            return  # A duplicate receipt never changes an already-selected version.
++        current.video_versions.append(new_vv)
++        current.final_video = new_vv.version_id
++        current.video.mark_done(str(dest), res["url"])
++        current.video.seconds_returned = res["seconds"]
++        current.video.size_returned = res["size"]
++        retained["version"] = new_vv
++    try:
++        store.update_shot(job.shot_id, mut, guard=guard)
++    except Exception as exc:
++        job.params["unattached_artifact"] = {"local": str(dest), "version_id": vvid,
++                                             "provider_task_id": vid, "reason": str(exc)[:300]}
++        await emit("stale_result", "视频保留为未附加候选；当前输入/版本已变化", None)
++        raise
++    if retained.get("duplicate"):
++        await emit("done", f"{shot.shot_id} 重复收货已忽略（保留选版与原文件）", 100)
++        return
+     await emit("done", f"{shot.shot_id} 完成（版本 {vvid}），实际 {res['seconds']}s / {res['size']}", 100)
+     _tl_record("video_downloaded", project=job.project, shot_id=job.shot_id,
+                job_id=getattr(job, "job_id", None), video_id=vid, version_id=vvid,
+@@ -1954,8 +2051,9 @@
+     try:
+         end_asset, _ok = await _extract_video_end_frame(project_dir, job.shot_id, str(dest), vvid, emit)
+         def _mut_end(s, ea=end_asset, sv=vvid):
+-            s.video_end_frame = ea
+-            s.video_end_source_version = sv
++            if s.final_video == sv:
++                s.video_end_frame = ea
++                s.video_end_source_version = sv
+         store.update_shot(job.shot_id, _mut_end)
+         if end_asset.error:
+             await emit("warn", f"{shot.shot_id} 视频末帧提取/托管未完全成功: {end_asset.error[:120]}", None)
+--- a/services/lifecycle.py
++++ b/services/lifecycle.py
+@@ -52,23 +52,69 @@
+                 # 2.5 新契约任务必须用提交时同一 model_name 轮询（旧数据无 model 字段
+                 # → None = config 默认，legacy 行为不变）
+                 sh_model = getattr(sh.video, "model", None)
++                # Production recovery reuses the original queue job and handler. This
++                # preserves origin/basis/version receipt and never overwrites legacy paths.
++                if queue is not None and "video" in handlers and hasattr(queue, "jobs"):
++                    # Match the Provider task exactly. A newer queued job without
++                    # an ID must not borrow an older task's result or provenance.
++                    matches = [j for j in queue.jobs.values()
++                               if j.project == p.name and j.shot_id == sh.shot_id
++                               and j.kind == "video" and j.params.get("provider_task_id") == vid]
++                    original = max(matches, key=lambda j: j.created_at) if matches else None
++                    if original is not None:
++                        if (original.state == "cancelled" or
++                                original.params.get("unattached_artifact") or
++                                original.params.get("unattached_provider_receipt")):
++                            logger.warning("保留待核对/已取消结果，不自动重新挂接: %s/%s (%s)",
++                                           p.name, sh.shot_id, vid)
++                            continue
++                        live = getattr(queue, "_running_tasks", {}).get(original.job_id)
++                        if original.state in ("running", "failed") and (live is None or live.done()):
++                            original.state = "queued"
++                            original.finished_at = None
++                            original.error = None
++                            queue._save()
++                            queue._route(original.job_id, "video")
++                        elif original.state == "done":
++                            logger.warning("任务已结算但镜头仍 generating，需核对: %s/%s", p.name, sh.shot_id)
++                    else:
++                        queue.submit(p.name, "video", sh.shot_id, provider_task_id=vid,
++                                     recovered=True, video_model=sh_model)
++                    continue
+                 logger.info(f"恢复检查: {p.name}/{sh.shot_id} video_id={vid} model={sh_model or 'default'}")
+                 try:
+                     res = await client.poll_video(vid, interval=5, max_wait=60,
+                                                   model_name=sh_model)
+-                    dest = str(pdir / "output" / "videos" / f"{sh.shot_id}.mp4")
++                    from src.core.models import VideoVersion
++                    import uuid
++                    version_id = f"vv_{uuid.uuid4().hex[:12]}"
++                    dest = str(pdir / "output" / "videos" / f"{sh.shot_id}_{version_id}.mp4")
+                     await client.download(res["url"], dest)
+-                    store.update_shot(sh.shot_id, lambda s, d=dest, r=res: (
+-                        s.video.mark_done(d, r["url"]),
+-                        setattr(s.video, "seconds_returned", r["seconds"]),
+-                        setattr(s.video, "size_returned", r["size"]),
+-                    ))
++                    vv = VideoVersion(version_id=version_id, video_id=vid, status="done",
++                                      local=dest, url=res["url"], seconds_returned=res["seconds"],
++                                      size_returned=res["size"], model=sh_model)
++                    def settle(current):
++                        if current.video.video_id != vid or current.final_video != sh.final_video:
++                            raise RuntimeError("recovery task/selection changed; artifact retained unattached")
++                        existing = next((v for v in current.video_versions if v.video_id == vid), None)
++                        if existing is not None:
++                            return
++                        current.video_versions.append(vv)
++                        current.final_video = vv.version_id
++                        current.video.mark_done(dest, res["url"])
++                        current.video.seconds_returned = res["seconds"]
++                        current.video.size_returned = res["size"]
++                    store.update_shot(sh.shot_id, settle)
+                     logger.info(f"恢复完成: {sh.shot_id}")
+                 except Exception as e:
+                     logger.warning(f"恢复 {sh.shot_id} 未完成（{e}），重新入队续轮询")
+-                    store.update_shot(sh.shot_id,
+-                                      lambda s: setattr(s.video, "status", "queued"))
+-                    if "video" in handlers and queue is not None:
++                    still_current = {}
++                    def mark_pending(current):
++                        if current.video.video_id == vid and current.final_video == sh.final_video:
++                            current.video.status = "queued"
++                            still_current["yes"] = True
++                    store.update_shot(sh.shot_id, mark_pending)
++                    if still_current and "video" in handlers and queue is not None:
+                         queue.submit(p.name, "video", sh.shot_id)
+     except Exception as e:
+         logger.error(f"recover_pending_videos 失败: {e}")
+--- a/src/agents/change_protocol/execution_service.py
++++ b/src/agents/change_protocol/execution_service.py
+@@ -611,7 +611,18 @@
+         ex.status = "running"; ex.stage = "canonical_commit"
+         store.save_execution(ex)
+         # §31 原子 canonical save（latest + exact approved creative ops）
+-        pstore.save(projected)
++        from src.core.store import ProjectConflictError
++        try:
++            pstore.save(projected, expected_signature=getattr(current, "_store_signature", None))
++        except ProjectConflictError:
++            ex.status = "blocked"; ex.stage = "canonical_commit"
++            ex.blocker = {"code": "PROJECT_CHANGED_AFTER_APPROVAL",
++                          "message": "canonical 在最终提交前变化；请重新校验"}
++            cc_rec.status = "conflict"
++            ex.canonical_commit = cc_rec.to_dict()
++            store.save_execution(ex)
++            return {"execution": ex.to_dict(), "blocked": True,
++                    "blocker_code": "PROJECT_CHANGED_AFTER_APPROVAL"}
+         # §34 COMMIT_DONE
+         cc_rec.status = "committed"; cc_rec.committed_at = _now()
+         ex.canonical_commit = cc_rec.to_dict()
+--- a/src/agents/collab_modes.py
++++ b/src/agents/collab_modes.py
+@@ -206,14 +206,16 @@
+ # run）。六员等旧预设显式回退路径不变；在途 run 快照不受影响。
+ COLLAB_MODES["combo_recommended"] = {
+     **COLLAB_MODES["combo_recommended"],
+-    "mode_version": "2.0.0",
++    "mode_version": "2.1.0",
+     "description": "【Phase56 实验默认 v2】预铺+主执行+上交+独立机器审查+上限内"
+                    "局部修复→复审（闭环）+固定选版清单装配；reference_policy v2"
+                    "（接续链强制）",
+     "reference_policy": "baseline_equiv_chain",
++    "review_policy": {"profile": "independent_final_review", "stream_during_execution": True,
++                      "max_concurrency": 2},
+     "repair_policy": {"repair_limit_per_shot": REPAIR_LIMIT_PER_SHOT,
+                       "actor": "mode_run_executor",
+-                      "note": "确定性执行器重生成+同政策复审；达上限如实保留失败"},
++                      "note": "身份/重复硬错请求策略调整；新版本绑定复审，不做无策略重掷"},
+     "experimental": True,
+     "notes": "v1 基线：Phase54 §8.3/§10 推荐组合；v2 增量=参考接续链契约+终审到"
+              "局部修复复审闭环（Phase55 冒烟看片不通过[衔接]的针对性修复）。"
+@@ -482,7 +484,8 @@
+         # 恢复走 resume_collab_run（同一逻辑 run 续跑）。
+         if run.get("status") == "awaiting_relay":
+             return
+-        run["status"] = "completed"
++        _check_run_cancelled(pdir, run)
++        run["status"] = _completed_status(run)
+         run["finished_at"] = time.time()
+         save_run(pdir, run)
+     except asyncio.CancelledError:
+@@ -590,99 +593,156 @@
+     return False
+ 
+ 
++def _machine_review_state(run: dict, entries: dict) -> None:
++    issues = [{"shot_id": sid, "overall": entry.get("overall", "incomplete"),
++               "error": entry.get("error"), "version_id": entry.get("version_id")}
++              for sid, entry in entries.items() if entry.get("overall") != "pass"]
++    passed = bool(entries) and not issues
++    run["machine_acceptance"] = {
++        "status": "passed" if passed else "needs_attention",
++        "issues": issues or ([] if passed else [{"error": "no review results"}]),
++        "user_acceptance": "pending_user_review"}
++
++
++def _completed_status(run: dict) -> str:
++    acceptance = run.get("machine_acceptance") or {}
++    return ("completed_with_issues" if acceptance.get("status") == "needs_attention"
++            else "completed")
++
++
++def _check_run_cancelled(pdir: Path, run: dict) -> None:
++    latest = load_run(pdir, run["run_id"])
++    if run.get("status") == "cancelled" or (latest or {}).get("status") == "cancelled":
++        raise asyncio.CancelledError()
++
++
+ async def _final_review_and_repair(rt, pdir: Path, project: str, run: dict, *,
+-                                   thinking: bool = False) -> None:
+-    """⑤组合 v2 闭环（Phase56 A1/D1，用户授权的机器路径）：
+-    独立终审 → 硬错镜有界局部修复（确定性执行器直接重生成——策略选择不进 LLM）
+-    → 绑定复审（同政策重跑该镜）→ 结果落账（装配 gate 状态如实保留）。
+-    actor=mode_run_executor；授权来源=run.authorization（启动时落档）。
+-    达返工上限/额度不足 → still_hard 如实保留，不无限重试、不冒充通过；
+-    最终「用户接受」始终等待用户看片（本函数不填写任何接受状态）。"""
++                                   thinking: bool = False, cached_results: Optional[dict] = None) -> None:
++    """Review exact versions; failed/incomplete repairs never count as acceptance.
++
++    Identity/continuity failures require a changed strategy, not identical rerolls.
++    Pending decisions are explicit; this does not claim a child Producer ran.
++    """
+     mode = run["snapshot"]["mode"]
+     if (mode.get("review_policy") or {}).get("profile") != "independent_final_review":
+         return
+     from .review_pipeline import run_independent_review
++    from src.core.store import ProjectStore
++    from src.generation.video_contract import planned_video_seconds
++
++    _check_run_cancelled(pdir, run)
+     _begin_step(run, "independent_final_review")
+     save_run(pdir, run)
+     try:
+         rv = await run_independent_review(rt, pdir, project,
+-                                          reason=f"collab run {run['run_id']}")
+-        _finish_step(run, "independent_final_review", ok=True, **{
+-            k: rv.get(k) for k in ("batch_id", "shots_reviewed",
+-                                   "hard_error_shots", "report_path")})
++                                          reason=f"collab run {run['run_id']}",
++                                          **({"cached_results": cached_results} if cached_results else {}))
++        entries = {e["shot_id"]: dict(e) for e in rv.get("results", [])}
++        _machine_review_state(run, entries)
++        _finish_step(run, "independent_final_review",
++                     ok=bool(entries) and not rv.get("incomplete_shots"),
++                     **{k: rv.get(k) for k in ("batch_id", "shots_reviewed",
++                         "hard_error_shots", "incomplete_shots", "report_path")})
+         run["review"] = {k: rv.get(k) for k in
+                          ("batch_id", "shots_reviewed", "hard_error_shots",
+-                          "minor_shots", "report_path")}
+-    except Exception as e:   # noqa: BLE001 —— 审核失败如实落档（不冒充通过）
+-        _finish_step(run, "independent_final_review", ok=False,
+-                     error=str(e)[:300])
++                          "minor_shots", "incomplete_shots", "report_path")}
++    except Exception as e:
++        _finish_step(run, "independent_final_review", ok=False, error=str(e)[:300])
++        run["machine_acceptance"] = {"status": "needs_attention",
++            "issues": [{"error": str(e)[:300]}], "user_acceptance": "pending_user_review"}
+         save_run(pdir, run)
+         return
+     save_run(pdir, run)
+-    hard = list(rv.get("hard_error_shots") or [])
++    hard = [sid for sid, e in entries.items() if e.get("overall") == "hard_error"]
+     if not hard:
+         return
+-    # ---- 有界局部修复（D1）----
+-    limit = int(((mode.get("repair_policy") or {}).get("repair_limit_per_shot"))
+-                or REPAIR_LIMIT_PER_SHOT)
+-    q = None
+-    if hasattr(rt, "_resolve_job_queue_or_none"):
+-        q = rt._resolve_job_queue_or_none()
+-    if q is None:
+-        _begin_step(run, "auto_repair")
+-        _finish_step(run, "auto_repair", ok=False,
+-                     error="JobQueue 不可用——修复未执行（硬错镜如实保留）")
+-        run["repair"] = {"still_hard": [{"shot_id": s, "attempts": 0} for s in hard]}
+-        save_run(pdir, run)
+-        return
++    policy = mode.get("repair_policy") or {}
++    limit = max(0, int(policy.get("repair_limit_per_shot", REPAIR_LIMIT_PER_SHOT)))
++    q = rt._resolve_job_queue_or_none() if hasattr(rt, "_resolve_job_queue_or_none") else None
+     _begin_step(run, "auto_repair", shots=hard, limit_per_shot=limit,
+                 actor="mode_run_executor",
+                 authorization=(run.get("authorization") or {}).get("scope", ""))
+     save_run(pdir, run)
+-    repair_log: list = []
+-    still_hard: list = []
++    repair_log, still_hard = [], []
++    strategy_dims = {"duplicate_identity", "unexpected_people", "missing_character"}
+     for shot_id in hard:
+-        cur_hard = True
+         attempts = 0
+-        while cur_hard and attempts < limit:
++        while attempts < limit and entries[shot_id].get("overall") == "hard_error":
++            _check_run_cancelled(pdir, run)
++            fired = set(entries[shot_id].get("hard_errors") or [])
++            if fired & strategy_dims:
++                request = {"type": "repair_strategy_required", "shot_ids": [shot_id],
++                           "hard_errors": sorted(fired), "review_batch": rv.get("batch_id"),
++                           "reason": "identity failure requires a changed input strategy"}
++                run.setdefault("decision_requests", []).append(request)
++                repair_log.append({"shot_id": shot_id, "decision_required": True,
++                                   "hard_errors": sorted(fired)})
++                break
++            if q is None:
++                repair_log.append({"shot_id": shot_id, "error": "JobQueue unavailable"})
++                break
++            before = ProjectStore(pdir).load().get_shot(shot_id)
++            old_version = before.final_video if before else None
++            if before is None:
++                break
++            okq, whyq = _quota_can_video(rt, planned_video_seconds(before))
++            if not okq:
++                repair_log.append({"shot_id": shot_id, "skipped": f"quota: {whyq}"})
++                break
+             attempts += 1
+-            okq, whyq = _quota_can_video(rt, 12.0)   # 上界预留；实际按规划时长
+-            if not okq:
+-                repair_log.append({"shot_id": shot_id, "attempt": attempts,
+-                                   "skipped": f"quota: {whyq}"})
++            job = q.submit(project, "video", shot_id, origin_run_id=run["run_id"],
++                           repair_of_review=rv.get("batch_id"), repair_attempt=attempts)
++            detail = {"shot_id": shot_id, "attempt": attempts, "job_id": job.job_id,
++                      "previous_version_id": old_version}
++            done = await _wait_job_terminal(q, job.job_id)
++            _check_run_cancelled(pdir, run)
++            settled = q.get(job.job_id)
++            state = getattr(settled, "state", None)
++            detail["state"] = state
++            if not done or state != "done":
++                detail["error"] = "job_timeout" if not done else f"job_{state or 'missing'}"
++                repair_log.append(detail)
+                 break
+-            job = q.submit(project, "video", shot_id,
+-                           origin_run_id=run["run_id"],
+-                           repair_of_review=rv.get("batch_id"),
+-                           repair_attempt=attempts)
+-            done = await _wait_job_terminal(q, job.job_id)
+-            if not done:
+-                repair_log.append({"shot_id": shot_id, "attempt": attempts,
+-                                   "job_id": job.job_id, "timeout": True})
++            after = ProjectStore(pdir).load().get_shot(shot_id)
++            selected = after.final_video if after else None
++            vv = next((v for v in (after.video_versions if after else [])
++                       if v.version_id == selected), None)
++            if (not selected or selected == old_version or vv is None
++                    or vv.status != "done" or vv.origin_run_id != run["run_id"]):
++                detail["error"] = "repair_did_not_produce_new_run_version"
++                repair_log.append(detail)
+                 break
++            detail["version_id"] = selected
+             try:
+-                rv2 = await run_independent_review(
+-                    rt, pdir, project, shot_ids=[shot_id],
+-                    reason=f"repair复审 run {run['run_id']} attempt {attempts}")
+-                entry = (rv2.get("results") or [{}])[0]
+-                cur_hard = entry.get("overall") == "hard_error"
+-                repair_log.append({
+-                    "shot_id": shot_id, "attempt": attempts,
+-                    "job_id": job.job_id, "state": job.state,
+-                    "review_overall": entry.get("overall"),
+-                    "hard_errors": entry.get("hard_errors"),
+-                    "review_batch": rv2.get("batch_id")})
+-            except Exception as e:   # noqa: BLE001 —— 复审失败如实落账
+-                repair_log.append({"shot_id": shot_id, "attempt": attempts,
+-                                   "job_id": job.job_id, "state": job.state,
+-                                   "review_error": str(e)[:160]})
++                rv2 = await run_independent_review(rt, pdir, project, shot_ids=[shot_id],
++                    version_ids={shot_id: selected},
++                    reason=f"repair review run {run['run_id']} attempt {attempts}")
++                entry = next((e for e in rv2.get("results", [])
++                              if e.get("shot_id") == shot_id), None)
++                if entry is None or entry.get("version_id") != selected:
++                    raise ValueError("repair review missing exact version receipt")
++                entries[shot_id] = dict(entry)
++                detail.update(review_overall=entry.get("overall"),
++                              hard_errors=entry.get("hard_errors"), review_batch=rv2.get("batch_id"))
++                if entry.get("overall") == "hard_error" and set(entry.get("hard_errors") or []) == fired:
++                    detail["decision_required"] = True
++                    run.setdefault("decision_requests", []).append({
++                        "type": "repair_strategy_required", "shot_ids": [shot_id],
++                        "reason": "same hard error repeated; identical reroll stopped"})
++                    repair_log.append(detail)
++                    break
++            except Exception as e:
++                entries[shot_id] = {"shot_id": shot_id, "version_id": selected,
++                                    "overall": "incomplete", "error": str(e)[:200]}
++                detail["review_error"] = str(e)[:200]
++                repair_log.append(detail)
+                 break
+-        if cur_hard:
++            repair_log.append(detail)
++        if entries[shot_id].get("overall") != "pass":
+             still_hard.append({"shot_id": shot_id, "attempts": attempts})
++    _machine_review_state(run, entries)
+     _finish_step(run, "auto_repair", ok=not still_hard,
+-                 repairs=repair_log, still_hard=still_hard,
+-                 **({"note": "达上限/额度不足镜如实保留失败——不冒充通过"}
+-                    if still_hard else {}))
++                 repairs=repair_log, still_hard=still_hard)
+     run["repair"] = {"attempts": repair_log, "still_hard": still_hard,
+                      "limit_per_shot": limit}
+     save_run(pdir, run)
+@@ -793,7 +853,8 @@
+     _finish_step(run, f"resume_{n_resume}", ok=True, to_session=sid)
+     # 独立终审 + 修复闭环（与首次执行同一 review/repair 政策，不因恢复而豁免）
+     await _final_review_and_repair(rt, pdir, project, run, thinking=thinking)
+-    run["status"] = "completed"
++    _check_run_cancelled(pdir, run)
++    run["status"] = _completed_status(run)
+     run["finished_at"] = time.time()
+     run["result"] = {
+         "producer_session_id": sid,
+@@ -871,8 +932,24 @@
+             story_goal=params.get("story_goal", ""),
+             segment_count=params.get("segment_count", "六"),
+             duration_hint=params.get("duration_hint", "30-42 秒"))
+-    res = await _producer_turn_with_relays(rt, pdir, project, run, sid, content,
+-                                           thinking=thinking)
++    from .review_pipeline import LiveReviewSession
++    review_policy = mode.get("review_policy") or {}
++    live = None
++    if review_policy.get("stream_during_execution"):
++        live = LiveReviewSession(rt, pdir, project,
++            concurrency=review_policy.get("max_concurrency", 2))
++        live.start()
++    try:
++        res = await _producer_turn_with_relays(rt, pdir, project, run, sid, content,
++                                               thinking=thinking)
++    except BaseException:
++        if live is not None:
++            await live.close(cancel=True)
++        raise
++    else:
++        if live is not None:
++            await live.close()
++            run["live_review"] = {"reports": live.reports, "receipts": len(live.cache)}
+     if run.get("status") == "awaiting_relay":
+         return   # 待接力/未完成——_execute_run 不覆盖此状态；恢复走 resume
+     _finish_step(run, "producer_turn", ok=True,
+@@ -892,7 +969,8 @@
+     # 4. 独立终审 → 有界局部修复 → 复审 → 装配 gate（Phase56 A1/D1 闭环；
+     # Phase55 D 审核流水化是基础）。profile 非 independent_final_review 的模式
+     # 维持旧行为（无终审步）。
+-    await _final_review_and_repair(rt, pdir, project, run, thinking=thinking)
++    await _final_review_and_repair(rt, pdir, project, run, thinking=thinking,
++                                   cached_results=live.cache if live is not None else None)
+ 
+ 
+ # ============ 查询与停止 ============
+@@ -902,7 +980,7 @@
+     run = load_run(pdir, run_id)
+     if run is None:
+         raise ValueError(f"unknown collab run: {run_id}")
+-    if run["status"] in ("completed", "failed", "cancelled"):
++    if run["status"] in ("completed", "completed_with_issues", "failed", "cancelled"):
+         return {"stopped": False, "status": run["status"]}
+     from . import turn_registry
+     for sid in (run.get("session_ids") or {}).values():
+--- a/src/agents/director_visual.py
++++ b/src/agents/director_visual.py
+@@ -293,6 +293,20 @@
+                                              kind="image" if is_image else "video",
+                                              force=force)
+ 
++    if not is_image and submittable:
++        from src.generation.dialogue_control import diagnose_dialogue_batch
++        dialogue_errors = diagnose_dialogue_batch(pdir, proj, [t["shot_id"] for t in submittable])
++        valid = []
++        for target in submittable:
++            error = dialogue_errors.get(target["shot_id"])
++            if error is None:
++                valid.append(target)
++            else:
++                blocked.append({**target, "status": error["code"], "error": error["code"],
++                                "detail": error["detail"], "ok": False, "verified": False,
++                                "fix_hint": "一次修正本批次全部对白编译错误后重试；未调用Provider"})
++        submittable = valid
++
+     # ---- Phase51 C：修复范围服务端硬闸（run_36919eb5a073 实证：提示词范围约束
+     #      对导演无效，授权 4 镜实际提交 20 镜）——清单外镜头在预检直接拒绝，
+     #      不进队列不耗配额。scope 由 continue_run(rejected, allowedShotIds) 设置。----
+--- a/src/agents/master_lease.py
++++ b/src/agents/master_lease.py
+@@ -18,6 +18,8 @@
+ import time
+ from pathlib import Path
+ from typing import Optional
++from functools import wraps
++from src.core.file_lock import file_transaction
+ 
+ DEFAULT_TTL_S = 1800   # 30min：覆盖单 turn 上限（窗口续期多次的情形由 renew 维持）
+ 
+@@ -28,12 +30,26 @@
+     return Path(pdir) / "output" / "agents" / "master_lease.json"
+ 
+ 
++def _serialized(fn):
++    @wraps(fn)
++    def locked(pdir, *args, **kwargs):
++        with file_transaction(_lease_path(pdir).with_suffix(".lock")):
++            return fn(pdir, *args, **kwargs)
++    return locked
++
++
+ def _load(pdir: Path) -> Optional[dict]:
+     p = _lease_path(pdir)
+     if not p.exists():
+         return None
+     try:
+-        return json.loads(p.read_text(encoding="utf-8"))
++        doc = json.loads(p.read_text(encoding="utf-8"))
++        if (not isinstance(doc, dict) or not isinstance(doc.get("holder"), str)
++                or not doc["holder"] or type(doc.get("generation")) is not int
++                or doc["generation"] < 1
++                or not isinstance(doc.get("expires_at"), (int, float))):
++            return dict(_CORRUPT)
++        return doc
+     except Exception:
+         # Phase56 A3：损坏≠无租约。返回损坏标记——调用方按「权限未核明」拒写，
+         # 不 fail-open（否则损坏时任何会话都能接管=双主写入敞口）。
+@@ -48,6 +64,7 @@
+     tmp.replace(p)
+ 
+ 
++@_serialized
+ def acquire(pdir: Path, session_id: str, *, ttl_s: int = DEFAULT_TTL_S,
+             now: Optional[float] = None) -> dict:
+     """获取/续期主控租约。返回 {ok, generation, holder, reason}。
+@@ -79,6 +96,7 @@
+             "reason": "另一会话持有主控租约（未过期）——先 relay 或等待过期"}
+ 
+ 
++@_serialized
+ def transfer(pdir: Path, from_session: str, to_session: str, *,
+              ttl_s: int = DEFAULT_TTL_S, now: Optional[float] = None) -> dict:
+     """接力移交：generation+1、holder 换新会话。仅当前 holder 可移交。
+@@ -97,7 +115,9 @@
+     return {"ok": True, **doc}
+ 
+ 
+-def verify(pdir: Path, session_id: str, *, now: Optional[float] = None) -> dict:
++@_serialized
++def verify(pdir: Path, session_id: str, *, now: Optional[float] = None,
++           expected_generation: Optional[int] = None) -> dict:
+     """执行点检查：session 是否仍为主控写入者。
+     语义（Phase55 冒烟实证修正）：holder 匹配即通过——【自身租约过期≠失去主控】
+     （长 turn 超过 TTL 是常态；过期只意味着他人可以接管，而接管会改变 holder/
+@@ -107,12 +127,13 @@
+     now = time.time() if now is None else now
+     cur = _load(pdir)
+     if cur is None:
+-        return {"verified": True, "note": "无租约文件（fail-open；同会话互斥由 "
+-                                          "turn_registry 承担）"}
++        return {"verified": False, "reason": "主控租约缺失；必须重新获取后才能写入"}
+     if cur.get("corrupt"):
+         return {"verified": False, "corrupt": True,
+                 "reason": ("主控租约文件损坏——holder 无法核明，拒绝新写入"
+                            "（fail-closed；用 diagnose() 查看、确认后 recover() 重建）")}
++    if expected_generation is not None and cur.get("generation") != expected_generation:
++        return {"verified": False, "reason": "主控租约代次已变化", "generation": cur.get("generation")}
+     if cur.get("holder") == session_id:
+         return {"verified": True, "generation": cur.get("generation"),
+                 **({"note": "租约已过期但无接管者——holder 连续性保持"}
+@@ -144,6 +165,7 @@
+             "expired": (cur.get("expires_at") or 0) < time.time()}
+ 
+ 
++@_serialized
+ def recover(pdir: Path, session_id: str, *, ttl_s: int = DEFAULT_TTL_S,
+             now: Optional[float] = None) -> dict:
+     """显式重建（损坏租约的唯一恢复路径）：generation 从损坏前最后已知值之上
+--- a/src/agents/producer.py
++++ b/src/agents/producer.py
+@@ -1370,8 +1370,8 @@
+         from . import master_lease as _master_lease
+         _lease = _master_lease.acquire(pdir, session_id)
+     except Exception:
+-        log.exception("master lease acquire 异常（fail-open）")
+-        _lease = {"ok": True}
++        log.exception("master lease acquire 异常（fail-closed）")
++        _lease = {"ok": False, "reason": "主控租约获取异常；写入已阻止"}
+     if not _lease.get("ok"):
+         raise AgentError(
+             "lease_denied",
+@@ -1420,7 +1420,7 @@
+                             event_cb=None, cancel_event=None):
+                 # Phase55 D：主控租约执行点检查（接力后旧会话晚返回的委派写被拒）
+                 from . import master_lease as _ml
+-                _lv = _ml.verify(pdir, session_id)
++                _lv = _ml.verify(pdir, session_id, expected_generation=_lease.get("generation"))
+                 if not _lv.get("verified"):
+                     return {"ok": False, "error": "lease_denied",
+                             "summary": f"委派被拒：{_lv.get('reason')}",
+@@ -1461,7 +1461,7 @@
+                         async def _exec(rt, project, args, instruction, message_id):
+                             # Phase55 D：主控租约执行点检查（写路径统一守卫）
+                             from . import master_lease as _ml
+-                            _lv = _ml.verify(pdir, session_id)
++                            _lv = _ml.verify(pdir, session_id, expected_generation=_lease.get("generation"))
+                             if not _lv.get("verified"):
+                                 return {"ok": False, "error": "lease_denied",
+                                         "summary": f"工具 {_name} 被拒：{_lv.get('reason')}",
+@@ -1484,7 +1484,7 @@
+ 
+                     def _exec(rt, project, args, instruction, message_id):
+                         from . import master_lease as _ml
+-                        _lv = _ml.verify(pdir, session_id)
++                        _lv = _ml.verify(pdir, session_id, expected_generation=_lease.get("generation"))
+                         if not _lv.get("verified"):
+                             return {"ok": False, "error": "lease_denied",
+                                     "summary": f"工具 {_name} 被拒：{_lv.get('reason')}",
+--- a/src/agents/review_pipeline.py
++++ b/src/agents/review_pipeline.py
+@@ -12,6 +12,7 @@
+ from __future__ import annotations
+ import secrets
+ import time
++import asyncio
+ from pathlib import Path
+ from typing import Any, Dict, List, Optional
+ 
+@@ -81,39 +82,71 @@
+ async def run_independent_review(rt, pdir: Path, project: str, *,
+                                  reason: str = "",
+                                  shot_ids: Optional[List[str]] = None,
+-                                 positions: tuple = FRAME_POSITIONS) -> dict:
++                                 positions: tuple = FRAME_POSITIONS,
++                                 version_ids: Optional[Dict[str, str]] = None,
++                                 max_concurrency: int = 2,
++                                 cached_results: Optional[Dict[str, dict]] = None) -> dict:
+     """对项目已完成视频（或指定镜头）跑一轮独立帧验。
+     返回 {batch_id, shots_reviewed, hard_error_shots, minor_shots, report_path,
+-    results:[...]}。单镜失败不阻断整批（fail-open per-shot，逐镜如实标注）。"""
++    results:[...]}。单镜失败隔离为 incomplete；不取消其它镜头，不当作通过。
++    审核绑定调用时的具体版本，异步视觉调用期间选版改变将使结果 stale。"""
+     from src.core.store import ProjectStore
+ 
+     client = _pick_client(rt)
+     if client is None:
+         raise RuntimeError("视觉审查 client 不可用（Agnes 未配置）")
+     proj = ProjectStore(pdir).load()
+-    if shot_ids:
++    if shot_ids is not None:
+         shots = [proj.get_shot(s) for s in shot_ids]
+-        shots = [s for s in shots if s is not None]
+     else:
+-        shots = [s for s in proj.all_shots() if s.final_video]
++        shots = list(proj.all_shots())
+     batch_id = f"rvw_{secrets.token_hex(4)}"
+-    results: List[Dict[str, Any]] = []
+-    for shot in shots:
+-        entry: Dict[str, Any] = {"shot_id": shot.shot_id, "frames": [],
+-                                 "overall": "not_reviewed", "hard_errors": [],
++    semaphore = asyncio.Semaphore(max(1, int(max_concurrency)))
++
++    async def _one(index, shot):
++        sid = shot.shot_id if shot is not None else shot_ids[index]
++        entry: Dict[str, Any] = {"shot_id": sid, "frames": [],
++                                 "overall": "incomplete", "hard_errors": [],
+                                  "error": None}
+         try:
+-            seconds = getattr(shot.video, "seconds_returned", None) or 5.0
++            if shot is None:
++                raise ValueError("requested shot missing")
++            selected = (version_ids or {}).get(sid) or shot.final_video
++            version = next((v for v in shot.video_versions if v.version_id == selected), None)
++            if not selected or version is None or version.status != "done" or not version.local:
++                raise ValueError("review requires a completed, explicit video version")
++            if not positions or not set(STATE_FRAME_POSITIONS).issubset(positions):
++                raise ValueError("review must include first/end state frames")
++            entry["version_id"] = selected
++            from src.generation.video_commit import video_input_signature
++            input_signature = video_input_signature(proj, shot)
++            entry["input_signature"] = input_signature
++            cached = (cached_results or {}).get(sid) or {}
++            if (cached.get("version_id") == selected and
++                    cached.get("input_signature") == input_signature and
++                    cached.get("review_policy_version") == REVIEW_POLICY_VERSION and
++                    cached.get("overall") in ("pass", "hard_error", "uncertain")):
++                return {**cached, "cache_reused": True}
++            # Work on the loaded snapshot. Never switch files mid-review.
++            shot.final_video = selected
++            seconds = version.seconds_returned or getattr(shot.video, "seconds_returned", None) or 5.0
+             pos_map = {"first": "first", "middle": max(0.0, seconds * 0.5),
+                        "end": "end"}
+             for pos in positions:
+                 p = pos_map.get(pos, pos)
+-                fr = extract_shot_frame_local(pdir, proj, shot, position=p,
+-                                              tag=f"rvw_{batch_id}")
+-                verdict = await review_shot_core(
+-                    client, project_dir=pdir, proj=proj, shot=shot,
+-                    frame="first", image_local=fr["local"], persist=False)
++                async with semaphore:
++                    fr = await asyncio.to_thread(
++                        extract_shot_frame_local, pdir, proj, shot, position=p,
++                        tag=f"rvw_{batch_id}")
++                    if (fr.get("source") or {}).get("version_id") != selected:
++                        raise ValueError("extracted frame version mismatch")
++                    verdict = await review_shot_core(
++                        client, project_dir=pdir, proj=proj, shot=shot,
++                        frame="first", image_local=fr["local"], persist=False)
+                 _dims = (verdict.get("review") or {}).get("dimensions") or {}
++                if any(_dim_status(_dims.get(d)) not in ("pass", "fail", "uncertain")
++                       for d in VIDEO_HARD_DIMS):
++                    raise ValueError("review response missing valid hard dimensions")
+                 _fired = _hard_dims_fired(_dims)
+                 entry["frames"].append({
+                     "position": pos,
+@@ -121,6 +154,7 @@
+                     "source_version": (fr.get("source") or {}).get("version_id"),
+                     "overall": (verdict.get("derived") or {}).get("overall"),
+                     "hard_dims_fired": _fired,
++                    "hard_dims_uncertain": [d for d in VIDEO_HARD_DIMS if _dim_status(_dims.get(d)) == "uncertain"],
+                     "summary": ((verdict.get("review") or {}).get("summary")
+                                 or "")[:300],
+                 })
+@@ -130,15 +164,40 @@
+             entry["motion_minor"] = cls["motion_minor"]
+             entry["minor"] = cls["minor"]
+             entry["overall"] = ("hard_error" if cls["hard_errors"]
+-                                else "uncertain" if "uncertain" in overs
++                                else "uncertain" if any(
++                                    f.get("hard_dims_uncertain") and f.get("position") in STATE_FRAME_POSITIONS
++                                    for f in entry["frames"])
+                                 else "pass")
+         except ContinuityError as e:
++            entry["overall"] = "incomplete"
+             entry["error"] = f"frame_extract: {str(e)[:160]}"
+         except Exception as e:   # noqa: BLE001 —— 单镜失败不阻断整批
++            entry["overall"] = "incomplete"
+             entry["error"] = f"{type(e).__name__}: {str(e)[:160]}"
+-        results.append(entry)
++        return entry
++
++    results = await asyncio.gather(*[_one(i, s) for i, s in enumerate(shots)])
++    # Validate the entire batch at its final read boundary, including cache hits
++    # and shots that finished before another shot's asynchronous review.
++    try:
++        latest_project = ProjectStore(pdir).load()
++        from src.generation.video_commit import video_input_signature
++        for entry in results:
++            if entry["overall"] not in ("pass", "hard_error", "uncertain"):
++                continue
++            latest = latest_project.get_shot(entry["shot_id"])
++            if (latest is None or latest.final_video != entry.get("version_id") or
++                    video_input_signature(latest_project, latest) != entry.get("input_signature")):
++                entry["overall"] = "stale"
++                entry["error"] = "selected version or inputs changed during review"
++    except Exception as e:
++        for entry in results:
++            entry["overall"] = "incomplete"
++            entry["error"] = f"final_validation: {type(e).__name__}: {str(e)[:160]}"
+     hard_shots = [r["shot_id"] for r in results if r["overall"] == "hard_error"]
+     minor_shots = [r["shot_id"] for r in results if r["overall"] == "uncertain"]
++    incomplete_shots = [r["shot_id"] for r in results
++                        if r["overall"] in ("incomplete", "stale")]
+     report = {
+         "schema": "independent_review_v2",
+         "review_policy_version": REVIEW_POLICY_VERSION,
+@@ -153,6 +212,8 @@
+         "shots_reviewed": len(results),
+         "hard_error_shots": hard_shots,
+         "minor_shots": minor_shots,
++        "incomplete_shots": incomplete_shots,
++        "machine_passed": bool(results) and not (hard_shots or minor_shots or incomplete_shots),
+         "results": results,
+     }
+     out_dir = Path(pdir) / "output" / "agents" / "review_pipeline"
+@@ -164,3 +225,81 @@
+     tmp.replace(out)
+     report["report_path"] = str(out)
+     return report
++
++
++class LiveReviewSession:
++    """Bounded review alongside an active Producer; receipts stay version-scoped.
++
++    No canonical writes, generation or repair is triggered by this observer.
++    Final review reuses only matching completed receipts, never pending checks.
++    """
++    def __init__(self, rt, pdir, project, *, concurrency=2, interval_s=1.0):
++        self.rt, self.pdir, self.project = rt, Path(pdir), project
++        self.interval_s = interval_s
++        self.stop_event = asyncio.Event()
++        self.slots = asyncio.Semaphore(max(1, int(concurrency)))
++        self.seen = set()
++        self.tasks = []
++        self.cache = {}
++        self.reports = []
++        self.monitor = None
++
++    def start(self):
++        self.monitor = asyncio.create_task(self._watch())
++
++    async def scan_once(self):
++        from src.core.store import ProjectStore
++        from src.generation.video_commit import video_input_signature
++        try:
++            proj = ProjectStore(self.pdir).load()
++        except (FileNotFoundError, ValueError):
++            return
++        queue = (self.rt._resolve_job_queue_or_none()
++                 if hasattr(self.rt, "_resolve_job_queue_or_none") else None)
++        busy = {j.shot_id for j in getattr(queue, "jobs", {}).values()
++                if j.project == self.project and j.kind == "video"
++                and j.state in ("queued", "running")}
++        for shot in proj.all_shots():
++            if shot.shot_id in busy or not shot.final_video:
++                continue
++            key = (shot.shot_id, shot.final_video, video_input_signature(proj, shot))
++            if key in self.seen:
++                continue
++            self.seen.add(key)
++            self.tasks.append(asyncio.create_task(self._review(key)))
++
++    async def _review(self, key):
++        async with self.slots:
++            try:
++                report = await run_independent_review(self.rt, self.pdir, self.project,
++                    shot_ids=[key[0]], version_ids={key[0]: key[1]}, max_concurrency=1,
++                    reason="live review while Producer executes")
++                self.reports.append(report["report_path"])
++                entry = (report.get("results") or [{}])[0]
++                if entry.get("overall") in ("pass", "hard_error", "uncertain"):
++                    self.cache[key[0]] = {**entry, "review_policy_version": REVIEW_POLICY_VERSION,
++                                         "source_report": report["report_path"]}
++            except Exception:
++                # A missing client/corrupt input is reported by mandatory final review.
++                # It must not cancel the Producer or any unrelated generation job.
++                return
++
++    async def _watch(self):
++        while not self.stop_event.is_set():
++            try:
++                await self.scan_once()
++            except Exception:
++                pass  # Final review is mandatory; observer failure never means PASS.
++            try:
++                await asyncio.wait_for(self.stop_event.wait(), timeout=self.interval_s)
++            except asyncio.TimeoutError:
++                pass
++
++    async def close(self, *, cancel=False):
++        self.stop_event.set()
++        if self.monitor is not None:
++            await self.monitor
++        if cancel:
++            for task in self.tasks:
++                task.cancel()
++        await asyncio.gather(*self.tasks, return_exceptions=True)
+--- a/src/api/agnes_client.py
++++ b/src/api/agnes_client.py
+@@ -190,6 +190,10 @@
+         super().__init__(msg); self.status, self.body = status, body
+ 
+ 
++class VideoSubmissionUncertain(AgnesError):
++    """The provider may have accepted a non-idempotent video submission."""
++
++
+ class PollTransientError(AgnesError):
+     """轮询的暂时性失败（网络/超时/5xx 耗尽）。调用方不应标 video.status=failed，
+     应保留 video_id 让 retry/recover 续轮询，避免重提交丢掉已生成的视频。
+@@ -296,6 +300,7 @@
+     # ---------- 带退避的请求 ----------
+     async def _request(self, method: str, url: str, bucket: str,
+                        max_attempts: int = 5, *, text_ep: bool = False,
++                       retry_ambiguous: bool = True,
+                        **kw) -> httpx.Response:
+         label = "SenseNova" if text_ep else "Agnes"
+         last = None
+@@ -311,6 +316,8 @@
+                                          "Authorization": f"Bearer {key}"}
+                     r = await c.request(method, url, **kw)
+                 except (httpx.TimeoutException, httpx.TransportError) as e:
++                    if not retry_ambiguous:
++                        raise
+                     last = e
+                     log.warning("[%s] 网络异常 %s（第 %d/%d 次）", bucket, e,
+                                 attempt + 1, max_attempts)
+@@ -321,6 +328,8 @@
+                         raise AgnesError(
+                             f"{label} API 错误 {r.status_code}: {r.text[:400]}",
+                             r.status_code, r.text)
++                    if not retry_ambiguous and r.status_code != 429:
++                        raise AgnesError(f"{r.status_code}: {r.text[:200]}", r.status_code, r.text)
+                     last = AgnesError(f"{r.status_code}: {r.text[:200]}", r.status_code, r.text)
+                     if r.status_code == 429:
+                         retry_after_s = _parse_retry_after(r)
+@@ -335,7 +344,8 @@
+             if retry_after_s is not None:
+                 backoff = min(120, max(1.0, retry_after_s))
+                 log.info("[%s] 429 Retry-After=%ss（服务端窗口优先）", bucket, backoff)
+-            await asyncio.sleep(backoff)
++            if attempt + 1 < max_attempts:
++                await asyncio.sleep(backoff)
+         # 保留末次错误的 status/body：上层（如 producer loop 的瞬态恢复）需要区分
+         # 「可重试错误耗尽」（429/5xx，值得再等一轮）与「配置/配额类永久失败」。
+         raise AgnesError(f"重试 {max_attempts} 次仍失败: {last}",
+@@ -704,9 +714,21 @@
+         if self.quota:
+             ok, why = self.quota.can("video_seconds", seconds_25)
+             if not ok: raise AgnesError(why)
+-        r = await self._request("POST", "/v1/videos", "video", json=body)
++        try:
++            r = await self._request("POST", "/v1/videos", "video", json=body,
++                                    retry_ambiguous=False)
++        except (httpx.TransportError, AgnesError) as exc:
++            status = getattr(exc, "status", None)
++            if status is not None and 400 <= status < 500 and status != 408:
++                raise
++            raise VideoSubmissionUncertain(
++                "video submission outcome unknown; reconcile before any new POST",
++                status=status) from exc
+         if self.quota: self.quota.consume("video_seconds", seconds_25)
+-        data = r.json()
++        try:
++            data = r.json()
++        except Exception as exc:
++            raise VideoSubmissionUncertain("video submission returned an unreadable receipt") from exc
+         log.info("视频任务已提交（2.5 契约）model=%s mode=%s seconds=%s id=%s",
+                  model_id, body.get("mode"), seconds_25,
+                  data.get("video_id") or data.get("task_id"))
+--- a/src/components/agent/CollabRunPanel.vue
++++ b/src/components/agent/CollabRunPanel.vue
+@@ -73,7 +73,7 @@
+   pollTimer.value = window.setInterval(async () => {
+     await loadRuns();
+     if (activeRun.value &&
+-        ['completed', 'failed', 'cancelled'].includes(activeRun.value.status)) {
++        ['completed', 'completed_with_issues', 'failed', 'cancelled'].includes(activeRun.value.status)) {
+       if (pollTimer.value) window.clearInterval(pollTimer.value);
+       pollTimer.value = null;
+     }
+@@ -112,14 +112,14 @@
+       <button class="btn btn-primary" :disabled="starting" @click="startRun">
+         {{ starting ? '启动中…' : '启动 run' }}
+       </button>
+-      <button v-if="activeRun && !['completed', 'failed', 'cancelled'].includes(activeRun.status)"
++      <button v-if="activeRun && !['completed', 'completed_with_issues', 'failed', 'cancelled'].includes(activeRun.status)"
+               class="btn btn-ghost" @click="cancelRun">停止</button>
+       <span v-if="startError" class="crp-err">{{ startError }}</span>
+     </div>
+     <div v-if="activeRun" class="crp-run">
+       <div class="crp-run-head">
+         <span class="crp-run-id">{{ activeRun.run_id }}</span>
+-        <span class="crp-run-status" :class="activeRun.status">{{ activeRun.status }}</span>
++        <span class="crp-run-status" :class="activeRun.status">{{ activeRun.status === 'completed_with_issues' ? '执行结束，仍有问题' : activeRun.status }}</span>
+         <span class="crp-run-hash" v-if="showAdvanced" :title="activeRun.snapshot_hash">
+           {{ activeRun.snapshot_hash }}</span>
+       </div>
+@@ -168,6 +168,7 @@
+ .crp-run { margin-top: 10px; border: 1px solid var(--border, #2a2a35); border-radius: 6px; padding: 8px; }
+ .crp-run-head { display: flex; gap: 8px; align-items: baseline; }
+ .crp-run-id { font-family: monospace; }
++.crp-run-status.completed_with_issues { color: #e9aa55; }
+ .crp-run-status.completed { color: #6c6; }
+ .crp-run-status.failed { color: #e66; }
+ .crp-run-status.cancelled { color: #e6a23c; }
+--- /dev/null
++++ b/src/core/file_lock.py
+@@ -0,0 +1,73 @@
++"""Reentrant local-process and cross-process lock for short file transactions.
++
++All participants must use the same lock path. Never hold this across an await,
++model call or download. The lock file is kept in place (unlinking breaks locks).
++"""
++from contextlib import contextmanager
++import os
++from pathlib import Path
++import threading
++import time
++
++_registry_guard = threading.Lock()
++_locks = {}
++_held = threading.local()
++
++
++@contextmanager
++def file_transaction(path: Path, *, timeout: float = 30.0):
++    path = Path(path).resolve()
++    key = str(path)
++    with _registry_guard:
++        lock = _locks.setdefault(key, threading.RLock())
++    if not lock.acquire(timeout=timeout):
++        raise TimeoutError(f"file transaction busy: {path.name}")
++    held = getattr(_held, "paths", None)
++    if held is None:
++        held = _held.paths = set()
++    stream = None
++    acquired = False
++    nested = key in held
++    try:
++        if not nested:
++            path.parent.mkdir(parents=True, exist_ok=True)
++            stream = path.open("a+b")
++            if os.name == "nt" and path.stat().st_size == 0:
++                stream.write(b"\0")
++                stream.flush()
++            deadline = time.monotonic() + timeout
++            while True:
++                try:
++                    if os.name == "nt":
++                        import msvcrt
++                        stream.seek(0)
++                        msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
++                    else:
++                        import fcntl
++                        fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
++                    acquired = True
++                    break
++                except OSError as exc:
++                    import errno
++                    if exc.errno not in (errno.EACCES, errno.EAGAIN, errno.EDEADLK):
++                        raise
++                    if time.monotonic() >= deadline:
++                        raise TimeoutError(f"file transaction busy: {path.name}") from exc
++                    time.sleep(0.01)
++            held.add(key)
++        yield
++    finally:
++        try:
++            if acquired:
++                held.discard(key)
++                if os.name == "nt":
++                    import msvcrt
++                    stream.seek(0)
++                    msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
++                else:
++                    import fcntl
++                    fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
++        finally:
++            if stream is not None:
++                stream.close()
++            lock.release()
+--- a/src/core/job_queue.py
++++ b/src/core/job_queue.py
+@@ -164,11 +164,14 @@
+             self.jobs = {k: Job(**v) for k, v in data.items()}
+             # 🔴 重启后 running 的任务重置为 queued（视频交给 recover 处理，不在此重排）
+             for j in self.jobs.values():
+-                if j.state == JobState.RUNNING.value and j.kind != JobKind.VIDEO.value:
++                if j.state == JobState.RUNNING.value and (
++                    j.kind != JobKind.VIDEO.value or
++                    ("handler_started" in j.params and not j.params.get("submission_intent_id")
++                     and not j.params.get("provider_task_id"))):
+                     j.state = JobState.QUEUED.value
+         except Exception as e:
+-            log.warning("队列状态读取失败，从空开始: %s", e)
+-            self.jobs = {}
++            log.error("队列状态读取失败，保留原文件并停止恢复: %s", e)
++            raise RuntimeError("JobQueue state corrupt; recovery required (original file preserved)") from e
+ 
+     def _save(self):
+         self.state_path.parent.mkdir(parents=True, exist_ok=True)
+@@ -319,10 +322,12 @@
+             job.started_at = time.time(); job.attempts += 1
+             job.message = job.message or "开始处理"
+             job.last_progress_at = time.time()
+-            self._save(); await self._broadcast(job)
++            job.params["handler_started"] = False
++            self._save()
+             task = asyncio.create_task(self._run_job(job, name))
+             self._running_tasks[job_id] = task
+             try:
++                await self._broadcast(job)
+                 await task
+             except asyncio.CancelledError:
+                 # 区分 worker 自身被 shutdown cancel vs inner job task 被 force-cancel/watchdog cancel。
+@@ -331,6 +336,14 @@
+                 # cancelling()==0 = CancelledError 来自 inner task（force cancel/watchdog，state 已在 _run_job 设好）
+                 #   → 既有语义：worker 存活继续处理后续 job（cancel 一个 Job 不杀死 worker）。
+                 if asyncio.current_task().cancelling() > 0:
++                    task.cancel()
++                    await asyncio.gather(task, return_exceptions=True)
++                    if job.state == JobState.RUNNING.value and not job.params.get("handler_started"):
++                        job.state = JobState.QUEUED.value
++                        job.started_at = None
++                        job.attempts = max(0, job.attempts - 1)
++                        self._save()
++                        q.put_nowait(job_id)
+                     raise
+             except Exception as e:
+                 log.exception("[%s] worker 意外错误 %s", name, job_id)
+@@ -340,6 +353,8 @@
+ 
+     async def _run_job(self, job: Job, name: str):
+         """执行单个 job 的 handler，带看门狗。force cancel / 看门狗通过 task.cancel() 中断。"""
++        job.params["handler_started"] = True
++        self._save()
+         watchdog = asyncio.create_task(self._watchdog(job))
+         try:
+             handler = self.handlers.get(job.kind)
+--- a/src/core/store.py
++++ b/src/core/store.py
+@@ -1,13 +1,18 @@
+ # src/core/store.py
+ # 项目数据读写：原子写、v1->v2 迁移、读-改-写单个 shot。
+ # 🔴 硬性规则：所有生成任务写回结果必须走 store.update_shot()，禁止只改内存字典。
+-import json, shutil, subprocess, time
++import json, shutil, subprocess, time, hashlib
+ from dataclasses import asdict
+ from pathlib import Path
+ from typing import Optional, Callable
+ 
+ from .models import Project, Scene, Character, StyleAnchor, Asset, Shot
+ from .atomic import atomic_write_json as _atomic_write_json  # 共享原子写；store 调用点不变（AI-6A §十四）
++from .file_lock import file_transaction
++
++
++class ProjectConflictError(RuntimeError):
++    """A loaded project changed before its proposed write could be committed."""
+ 
+ 
+ # _atomic_write_json 已迁移到 src/core/atomic.py（上方 import 提供同名别名，调用点不变）
+@@ -106,6 +111,20 @@
+         self.legacy = self.dir / "output" / "parsed_script.json"
+ 
+     def load(self) -> Project:
++        if not self.path.exists() and not self.legacy.exists():
++            raise FileNotFoundError(f"项目数据不存在: {self.dir}")
++        with self.transaction():
++            project = self._load_unlocked()
++            project._store_signature = self.signature()
++            return project
++
++    def transaction(self):
++        return file_transaction(self.dir / ".project.write.lock")
++
++    def signature(self) -> Optional[str]:
++        return hashlib.sha256(self.path.read_bytes()).hexdigest() if self.path.exists() else None
++
++    def _load_unlocked(self) -> Project:
+         raw = None
+         if self.path.exists():
+             raw = json.loads(self.path.read_text(encoding="utf-8"))
+@@ -131,19 +150,33 @@
+             _atomic_write_json(self.path, raw)
+         return self._from_dict(raw)
+ 
+-    def save(self, project: Project):
+-        project.updated_at = time.time()
+-        _atomic_write_json(self.path, self._to_dict(project))
++    def save(self, project: Project, *, expected_signature: Optional[str] = None):
++        with self.transaction():
++            expected = expected_signature or getattr(project, "_store_signature", None)
++            if expected is not None and self.signature() != expected:
++                raise ProjectConflictError("project changed before commit; reload and rebase")
++            project.updated_at = time.time()
++            _atomic_write_json(self.path, self._to_dict(project))
++            project._store_signature = self.signature()
+ 
+-    def update_shot(self, shot_id: str, mutator: Callable[[Shot], None]):
++    def update_shot(self, shot_id: str, mutator: Callable[[Shot], None], *,
++                    guard: Optional[Callable[[Project, Shot], None]] = None,
++                    expected_signature: Optional[str] = None):
+         """读-改-写单个 shot。所有生成任务写回都必须走这个方法，禁止直接改内存对象。"""
+-        p = self.load()
+-        shot = p.get_shot(shot_id)
+-        if shot is None:
+-            raise KeyError(shot_id)
+-        mutator(shot)
+-        self.save(p)
+-        return shot
++        if not self.path.exists() and not self.legacy.exists():
++            raise FileNotFoundError(f"项目数据不存在: {self.dir}")
++        with self.transaction():
++            p = self.load()
++            if expected_signature is not None and self.signature() != expected_signature:
++                raise ProjectConflictError("project changed before shot commit")
++            shot = p.get_shot(shot_id)
++            if shot is None:
++                raise KeyError(shot_id)
++            if guard is not None:
++                guard(p, shot)
++            mutator(shot)
++            self.save(p)
++            return shot
+ 
+     # ---- 序列化 / 反序列化 ----
+     def _to_dict(self, project: Project) -> dict:
+--- a/src/generation/dialogue_control.py
++++ b/src/generation/dialogue_control.py
+@@ -80,7 +80,7 @@
+ # ============ 确定性 dialogue parser（§7 + C1 §7 stage directions）============
+ # 「角色名：台词」前缀（全角/半角冒号）。name=\S{1,20}? 非贪婪到第一个冒号——
+ # 与 Director 既有约定一致（director.py:291「可带说话人，例如：小铃：…」）。
+-_SPEAKER_PREFIX_RE = re.compile(r"^(?P<name>\S{1,20}?)[：:]\s*(?P<rest>\S.*)$", re.DOTALL)
++_SPEAKER_PREFIX_RE = re.compile(r"^(?P<name>\S{1,100}?)[：:]\s*(?P<rest>\S.*)$", re.DOTALL)
+ 
+ # §7 舞台指示（确定性规则，不用 LLM 解释字符串）：
+ #   - 括号组：全角（…）或半角 (...)，内容不含任何括号字符（嵌套 → 无法唯一解析）；
+@@ -254,7 +254,17 @@
+     used_prefix = False
+     for idx, raw in enumerate(raw_lines):
+         name, body = split_speaker_prefix(raw)
+-        kind, hints, text = classify_dialogue_body(body, line_ref=f"#{idx}")
++        # Deterministic metadata normalization: exact cast name plus trailing
++        # parenthesized delivery hints. Never fuzzy-match or rewrite dialogue.
++        if name is not None and name not in characters:
++            annotated = re.fullmatch(r"(?P<speaker>[^（）()]+?)(?P<hints>(?:（[^（）()]*）|\([^()]*\))+)", name)
++            if annotated and annotated.group("speaker").strip() in characters:
++                name = annotated.group("speaker").strip()
++                body = annotated.group("hints") + body
++        if name is None and re.fullmatch(r"本镜(?:无对白|无台词)(?:（[^（）()]*）|\([^()]*\))?[。.]?", body):
++            kind, hints, text = "direction", (), body
++        else:
++            kind, hints, text = classify_dialogue_body(body, line_ref=f"#{idx}")
+         if kind == "direction":
+             # §7：整行舞台指示——绝不放进 spoken dialogue。binding 裁决指向
+             # 指示行 = 索引空间错位（binding index 按 raw 非空行计），fail closed。
+@@ -369,3 +379,22 @@
+     if control is None:
+         return prompt
+     return append_dialogue_block(prompt, control)
++
++
++def diagnose_dialogue_batch(project_dir, project, shot_ids):
++    """Return every deterministic dialogue error before enqueuing any media.
++
++    Compiles ephemeral prompts only; canonical dialogue and cast are unchanged.
++    """
++    errors = {}
++    for sid in dict.fromkeys(shot_ids):
++        shot = project.get_shot(sid)
++        if shot is None:
++            continue
++        try:
++            compile_prompt_with_native_dialogue("", project_dir, project, shot)
++        except DialogueControlError as exc:
++            errors[sid] = exc.to_dict()
++        except Exception as exc:
++            errors[sid] = {"code": "dialogue_compile_failed", "detail": str(exc)[:400]}
++    return errors
+--- /dev/null
++++ b/src/generation/video_commit.py
+@@ -0,0 +1,29 @@
++"""Input-scoped guard for attaching an asynchronously generated video."""
++from dataclasses import asdict
++import hashlib
++import json
++
++
++def video_input_signature(project, shot) -> str:
++    data = shot.to_dict()
++    # Outputs and presentation state must not invalidate independent generation.
++    for key in ("video", "video_versions", "final_video", "video_end_frame",
++                "video_end_source_version", "status", "error", "updated_at",
++                "audio", "subtitle_srt"):
++        data.pop(key, None)
++    data["video_plan"] = {"num_frames": shot.video.num_frames,
++                          "frame_rate": shot.video.frame_rate}
++    chars = [asdict(c) for c in project.characters if c.name in shot.characters]
++    upstream = None
++    if (shot.opening_source in ("inherit_previous", "reference_previous")
++            or getattr(shot, "video_reference_asset_id", None) == "prev_tail_look_scene"):
++        from .video_contract import find_prev_scene_shot
++        prev = project.get_shot(shot.source_shot_id) if shot.source_shot_id else find_prev_scene_shot(project, shot)
++        if prev:
++            upstream = {"shot_id": prev.shot_id, "final_video": prev.final_video,
++                        "tail_version": prev.video_end_source_version,
++                        "tail": asdict(prev.video_end_frame)}
++    payload = {"shot": data, "characters": chars, "style": asdict(project.style),
++               "native_av": asdict(project.native_av), "upstream": upstream}
++    return hashlib.sha256(json.dumps(payload, sort_keys=True, ensure_ascii=False,
++                                     default=str).encode()).hexdigest()
+--- a/src/storyboard/continuity_service.py
++++ b/src/storyboard/continuity_service.py
+@@ -89,6 +89,8 @@
+                 p = Path(vv.local)
+                 if p.exists():
+                     return p
++        # An explicit version pointer must never fall back to another artifact.
++        return None
+     old = getattr(getattr(shot, "video", None), "local", None)
+     if old:
+         p = Path(old)
+--- a/tests/test_ai_6f_real_pipeline.py
++++ b/tests/test_ai_6f_real_pipeline.py
+@@ -919,7 +919,7 @@
+         lifecycle.projects_dir = saved_pd
+     assert agnes.create_video_count() == 0, "recover 不重提交 create_video"
+     sh = ProjectStore(pdir).load().get_shot("s01_c01")
+-    assert sh.video.status == "queued", "poll 未完成 → 标 queued 续轮询"
++    assert sh.video.status == "generating", "恢复复用统一handler；保留远端在途状态，不先走旁路轮询"
+     assert len(driver_q.jobs) == 1, "重排队必须进【传入的驱动器队列】（不是 deps 全局）"
+     _j = next(iter(driver_q.jobs.values()))
+     assert _j.kind == "video"
+--- a/tests/test_ai_6f_shutdown.py
++++ b/tests/test_ai_6f_shutdown.py
+@@ -115,6 +115,6 @@
+     assert entered, "handler never entered"
+     q2 = _new_queue(tmp_path, {"video": _blocking})
+     j1 = q2.get(entered[0])
+-    assert j1 is not None and j1.state == "running", \
+-        "shutdown 应保留 video Job 为 RUNNING（fix#2），restart reattach + recover_pending_videos 续 poll"
++    assert j1 is not None and j1.state == "queued", \
++        "新协议尚无提交意图/任务ID的任务可重排队；handler必须在POST前持久化意图"
+     assert j1.finished_at is None, "RUNNING（shutdown 中断）Job 不应记 finished_at"
+--- /dev/null
++++ b/tests/test_collab_safety_revision.py
+@@ -0,0 +1,517 @@
++"""Offline fault cases for the source-handoff safety repair (no Provider calls)."""
++import asyncio
++import json
++from pathlib import Path
++from types import SimpleNamespace
++from concurrent.futures import ThreadPoolExecutor
++import multiprocessing
++
++import pytest
++from src.core.models import Project, Scene, Shot, VideoAsset, VideoVersion
++from src.core.store import ProjectStore, ProjectConflictError
++from src.agents import review_pipeline as rp, collab_modes as cm, master_lease as ml
++
++
++def make_project(pdir, count=1):
++    shots=[]
++    for i in range(count):
++        sid=f's01_c{i+1:02d}';path=pdir/f'{sid}_old.mp4';path.write_bytes(b'old')
++        vv=VideoVersion(version_id=f'old_{i}',status='done',local=str(path),video_id=f'old_provider_{i}')
++        shots.append(Shot(shot_id=sid,scene_id='s01',index=i+1,
++                          video=VideoAsset(status='done',local=str(path)),
++                          video_versions=[vv],final_video=vv.version_id))
++    ProjectStore(pdir).save(Project(name='p',scenes=[Scene(scene_id='s01',shots=shots)]))
++    return ProjectStore(pdir)
++
++
++def mock_review(monkeypatch):
++    monkeypatch.setattr(rp,'extract_shot_frame_local',lambda p,proj,s,**kw:{
++        'local':'frame.jpg','source':{'version_id':s.final_video}})
++    async def good(*a,**kw):
++        return {'review':{'dimensions':{d:{'status':'pass'} for d in rp.VIDEO_HARD_DIMS}},
++                'derived':{'overall':'pass'}}
++    monkeypatch.setattr(rp,'review_shot_core',good)
++    return SimpleNamespace(_resolve_client_or_none=lambda **kw:object())
++
++
++def test_store_rejects_stale_whole_project(tmp_path):
++    store=make_project(tmp_path)
++    a,b=store.load(),store.load()
++    a.story_text='A';store.save(a)
++    b.story_text='B'
++    with pytest.raises(ProjectConflictError):store.save(b)
++    assert store.load().story_text=='A'
++
++
++def test_store_threads_do_not_lose_updates(tmp_path):
++    make_project(tmp_path)
++    def add(_):ProjectStore(tmp_path).update_shot('s01_c01',lambda s:setattr(s,'index',s.index+1))
++    with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(add,range(40)))
++    assert ProjectStore(tmp_path).load().get_shot('s01_c01').index==41
++
++
++def _lease_race(pdir,barrier,queue,sid):
++    barrier.wait();queue.put(ml.acquire(Path(pdir),sid,now=100)['ok'])
++
++
++def test_lease_cross_process_unique_holder(tmp_path):
++    ctx=multiprocessing.get_context('spawn');barrier=ctx.Barrier(2);queue=ctx.Queue()
++    ps=[ctx.Process(target=_lease_race,args=(str(tmp_path),barrier,queue,f's{i}')) for i in range(2)]
++    for p in ps:p.start()
++    values=[queue.get(timeout=15) for _ in ps]
++    for p in ps:p.join(15);assert p.exitcode==0
++    assert sorted(values)==[False,True]
++
++
++def test_lease_missing_and_old_generation_denied(tmp_path):
++    assert not ml.verify(tmp_path,'s')['verified']
++    a=ml.acquire(tmp_path,'s',now=1,ttl_s=1)
++    b=ml.acquire(tmp_path,'s',now=3)
++    assert b['generation']>a['generation']
++    assert not ml.verify(tmp_path,'s',expected_generation=a['generation'])['verified']
++
++
++@pytest.mark.parametrize('failure',['vision','frame','missing_dimensions'])
++def test_review_failure_cannot_pass(tmp_path,monkeypatch,failure):
++    make_project(tmp_path);rt=mock_review(monkeypatch)
++    if failure=='frame':
++        def fail(*a,**kw):raise RuntimeError('no frame')
++        monkeypatch.setattr(rp,'extract_shot_frame_local',fail)
++    else:
++        async def fail(*a,**kw):
++            if failure=='vision':raise RuntimeError('vision unavailable')
++            return {'review':{'dimensions':{}},'derived':{'overall':'pass'}}
++        monkeypatch.setattr(rp,'review_shot_core',fail)
++    rv=asyncio.run(rp.run_independent_review(rt,tmp_path,'p'))
++    assert rv['incomplete_shots']==['s01_c01'] and not rv['machine_passed']
++
++
++def test_review_missing_requested_shot_and_empty_selection(tmp_path,monkeypatch):
++    make_project(tmp_path);rt=mock_review(monkeypatch)
++    rv=asyncio.run(rp.run_independent_review(rt,tmp_path,'p',shot_ids=['missing']))
++    assert rv['incomplete_shots']==['missing']
++    rv=asyncio.run(rp.run_independent_review(rt,tmp_path,'p',shot_ids=[]))
++    assert rv['results']==[] and not rv['machine_passed']
++
++
++def test_review_bounded_overlap_and_failure_isolation(tmp_path,monkeypatch):
++    make_project(tmp_path,3);rt=mock_review(monkeypatch);active=0;peak=0
++    async def vision(*a,**kw):
++        nonlocal active,peak
++        active+=1;peak=max(peak,active)
++        try:
++            await asyncio.sleep(.005)
++            if kw['shot'].shot_id=='s01_c02':raise RuntimeError('one shot failed')
++            return {'review':{'dimensions':{d:{'status':'pass'} for d in rp.VIDEO_HARD_DIMS}},'derived':{'overall':'pass'}}
++        finally:active-=1
++    monkeypatch.setattr(rp,'review_shot_core',vision)
++    rv=asyncio.run(rp.run_independent_review(rt,tmp_path,'p',max_concurrency=2))
++    assert peak==2 and rv['incomplete_shots']==['s01_c02']
++    assert [e['overall'] for e in rv['results']]==['pass','incomplete','pass']
++
++
++def test_review_selection_change_is_stale(tmp_path,monkeypatch):
++    store=make_project(tmp_path);rt=mock_review(monkeypatch);changed=False
++    async def vision(*a,**kw):
++        nonlocal changed
++        if not changed:
++            changed=True
++            store.update_shot('s01_c01',lambda s:setattr(s,'final_video','new'))
++        return {'review':{'dimensions':{d:{'status':'pass'} for d in rp.VIDEO_HARD_DIMS}},'derived':{'overall':'pass'}}
++    monkeypatch.setattr(rp,'review_shot_core',vision)
++    rv=asyncio.run(rp.run_independent_review(rt,tmp_path,'p'))
++    assert rv['results'][0]['version_id']=='old_0' and rv['results'][0]['overall']=='stale'
++
++
++def run_record():
++    return {'run_id':'r','project':'p','snapshot':{'mode':cm.COLLAB_MODES['combo_recommended']},
++            'steps':[],'authorization':{'scope':'test'}}
++
++
++@pytest.mark.parametrize('state',['failed','cancelled','done'])
++def test_failed_or_no_new_repair_never_reviews_old(tmp_path,monkeypatch,state):
++    make_project(tmp_path);calls=[]
++    async def review(*a,**kw):
++        calls.append(kw)
++        return {'batch_id':'b','shots_reviewed':1,'results':[{'shot_id':'s01_c01',
++                'version_id':'old_0','overall':'hard_error','hard_errors':['anatomy_artifact']}],
++                'hard_error_shots':['s01_c01'],'incomplete_shots':[]}
++    monkeypatch.setattr(rp,'run_independent_review',review)
++    class Queue:
++        def submit(self,*a,**kw):return SimpleNamespace(job_id='j',state=state)
++        def get(self,j):return SimpleNamespace(state=state)
++    rt=SimpleNamespace(_resolve_job_queue_or_none=lambda:Queue(),_resolve_client_or_none=lambda **kw:None)
++    run=run_record();asyncio.run(cm._final_review_and_repair(rt,tmp_path,'p',run))
++    assert len(calls)==1
++    assert run['machine_acceptance']['status']=='needs_attention'
++    assert cm._completed_status(run)=='completed_with_issues'
++
++
++def test_identity_failure_requests_strategy_without_reroll(tmp_path,monkeypatch):
++    make_project(tmp_path)
++    async def review(*a,**kw):return {'batch_id':'b','results':[{'shot_id':'s01_c01',
++        'version_id':'old_0','overall':'hard_error','hard_errors':['missing_character']}],
++        'hard_error_shots':['s01_c01']}
++    monkeypatch.setattr(rp,'run_independent_review',review)
++    def no_submit(*a,**kw):raise AssertionError('blind reroll')
++    rt=SimpleNamespace(_resolve_job_queue_or_none=lambda:SimpleNamespace(submit=no_submit))
++    run=run_record();asyncio.run(cm._final_review_and_repair(rt,tmp_path,'p',run))
++    assert run['decision_requests'][0]['type']=='repair_strategy_required'
++
++
++def test_corrupt_queue_preserves_original(tmp_path):
++    from src.core.job_queue import JobQueue
++    path=tmp_path/'jobs.json';path.write_bytes(b'{broken')
++    with pytest.raises(RuntimeError,match='recovery required'):JobQueue(path,{})
++    assert path.read_bytes()==b'{broken'
++
++
++def test_explicit_video_pointer_never_falls_back(tmp_path):
++    from src.storyboard.continuity_service import resolve_final_video_file
++    old=tmp_path/'legacy.mp4';old.write_bytes(b'old')
++    shot=Shot(shot_id='s',scene_id='s',index=1,final_video='missing',video=VideoAsset(local=str(old)))
++    assert resolve_final_video_file(shot) is None
++
++
++@pytest.mark.parametrize('field,value',[('scene_reference_mode','bad'),('human_reference_mode','bad')])
++def test_first_frame_enum_rejects_before_queue(field,value):
++    from routers.shots import FirstFrameRequest
++    from pydantic import ValidationError
++    with pytest.raises(ValidationError):FirstFrameRequest(**{field:value})
++
++
++@pytest.fixture
++def video_env(tmp_path,monkeypatch):
++    import deps
++    from tests.test_p55_recovery import FakeAgnes,FakeRehost,_FakePM,_save_proj,_mark_ff_ready
++    fake=FakeAgnes();_save_proj(tmp_path);_mark_ff_ready(tmp_path,'s01_c01')
++    monkeypatch.setattr(deps,'agnes_client',fake)
++    monkeypatch.setattr(deps,'_rehost_host',FakeRehost())
++    monkeypatch.setattr(deps,'project_manager',_FakePM(tmp_path))
++    return fake,ProjectStore(tmp_path)
++
++
++async def silent_emit(*a,**kw):pass
++
++
++def video_job():
++    return SimpleNamespace(project='_test_p55_recovery',shot_id='s01_c01',job_id='j',params={})
++
++
++def test_real_handler_immutable_and_duplicate_keeps_selection(video_env):
++    from routers.shots import _handler_video
++    import hashlib
++    fake,store=video_env
++    asyncio.run(_handler_video(video_job(),silent_emit))
++    first=store.load().get_shot('s01_c01').video_versions[0]
++    checksum=hashlib.sha256(Path(first.local).read_bytes()).hexdigest()
++    fake.video_id='vid_2'
++    asyncio.run(_handler_video(video_job(),silent_emit))
++    shot=store.load().get_shot('s01_c01');second=shot.video_versions[-1]
++    assert first.local!=second.local and shot.final_video==second.version_id
++    assert hashlib.sha256(Path(first.local).read_bytes()).hexdigest()==checksum
++    fake.video_id=first.video_id
++    asyncio.run(_handler_video(video_job(),silent_emit))
++    shot=store.load().get_shot('s01_c01')
++    assert len(shot.video_versions)==2 and shot.final_video==second.version_id
++    assert shot.video.local==second.local and shot.video.status=='done'
++
++
++def test_real_handler_input_changes_during_download_not_attached(video_env):
++    from routers.shots import _handler_video
++    fake,store=video_env;download=fake.download
++    async def race(url,dest):
++        await download(url,dest)
++        store.update_shot('s01_c01',lambda s:setattr(s,'description','changed during download'))
++    fake.download=race;job=video_job()
++    with pytest.raises(RuntimeError,match='inputs changed'):
++        asyncio.run(_handler_video(job,silent_emit))
++    assert store.load().get_shot('s01_c01').video_versions==[]
++    assert Path(job.params['unattached_artifact']['local']).exists()
++
++
++def test_unknown_submit_is_durable_and_new_job_does_not_post(video_env):
++    from routers.shots import _handler_video
++    import httpx
++    fake,store=video_env;calls=[]
++    async def lost(*a,**kw):calls.append(1);raise httpx.ReadError('accepted, response lost')
++    fake.create_video=lost;job=video_job()
++    with pytest.raises(httpx.ReadError):asyncio.run(_handler_video(job,silent_emit))
++    shot=store.load().get_shot('s01_c01')
++    assert shot.video.status=='generating' and not shot.video.video_id
++    assert job.params['submission_intent_id'] and job.params['provider_submit_state']=='unknown'
++    with pytest.raises(RuntimeError,match='待核验'):
++        asyncio.run(_handler_video(video_job(),silent_emit))
++    assert len(calls)==1
++
++
++@pytest.mark.parametrize('fault',['transport','server','invalid_receipt'])
++def test_client_never_reposts_ambiguous_video(fault):
++    import httpx
++    from contextlib import asynccontextmanager
++    from src.api.agnes_client import AgnesClient,VideoSubmissionUncertain
++    from tests.test_p55_recovery import _FakeQuota
++    calls=[]
++    def respond(request):
++        calls.append(request)
++        if fault=='transport':raise httpx.ReadError('lost response',request=request)
++        if fault=='server':return httpx.Response(503,text='unknown')
++        return httpx.Response(200,text='not json')
++    client=AgnesClient({'base_url':'https://fake.invalid','api_key':'dummy',
++        'models':{'video':'agnes-video-2.5-flash'}},quota=_FakeQuota(),transport=httpx.MockTransport(respond))
++    @asynccontextmanager
++    async def slot(bucket):yield
++    client.limiter=SimpleNamespace(slot=slot)
++    async def scenario():
++        try:
++            with pytest.raises(VideoSubmissionUncertain):
++                await client.create_video('p',image_url='https://fake.invalid/f.png')
++        finally:await client.aclose()
++    asyncio.run(scenario());assert len(calls)==1
++
++
++def test_cancel_worker_before_handler_requeues_claim(tmp_path):
++    from src.core.job_queue import JobQueue
++    async def scenario():
++        async def handler(*a):await asyncio.sleep(10)
++        q=JobQueue(tmp_path/'jobs.json',{'video':handler})
++        # Avoid submit's detached broadcast so this window is controlled.
++        from src.core.job_queue import Job
++        job=Job('j','p','video');q.jobs['j']=job;q._video_q.put_nowait('j')
++        async def broadcast(_):asyncio.current_task().cancel();await asyncio.sleep(0)
++        q._broadcast=broadcast
++        worker=asyncio.create_task(q._worker(q._video_q,'video-worker-test'))
++        await asyncio.gather(worker,return_exceptions=True)
++        assert not q._running_tasks
++        recovered=JobQueue(tmp_path/'jobs.json',{'video':handler})
++        assert recovered.get('j').state=='queued'
++    asyncio.run(scenario())
++
++
++def test_live_review_overlaps_execution_and_final_reuses_receipt(tmp_path,monkeypatch):
++    make_project(tmp_path);rt=mock_review(monkeypatch);calls=[]
++    async def scenario():
++        entered=asyncio.Event();release=asyncio.Event()
++        async def vision(*a,**kw):
++            calls.append(kw['shot'].shot_id);entered.set();await release.wait()
++            return {'review':{'dimensions':{d:{'status':'pass'} for d in rp.VIDEO_HARD_DIMS}},'derived':{'overall':'pass'}}
++        monkeypatch.setattr(rp,'review_shot_core',vision)
++        live=rp.LiveReviewSession(rt,tmp_path,'p',interval_s=.01);live.start()
++        await asyncio.wait_for(entered.wait(),1)
++        # Producer/executor can advance while visual inference is in flight.
++        progress=[]
++        async def production():progress.append('independent task advanced')
++        await production();assert progress and any(not t.done() for t in live.tasks)
++        release.set();await live.close()
++        assert len(calls)==3 and live.cache['s01_c01']['overall']=='pass'
++        final=await rp.run_independent_review(rt,tmp_path,'p',cached_results=live.cache)
++        assert len(calls)==3 and final['machine_passed'] and final['results'][0]['cache_reused']
++    asyncio.run(scenario())
++
++
++def test_review_cache_not_reused_after_input_change(tmp_path,monkeypatch):
++    store=make_project(tmp_path);rt=mock_review(monkeypatch)
++    first=asyncio.run(rp.run_independent_review(rt,tmp_path,'p'))
++    entry=first['results'][0];entry['review_policy_version']=rp.REVIEW_POLICY_VERSION
++    store.update_shot('s01_c01',lambda s:setattr(s,'description','new required action'))
++    calls=[]
++    async def vision(*a,**kw):
++        calls.append(1)
++        return {'review':{'dimensions':{d:{'status':'pass'} for d in rp.VIDEO_HARD_DIMS}},'derived':{'overall':'pass'}}
++    monkeypatch.setattr(rp,'review_shot_core',vision)
++    final=asyncio.run(rp.run_independent_review(rt,tmp_path,'p',cached_results={'s01_c01':entry}))
++    assert len(calls)==3 and not final['results'][0].get('cache_reused')
++
++
++def test_missing_project_read_never_creates_a_ghost_project(tmp_path):
++    root=tmp_path/'not-created';store=ProjectStore(root)
++    with pytest.raises(FileNotFoundError):store.load()
++    with pytest.raises(FileNotFoundError):store.update_shot('missing',lambda s:None)
++    assert not root.exists()
++
++
++def test_dialogue_annotations_compile_without_fuzzy_cast_changes(tmp_path):
++    from src.generation.dialogue_control import resolve_native_dialogue,DialogueControlError
++    shot=Shot(shot_id='s',scene_id='s',index=1,characters=['安保负责人','博士'],
++              dialogue='安保负责人（右侧，低声）：立即封锁大门。')
++    original=shot.dialogue
++    result=resolve_native_dialogue(tmp_path,shot,language='Mandarin Chinese')
++    assert result.lines[0].speaker_character_name=='安保负责人'
++    assert result.lines[0].text=='立即封锁大门。'
++    assert result.lines[0].delivery_hints==('右侧，低声',) and shot.dialogue==original
++    shot.dialogue='安保负责（右侧）：封门。'
++    with pytest.raises(DialogueControlError,match='speaker_not_in_characters'):
++        resolve_native_dialogue(tmp_path,shot,language='Mandarin Chinese')
++
++
++def test_explicit_silent_marker_is_not_spoken(tmp_path):
++    from src.generation.dialogue_control import resolve_native_dialogue
++    shot=Shot(shot_id='s',scene_id='s',index=1,characters=['博士'],dialogue='本镜无对白（仅警报声）')
++    assert resolve_native_dialogue(tmp_path,shot,language='Mandarin Chinese') is None
++    shot.dialogue='博士：本镜无对白'
++    assert resolve_native_dialogue(tmp_path,shot,language='Mandarin Chinese').lines[0].text=='本镜无对白'
++
++
++def test_dialogue_batch_reports_all_invalid_shots_without_mutation(tmp_path):
++    from src.generation.dialogue_control import diagnose_dialogue_batch
++    store=make_project(tmp_path,2);project=store.load();project.native_av.spoken_language='Mandarin Chinese'
++    for shot in project.all_shots():shot.characters=['博士'];shot.dialogue='陌生人：开门。'
++    errors=diagnose_dialogue_batch(tmp_path,project,['s01_c01','s01_c02'])
++    assert set(errors)=={'s01_c01','s01_c02'}
++    assert all(e['code']=='speaker_not_in_characters' for e in errors.values())
++    assert all(s.dialogue=='陌生人：开门。' for s in project.all_shots())
++
++
++def test_review_final_read_failure_invalidates_completed_verdict(tmp_path,monkeypatch):
++    make_project(tmp_path);rt=mock_review(monkeypatch)
++    original=ProjectStore.load;calls=0
++    def load(self):
++        nonlocal calls
++        calls+=1
++        if calls==2:raise OSError('project unreadable after visual verdict')
++        return original(self)
++    monkeypatch.setattr(ProjectStore,'load',load)
++    rv=asyncio.run(rp.run_independent_review(rt,tmp_path,'p'))
++    assert not rv['machine_passed'] and rv['incomplete_shots']==['s01_c01']
++    assert 'final_validation' in rv['results'][0]['error']
++
++
++def test_review_cache_revalidated_against_latest_project(tmp_path,monkeypatch):
++    store=make_project(tmp_path);rt=mock_review(monkeypatch)
++    first=asyncio.run(rp.run_independent_review(rt,tmp_path,'p'))
++    cached=first['results'][0];cached['review_policy_version']=rp.REVIEW_POLICY_VERSION
++    original=ProjectStore.load;changed=False
++    def load(self):
++        nonlocal changed
++        snapshot=original(self)
++        if not changed:
++            changed=True
++            store.update_shot('s01_c01',lambda s:setattr(s,'description','changed after snapshot'))
++        return snapshot
++    monkeypatch.setattr(ProjectStore,'load',load)
++    rv=asyncio.run(rp.run_independent_review(rt,tmp_path,'p',cached_results={'s01_c01':cached}))
++    assert rv['results'][0]['cache_reused'] and rv['results'][0]['overall']=='stale'
++    assert not rv['machine_passed']
++
++
++def test_review_early_shot_revalidated_after_other_shot_finishes(tmp_path,monkeypatch):
++    store=make_project(tmp_path,2);rt=mock_review(monkeypatch)
++    async def scenario():
++        first_finished=asyncio.Event();calls={}
++        async def vision(*a,**kw):
++            sid=kw['shot'].shot_id;calls[sid]=calls.get(sid,0)+1
++            if sid=='s01_c01' and calls[sid]==3:first_finished.set()
++            if sid=='s01_c02' and calls[sid]==1:
++                await first_finished.wait()
++                store.update_shot('s01_c01',lambda s:setattr(s,'description','edited while other review pending'))
++            return {'review':{'dimensions':{d:{'status':'pass'} for d in rp.VIDEO_HARD_DIMS}},'derived':{'overall':'pass'}}
++        monkeypatch.setattr(rp,'review_shot_core',vision)
++        return await rp.run_independent_review(rt,tmp_path,'p')
++    rv=asyncio.run(scenario())
++    assert [r['overall'] for r in rv['results']]==['stale','pass'] and not rv['machine_passed']
++
++
++def test_input_edit_before_submit_rejects_stale_compiled_request(video_env):
++    from routers.shots import _handler_video
++    fake,store=video_env;changed=False
++    async def emit(stage,*a):
++        nonlocal changed
++        if stage=='submit' and not changed:
++            changed=True
++            store.update_shot('s01_c01',lambda s:setattr(s,'description','changed immediately before POST'))
++    with pytest.raises(RuntimeError,match='before submit'):
++        asyncio.run(_handler_video(video_job(),emit))
++    assert 'create_video' not in fake.calls
++    assert store.load().get_shot('s01_c01').video.status!='generating'
++
++
++def add_selected_alternative(store):
++    def mutate(s):
++        s.video_versions.append(VideoVersion(version_id='user_chosen',status='done',
++            local='user.mp4',url='https://fake.invalid/user.mp4',video_id='user_provider'))
++        s.final_video='user_chosen';s.video.mark_done('user.mp4','https://fake.invalid/user.mp4')
++        s.video.video_id='user_provider'
++    store.update_shot('s01_c01',mutate)
++
++
++def test_user_selection_during_download_is_not_overwritten(video_env):
++    from routers.shots import _handler_video
++    fake,store=video_env;download=fake.download;job=video_job()
++    async def race(url,dest):
++        await download(url,dest);add_selected_alternative(store)
++    fake.download=race
++    with pytest.raises(RuntimeError,match='selection changed'):
++        asyncio.run(_handler_video(job,silent_emit))
++    shot=store.load().get_shot('s01_c01')
++    assert shot.final_video=='user_chosen' and shot.video.video_id=='user_provider'
++    assert len(shot.video_versions)==1 and Path(job.params['unattached_artifact']['local']).exists()
++
++
++def test_user_selection_during_submit_keeps_known_receipt_without_overwrite(video_env):
++    from routers.shots import _handler_video
++    fake,store=video_env;create=fake.create_video;job=video_job();durable=[]
++    async def race(*a,**kw):
++        result=await create(*a,**kw);add_selected_alternative(store);return result
++    async def emit(stage,*a):
++        if stage=='provider_receipt':durable.append(dict(job.params))
++    fake.create_video=race
++    with pytest.raises(RuntimeError,match='receipt retained unattached'):
++        asyncio.run(_handler_video(job,emit))
++    shot=store.load().get_shot('s01_c01')
++    assert shot.final_video=='user_chosen' and shot.video.video_id=='user_provider' and shot.video.status=='done'
++    assert durable[0]['provider_task_id']==fake.video_id
++    assert job.params['unattached_provider_receipt']['provider_task_id']==fake.video_id
++    assert fake.calls==['create_video']
++
++
++@pytest.mark.parametrize('settled_state',['failed','cancelled','detached'])
++def test_recovery_preserves_basis_and_does_not_reattach_rejected_results(tmp_path,settled_state):
++    from services.lifecycle import recover_pending_videos
++    from src.core.job_queue import JobQueue,Job
++    from tests.test_p55_recovery import FakeAgnes
++    pdir=tmp_path/'projects'/'p';pdir.mkdir(parents=True);store=make_project(pdir)
++    store.update_shot('s01_c01',lambda s:(setattr(s.video,'status','generating'),setattr(s.video,'video_id','accepted')))
++    q=JobQueue(tmp_path/'jobs.json',{'video':silent_emit})
++    original=Job('original','p','video',shot_id='s01_c01',state='failed',created_at=1,
++        params={'provider_task_id':'accepted','dispatch_input_signature':'original_basis',
++                'origin_run_id':'parent_a'})
++    if settled_state=='cancelled':original.state='cancelled'
++    if settled_state=='detached':original.params['unattached_artifact']={'local':'retained.mp4'}
++    newer=Job('newer','p','video',shot_id='s01_c01',state='queued',created_at=2,params={'origin_run_id':'parent_b'})
++    q.jobs={'original':original,'newer':newer};q._save()
++    asyncio.run(recover_pending_videos(queue=q,client=FakeAgnes(),projects_root=pdir.parent,handlers={'video':silent_emit}))
++    assert len(q.jobs)==2 and newer.params=={'origin_run_id':'parent_b'}
++    assert original.params['dispatch_input_signature']=='original_basis' and original.params['origin_run_id']=='parent_a'
++    if settled_state=='failed':
++        assert original.state=='queued' and q._video_q.get_nowait()=='original'
++    else:
++        assert q._video_q.empty() and original.state==('cancelled' if settled_state=='cancelled' else 'failed')
++
++
++def test_legacy_recovery_selection_change_does_not_relabel_current_video(tmp_path):
++    from services.lifecycle import recover_pending_videos
++    from tests.test_p55_recovery import FakeAgnes
++    pdir=tmp_path/'projects'/'p';pdir.mkdir(parents=True);store=make_project(pdir)
++    store.update_shot('s01_c01',lambda s:(setattr(s.video,'status','generating'),setattr(s.video,'video_id','accepted')))
++    fake=FakeAgnes();download=fake.download
++    async def race(url,dest):
++        await download(url,dest);add_selected_alternative(store)
++    fake.download=race
++    asyncio.run(recover_pending_videos(client=fake,projects_root=pdir.parent,handlers={}))
++    shot=store.load().get_shot('s01_c01')
++    assert shot.final_video=='user_chosen' and shot.video.status=='done' and shot.video.video_id=='user_provider'
++
++
++@pytest.mark.parametrize('failure_stage',['submission','poll'])
++def test_late_provider_failure_cannot_mark_user_selected_video_failed(video_env,failure_stage):
++    from routers.shots import _handler_video
++    from src.api.agnes_client import AgnesError
++    fake,store=video_env
++    async def failure(*a,**kw):
++        add_selected_alternative(store)
++        raise AgnesError('explicit provider rejection',status=400)
++    if failure_stage=='submission':fake.create_video=failure
++    else:fake.poll_video=failure
++    with pytest.raises(AgnesError):asyncio.run(_handler_video(video_job(),silent_emit))
++    shot=store.load().get_shot('s01_c01')
++    assert shot.final_video=='user_chosen' and shot.video.video_id=='user_provider' and shot.video.status=='done'
+--- a/tests/test_interface.py
++++ b/tests/test_interface.py
+@@ -145,7 +145,7 @@
+     assert v["size_returned"] == "1280x704"
+     assert v["status"] == "done"
+     pdir = get_project_manager().get_project_dir(v2_project)
+-    assert (pdir / "output" / "videos" / "s02_c01.mp4").exists()
++    assert Path(v["local"]).exists()
+ 
+ 
+ # ---------- audio ----------
+--- a/tests/test_p39e_trace_hints.py
++++ b/tests/test_p39e_trace_hints.py
+@@ -213,7 +213,7 @@
+                video_end_frame=Asset(local="e.jpg", url="https://h/tail.jpg",
+                                      status=ShotStatus.DONE.value))
+     c02 = Shot(shot_id="s01_c02", scene_id="s01", index=2, description="B",
+-               final_video="vv_b")
++               final_video="vv_x")
+     ProjectStore(pdir).save(Project(name="p", style=StyleAnchor(),
+                                     scenes=[Scene(scene_id="s01", shots=[c01, c02])]))
+     store = ProjectStore(pdir)
+@@ -239,6 +239,8 @@
+                          "url": "https://h/tail2.jpg",
+                          "source_type": "prev_tail_reference",
+                          "source_shot_id": "s01_c01"}]
++    vv.version_id = "vv_y"
++    store.update_shot("s01_c02", lambda shot: setattr(shot, "final_video", "vv_y"))
+     asyncio.run(_sync_first_frame_slot(store, "s01_c02", vv, "vv_y", None))
+     sh = store.load().get_shot("s01_c02")
+     assert "[参考]" in sh.first_frame_batches[-1].prompt_snapshot
+--- a/tests/test_p56_a_mechanism.py
++++ b/tests/test_p56_a_mechanism.py
+@@ -431,7 +431,7 @@
+ # ==================================================================
+ def test_combo_v2_registry():
+     m = cm.COLLAB_MODES["combo_recommended"]
+-    assert m["mode_version"] == "2.0.0"
++    assert m["mode_version"] == "2.1.0"
+     assert m["reference_policy"] == "baseline_equiv_chain"
+     assert m["experimental"] is True
+     assert m["repair_policy"]["repair_limit_per_shot"] == cm.REPAIR_LIMIT_PER_SHOT
+@@ -452,7 +452,7 @@
+     run = asyncio.run(cm.start_collab_run(rt, PROJECT, None,
+                                           {"story_goal": "默认模式测试"}))
+     assert run["mode_id"] == "combo_recommended"
+-    assert run["mode_version"] == "2.0.0"
++    assert run["mode_version"] == "2.1.0"
+     auth = run["authorization"]
+     assert auth["machine_review"] is True
+     assert auth["bounded_repair"] is True
+@@ -515,7 +515,7 @@
+     out = asyncio.run(ra.collab_run_start(PROJECT, ra.CollabRunStartReq(
+         mode_id=None, params={"story_goal": "s"})))
+     assert out["used_default_mode"] == "combo_recommended"
+-    assert out["run"]["mode_version"] == "2.0.0"
++    assert out["run"]["mode_version"] == "2.1.0"
+     # resume：非 awaiting_relay → 400
+     rid = out["run"]["run_id"]
+     for _ in range(200):
+@@ -561,10 +561,19 @@
+ class _FakeRepairQueue:
+     """假队列：submit 即 done（不调 Provider）；记录全部提交参数。"""
+ 
+-    def __init__(self):
++    def __init__(self, pdir):
+         self.submitted = []
++        self.pdir = pdir
+ 
+     def submit(self, project, kind, shot_id, **params):
++        from src.core.store import ProjectStore
++        from src.core.models import VideoVersion
++        version = VideoVersion(version_id=f"repaired_{len(self.submitted)}", status="done",
++                               local="fake.mp4", origin_run_id=params["origin_run_id"])
++        def attach(shot):
++            shot.video_versions.append(version)
++            shot.final_video = version.version_id
++        ProjectStore(self.pdir).update_shot(shot_id, attach)
+         self.submitted.append({"project": project, "kind": kind,
+                                "shot_id": shot_id, **params})
+         return SimpleNamespace(job_id=f"j{len(self.submitted)}",
+@@ -580,7 +589,13 @@
+     from src.agents import review_pipeline
+ 
+     rt = _RelayFakeRt(tmp_path, [])
+-    fq = _FakeRepairQueue()
++    from src.core.store import ProjectStore
++    from src.core.models import VideoVersion
++    fixture_project = _mk_project([_mk_shot("s01_c02")])
++    fixture_project.get_shot("s01_c02").final_video = "original"
++    fixture_project.get_shot("s01_c02").video_versions = [VideoVersion(version_id="original", status="done", local="old.mp4")]
++    ProjectStore(tmp_path).save(fixture_project)
++    fq = _FakeRepairQueue(tmp_path)
+     rt._resolve_job_queue_or_none = lambda: fq
+     rt._resolve_client_or_none = lambda agent_id=None: SimpleNamespace()
+     run = {"run_id": "run_fix", "project": PROJECT, "mode_id": "combo_recommended",
+@@ -597,20 +612,16 @@
+     calls = {"n": 0}
+ 
+     async def fake_review(rt_, pdir_, project_, *, reason="", shot_ids=None,
+-                          positions=None):
++                          positions=None, version_ids=None):
+         calls["n"] += 1
+-        if shot_ids:   # 复审：第 1 次仍硬错（驱动第二次 attempt），之后通过
+-            if calls["n"] == 2:
+-                return {"batch_id": f"rvw_r{calls['n']}", "results": [
+-                    {"shot_id": shot_ids[0], "overall": "hard_error",
+-                     "hard_errors": ["unexpected_people"]}],
+-                    "hard_error_shots": list(shot_ids), "minor_shots": []}
+-            return {"batch_id": f"rvw_r{calls['n']}", "results": [
+-                {"shot_id": shot_ids[0], "overall": "pass", "hard_errors": []}],
+-                "hard_error_shots": [], "minor_shots": []}
++        selected = ProjectStore(tmp_path).load().get_shot("s01_c02").final_video
++        entry = {"shot_id": "s01_c02", "version_id": selected,
++                 "overall": "pass" if shot_ids else "hard_error",
++                 "hard_errors": [] if shot_ids else ["anatomy_artifact"]}
+         return {"batch_id": f"rvw_{calls['n']}", "shots_reviewed": 1,
+-                "hard_error_shots": ["s01_c02"], "minor_shots": [],
+-                "report_path": "x", "results": []}
++                "hard_error_shots": [] if shot_ids else ["s01_c02"],
++                "minor_shots": [], "incomplete_shots": [], "report_path": "x",
++                "results": [entry]}
+ 
+     monkeypatch.setattr(review_pipeline, "run_independent_review", fake_review)
+     asyncio.run(cm._final_review_and_repair(rt, tmp_path, PROJECT, run))
+@@ -621,9 +632,8 @@
+     assert rep["still_hard"] == []
+     # 修复=同一硬错镜两次 attempt（复审第一次仍硬错→第二次通过）；溯源字段在位
+     submits = fq.submitted
+-    assert [s["shot_id"] for s in submits] == ["s01_c02", "s01_c02"]
++    assert [s["shot_id"] for s in submits] == ["s01_c02"]
+     assert submits[0]["repair_of_review"] == "rvw_1" and submits[0]["repair_attempt"] == 1
+-    assert submits[1]["repair_attempt"] == 2
+     assert run["repair"]["still_hard"] == []
+     # 授权来源落账（actor=mode_run_executor）
+     assert rep["actor"] == "mode_run_executor"
+@@ -634,7 +644,13 @@
+     from src.agents import review_pipeline
+ 
+     rt = _RelayFakeRt(tmp_path, [])
+-    fq = _FakeRepairQueue()
++    from src.core.store import ProjectStore
++    from src.core.models import VideoVersion
++    fixture_project = _mk_project([_mk_shot("s01_c02")])
++    fixture_project.get_shot("s01_c02").final_video = "original"
++    fixture_project.get_shot("s01_c02").video_versions = [VideoVersion(version_id="original", status="done", local="old.mp4")]
++    ProjectStore(tmp_path).save(fixture_project)
++    fq = _FakeRepairQueue(tmp_path)
+     rt._resolve_job_queue_or_none = lambda: fq
+     rt._resolve_client_or_none = lambda agent_id=None: SimpleNamespace()
+     run = {"run_id": "run_fix2", "project": PROJECT, "mode_id": "combo_recommended",
+@@ -648,16 +664,13 @@
+     calls = {"n": 0}
+ 
+     async def fake_review(rt_, pdir_, project_, *, reason="", shot_ids=None,
+-                          positions=None):
++                          positions=None, version_ids=None):
+         calls["n"] += 1
+-        if shot_ids:
+-            return {"batch_id": f"rvw_r{calls['n']}", "results": [
+-                {"shot_id": shot_ids[0], "overall": "hard_error",
+-                 "hard_errors": ["missing_character"]}],
+-                "hard_error_shots": list(shot_ids), "minor_shots": []}
++        selected = ProjectStore(tmp_path).load().get_shot("s01_c02").final_video
+         return {"batch_id": f"rvw_{calls['n']}", "shots_reviewed": 1,
+-                "hard_error_shots": ["s01_c02"], "minor_shots": [],
+-                "report_path": "x", "results": []}
++                "results": [{"shot_id": "s01_c02", "version_id": selected,
++                             "overall": "hard_error", "hard_errors": ["anatomy_artifact"]}],
++                "hard_error_shots": ["s01_c02"], "minor_shots": [], "report_path": "x"}
+ 
+     monkeypatch.setattr(review_pipeline, "run_independent_review", fake_review)
+     asyncio.run(cm._final_review_and_repair(rt, tmp_path, PROJECT, run))
+@@ -665,9 +678,9 @@
+     rep = steps["auto_repair"]["detail"]
+     assert steps["auto_repair"]["status"] == "failed"   # 仍有硬错=未全通过
+     assert rep["still_hard"] == [{"shot_id": "s01_c02",
+-                                  "attempts": cm.REPAIR_LIMIT_PER_SHOT}]
++                                  "attempts": 1}]
+     submits = fq.submitted
+-    assert len(submits) == cm.REPAIR_LIMIT_PER_SHOT   # 恰好上限次，不无限
++    assert len(submits) == 1   # 相同硬错不盲重掷，升级策略判断
+     assert run["repair"]["still_hard"][0]["shot_id"] == "s01_c02"
+ 
+ 

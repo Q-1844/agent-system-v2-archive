@@ -1,0 +1,5 @@
+P56_P1_TESTIMONY: style=anime, cinematic composition 1K | 0done/5pending | ff批准=4 | 台词镜=5 | chars=['调查员', '工程师', '安保负责人'] | lang=Mandarin Chinese
+P55_SMOKE2B: style=anime, cinematic composition 1K | 2done/2pending | ff批准=0 | 台词镜=0 | chars=['店员', '顾客'] | lang=
+P54_M2: style=anime, cinematic composition 1K | 12done/0pending | ff批准=5 | 台词镜=0 | chars=['队长', '通信员', '守军'] | lang=Mandarin Chinese
+P54_M3: style=anime, cinematic composition 1K | 12done/0pending | ff批准=0 | 台词镜=0 | chars=['林远', '苏然', '标本库异常人形'] | lang=Mandarin Chinese
+P54_M5: style=anime, cinematic composition 1K | 15done/0pending | ff批准=0 | 台词镜=0 | chars=['林远', '苏然', '标本库异常人形'] | lang=Mandarin Chinese

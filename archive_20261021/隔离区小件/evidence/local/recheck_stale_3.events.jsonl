@@ -1,0 +1,3 @@
+{"nodeid": "tests/test_ai_7ch_cancel_race.py::test_case1_stale_object_resurrection", "when": "setup", "outcome": "passed", "duration": 0.012334899976849556, "failure": null}
+{"nodeid": "tests/test_ai_7ch_cancel_race.py::test_case1_stale_object_resurrection", "when": "call", "outcome": "passed", "duration": 0.7290735999704339, "failure": null}
+{"nodeid": "tests/test_ai_7ch_cancel_race.py::test_case1_stale_object_resurrection", "when": "teardown", "outcome": "passed", "duration": 0.0007930999854579568, "failure": null}

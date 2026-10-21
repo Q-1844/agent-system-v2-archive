@@ -1,0 +1,1 @@
+{"content": "【绑定同步（已授权直接执行）】s01_c04 的 shot.characters 已改为【调查员、工程师】两人（规格内调整：反应反问镜只需两名清楚说话者）。请对 s01_c04 重新 shot.production.bind（mode=replace：look 只绑调查员 look_341d5a08d727 与工程师 look_d6eaaa920b3f，移除安保负责人绑定；场景钉扎 sciv_6752ae905441 保持）。s01_c05 不动（仍三人）。完成后 inspect 两镜 readiness。不要生成图片或视频。"}

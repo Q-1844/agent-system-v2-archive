@@ -1,0 +1,579 @@
+{
+ "schema": "p56_b_run_evidence_v1",
+ "project": "P56_P1_B_INF1",
+ "run_id": "run_fba9de2066",
+ "mode_id": "combo_recommended",
+ "mode_version": "2.0.0",
+ "snapshot_hash": "sha256:7b72a8a2a4983969",
+ "status": "completed",
+ "created_at": 1792265660.9890418,
+ "finished_at": 1792269841.3500574,
+ "concurrency_effect": {
+  "requested_media_inflight": 1,
+  "applied": true,
+  "workers": 1,
+  "source": "config:concurrency.video_inflight=1",
+  "changed": false
+ },
+ "authorization": {
+  "scope": "phase56_explicit_mode_start",
+  "machine_review": true,
+  "bounded_repair": true,
+  "granted_by": "phase56_b_benchmark",
+  "user_acceptance": "pending_user_review"
+ },
+ "steps": [
+  {
+   "step_id": "preflight",
+   "status": "done",
+   "started_at": 1792265661.0135796,
+   "finished_at": 1792265661.0135849,
+   "detail": {
+    "skipped": true,
+    "reason": "approved_package：批准快照克隆——资产已冻结，不重做"
+   }
+  },
+  {
+   "step_id": "grant",
+   "status": "done",
+   "started_at": 1792265661.019018,
+   "finished_at": 1792265661.0311985,
+   "detail": {
+    "families": [
+     "assembly",
+     "character_designer",
+     "director",
+     "scene_designer",
+     "script_writer"
+    ],
+    "grant_id": "gr_4d55e167",
+    "expires_at": 1792308861.0242248
+   }
+  },
+  {
+   "step_id": "producer_turn",
+   "status": "done",
+   "started_at": 1792265661.036728,
+   "finished_at": 1792267393.6879854,
+   "detail": {
+    "delegates_enabled": true,
+    "assistant": "全部任务完成。以下是总结：\n\n---\n\n## P56 P1《断电前的证词》批准工作包 · 视频生产总结\n\n### ① 视频生成（5 镜全部真实生成）\n\n| 镜头 | 时长 | 生成模式 | 状态 |\n|------|------|---------|------|\n| s01_c01 建立镜 | 8s | i2v（独立首帧） | ✓ 186.7s |\n| s01_c02 承接镜 | 8s | multi relay（prev_tail ← c01 尾帧 vv_9ecbd6fd） | ✓ 308.4s |\n| s01_c03 插入特写 | 8s | i2v（same_scene_recam 显式声明） | ✓ 260.4s |\n| s01_c04 反应镜 | 8s | i2v（same_scene_recam 显式声明） | ✓ 260.2s |\n| s01_c05 收束镜 | 8s | i2v（same_scene_recam 显式声明） | ✓ 193.2s |\n\n**生成前修复（canonical 写入，均 verified=true）**：\n- `shot.update s01_c02` → 设 `source_shot_id=s01_c01` / `link_mode=multi` / `video_reference_asset_id=prev_tail`，正式建立尾帧接力\n- `shot.update_many` → 清理各镜 dialogue 内联方位前缀（`speaker_not_in_characters` 修复），统一为「角色名：台词」格式\n- `shot.update_many` → 为 c03/c04/c05 写入 `opening_cut_reason=same_scene_recam`（v2 接续链契约要求）\n- `shot.update s01",
+    "receipts": 0,
+    "changed_refs": [],
+    "relays": 0,
+    "usage_totals": {
+     "calls": 63,
+     "prompt_tokens": 4281497,
+     "completion_tokens": 7606
+    }
+   }
+  },
+  {
+   "step_id": "independent_final_review",
+   "status": "done",
+   "started_at": 1792267393.6932619,
+   "finished_at": 1792267611.8634236,
+   "detail": {
+    "batch_id": "rvw_d4421b7e",
+    "shots_reviewed": 5,
+    "hard_error_shots": [
+     "s01_c01",
+     "s01_c02",
+     "s01_c03",
+     "s01_c05"
+    ],
+    "report_path": "projects\\P56_P1_B_INF1\\output\\agents\\review_pipeline\\rvw_d4421b7e.json"
+   }
+  },
+  {
+   "step_id": "auto_repair",
+   "status": "failed",
+   "started_at": 1792267611.8678832,
+   "finished_at": 1792269841.345793,
+   "detail": {
+    "shots": [
+     "s01_c01",
+     "s01_c02",
+     "s01_c03",
+     "s01_c05"
+    ],
+    "limit_per_shot": 3,
+    "actor": "mode_run_executor",
+    "authorization": "phase56_explicit_mode_start",
+    "repairs": [
+     {
+      "shot_id": "s01_c01",
+      "attempt": 1,
+      "job_id": "50879023b056",
+      "state": "done",
+      "review_overall": "not_reviewed",
+      "hard_errors": [],
+      "review_batch": "rvw_6c7020af"
+     },
+     {
+      "shot_id": "s01_c02",
+      "attempt": 1,
+      "job_id": "de385872bac5",
+      "state": "done",
+      "review_overall": "hard_error",
+      "hard_errors": [
+       "framing_and_composition",
+       "shot_size_correctness"
+      ],
+      "review_batch": "rvw_ffd30fcc"
+     },
+     {
+      "shot_id": "s01_c02",
+      "attempt": 2,
+      "job_id": "a26162b7cf89",
+      "state": "done",
+      "review_overall": "hard_error",
+      "hard_errors": [
+       "framing_and_composition",
+       "shot_size_correctness",
+       "unexpected_people"
+      ],
+      "review_batch": "rvw_a4cd367c"
+     },
+     {
+      "shot_id": "s01_c02",
+      "attempt": 3,
+      "job_id": "8e6a46c73b8c",
+      "state": "done",
+      "review_overall": "hard_error",
+      "hard_errors": [
+       "framing_and_composition",
+       "shot_size_correctness",
+       "unexpected_people"
+      ],
+      "review_batch": "rvw_ed5a2a96"
+     },
+     {
+      "shot_id": "s01_c03",
+      "attempt": 1,
+      "job_id": "eb320e3a6c15",
+      "state": "done",
+      "review_overall": "hard_error",
+      "hard_errors": [
+       "framing_and_composition",
+       "shot_size_correctness"
+      ],
+      "review_batch": "rvw_fa7d5d53"
+     },
+     {
+      "shot_id": "s01_c03",
+      "attempt": 2,
+      "job_id": "3b9732199320",
+      "state": "done",
+      "review_overall": "hard_error",
+      "hard_errors": [
+       "framing_and_composition",
+       "missing_character",
+       "shot_size_correctness"
+      ],
+      "review_batch": "rvw_fda25261"
+     },
+     {
+      "shot_id": "s01_c03",
+      "attempt": 3,
+      "job_id": "027492ab59f6",
+      "state": "done",
+      "review_overall": "hard_error",
+      "hard_errors": [
+       "framing_and_composition",
+       "shot_size_correctness"
+      ],
+      "review_batch": "rvw_f0487c95"
+     },
+     {
+      "shot_id": "s01_c05",
+      "attempt": 1,
+      "job_id": "f41b104073d5",
+      "state": "done",
+      "review_overall": "uncertain",
+      "hard_errors": [],
+      "review_batch": "rvw_6f69b258"
+     }
+    ],
+    "still_hard": [
+     {
+      "shot_id": "s01_c02",
+      "attempts": 3
+     },
+     {
+      "shot_id": "s01_c03",
+      "attempts": 3
+     }
+    ],
+    "note": "达上限/额度不足镜如实保留失败——不冒充通过"
+   }
+  }
+ ],
+ "review": {
+  "batch_id": "rvw_d4421b7e",
+  "shots_reviewed": 5,
+  "hard_error_shots": [
+   "s01_c01",
+   "s01_c02",
+   "s01_c03",
+   "s01_c05"
+  ],
+  "minor_shots": [],
+  "report_path": "projects\\P56_P1_B_INF1\\output\\agents\\review_pipeline\\rvw_d4421b7e.json"
+ },
+ "repair": {
+  "attempts": [
+   {
+    "shot_id": "s01_c01",
+    "attempt": 1,
+    "job_id": "50879023b056",
+    "state": "done",
+    "review_overall": "not_reviewed",
+    "hard_errors": [],
+    "review_batch": "rvw_6c7020af"
+   },
+   {
+    "shot_id": "s01_c02",
+    "attempt": 1,
+    "job_id": "de385872bac5",
+    "state": "done",
+    "review_overall": "hard_error",
+    "hard_errors": [
+     "framing_and_composition",
+     "shot_size_correctness"
+    ],
+    "review_batch": "rvw_ffd30fcc"
+   },
+   {
+    "shot_id": "s01_c02",
+    "attempt": 2,
+    "job_id": "a26162b7cf89",
+    "state": "done",
+    "review_overall": "hard_error",
+    "hard_errors": [
+     "framing_and_composition",
+     "shot_size_correctness",
+     "unexpected_people"
+    ],
+    "review_batch": "rvw_a4cd367c"
+   },
+   {
+    "shot_id": "s01_c02",
+    "attempt": 3,
+    "job_id": "8e6a46c73b8c",
+    "state": "done",
+    "review_overall": "hard_error",
+    "hard_errors": [
+     "framing_and_composition",
+     "shot_size_correctness",
+     "unexpected_people"
+    ],
+    "review_batch": "rvw_ed5a2a96"
+   },
+   {
+    "shot_id": "s01_c03",
+    "attempt": 1,
+    "job_id": "eb320e3a6c15",
+    "state": "done",
+    "review_overall": "hard_error",
+    "hard_errors": [
+     "framing_and_composition",
+     "shot_size_correctness"
+    ],
+    "review_batch": "rvw_fa7d5d53"
+   },
+   {
+    "shot_id": "s01_c03",
+    "attempt": 2,
+    "job_id": "3b9732199320",
+    "state": "done",
+    "review_overall": "hard_error",
+    "hard_errors": [
+     "framing_and_composition",
+     "missing_character",
+     "shot_size_correctness"
+    ],
+    "review_batch": "rvw_fda25261"
+   },
+   {
+    "shot_id": "s01_c03",
+    "attempt": 3,
+    "job_id": "027492ab59f6",
+    "state": "done",
+    "review_overall": "hard_error",
+    "hard_errors": [
+     "framing_and_composition",
+     "shot_size_correctness"
+    ],
+    "review_batch": "rvw_f0487c95"
+   },
+   {
+    "shot_id": "s01_c05",
+    "attempt": 1,
+    "job_id": "f41b104073d5",
+    "state": "done",
+    "review_overall": "uncertain",
+    "hard_errors": [],
+    "review_batch": "rvw_6f69b258"
+   }
+  ],
+  "still_hard": [
+   {
+    "shot_id": "s01_c02",
+    "attempts": 3
+   },
+   {
+    "shot_id": "s01_c03",
+    "attempts": 3
+   }
+  ],
+  "limit_per_shot": 3
+ },
+ "relay_count": 0,
+ "result": {
+  "producer_session_id": "sess_b60c89f7cf2b",
+  "assistant_excerpt": "全部任务完成。以下是总结：\n\n---\n\n## P56 P1《断电前的证词》批准工作包 · 视频生产总结\n\n### ① 视频生成（5 镜全部真实生成）\n\n| 镜头 | 时长 | 生成模式 | 状态 |\n|------|------|---------|------|\n| s01_c01 建立镜 | 8s | i2v（独立首帧） | ✓ 186.7s |\n| s01_c02 承接镜 | 8s | multi relay（prev_tail ← c01 尾帧 vv_9ecbd6fd） | ✓ 308.4s |\n| s01_c03 插入特写 | 8s | i2v（same_scene_recam 显式声明） | ✓ 260.4s |\n| s01_c04 反应镜 | 8s | i2v（same_scene_recam 显式声明） | ✓ 260.2s |\n| s01_c05 收束镜 | 8s | i2v（same_scene_recam 显式声明） | ✓ 193.2s |\n\n**生成前修复（canonical 写入，均 verified=true）**：\n- `shot.update s01_c02` → 设 `source_shot_id=s01_c01` / `link_mode=multi` / `video_reference_asset_id=prev_tail`，正式建立尾帧接力\n- `shot.update_many` → 清理各镜 dialogue 内联方位前缀（`speaker_not_in_characters` 修复），统一为「角色名：台词」格式\n- `shot.update_many` → 为 c03/c04/c05 写入 `opening_cut_reason=same_scene_recam`（v2 接续链契约要求）\n- `shot.update s01_c02` → 设 `opening_source=inherit_previous`\n- `shot.production.bind s01_c04` → 补全 cast（binding 原缺「安保负责人」，导致 `cast_mismatch` → 替换为完整 3 人 binding，readiness=READY）\n- `shot.generate_images s01_c04` → 新 binding 下重新生成首帧（旧首帧基于旧 binding_revision，`boundary_frame_stale` 拦截）\n\n**接力接缝裁定（calibration trace 已落档）**：\n- c01→c02 `tail_to_first_mae=34.9`（跨景别推近属正常区间 26-60）→ **minor**，accept+adapt，不消耗重试\n\n**中间帧抽检（visual.sample_frames，各镜 5 帧）**：\n- c01：severe=3（建立镜内部运镜重排，非跨镜断裂）\n- c02：severe=0 / suspected=1（对峙动作本身）\n- c03/c04/c05：severe=0\n- 三查判据（身份/环境一致性/大不合理）：全部通过，无身份克隆、无额外人物、无叙事断裂\n\n### ② 装配成片\n\n- 冻结装配快照 `snap_P56_P1_B_INF1_20261018_040230`（5 镜，shot_ids 全在位）\n- 创建 SequenceBlock `seq_6f716cb2`（1280×720 / 24fps / libx264 / aac / fill=crop / audio=native）\n- 渲染 `srender_c1b0700e` → **done**，实测 40021ms（≈40s），输出 `output/sequences/seq_6f716cb2/srender_c1b0700e.mp4`\n- 发布 `manifest_v1`（assembly_revision=1，4 个跨组接缝，音轨 native）\n\n### ③ 跳过项与原因\n\n- **scene_designer / character_designer / script_writer delegate**：资产与剧本均已冻结批准（批准工作包模式），无修改需求，跳过\n- **旁白 / 配乐层**：本次任务只要求渲染成片候选，AudioPlan 未写入（narration_cue_count=0，music_layer_count=0），后续如需 TTS/配乐再单独处理\n- **c01 severe 帧对**：属建立镜内部运镜重排（推近读卡器→拉回全貌），非跨镜接缝断裂，不触发修复\n\n### 遗留问题\n\n- c01 中段帧对（2s→4s）",
+  "events": 0,
+  "usage_totals": {
+   "calls": 63,
+   "prompt_tokens": 4281497,
+   "completion_tokens": 7606
+  }
+ },
+ "media_jobs": [
+  {
+   "job_id": "3e1cd839ffa1",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792265362.2092204,
+   "started_at": 1792265363.052848,
+   "finished_at": 1792265364.999789,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_e1a2ec95",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[language_missing] native dialogue control 需要可确定的对白语言：显式 request override 与 project.native_av.spoken_language 均缺失（18.md §5：fail closed，绝不恢复成让 Agnes 自己猜语言）"
+  },
+  {
+   "job_id": "8bdcaa795888",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792265379.6842163,
+   "started_at": 1792265380.5808325,
+   "finished_at": 1792265382.5389261,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_d258db5d",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[language_missing] native dialogue control 需要可确定的对白语言：显式 request override 与 project.native_av.spoken_language 均缺失（18.md §5：fail closed，绝不恢复成让 Agnes 自己猜语言）"
+  },
+  {
+   "job_id": "a5dde53f87f2",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792265411.137141,
+   "started_at": 1792265412.0577805,
+   "finished_at": 1792265414.2977989,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_0264be6b",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[language_missing] native dialogue control 需要可确定的对白语言：显式 request override 与 project.native_av.spoken_language 均缺失（18.md §5：fail closed，绝不恢复成让 Agnes 自己猜语言）"
+  },
+  {
+   "job_id": "4e0dea97f007",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792265692.5157642,
+   "started_at": 1792265693.3599956,
+   "finished_at": 1792265695.391674,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_868e3014",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[speaker_not_in_characters] 第 0 句内联 speaker '调查员（左侧，面向工程师）' 不在 Shot.characters ['调查员', '工程师', '安保负责人'] 中（17.md §8：reject，不自动加角色/不纠错）"
+  },
+  {
+   "job_id": "cde1df6ad3ae",
+   "shot_id": "s01_c01",
+   "state": "done",
+   "created_at": 1792265718.9557104,
+   "started_at": 1792265719.7659743,
+   "finished_at": 1792265905.0972297,
+   "provider_task_id": "task_WYHcgCuDylNzgSETrJwbydGpOHpHDBxi",
+   "origin_run_id": "dgv_10a85cf6",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "c6e266763561",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792266098.9959424,
+   "started_at": 1792266099.7621527,
+   "finished_at": 1792266406.8021853,
+   "provider_task_id": "task_adPPwfXVn3pYKmMIDAHpji5LwvPOkmPI",
+   "origin_run_id": "dgv_4b9206fa",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "9392015b4695",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792266410.4891436,
+   "started_at": 1792266411.315987,
+   "finished_at": 1792266670.1849287,
+   "provider_task_id": "task_YES6mxwMMljFqTFF1X37SKUlN98IuDG9",
+   "origin_run_id": "dgv_786db70c",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "0403ef73a9a7",
+   "shot_id": "s01_c04",
+   "state": "failed",
+   "created_at": 1792266684.2655563,
+   "started_at": 1792266685.0496547,
+   "finished_at": 1792266686.8765545,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_eba9adee",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_8b414ddc', 'field': 'binding_revision', 'recorded': '2239df88', 'current': '654b8c53"
+  },
+  {
+   "job_id": "b238972d8ce9",
+   "shot_id": "s01_c04",
+   "state": "done",
+   "created_at": 1792266770.3079388,
+   "started_at": 1792266771.2049434,
+   "finished_at": 1792267030.445546,
+   "provider_task_id": "task_c7O2KbzBwhwbXdX1auaVrD2A5eJAROCm",
+   "origin_run_id": "dgv_0b478165",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "3552142a69bc",
+   "shot_id": "s01_c05",
+   "state": "done",
+   "created_at": 1792267036.9510865,
+   "started_at": 1792267037.767595,
+   "finished_at": 1792267229.7616162,
+   "provider_task_id": "task_X5VXQI23Q0LEIBlbjYovhvjEUTYueHLw",
+   "origin_run_id": "dgv_e43ffeea",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "50879023b056",
+   "shot_id": "s01_c01",
+   "state": "done",
+   "created_at": 1792267611.8733962,
+   "started_at": 1792267612.4847004,
+   "finished_at": 1792267763.3923025,
+   "provider_task_id": "task_8ZBO95LPtmrBUi4tzelyBkRI4Fv5Jaf2",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 1,
+   "error": ""
+  },
+  {
+   "job_id": "de385872bac5",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792267820.3381333,
+   "started_at": 1792267821.0395615,
+   "finished_at": 1792268125.5737774,
+   "provider_task_id": "task_9IU02FCRhFlITmTQAhxMGvGYr2dqDJ9P",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 1,
+   "error": ""
+  },
+  {
+   "job_id": "a26162b7cf89",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792268176.4572408,
+   "started_at": 1792268177.2826834,
+   "finished_at": 1792268472.0038462,
+   "provider_task_id": "task_X7NXraNI2Y2k3F4tARKZ9umRkPAWVE5d",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 2,
+   "error": ""
+  },
+  {
+   "job_id": "8e6a46c73b8c",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792268528.8650475,
+   "started_at": 1792268529.5277114,
+   "finished_at": 1792268796.5908997,
+   "provider_task_id": "task_EScxCXWzhxAGXjoVtN77v9iZNuHtAo0o",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 3,
+   "error": ""
+  },
+  {
+   "job_id": "eb320e3a6c15",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792268851.9221427,
+   "started_at": 1792268852.527187,
+   "finished_at": 1792269022.8410695,
+   "provider_task_id": "task_x120Kz6x5T6D6JNuvdaCOUzzNUXeot7c",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 1,
+   "error": ""
+  },
+  {
+   "job_id": "3b9732199320",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792269077.7415588,
+   "started_at": 1792269078.4283602,
+   "finished_at": 1792269233.7377322,
+   "provider_task_id": "task_gvwfi3DfeTsPPw2fbnY469gBJC3uzsxB",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 2,
+   "error": ""
+  },
+  {
+   "job_id": "027492ab59f6",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792269300.1064599,
+   "started_at": 1792269300.7827675,
+   "finished_at": 1792269543.4226186,
+   "provider_task_id": "task_UhxAnYYsYIJozbPWGrCUWc1YSJYHsdhf",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 3,
+   "error": ""
+  },
+  {
+   "job_id": "f41b104073d5",
+   "shot_id": "s01_c05",
+   "state": "done",
+   "created_at": 1792269597.7300951,
+   "started_at": 1792269598.3212626,
+   "finished_at": 1792269794.8550603,
+   "provider_task_id": "task_g3uz9lD1ToOz2mvMO1gMeiftMrTypEsV",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 1,
+   "error": ""
+  }
+ ]
+}

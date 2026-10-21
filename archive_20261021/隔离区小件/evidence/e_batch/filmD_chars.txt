@@ -1,0 +1,12 @@
+== Dr. Maren Holt desc=58-year-old East Asian female chief paleontologist, tall and thin with upright posture, deep-set eyes with slight crow's feet, a small mole on her left cheek, silver-gray hair pulled back in a tight l
+   front: has image
+   side: has image
+   back: has image
+== Rico Danzer desc=45-year-old European male security chief, broad-shouldered and compactly muscular build, short cropped dark brown hair, thick square jaw with a trimmed short beard, a healed scar above his left eyebro
+   front: has image
+   side: has image
+   back: has image
+== Yuki Sando desc=30-year-old East Asian female laboratory records clerk, slim build with a slight forward hunch from long desk work, shoulder-length straight black hair with blunt bangs, round wire-frame glasses, clea
+   front: has image
+   side: has image
+   back: has image

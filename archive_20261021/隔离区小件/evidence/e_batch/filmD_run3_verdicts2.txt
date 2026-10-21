@@ -1,0 +1,8 @@
+rev_c44ed00967a1 fp=0b587502
+   fail: Character lacks the required forward hunched posture — standing completely upright with straight posture. Also missing the specified tired under-eye s
+rev_860849db679f fp=6f855ac9
+   fail: Character appears notably younger than 30-year-old mature adult; lacks soft tired under-eye shadows and mature facial rendering. No forward hunched po
+rev_703f2ee66eb3 fp=aa8a36d7
+   concern: Character appears noticeably younger than the specified 30-year-old mature adult — face reads as late teens/early 20s with no visible mature features 
+rev_8e25fbe3338a fp=44f1bd4a
+   pass: Character matches the expected 30-year-old East Asian woman: shoulder-length straight black hair with blunt bangs, thin round-frame wire glasses, slim

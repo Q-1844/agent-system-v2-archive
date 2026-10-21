@@ -1,0 +1,177 @@
+{
+  "flows": [
+    {
+      "flow": "F1 health",
+      "ok": true,
+      "detail": "degraded"
+    },
+    {
+      "flow": "F1 collab-modes combo v2.1.0 available",
+      "ok": true,
+      "detail": "avail=True reasons=[]"
+    },
+    {
+      "flow": "F1 jobs empty",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "flow": "F1 grant empty",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "flow": "F2 start(default) returns run",
+      "ok": true,
+      "detail": "run=run_3d147b9e89 status=running"
+    },
+    {
+      "flow": "F2 run terminal (completed_with_issues)",
+      "ok": true,
+      "detail": "status=completed_with_issues"
+    },
+    {
+      "flow": "F2 machine acceptance recorded",
+      "ok": true,
+      "detail": "acceptance={\"status\": \"needs_attention\", \"issues\": [{\"shot_id\": \"s01_c01\", \"overall\": \"incomplete\", \"error\": \"ValueError: review requires a completed, explicit video versi"
+    },
+    {
+      "flow": "F2 steps ledger",
+      "ok": true,
+      "detail": "steps=['preflight', 'grant', 'producer_turn', 'independent_final_review']"
+    },
+    {
+      "flow": "F2 session recorded",
+      "ok": true,
+      "detail": "{'preflight_character_designer': 'sess_character_designer', 'preflight_scene_designer': 'sess_scene_designer', 'producer': 'sess_producer'}"
+    },
+    {
+      "flow": "F2 grant persisted",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "flow": "F2 reference policy persisted",
+      "ok": true,
+      "detail": "['grants.json', 'reference_policy.json']"
+    },
+    {
+      "flow": "F2 grant visible via REST",
+      "ok": true,
+      "detail": "active=1"
+    },
+    {
+      "flow": "F3 awaiting_relay reached",
+      "ok": true,
+      "detail": "status=awaiting_relay relay_count=3"
+    },
+    {
+      "flow": "F3 resume accepted",
+      "ok": true,
+      "detail": "http=200 {\"run\":{\"schema\":\"collab_run_v1\",\"run_id\":\"run_db09793015\",\"project\":\"a3_driver_iso\",\"mode_id\":\"producer_lead\",\"mode_ver"
+    },
+    {
+      "flow": "F3 resume markers",
+      "ok": true,
+      "detail": "resumed=1"
+    },
+    {
+      "flow": "F3 resume completed",
+      "ok": true,
+      "detail": "status=completed"
+    },
+    {
+      "flow": "F3 resume of terminal run rejected",
+      "ok": true,
+      "detail": "http=400"
+    },
+    {
+      "flow": "F4 cancel accepted",
+      "ok": true,
+      "detail": "{\"stopped\":true,\"status\":\"cancelled\"}"
+    },
+    {
+      "flow": "F4 run cancelled with reason",
+      "ok": true,
+      "detail": "{'cancel_reason': 'offline test'}"
+    },
+    {
+      "flow": "F5 fake media job done",
+      "ok": true,
+      "detail": "job=416c65ef7ac1 state=done"
+    },
+    {
+      "flow": "F5 version attached + file exists",
+      "ok": true,
+      "detail": "video=fv_416c65ef7ac1 file=True"
+    },
+    {
+      "flow": "F5 jobs REST shows job",
+      "ok": true,
+      "detail": "n=1 last_state=done"
+    },
+    {
+      "flow": "F5 jobs SSE snapshot",
+      "ok": true,
+      "detail": "event: snapshot data: [{\"job_id\": \"416c65ef7ac1\", \"project\": \"a3_driver_iso\", \"k"
+    },
+    {
+      "flow": "F5 jobs SSE live event",
+      "ok": true,
+      "detail": "event: job data: {\"job_id\": \"ada61f65b72a\", \"project\": \"a3_driver_iso\", \"kind\": \"video\", \"shot_id\": "
+    },
+    {
+      "flow": "F5 jobs SSE project filter",
+      "ok": true,
+      "detail": "no cross-project event"
+    },
+    {
+      "flow": "F6 events snapshot",
+      "ok": true,
+      "detail": "data: {\"type\": \"snapshot\", \"locks\": []}  "
+    },
+    {
+      "flow": "F6 events live push",
+      "ok": true,
+      "detail": "data: {\"type\": \"story.changed\", \"note\": \"a3\", \"at\": 1792327030.4725156, \"project"
+    },
+    {
+      "flow": "F6 events project filter",
+      "ok": true,
+      "detail": "no cross-project event"
+    },
+    {
+      "flow": "F6 events reconnect snapshot",
+      "ok": true,
+      "detail": "reconnected"
+    },
+    {
+      "flow": "F7 persisted runs via fresh GET",
+      "ok": true,
+      "detail": "runs={'run_23e2ebd346': 'cancelled', 'run_db09793015': 'completed', 'run_3d147b9e89': 'completed_with_issues'}"
+    },
+    {
+      "flow": "F7 reload run_3d147b9e",
+      "ok": true,
+      "detail": "completed_with_issues"
+    },
+    {
+      "flow": "F7 reload run_db097930",
+      "ok": true,
+      "detail": "completed"
+    },
+    {
+      "flow": "F7 reload run_23e2ebd3",
+      "ok": true,
+      "detail": "cancelled"
+    },
+    {
+      "flow": "F7 missing run 404",
+      "ok": true,
+      "detail": "404"
+    }
+  ],
+  "network_attempts": [],
+  "provider_calls": 0,
+  "isolated_tmp": "D:\\isolated\\tmp\\a3_driver_07q9lfhk"
+}

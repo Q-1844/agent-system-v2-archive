@@ -1,0 +1,10 @@
+top keys: ['schema_version', 'locations', 'anchors', 'layouts', 'views', 'scene_instances', 'scene_instance_views']
+locations: 1 type=dict
+  loc_0fdb469b77 封闭实验室 views=0
+instances: 6 type=dict
+  scin_9e5b6be4f09 approved=-
+  scin_1fa45877a19 approved=-
+  scin_e17bc93054f approved=-
+  scin_2a88f9721b8 approved=-
+  scin_6b877f0a834 approved=-
+  scin_aa0cc14ad05 approved=-

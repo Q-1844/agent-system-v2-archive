@@ -1,0 +1,204 @@
+{
+ "schema": "collab_run_v1",
+ "run_id": "run_fba9de2066",
+ "project": "P56_P1_B_INF1",
+ "mode_id": "combo_recommended",
+ "mode_version": "2.0.0",
+ "status": "running",
+ "created_at": 1792265660.9890418,
+ "granted_by": "phase56_b_benchmark",
+ "snapshot_hash": "sha256:7b72a8a2a4983969",
+ "snapshot": {
+  "schema": "collab_run_snapshot_v1",
+  "mode": {
+   "schema": "collab_mode_v1",
+   "mode_id": "combo_recommended",
+   "mode_version": "2.0.0",
+   "name": "组合：预铺+主执行+上交",
+   "preset_label": "⑤",
+   "description": "【Phase56 实验默认 v2】预铺+主执行+上交+独立机器审查+上限内局部修复→复审（闭环）+固定选版清单装配；reference_policy v2（接续链强制）",
+   "execution": {
+    "strategy": "producer_lead"
+   },
+   "grant_families": [
+    "assembly",
+    "character_designer",
+    "director",
+    "scene_designer",
+    "script_writer"
+   ],
+   "delegates_enabled": true,
+   "preflight": {
+    "roles": [
+     "character_designer",
+     "scene_designer"
+    ],
+    "parallel": true
+   },
+   "escalation": {
+    "enabled": true
+   },
+   "reference_policy": "baseline_equiv_chain",
+   "review_policy": {
+    "profile": "independent_final_review"
+   },
+   "concurrency": {
+    "media_inflight": 1
+   },
+   "context_policy": {
+    "profile": "single_session_monitored"
+   },
+   "producer_objective_template": "【工作方法】开始执行前先 skill.load \"full-story-relay-calibration\" 并严格遵循其制作方法（三查判据/时长配方/尾帧接续链策略均以该 Skill 正文为准）。\n\n【任务】你被项目级 scoped grant 授权直接执行全部生产工具族（script_writer/character_designer/scene_designer/director/assembly）；保留全部 *.delegate 委派通道——遇到需要专业判断的困难（内容策略反复拒绝、资产措辞过审困难、场景锚连续失败）按职责上交对应 Specialist，上交时写明任务、输入版本、所需产物与完成判定。请独自完成以下短片全流程生产：\n① 剧本：按【故事目标】写 story {segment_count} 段（每段写清：剧情任务/起始状态/主动作/结果状态）。\n② 资源：按故事新建角色，用 resource.look.prepare 完成造型参考生产（真实生成与审批）。\n③ 场景：建立故事涉及的地点与各段实例状态图（SceneInstanceView）。若某视图生成反复不合格\n（连续多次仍不过审），如实跳过场景锚并把决定写进最终汇报，不得悄悄跳过。\n④ 分镜：逐镜绑定角色 look 与场景资源（shot.production.bind），生成首帧候选并按三查判据选定。\n⑤ 视频：逐镜真实生成视频（静态 5s/动态 8s/高运动 10s）。镜间连续性按 Skill 判定：\n同一动作真实继续用尾帧接续（inherit_previous/reference_previous）；确属 intentional cut\n（换机位/换场/时间跳跃）必须显式声明依据——shot.update 写 opening_cut_reason=\n（same_scene_recam/scene_change/time_jump 三选一）；v2 接续链契约下未声明的独立首帧\n会在提交前被拒绝（不要静默独立出帧）。每镜收货后核对回执与首中尾帧，不合格先修再交。\n⑥ 装配：各段选 1 镜组成 sequence 并渲染成片候选（目标成片 {duration_hint}，横屏 16:9）。\n⑦ 汇报：全部完成后给出总结——各步骤引用真实工具回执（changed_refs）、跳过项与原因、\n遗留问题；不要声称未发生的操作。\n\n【故事目标】{story_goal}",
+   "preflight_objective_templates": {
+    "character_designer": "【预铺任务·角色资源】为以下短片新建角色并生产 approved Look 参考（真实生成与审批）：\n{story_goal}\n要求：角色装备轮廓互相明确区分，写实电影质感；每个角色至少一个 approved Look；\n完成后汇报角色名/Look id/参考资产 id（引用真实回执）。",
+    "scene_designer": "【预铺任务·场景】为以下短片建立地点与各故事段实例状态图（SceneInstanceView）：\n{story_goal}\n要求：Location + 各段 SceneInstance + 状态图（闸门/掩体等关键状态可辨识）；\n为后续分镜提供空间锚。若某视图连续多次不过审，如实记录并继续其余视图；\n完成后汇报 location/instance/sciv id（引用真实回执）。"
+   },
+   "notes": "v1 基线：Phase54 §8.3/§10 推荐组合；v2 增量=参考接续链契约+终审到局部修复复审闭环（Phase55 冒烟看片不通过[衔接]的针对性修复）。六员/旧模式保留为显式对照与回退。",
+   "repair_policy": {
+    "repair_limit_per_shot": 3,
+    "actor": "mode_run_executor",
+    "note": "确定性执行器重生成+同政策复审；达上限如实保留失败"
+   },
+   "experimental": true
+  },
+  "params": {
+   "story_goal": "P1《断电前的证词》批准工作包视频生产（Phase56 B 基准 run，冻结清单 output/agents 冻结源 eb6c58ea0bcf）",
+   "approved_package": true,
+   "media_inflight": 1,
+   "duration_hint": "30-42 秒"
+  },
+  "skill_versions": {
+   "full-story-relay-calibration": "1.6.0",
+   "keyframes-bridge-repair": "1.4.0",
+   "agnes-production-craft": "0.9.0"
+  },
+  "agent_baseline": {},
+  "registry_version": "p56_a_modes_v2",
+  "taken_at": 1792265660.9890387
+ },
+ "steps": [
+  {
+   "step_id": "preflight",
+   "status": "done",
+   "started_at": 1792265661.0135796,
+   "finished_at": 1792265661.0135849,
+   "detail": {
+    "skipped": true,
+    "reason": "approved_package：批准快照克隆——资产已冻结，不重做"
+   }
+  },
+  {
+   "step_id": "grant",
+   "status": "done",
+   "started_at": 1792265661.019018,
+   "finished_at": 1792265661.0311985,
+   "detail": {
+    "families": [
+     "assembly",
+     "character_designer",
+     "director",
+     "scene_designer",
+     "script_writer"
+    ],
+    "grant_id": "gr_4d55e167",
+    "expires_at": 1792308861.0242248
+   }
+  },
+  {
+   "step_id": "producer_turn",
+   "status": "done",
+   "started_at": 1792265661.036728,
+   "finished_at": 1792267393.6879854,
+   "detail": {
+    "delegates_enabled": true,
+    "assistant": "全部任务完成。以下是总结：\n\n---\n\n## P56 P1《断电前的证词》批准工作包 · 视频生产总结\n\n### ① 视频生成（5 镜全部真实生成）\n\n| 镜头 | 时长 | 生成模式 | 状态 |\n|------|------|---------|------|\n| s01_c01 建立镜 | 8s | i2v（独立首帧） | ✓ 186.7s |\n| s01_c02 承接镜 | 8s | multi relay（prev_tail ← c01 尾帧 vv_9ecbd6fd） | ✓ 308.4s |\n| s01_c03 插入特写 | 8s | i2v（same_scene_recam 显式声明） | ✓ 260.4s |\n| s01_c04 反应镜 | 8s | i2v（same_scene_recam 显式声明） | ✓ 260.2s |\n| s01_c05 收束镜 | 8s | i2v（same_scene_recam 显式声明） | ✓ 193.2s |\n\n**生成前修复（canonical 写入，均 verified=true）**：\n- `shot.update s01_c02` → 设 `source_shot_id=s01_c01` / `link_mode=multi` / `video_reference_asset_id=prev_tail`，正式建立尾帧接力\n- `shot.update_many` → 清理各镜 dialogue 内联方位前缀（`speaker_not_in_characters` 修复），统一为「角色名：台词」格式\n- `shot.update_many` → 为 c03/c04/c05 写入 `opening_cut_reason=same_scene_recam`（v2 接续链契约要求）\n- `shot.update s01",
+    "receipts": 0,
+    "changed_refs": [],
+    "relays": 0,
+    "usage_totals": {
+     "calls": 63,
+     "prompt_tokens": 4281497,
+     "completion_tokens": 7606
+    }
+   }
+  },
+  {
+   "step_id": "independent_final_review",
+   "status": "done",
+   "started_at": 1792267393.6932619,
+   "finished_at": 1792267611.8634236,
+   "detail": {
+    "batch_id": "rvw_d4421b7e",
+    "shots_reviewed": 5,
+    "hard_error_shots": [
+     "s01_c01",
+     "s01_c02",
+     "s01_c03",
+     "s01_c05"
+    ],
+    "report_path": "projects\\P56_P1_B_INF1\\output\\agents\\review_pipeline\\rvw_d4421b7e.json"
+   }
+  },
+  {
+   "step_id": "auto_repair",
+   "status": "running",
+   "started_at": 1792267611.8678832,
+   "finished_at": null,
+   "detail": {
+    "shots": [
+     "s01_c01",
+     "s01_c02",
+     "s01_c03",
+     "s01_c05"
+    ],
+    "limit_per_shot": 3,
+    "actor": "mode_run_executor",
+    "authorization": "phase56_explicit_mode_start"
+   }
+  }
+ ],
+ "session_ids": {
+  "producer": "sess_b60c89f7cf2b"
+ },
+ "grant_ids": [
+  "gr_4d55e167"
+ ],
+ "workflow_run_id": null,
+ "result": {
+  "producer_session_id": "sess_b60c89f7cf2b",
+  "assistant_excerpt": "全部任务完成。以下是总结：\n\n---\n\n## P56 P1《断电前的证词》批准工作包 · 视频生产总结\n\n### ① 视频生成（5 镜全部真实生成）\n\n| 镜头 | 时长 | 生成模式 | 状态 |\n|------|------|---------|------|\n| s01_c01 建立镜 | 8s | i2v（独立首帧） | ✓ 186.7s |\n| s01_c02 承接镜 | 8s | multi relay（prev_tail ← c01 尾帧 vv_9ecbd6fd） | ✓ 308.4s |\n| s01_c03 插入特写 | 8s | i2v（same_scene_recam 显式声明） | ✓ 260.4s |\n| s01_c04 反应镜 | 8s | i2v（same_scene_recam 显式声明） | ✓ 260.2s |\n| s01_c05 收束镜 | 8s | i2v（same_scene_recam 显式声明） | ✓ 193.2s |\n\n**生成前修复（canonical 写入，均 verified=true）**：\n- `shot.update s01_c02` → 设 `source_shot_id=s01_c01` / `link_mode=multi` / `video_reference_asset_id=prev_tail`，正式建立尾帧接力\n- `shot.update_many` → 清理各镜 dialogue 内联方位前缀（`speaker_not_in_characters` 修复），统一为「角色名：台词」格式\n- `shot.update_many` → 为 c03/c04/c05 写入 `opening_cut_reason=same_scene_recam`（v2 接续链契约要求）\n- `shot.update s01_c02` → 设 `opening_source=inherit_previous`\n- `shot.production.bind s01_c04` → 补全 cast（binding 原缺「安保负责人」，导致 `cast_mismatch` → 替换为完整 3 人 binding，readiness=READY）\n- `shot.generate_images s01_c04` → 新 binding 下重新生成首帧（旧首帧基于旧 binding_revision，`boundary_frame_stale` 拦截）\n\n**接力接缝裁定（calibration trace 已落档）**：\n- c01→c02 `tail_to_first_mae=34.9`（跨景别推近属正常区间 26-60）→ **minor**，accept+adapt，不消耗重试\n\n**中间帧抽检（visual.sample_frames，各镜 5 帧）**：\n- c01：severe=3（建立镜内部运镜重排，非跨镜断裂）\n- c02：severe=0 / suspected=1（对峙动作本身）\n- c03/c04/c05：severe=0\n- 三查判据（身份/环境一致性/大不合理）：全部通过，无身份克隆、无额外人物、无叙事断裂\n\n### ② 装配成片\n\n- 冻结装配快照 `snap_P56_P1_B_INF1_20261018_040230`（5 镜，shot_ids 全在位）\n- 创建 SequenceBlock `seq_6f716cb2`（1280×720 / 24fps / libx264 / aac / fill=crop / audio=native）\n- 渲染 `srender_c1b0700e` → **done**，实测 40021ms（≈40s），输出 `output/sequences/seq_6f716cb2/srender_c1b0700e.mp4`\n- 发布 `manifest_v1`（assembly_revision=1，4 个跨组接缝，音轨 native）\n\n### ③ 跳过项与原因\n\n- **scene_designer / character_designer / script_writer delegate**：资产与剧本均已冻结批准（批准工作包模式），无修改需求，跳过\n- **旁白 / 配乐层**：本次任务只要求渲染成片候选，AudioPlan 未写入（narration_cue_count=0，music_layer_count=0），后续如需 TTS/配乐再单独处理\n- **c01 severe 帧对**：属建立镜内部运镜重排（推近读卡器→拉回全貌），非跨镜接缝断裂，不触发修复\n\n### 遗留问题\n\n- c01 中段帧对（2s→4s）",
+  "events": 0,
+  "usage_totals": {
+   "calls": 63,
+   "prompt_tokens": 4281497,
+   "completion_tokens": 7606
+  }
+ },
+ "authorization": {
+  "scope": "phase56_explicit_mode_start",
+  "machine_review": true,
+  "bounded_repair": true,
+  "granted_by": "phase56_b_benchmark",
+  "user_acceptance": "pending_user_review"
+ },
+ "concurrency_effect": {
+  "requested_media_inflight": 1,
+  "applied": true,
+  "workers": 1,
+  "source": "config:concurrency.video_inflight=1",
+  "changed": false
+ },
+ "relay_count": 0,
+ "review": {
+  "batch_id": "rvw_d4421b7e",
+  "shots_reviewed": 5,
+  "hard_error_shots": [
+   "s01_c01",
+   "s01_c02",
+   "s01_c03",
+   "s01_c05"
+  ],
+  "minor_shots": [],
+  "report_path": "projects\\P56_P1_B_INF1\\output\\agents\\review_pipeline\\rvw_d4421b7e.json"
+ }
+}

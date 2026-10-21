@@ -1,0 +1,217 @@
+{
+ "schema": "independent_review_v1",
+ "batch_id": "rvw_d4421b7e",
+ "project": "P56_P1_B_INF1",
+ "created_at": 1792267611.8583171,
+ "reason": "collab run run_fba9de2066",
+ "frame_positions": [
+  "first",
+  "middle",
+  "end"
+ ],
+ "independence_note": "fresh 无状态 vision 调用（不与制作共享会话上下文）；与制作共用同一 vision 模型——非完全独立盲审。",
+ "shots_reviewed": 5,
+ "hard_error_shots": [
+  "s01_c01",
+  "s01_c02",
+  "s01_c03",
+  "s01_c05"
+ ],
+ "minor_shots": [],
+ "results": [
+  {
+   "shot_id": "s01_c01",
+   "frames": [
+    {
+     "position": "first",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c01_rvw_rvw_d4421b7e_first.jpg",
+     "source_version": "vv_9ecbd6fd",
+     "overall": "pass",
+     "hard_dims_fired": [],
+     "summary": "本镜通过全部14个审查维度，三位角色与场景元素均符合导演意图。"
+    },
+    {
+     "position": "middle",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c01_rvw_rvw_d4421b7e_4.000.jpg",
+     "source_version": "vv_9ecbd6fd",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "missing_character"
+     ],
+     "summary": "关键道具缺失且女性调查员未出场导致cast_cardinality和prop_fidelity两项硬失败其余维度基本通过"
+    },
+    {
+     "position": "end",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c01_rvw_rvw_d4421b7e_end.jpg",
+     "source_version": "vv_9ecbd6fd",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "shot_size_correctness"
+     ],
+     "summary": "三维度FAIL（景别过近、读卡器缺失、照明偏暖），硬闸门未触发但需重点修正WS构图与读卡器入画。"
+    }
+   ],
+   "overall": "hard_error",
+   "hard_errors": [
+    "missing_character",
+    "shot_size_correctness"
+   ],
+   "error": null
+  },
+  {
+   "shot_id": "s01_c02",
+   "frames": [
+    {
+     "position": "first",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c02_rvw_rvw_d4421b7e_first.jpg",
+     "source_version": "vv_9e101b0a",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "shot_size_correctness",
+      "framing_and_composition"
+     ],
+     "summary": "三角色身份与道具正确，但景别为WS非MS，人物被环境稀释且安保负责人未形成前景遮挡纵深，三角构图目的未实现。"
+    },
+    {
+     "position": "middle",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c02_rvw_rvw_d4421b7e_4.000.jpg",
+     "source_version": "vv_9e101b0a",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "shot_size_correctness",
+      "framing_and_composition"
+     ],
+     "summary": "分镜图角色Look准确、场景元素符合设定，但景别严重不符（WS vs MCU）、构图未实现手-卡-手三角焦点且安保负责人缺失前景遮挡层次，三项hard gate失败。"
+    },
+    {
+     "position": "end",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c02_rvw_rvw_d4421b7e_end.jpg",
+     "source_version": "vv_9e101b0a",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "shot_size_correctness",
+      "framing_and_composition"
+     ],
+     "summary": "景别严重偏大（WS vs MCU）、三角构图未实现，但人物身份、服装、道具、场景氛围均合格，建议重新生成MCU版本。"
+    }
+   ],
+   "overall": "hard_error",
+   "hard_errors": [
+    "framing_and_composition",
+    "shot_size_correctness"
+   ],
+   "error": null
+  },
+  {
+   "shot_id": "s01_c03",
+   "frames": [
+    {
+     "position": "first",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c03_rvw_rvw_d4421b7e_first.jpg",
+     "source_version": "vv_e9f38f7e",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "shot_size_correctness",
+      "framing_and_composition"
+     ],
+     "summary": "Pass: scene scope, props, lighting, identity — all correct for a WS establishing shot. Fail: shot_size (ECU → WS), subject_scale, and framing — all contradict director intent for an extreme close-up narrative detail shot."
+    },
+    {
+     "position": "middle",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c03_rvw_rvw_d4421b7e_4.000.jpg",
+     "source_version": "vv_e9f38f7e",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "shot_size_correctness",
+      "framing_and_composition"
+     ],
+     "summary": "景别严重错配（要求 ECU 实际为 WS），导致核心叙事元素（裂痕+折角几何关系）无法承载，prop_fidelity 和 shot_size_correctness 双 fail，需重生成特写镜头。"
+    },
+    {
+     "position": "end",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c03_rvw_rvw_d4421b7e_end.jpg",
+     "source_version": "vv_e9f38f7e",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "shot_size_correctness",
+      "framing_and_composition"
+     ],
+     "summary": "镜头意图为ECU特写展现裂痕与折角几何叙事，实际输出为WS控制台全景，核心元素占比过小且细节缺失，景别与构图严重偏离导演意图。"
+    }
+   ],
+   "overall": "hard_error",
+   "hard_errors": [
+    "framing_and_composition",
+    "shot_size_correctness"
+   ],
+   "error": null
+  },
+  {
+   "shot_id": "s01_c04",
+   "frames": [
+    {
+     "position": "first",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c04_rvw_rvw_d4421b7e_first.jpg",
+     "source_version": "vv_e44f3f12",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "unexpected_people"
+     ],
+     "summary": "WS全景成立但多1人(坐姿操作者)导致cast_cardinality和unexpected_people双fail；其余维度pass。核心问题：构图被第4人破坏，需移除以保持双人反应镜+安保负责人侧身的意图。"
+    },
+    {
+     "position": "middle",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c04_rvw_rvw_d4421b7e_4.000.jpg",
+     "source_version": "vv_e44f3f12",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "unexpected_people",
+      "framing_and_composition"
+     ],
+     "summary": "主要问题为出现未预期的第四人（控制台坐姿男）及双人构图偏离为三人环绕式布局，建议剔除多余角色并重构双人对峙画面。"
+    }
+   ],
+   "overall": "not_reviewed",
+   "hard_errors": [],
+   "error": "AgentError: shot review 两次输出均不符合 JSON 契约（parse_failed）"
+  },
+  {
+   "shot_id": "s01_c05",
+   "frames": [
+    {
+     "position": "first",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c05_rvw_rvw_d4421b7e_first.jpg",
+     "source_version": "vv_5c34266f",
+     "overall": "needs_fix",
+     "hard_dims_fired": [],
+     "summary": "三人就位、景别与身份基本正确，但关键道具（门禁卡/隔离开关/控制流）状态未明确收束，需调整prop细节以完成镜头叙事闭环。"
+    },
+    {
+     "position": "middle",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c05_rvw_rvw_d4421b7e_4.000.jpg",
+     "source_version": "vv_5c34266f",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "framing_and_composition"
+     ],
+     "summary": "景别与人物身份正确，但姿态（三人全站立vs意图坐/站）、屏幕/灯光状态（未熄灭/未停）存在硬伤，需按导演意图修正。"
+    },
+    {
+     "position": "end",
+     "local": "projects\\P56_P1_B_INF1\\output\\frames\\s01_c05_rvw_rvw_d4421b7e_end.jpg",
+     "source_version": "vv_5c34266f",
+     "overall": "needs_fix",
+     "hard_dims_fired": [
+      "framing_and_composition"
+     ],
+     "summary": "景别正确、场景氛围到位、人物造型吻合，但核心动作细节（坐姿/隔离开关操作/读卡器特写）全部偏离导演意图，三处hard fail需重生成。"
+    }
+   ],
+   "overall": "hard_error",
+   "hard_errors": [
+    "framing_and_composition"
+   ],
+   "error": null
+  }
+ ]
+}

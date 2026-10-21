@@ -1,0 +1,1 @@
+{"content": "【哨兵修正（已授权直接执行）】两处 shot.update，只改 video_reference_asset_id，不动其它字段：①s01_c02 的 video_reference_asset_id 改为 prev_tail_look_scene（三参考哨兵：c01 末帧+Look+场景实例视图——承接镜规格）；②s01_c05 的 video_reference_asset_id 清为 null（批准规格=独立镜，不人为串依赖）。完成后 shot.read 两镜回显该字段确认。"}

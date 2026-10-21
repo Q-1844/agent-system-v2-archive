@@ -1,0 +1,338 @@
+{
+ "schema": "e_group_r11_evidence_v1",
+ "project": "P56_E_R11_A",
+ "run_id": "run_22e43019c8",
+ "status": "completed_with_issues",
+ "mode": "combo_recommended v2.1.0",
+ "snapshot_hash": "sha256:5bee039c23bbafd9",
+ "created_at": 1792367025.1492925,
+ "finished_at": 1792368912.912583,
+ "concurrency_effect": {
+  "requested_media_inflight": 1,
+  "applied": true,
+  "workers": 1,
+  "source": "config:concurrency.video_inflight=1",
+  "changed": false
+ },
+ "authorization": {
+  "scope": "phase56_explicit_mode_start",
+  "machine_review": true,
+  "bounded_repair": true,
+  "granted_by": "e_batch_r11_verification",
+  "user_acceptance": "pending_user_review"
+ },
+ "steps": [
+  {
+   "step_id": "preflight",
+   "status": "done",
+   "started_at": 1792367025.1982796,
+   "finished_at": 1792367025.198285,
+   "detail": {
+    "skipped": true,
+    "reason": "approved_package：批准快照克隆——资产已冻结，不重做"
+   }
+  },
+  {
+   "step_id": "grant",
+   "status": "done",
+   "started_at": 1792367025.2129617,
+   "finished_at": 1792367025.2370436,
+   "detail": {
+    "families": [
+     "assembly",
+     "character_designer",
+     "director",
+     "scene_designer",
+     "script_writer"
+    ],
+    "grant_id": "gr_25269a65",
+    "expires_at": 1792410225.230447
+   }
+  },
+  {
+   "step_id": "producer_turn",
+   "status": "done",
+   "started_at": 1792367025.254404,
+   "finished_at": 1792368841.779705,
+   "detail": {
+    "delegates_enabled": true,
+    "assistant": "## 总结\n\n**调用了哪些域、为什么**：在授权范围内亲自执行 director（镜头绑定/分镜图/视频生成/接缝校准）与 assembly（成片装配）两个域；未调用 Script Writer / Resource Agent / Scene Agent——剧本、角色 Look、场景视图均已在批准快照冻结就位，无需改动。\n\n**各步骤与真实回执**\n\n1. **资产核实**（project.inspect / shot.list / shot.production.inspect）：2 场景 6 镜头，5 镜（c01/c02/c03/c05/s02_c01）绑定 READY；s01_c04 为 UNBOUND（批准快照应含绑定，先补齐）。\n2. **绑定补齐**：`shot.production.bind` s01_c04 → 绑定 s01 场景真相（sciv_cc69db6ae604，pinned），readiness=READY，binding_revision=77d3a5c2。\n3. **视频生成（批量并行）**：\n   - 首批一次 `shot.generate_videos` 提交 4 镜（s01_c01 / s01_c04 / s01_c05 / s02_c01）：3 完成，s01_c04 因首帧 provenance 基于旧 binding 被拒（boundary_frame_stale）。\n   - 重生成 s01_c04 首帧（shot.generate_images ×2）+ 视觉审查：首帧机器人形态偏离（双足→四足），经 shot.update 改描述与构图后第 3 次生成三查通过（无 hard fail，机身几何软性偏差接受）。\n   - `shot.update` s01_c02/c03：将 `video_reference_asset_id",
+    "receipts": 0,
+    "changed_refs": [],
+    "relays": 0,
+    "usage_totals": {
+     "calls": 47,
+     "prompt_tokens": 3162654,
+     "completion_tokens": 6087
+    }
+   }
+  },
+  {
+   "step_id": "independent_final_review",
+   "status": "failed",
+   "started_at": 1792368841.8020637,
+   "finished_at": 1792368912.8505833,
+   "detail": {
+    "batch_id": "rvw_9390d943",
+    "shots_reviewed": 6,
+    "hard_error_shots": [
+     "s01_c02",
+     "s01_c05"
+    ],
+    "incomplete_shots": [
+     "s01_c01"
+    ],
+    "report_path": "projects\\P56_E_R11_A\\output\\agents\\review_pipeline\\rvw_9390d943.json"
+   }
+  },
+  {
+   "step_id": "auto_repair",
+   "status": "failed",
+   "started_at": 1792368912.859547,
+   "finished_at": 1792368912.8913057,
+   "detail": {
+    "shots": [
+     "s01_c02",
+     "s01_c05"
+    ],
+    "limit_per_shot": 3,
+    "actor": "mode_run_executor",
+    "authorization": "phase56_explicit_mode_start",
+    "repairs": [
+     {
+      "shot_id": "s01_c02",
+      "decision_required": true,
+      "hard_errors": [
+       "missing_character"
+      ]
+     },
+     {
+      "shot_id": "s01_c05",
+      "decision_required": true,
+      "hard_errors": [
+       "missing_character"
+      ]
+     }
+    ],
+    "still_hard": [
+     {
+      "shot_id": "s01_c02",
+      "attempts": 0
+     },
+     {
+      "shot_id": "s01_c05",
+      "attempts": 0
+     }
+    ]
+   }
+  }
+ ],
+ "review": {
+  "batch_id": "rvw_9390d943",
+  "shots_reviewed": 6,
+  "hard_error_shots": [
+   "s01_c02",
+   "s01_c05"
+  ],
+  "minor_shots": [],
+  "incomplete_shots": [
+   "s01_c01"
+  ],
+  "report_path": "projects\\P56_E_R11_A\\output\\agents\\review_pipeline\\rvw_9390d943.json"
+ },
+ "repair": {
+  "attempts": [
+   {
+    "shot_id": "s01_c02",
+    "decision_required": true,
+    "hard_errors": [
+     "missing_character"
+    ]
+   },
+   {
+    "shot_id": "s01_c05",
+    "decision_required": true,
+    "hard_errors": [
+     "missing_character"
+    ]
+   }
+  ],
+  "still_hard": [
+   {
+    "shot_id": "s01_c02",
+    "attempts": 0
+   },
+   {
+    "shot_id": "s01_c05",
+    "attempts": 0
+   }
+  ],
+  "limit_per_shot": 3
+ },
+ "relay_count": 0,
+ "session_ids": {
+  "producer": "sess_545b40904d78"
+ },
+ "relay_pending": null,
+ "result_excerpt": "## 总结\n\n**调用了哪些域、为什么**：在授权范围内亲自执行 director（镜头绑定/分镜图/视频生成/接缝校准）与 assembly（成片装配）两个域；未调用 Script Writer / Resource Agent / Scene Agent——剧本、角色 Look、场景视图均已在批准快照冻结就位，无需改动。\n\n**各步骤与真实回执**\n\n1. **资产核实**（project.inspect / shot.list / shot.production.inspect）：2 场景 6 镜头，5 镜（c01/c02/c03/c05/s02_c01）绑定 READY；s01_c04 为 UNBOUND（批准快照应含绑定，先补齐）。\n2. **绑定补齐**：`shot.production.bind` s01_c04 → 绑定 s01 场景真相（sciv_cc69db6ae604",
+ "media_jobs": [
+  {
+   "job_id": "b3e4b0c631f6",
+   "shot_id": "s01_c01",
+   "state": "done",
+   "created_at": 1792367050.2948604,
+   "started_at": 1792367053.8686912,
+   "finished_at": 1792367219.4775364,
+   "error": null,
+   "provider_task_id": "task_PeJsHD3rH9WLy9ugjaEJ40or6byrp6kw",
+   "origin_run_id": "dgv_b8239197",
+   "repair_of_review": null
+  },
+  {
+   "job_id": "cba6aee900de",
+   "shot_id": "s01_c04",
+   "state": "failed",
+   "created_at": 1792367051.150215,
+   "started_at": 1792367220.1994812,
+   "finished_at": 1792367221.8551948,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_a0e685e7', 'field': 'binding_readiness', 'hint': 'provenance 记录的生成时 binding 非 READY——非合法 BOUND 产物', 'slot': 'first'}",
+   "provider_task_id": null,
+   "origin_run_id": "dgv_45745bc2",
+   "repair_of_review": null
+  },
+  {
+   "job_id": "d6536cbf6d97",
+   "shot_id": "s01_c05",
+   "state": "done",
+   "created_at": 1792367051.964042,
+   "started_at": 1792367222.5411596,
+   "finished_at": 1792367431.3122866,
+   "error": null,
+   "provider_task_id": "task_DeHzNWL3QMsJR3k65y8pzjlMimIZa849",
+   "origin_run_id": "dgv_7a4ba317",
+   "repair_of_review": null
+  },
+  {
+   "job_id": "6c70f7520ff4",
+   "shot_id": "s02_c01",
+   "state": "done",
+   "created_at": 1792367052.9192598,
+   "started_at": 1792367431.9802911,
+   "finished_at": 1792367597.9586756,
+   "error": null,
+   "provider_task_id": "task_PNftfCkOt9cRXe1xZSM8yNsnK2OURAOo",
+   "origin_run_id": "dgv_acf4cc61",
+   "repair_of_review": null
+  },
+  {
+   "job_id": "7335825f6244",
+   "shot_id": "s01_c04",
+   "state": "failed",
+   "created_at": 1792367604.7958217,
+   "started_at": 1792367605.6727452,
+   "finished_at": 1792367607.4800224,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_a0e685e7', 'field': 'binding_readiness', 'hint': 'provenance 记录的生成时 binding 非 READY——非合法 BOUND 产物', 'slot': 'first'}",
+   "provider_task_id": null,
+   "origin_run_id": "dgv_e1463575",
+   "repair_of_review": null
+  },
+  {
+   "job_id": "a3393d858dac",
+   "shot_id": "s01_c04",
+   "state": "done",
+   "created_at": 1792367807.822932,
+   "started_at": 1792367809.3521698,
+   "finished_at": 1792367967.5063357,
+   "error": null,
+   "provider_task_id": "task_g1eOo3qxL9mNKki2zXduKgVT17rjqTIC",
+   "origin_run_id": "dgv_fd29280f",
+   "repair_of_review": null
+  },
+  {
+   "job_id": "4749756a962b",
+   "shot_id": "s01_c02",
+   "state": "failed",
+   "created_at": 1792367808.658657,
+   "started_at": 1792367968.2592611,
+   "finished_at": 1792367974.4560375,
+   "error": "reference_media_unresolvable: {'video_reference_asset_id': 'ref_3d1910a0c63f', 'hint': 'multi 视频参考无公网 URL（视频接口无 data URI 槽，FACTS §3.3）——先经正式 rehost/登记流程补 URL'}",
+   "provider_task_id": null,
+   "origin_run_id": "dgv_fb3cab9f",
+   "repair_of_review": null
+  },
+  {
+   "job_id": "26fd45c68e37",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792367987.3957427,
+   "started_at": 1792367988.1112423,
+   "finished_at": 1792368255.3756878,
+   "error": null,
+   "provider_task_id": "task_KVpCFRzmKzxzMyw0Q3N0xc064gHpuahT",
+   "origin_run_id": "dgv_7b8ba8bb",
+   "repair_of_review": null
+  },
+  {
+   "job_id": "3151cc6521b3",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792368261.7323184,
+   "started_at": 1792368262.440488,
+   "finished_at": 1792368482.6334493,
+   "error": null,
+   "provider_task_id": "task_H7sOWJwptl6paKC06eZdRTroFBk1IVjg",
+   "origin_run_id": "dgv_ead6e2ed",
+   "repair_of_review": null
+  }
+ ],
+ "versions": {
+  "s01_c01": {
+   "final_video": "vv_3d40291d9cf1",
+   "video_status": "done",
+   "n_versions": 1,
+   "end_frame_status": "done",
+   "end_source_version": "vv_3d40291d9cf1"
+  },
+  "s01_c02": {
+   "final_video": "vv_ff222382d710",
+   "video_status": "done",
+   "n_versions": 1,
+   "end_frame_status": "done",
+   "end_source_version": "vv_ff222382d710"
+  },
+  "s01_c03": {
+   "final_video": "vv_12483bd6bc4f",
+   "video_status": "done",
+   "n_versions": 1,
+   "end_frame_status": "done",
+   "end_source_version": "vv_12483bd6bc4f"
+  },
+  "s01_c04": {
+   "final_video": "vv_f251876ceae6",
+   "video_status": "done",
+   "n_versions": 1,
+   "end_frame_status": "done",
+   "end_source_version": "vv_f251876ceae6"
+  },
+  "s01_c05": {
+   "final_video": "vv_acaee528eb9a",
+   "video_status": "done",
+   "n_versions": 1,
+   "end_frame_status": "done",
+   "end_source_version": "vv_acaee528eb9a"
+  },
+  "s02_c01": {
+   "final_video": "vv_459793346579",
+   "video_status": "done",
+   "n_versions": 1,
+   "end_frame_status": "done",
+   "end_source_version": "vv_459793346579"
+  }
+ },
+ "quota_after": {
+  "date": "2026-10-19",
+  "video_seconds": 56.0,
+  "images": 3,
+  "text_calls": 100
+ }
+}
