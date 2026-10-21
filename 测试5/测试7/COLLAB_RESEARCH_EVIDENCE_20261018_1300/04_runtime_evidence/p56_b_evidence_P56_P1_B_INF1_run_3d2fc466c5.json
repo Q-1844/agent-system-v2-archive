@@ -1,0 +1,70 @@
+{
+ "schema": "p56_b_run_evidence_v1",
+ "project": "P56_P1_B_INF1",
+ "run_id": "run_3d2fc466c5",
+ "mode_id": "combo_recommended",
+ "mode_version": "2.0.0",
+ "snapshot_hash": "sha256:6f4261306accb75a",
+ "status": "failed",
+ "created_at": 1792264443.974603,
+ "finished_at": 1792264444.0740678,
+ "concurrency_effect": {
+  "requested_media_inflight": 1,
+  "applied": true,
+  "workers": 1,
+  "source": "config:concurrency.video_inflight=1",
+  "changed": false
+ },
+ "authorization": {
+  "scope": "phase56_explicit_mode_start",
+  "machine_review": true,
+  "bounded_repair": true,
+  "granted_by": "phase56_b_benchmark",
+  "user_acceptance": "pending_user_review"
+ },
+ "steps": [
+  {
+   "step_id": "preflight",
+   "status": "done",
+   "started_at": 1792264443.9978726,
+   "finished_at": 1792264443.9978797,
+   "detail": {
+    "skipped": true,
+    "reason": "approved_package：批准快照克隆——资产已冻结，不重做"
+   }
+  },
+  {
+   "step_id": "grant",
+   "status": "done",
+   "started_at": 1792264444.002741,
+   "finished_at": 1792264444.016157,
+   "detail": {
+    "families": [
+     "assembly",
+     "character_designer",
+     "director",
+     "scene_designer",
+     "script_writer"
+    ],
+    "grant_id": "gr_edf9b289",
+    "expires_at": 1792307644.0071044
+   }
+  },
+  {
+   "step_id": "producer_turn",
+   "status": "running",
+   "started_at": 1792264444.021639,
+   "finished_at": null,
+   "detail": {
+    "delegates_enabled": true
+   }
+  }
+ ],
+ "review": null,
+ "repair": null,
+ "relay_count": null,
+ "result": {
+  "error": "cannot access local variable 'AgentError' where it is not associated with a value"
+ },
+ "media_jobs": []
+}

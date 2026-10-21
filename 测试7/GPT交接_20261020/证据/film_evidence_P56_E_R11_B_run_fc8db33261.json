@@ -1,0 +1,176 @@
+{
+ "schema": "e_film_evidence_v1",
+ "project": "P56_E_R11_B",
+ "run_id": "run_fc8db33261",
+ "status": "completed_with_issues",
+ "mode": "combo_recommended v2.1.0",
+ "created_at": 1792371012.7116556,
+ "finished_at": 1792373421.3514311,
+ "wall_s": 2409.0,
+ "steps": [
+  {
+   "step_id": "preflight",
+   "status": "done",
+   "started_at": 1792371012.7685304,
+   "finished_at": 1792371012.7685363,
+   "detail": {
+    "skipped": true,
+    "reason": "approved_package：批准快照克隆——资产已冻结，不重做"
+   }
+  },
+  {
+   "step_id": "grant",
+   "status": "done",
+   "started_at": 1792371012.7843583,
+   "finished_at": 1792371012.8091633,
+   "detail": {
+    "families": [
+     "assembly",
+     "character_designer",
+     "director",
+     "scene_designer",
+     "script_writer"
+    ],
+    "grant_id": "gr_b653364e",
+    "expires_at": 1792414212.801957
+   }
+  },
+  {
+   "step_id": "producer_turn",
+   "status": "done",
+   "started_at": 1792371012.8275986,
+   "finished_at": 1792373243.6464229,
+   "detail": {
+    "delegates_enabled": true,
+    "assistant": "<analysis>\nLet me analyze the conversation chronologically:\n\n1. **Initial Setup**: The system prompt establishes me as the Producer Supervisor for an animation project. I have read-only tools and 5 delegate tools. A scoped grant (gr_b653364e) authorizes me to directly execute production tools for all 5 domains.\n\n2. **Task**: Complete video production on an approved work package \"《断电前的证词》\" (E batch style override group). The project is P56_E_R11_B with 1 scene, 5 shots, 3 characters. Key constraints:\n   - Don't redo/rewrite any script or assets (frozen approval)\n   - First verify assets with project.inspect\n   - Batch submit independent shots with one shot.generate_videos call\n   - Declare intentional cuts with opening_cut_reason\n   - After all shots done, create sequence and render\n   - Re",
+    "receipts": 2,
+    "changed_refs": [],
+    "relays": 0,
+    "usage_totals": {
+     "calls": 35,
+     "prompt_tokens": 2344764,
+     "completion_tokens": 14061
+    }
+   }
+  },
+  {
+   "step_id": "independent_final_review",
+   "status": "failed",
+   "started_at": 1792373243.6762636,
+   "finished_at": 1792373421.332471,
+   "detail": {
+    "batch_id": "rvw_4fe108b8",
+    "shots_reviewed": 5,
+    "hard_error_shots": [],
+    "incomplete_shots": [
+     "s01_c04"
+    ],
+    "report_path": "projects\\P56_E_R11_B\\output\\agents\\review_pipeline\\rvw_4fe108b8.json"
+   }
+  }
+ ],
+ "review": {
+  "batch_id": "rvw_4fe108b8",
+  "shots_reviewed": 5,
+  "hard_error_shots": [],
+  "minor_shots": [],
+  "incomplete_shots": [
+   "s01_c04"
+  ],
+  "report_path": "projects\\P56_E_R11_B\\output\\agents\\review_pipeline\\rvw_4fe108b8.json"
+ },
+ "repair": null,
+ "relay_count": 0,
+ "decision_requests": null,
+ "media_jobs": [
+  {
+   "job_id": "0c3b93b39fc8",
+   "shot_id": "s01_c04",
+   "state": "failed",
+   "dur": 3.0,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_8b414ddc', 'field': 'binding_revision', 'rec"
+  },
+  {
+   "job_id": "3b70d7d6d3ee",
+   "shot_id": "s01_c04",
+   "state": "done",
+   "dur": 276.0,
+   "error": ""
+  },
+  {
+   "job_id": "57b7d8235d2f",
+   "shot_id": "s01_c01",
+   "state": "done",
+   "dur": 272.0,
+   "error": ""
+  },
+  {
+   "job_id": "635cae181668",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "dur": 189.0,
+   "error": ""
+  },
+  {
+   "job_id": "88aef4e827eb",
+   "shot_id": "s01_c04",
+   "state": "done",
+   "dur": 290.0,
+   "error": ""
+  },
+  {
+   "job_id": "9242fa0d4001",
+   "shot_id": "s01_c04",
+   "state": "failed",
+   "dur": 4.0,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_8b414ddc', 'field': 'binding_revision', 'rec"
+  },
+  {
+   "job_id": "9a7871151322",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "dur": 259.0,
+   "error": ""
+  },
+  {
+   "job_id": "f856554158e1",
+   "shot_id": "s01_c05",
+   "state": "done",
+   "dur": 358.0,
+   "error": ""
+  }
+ ],
+ "versions": {
+  "s01_c01": {
+   "final_video": "vv_3a9526d04c67",
+   "n_versions": 1,
+   "video_file": "projects\\P56_E_R11_B\\output\\videos\\s01_c01_vv_3a9526d04c67.mp4"
+  },
+  "s01_c02": {
+   "final_video": "vv_10f7e76fbbbd",
+   "n_versions": 1,
+   "video_file": "projects\\P56_E_R11_B\\output\\videos\\s01_c02_vv_10f7e76fbbbd.mp4"
+  },
+  "s01_c03": {
+   "final_video": "vv_efb8318a0145",
+   "n_versions": 1,
+   "video_file": "projects\\P56_E_R11_B\\output\\videos\\s01_c03_vv_efb8318a0145.mp4"
+  },
+  "s01_c04": {
+   "final_video": "vv_f1e168f024f6",
+   "n_versions": 2,
+   "video_file": "projects\\P56_E_R11_B\\output\\videos\\s01_c04_vv_f1e168f024f6.mp4"
+  },
+  "s01_c05": {
+   "final_video": "vv_ae2c32c5a107",
+   "n_versions": 1,
+   "video_file": "projects\\P56_E_R11_B\\output\\videos\\s01_c05_vv_ae2c32c5a107.mp4"
+  }
+ },
+ "quota_after": {
+  "date": "2026-10-19",
+  "video_seconds": 104.0,
+  "images": 6,
+  "text_calls": 252
+ }
+}

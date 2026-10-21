@@ -1,0 +1,1 @@
+{"int": "INT-F01", "ts": "2026-10-15T09:29:28", "target": "P53_F/run_a11b72ab20f6/n_sc", "change": "location minCount 2->1", "rationale": "夹具矛盾（D-05 同类）：场景目标自述单区域，契约却要求×2；attempt2 已交付自洽单地点设计（5锚点+3视图approved）。执行侧修正契约对齐目标文本，不重派agent重做已批准视图。", "before": 2, "after": 1}

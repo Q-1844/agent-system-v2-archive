@@ -1,0 +1,137 @@
+[
+ {
+  "project": "P56_P1_B_INF1",
+  "run_id": "run_3946440d29",
+  "mode": "combo_recommended v2.0.0",
+  "capacity_effect": {
+   "requested_media_inflight": 1,
+   "applied": true,
+   "workers": 1,
+   "source": "config:concurrency.video_inflight=1",
+   "changed": false
+  },
+  "status": "completed",
+  "version_label": "v2.1正式对照",
+  "created": 1792273842.9473746,
+  "finished": 1792275424.9328156,
+  "review_hard": [],
+  "repair_still_hard": null,
+  "user_feedback": "未反馈（B/C批成片待用户看片）"
+ },
+ {
+  "project": "P56_P1_B_INF2",
+  "run_id": "run_bbf65ad1af",
+  "mode": "combo_recommended v2.0.0",
+  "capacity_effect": {
+   "requested_media_inflight": 2,
+   "applied": true,
+   "workers": 2,
+   "source": "run_reconfigure:2",
+   "changed": true
+  },
+  "status": "completed",
+  "version_label": "v2.1正式对照",
+  "created": 1792275434.760908,
+  "finished": 1792279203.935487,
+  "review_hard": [
+   "s01_c02",
+   "s01_c04"
+  ],
+  "repair_still_hard": [
+   {
+    "shot_id": "s01_c02",
+    "attempts": 3
+   }
+  ],
+  "user_feedback": "未反馈（B/C批成片待用户看片）"
+ },
+ {
+  "project": "P56_P1_B_INF3",
+  "run_id": "run_13c423ece6",
+  "mode": "combo_recommended v2.0.0",
+  "capacity_effect": {
+   "requested_media_inflight": 3,
+   "applied": true,
+   "workers": 3,
+   "source": "run_reconfigure:3",
+   "changed": true
+  },
+  "status": "completed",
+  "version_label": "v2.1正式对照",
+  "created": 1792279209.8881524,
+  "finished": 1792280881.4520376,
+  "review_hard": [],
+  "repair_still_hard": null,
+  "user_feedback": "未反馈（B/C批成片待用户看片）"
+ },
+ {
+  "project": "P56_P2_C_COMBO",
+  "run_id": "run_b405aea5db",
+  "mode": "combo_recommended v2.0.0",
+  "capacity_effect": {
+   "requested_media_inflight": 3,
+   "applied": true,
+   "workers": 3,
+   "source": "run_reconfigure:3",
+   "changed": false
+  },
+  "status": "completed",
+  "version_label": "P2组合臂",
+  "created": 1792284293.6571324,
+  "finished": 1792287487.118095,
+  "review_hard": [],
+  "repair_still_hard": null,
+  "user_feedback": "未反馈（B/C批成片待用户看片）"
+ },
+ {
+  "project": "P56_P1_B_INF1",
+  "run_id": "run_fba9de2066",
+  "mode": "combo_recommended v2.0.0",
+  "capacity_effect": {
+   "requested_media_inflight": 1,
+   "applied": true,
+   "workers": 1,
+   "source": "config:concurrency.video_inflight=1",
+   "changed": false
+  },
+  "status": "running",
+  "version_label": "v1政策发现样本",
+  "created": 1792265660.9890418,
+  "finished": null,
+  "review_hard": [
+   "s01_c01",
+   "s01_c02",
+   "s01_c03",
+   "s01_c05"
+  ],
+  "repair_still_hard": null,
+  "user_feedback": "未反馈（B/C批成片待用户看片）"
+ },
+ {
+  "project": "P56_P2_C_COMBO",
+  "run_id": "run_11330c0c3f",
+  "mode": "combo_recommended v2.0.0",
+  "capacity_effect": {
+   "requested_media_inflight": 3,
+   "applied": true,
+   "workers": 3,
+   "source": "run_reconfigure:3",
+   "changed": false
+  },
+  "status": "completed",
+  "version_label": "中断后由后端继续完成",
+  "created": 1792284454.1445653,
+  "finished": 1792287527.6734703,
+  "review_hard": [
+   "s01_c03",
+   "s01_c05"
+  ],
+  "repair_still_hard": [
+   {
+    "shot_id": "s01_c05",
+    "attempts": 3
+   }
+  ],
+  "user_feedback": "未反馈（B/C批成片待用户看片）"
+ }
+]

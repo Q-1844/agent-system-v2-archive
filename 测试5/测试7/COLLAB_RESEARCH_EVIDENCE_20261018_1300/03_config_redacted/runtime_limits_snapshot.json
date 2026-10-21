@@ -1,0 +1,49 @@
+{
+ "limits": {
+  "text": {
+   "rpm": 17.0,
+   "waiting": 0,
+   "eta_s": 0.0
+  },
+  "image_1k": {
+   "rpm": 17.0,
+   "waiting": 0,
+   "eta_s": 0.0
+  },
+  "image_2k": {
+   "rpm": 13.6,
+   "waiting": 0,
+   "eta_s": 0.0
+  },
+  "image_3k": {
+   "rpm": 0.85,
+   "waiting": 0,
+   "eta_s": 0.0
+  },
+  "image_4k": {
+   "rpm": 0.85,
+   "waiting": 0,
+   "eta_s": 0.0
+  },
+  "video": {
+   "rpm": 0.85,
+   "waiting": 0,
+   "eta_s": 0.0
+  }
+ },
+ "quota": {
+  "video_seconds": {
+   "used": 480.0,
+   "limit": 500
+  },
+  "images": {
+   "used": 115,
+   "limit": 4000
+  },
+  "text_calls": {
+   "used": 1256,
+   "limit": 7200
+  }
+ },
+ "_note": "GET /api/system/limits 只读快照（取证时刻运行进程的真实额度/限流状态）"
+}

@@ -1,0 +1,11 @@
+c01 entry: {"shot_id": "s01_c01", "frames": [{"position": "first", "local": "projects\\P56_E_R11_A\\output\\frames\\s01_c01_rvw_rvw_9390d943_first.jpg", "source_version": "vv_3d40291d9cf1", "overall": "needs_fix", "hard_dims_fired": ["shot_size_correctness", "framing_and_composition"], "hard_dims_uncertain": [], "summary": "景别严重错配（MCU vs full shot）且构图未还原「岩石掩体后方」核心意图，其余维度通过。"}, {"position": "middle", "local": "projects\\P56_E_R11_A\\output\\frames\\s01_c01_rvw_rvw_9390d943_4.000.jpg", "source_version": "vv_
+decision_requests: [{"type": "repair_strategy_required", "shot_ids": ["s01_c02"], "hard_errors": ["missing_character"], "review_batch": "rvw_9390d943", "reason": "identity failure requires a changed input strategy"}, {"type": "repair_strategy_required", "shot_ids": ["s01_c05"], "hard_errors": ["missing_character"], "review_batch": "rvw_9390d943", "reason": "identity failure requires a changed input strategy"}]
+s01_c01: final=vv_3d40291d9cf1 n_versions=1 end_src=vv_3d40291d9cf1 end_status=done
+s01_c02: final=vv_ff222382d710 n_versions=1 end_src=vv_ff222382d710 end_status=done
+s01_c03: final=vv_12483bd6bc4f n_versions=1 end_src=vv_12483bd6bc4f end_status=done
+s01_c04: final=vv_f251876ceae6 n_versions=1 end_src=vv_f251876ceae6 end_status=done
+s01_c05: final=vv_acaee528eb9a n_versions=1 end_src=vv_acaee528eb9a end_status=done
+s02_c01: final=vv_459793346579 n_versions=1 end_src=vv_459793346579 end_status=done
+FAILED cba6aee9 s01_c04: boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_a0e685e7', 'field': 'binding_readiness', 'hint': 'provenance 记录的生成时 bindin
+FAILED 7335825f s01_c04: boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_a0e685e7', 'field': 'binding_readiness', 'hint': 'provenance 记录的生成时 bindin
+FAILED 4749756a s01_c02: reference_media_unresolvable: {'video_reference_asset_id': 'ref_3d1910a0c63f', 'hint': 'multi 视频参考无公网 URL（视频接口无 data URI 槽，FACTS §3.3）——先经正式 rehost/登记

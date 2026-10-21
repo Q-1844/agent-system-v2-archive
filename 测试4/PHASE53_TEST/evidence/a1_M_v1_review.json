@@ -1,0 +1,37 @@
+{
+ "int": "P53_M_v1_review",
+ "ts": "2026-10-15T16:31:03",
+ "reviewer": "执行侧代行",
+ "criteria": "三查判据(画面+衔接性)",
+ "requestId": "rev_22f7c2f21e",
+ "pass": [
+  "s01_c01",
+  "s01_c02",
+  "s02_c01",
+  "s02_c02",
+  "s02_c03",
+  "s03_c01",
+  "s03_c02",
+  "s03_c03",
+  "s05_c01",
+  "s05_c02",
+  "s05_c03",
+  "s06_c01",
+  "s06_c02",
+  "s06_c03"
+ ],
+ "fail": {
+  "s04_c01": "段④关键事件缺失大不合理：剧情要求「怪物出现在可解释位置+模仿脚步线索成立」，实拍仅两人抱记录匣穿行标本柜走廊，全程无怪物实体。怪物look存在（标本库异常人形，3refs，unreviewed）"
+ },
+ "minor_no_reject": [
+  "s03_c01 首帧黄靴与s01装备漂移",
+  "s02_c01 空镜扫墙叙事功能弱",
+  "s06_c03 过黑信息量低",
+  "s06_c02 首帧仰拍透视略怪"
+ ],
+ "evidence_sheets": "animation-storyboard/_tmp/p53_m_v1_review/sheet_*.jpg",
+ "decision": "reject",
+ "repair_scope": [
+  "s04_c01"
+ ]
+}

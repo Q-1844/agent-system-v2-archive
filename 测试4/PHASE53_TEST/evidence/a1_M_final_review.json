@@ -1,0 +1,20 @@
+{
+ "int": "P53_M_final_review",
+ "ts": "2026-10-15T17:37:16",
+ "reviewer": "执行侧代行",
+ "film": "projects/P53_M/output/sequences/seq_ec95c551/srender_738a332c.mp4",
+ "duration_s": 39.57,
+ "resolution": "1280x720",
+ "decision": "approve",
+ "selected": [
+  "s01_c01",
+  "s02_c03",
+  "s03_c03",
+  "s04_c01",
+  "s05_c03",
+  "s06_c02"
+ ],
+ "interventions": [
+  "INT-M02"
+ ]
+}

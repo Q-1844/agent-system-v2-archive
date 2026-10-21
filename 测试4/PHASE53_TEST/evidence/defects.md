@@ -1,0 +1,14 @@
+# Phase 53 缺陷清单（观察所得，本轮不修生产代码）
+
+| # | 发现时刻 | 位置 | 现象 | 影响 | 分类 | 证据 |
+| --- | --- | --- | --- | --- | --- | --- |
+| D-01 | 14:10（attempt2） | 恢复行为（模型侧） | n_cd 恢复 attempt 倾向「最小差量补做」（只补 clothing.upsert×2 即报完成），未按契约重建完整交付（Look 图像/茶杯/标本缺） | 恢复场景下需额外 attempt 轮次；契约 fail-closed 正确拦截 | Agent 行为/恢复 | run_e0f1a17c44e5 attempts 2-4；INT-05 |
+| D-02 | 15:52 | src/agents/shot_review.py:265 | `_look_ref_entries` 对 `svc.read_binding(shot.shot_id)` 返回 None 未设防（尚无 binding 的镜头）→ AttributeError 被上层捕获，identity 维度降级 uncertain | 自动审核 identity 维度对未绑定镜头弱化（uncertain 而非判定）；非致命 | 预存代码缺陷（未设防） | backend.log 15:52:05 前后两次堆栈 |
+| D-03 | 14:33 | 上游/网络交互 | 网络中断可致流截断→下轮请求上游 400「tool call arguments must be valid JSON」（attempt3 23s 即死） | 网络不稳时 attempt 损耗；重试可恢复 | 环境次生（韧性缺口候选） | backend.log 14:34；用户口述网断 |
+| D-04 | 13:36 | W09 模板默认契约 | 默认 completion location×2 不适配单地点故事（n_sc 正确建成 1 地点却判 fail） | 夹具类故事需手动调契约；已改 location×1 | 夹具契约设计 | run_a0585c966cc6 node.failed 报文；INT-02/03 |
+| D-05 | 15:55 | 夹具措辞（执行侧 setup） | writerObjective 沿用 P50 措辞「镜头数由导演阶段按剧情决定」与 Producer 目标「冻结 6 镜」矛盾→导演按剧情定 12 镜（6 段×2 正反打），未触发「增减报备」 | I2 负荷=12 镜（预算重算 12 视频≈60-120s）；决策不干预保基线；F/M setup 措辞已全链统一为「以 Producer 冻结值为准」 | 夹具措辞矛盾（执行侧责任） | P53_I2 project.json 12 shots；producer plan「冻结 6 镜」vs writerObjective 原文 |
+| D-06 | 17:05 | 夹具配置（执行侧 setup）+机制边界 | 前置选择类审核卡（n_rv_cd 选 Look/n_rv_board 选首帧/n_rv_v2 选版本）设 autoApprove=true：冷启动无既有选用指针→「沿用现有指针」=未发生选用→林澄/顾宁 Look 无 approved 参考→5 镜视频被前置护栏拦截（P51_F_W01 同配置但从未跑通到该节点，此失败模式首证） | 系统护栏 fail-closed 正确；材料关由执行侧按正式链补齐（INT-07）；夹具配置缺陷：选择类卡不应 autoApprove | 夹具配置（执行侧）+机制语义观察 | resources.json approved=[]；node warnings prerequisite；P51_F_W01 未运行（runs_index） |
+| D-07 | 17:30 | 视频层环境绑定（模型/提示词层） | 7 镜成片出现 5 个不同环境、标本形态 4 变、茶杯每镜换设计、s02_c02 疑似分身、已生成镜音轨近静音——首帧各自成立但场景/道具无跨镜锚定（与 s01/s02 无 approved SceneInstanceView、部分镜 binding 缺失相关） | 一审 REJECT；修复轮以 s01_c01/s01_c02 为锚重修 10 镜；对白镜需台词入提示词 | 质量问题（待修复轮验证根因分布：首帧 vs 视频层） | v1_frames 21 张；volumedetect -68.5dB；review decision note |
+| D-08 | 20:35 | 夹具配置（执行侧 setup） | setup 未配 project.native_av.spoken_language → 对白镜提交触发 language_missing fail-closed（18.md §5 拒猜语言，B1 人评依据） | 系统行为正确；正式端点补设 Mandarin Chinese（INT-09）；F/M setup 预配该字段 | 夹具配置（执行侧） | DialogueControlError 堆栈；PUT 回执 ok |
+| D-12 | 10-14 12:40 | 修复注入截断（系统设计缺口） | _repair_rejected_run 把驳回 note 截断到 300 字（executor.py:1203）——修复指令必须放在前 300 字才送达；本轮长指令的行动部分全部被截→修复 attempt3/4 空洞化（"已完成"零动作） | 修复轮无法依赖长 note 传递指令；对策=Producer→Director 会话直驱（完整载荷）或指令前置 300 字内 | 系统设计缺口（报告建议：注入全文或分节） | executor.py:1201-1205；attempt3/4 result |
+| D-13 | 10-14 13:52 | v2 多镜选型（执行侧决策失误+系统能力边界） | v2 选版卡决策时未带 selectionOverride.items → 占位符 spec 被正确拒绝（必须精确 versionId）；已决卡无法补选→needs_reconciliation 死路；豁免闸需 pending 卡亦不可达 | 对策=W08 显式 videoVersions scope 装配 run（合法复用 12 final 指针）；系统对「一次审定选多镜版本」的 items 格式仅存在于 perform_selection，决策 API 可注入但无重试入口 | 执行侧决策失误+系统重试入口缺失（报告建议：needs_reconciliation 可带新 override 重试） | selectionReceipt error；executor.py:901-906 |

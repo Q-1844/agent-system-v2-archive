@@ -1,0 +1,6 @@
+file: src/agents/collab_modes.py (R1.1.1 fixed, as installed in production)
+sha256: a508a24b09d9d621ec03938937d422696b09d8c52a8c7dafd537602c5e704d47
+bytes: 53561
+source: C:\Users\曹文淇\Desktop\ai工作流\animation-storyboard\src\agents\collab_modes.py
+baseline(R1.1 delivered): ffc8e289e5dc59e2699fcfd780659e4cd693fb40527f762f72c14805325b90af
+code-only verified identical to validated isolated copy: D:\isolated\animation-storyboard\src\agents\collab_modes.py

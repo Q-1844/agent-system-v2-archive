@@ -1,0 +1,142 @@
+{
+ "chain": "chain_B_依赖镜延误_INF3_s01_c02",
+ "project": "P56_P1_B_INF3",
+ "run_id": "run_13c423ece6",
+ "shot_id": "s01_c02",
+ "narrative": "multi+prev_tail_look_scene 三参考真实媒体硬依赖；B批报告§1的650s延误案例——上游c01于+224s收货，本镜+875s才提交（LLM忙于重试波次）",
+ "opening_note": "multi + video_reference_asset_id=prev_tail_look_scene（三参考接力——真实媒体硬依赖）",
+ "video_jobs": [
+  {
+   "job_id": "2ff236519afb",
+   "state": "done",
+   "params_keys": [
+    "input_manifest",
+    "origin_run_id",
+    "population_constraint",
+    "provider",
+    "provider_task_id"
+   ],
+   "input_manifest": {
+    "schema": "input_manifest_v1",
+    "contract_version": "video_contract_v1",
+    "stage": "video",
+    "method": {
+     "mode": "multi",
+     "model": null,
+     "provider": "agnes"
+    },
+    "shot": {
+     "shot_id": "s01_c02",
+     "scene_id": "s01",
+     "video_prompt_sig": "",
+     "description_sha1": "b6fe89b1b979",
+     "opening_state": "承接 c01 实际保留末帧（inherit_previous）——工程师右手已探出、指尖贴近卡、红色警报进入第一圈；本镜从该末帧继续。",
+     "end_state": ""
+    },
+    "assets": {
+     "characters": [
+      {
+       "name": "调查员",
+       "look_id": "look_341d5a08d727",
+       "composition_id": null
+      },
+      {
+       "name": "工程师",
+       "look_id": "look_d6eaaa920b3f",
+       "composition_id": null
+      },
+      {
+       "name": "安保负责人",
+       "look_id": "look_6d9dcb16b3c5",
+       "composition_id": null
+      }
+     ],
+     "scene": {
+      "scene_instance_id": "scin_f7b051727b60",
+      "location_view_id": "view_f09f3af09788",
+      "pinned_scene_instance_view_id": "sciv_6752ae905441"
+     },
+     "props": []
+    },
+    "upstream": {
+     "opening_source": "inherit_previous",
+     "source_shot_id": "s01_c01",
+     "source_version": null,
+     "video_reference_asset_id": "prev_tail",
+     "continuity": {
+      "semantics": "same_action_continuation",
+      "opening_source": "inherit_previous",
+      "source_shot_id": "s01_c01",
+      "detail": "真实接续：声明对上游裁切末帧的媒体硬依赖"
+     }
+    },
+    "population": {
+     "enabled": true
+    },
+    "reference_consumption": {
+     "state": "provider_reference",
+     "detail": "BOUND multi：sciv 经参考链第三槽真实发送"
+    },
+    "compiled_negative_prompt": true,
+    "provider_plan": {
+     "num_frames": 0,
+     "frame_rate": 24,
+     "seconds": 8.0
+    }
+   },
+   "provider_task_id": "task_9uobrYgrL6hMQfNxiK1JlqJGOJfhMAme",
+   "error": null,
+   "message_tail": "s01_c02 提取视频末帧",
+   "t_created": 1792280113.338626,
+   "t_started": 1792280114.1327085,
+   "t_finished": 1792280397.3315396,
+   "note_provider_url": "私有媒体URL不打包——版本与哈希见 project.json 对应 shot.video_versions（version_id 索引）"
+  }
+ ],
+ "final_review_entry": {
+  "shot_id": "s01_c02",
+  "frames": [
+   {
+    "position": "first",
+    "local": "projects\\P56_P1_B_INF3\\output\\frames\\s01_c02_rvw_rvw_6db73ab9_first.jpg",
+    "source_version": "vv_aaa05481",
+    "overall": "needs_fix",
+    "hard_dims_fired": [
+     "shot_size_correctness",
+     "framing_and_composition"
+    ],
+    "summary": "Cast与look准确，但景别（MS错配MCU意图）、构图（无手—卡—手三角、无前景安保遮挡）均fail，需重新生成聚焦于接触点的MCU版本。"
+   },
+   {
+    "position": "middle",
+    "local": "projects\\P56_P1_B_INF3\\output\\frames\\s01_c02_rvw_rvw_6db73ab9_4.000.jpg",
+    "source_version": "vv_aaa05481",
+    "overall": "needs_fix",
+    "hard_dims_fired": [
+     "shot_size_correctness"
+    ],
+    "summary": "人物与道具均正确，但景别偏大（MS而非MCU），且安保负责人未形成要求的景前景遮挡层次。"
+   },
+   {
+    "position": "end",
+    "local": "projects\\P56_P1_B_INF3\\output\\frames\\s01_c02_rvw_rvw_6db73ab9_end.jpg",
+    "source_version": "vv_aaa05481",
+    "overall": "needs_fix",
+    "hard_dims_fired": [
+     "shot_size_correctness"
+    ],
+    "summary": "Shot correctly depicts all three characters in night control room with proper costuming and props, but shot size is MS instead of required MCU - full bodies visible rather than medium close framing of the hand intervention moment."
+   }
+  ],
+  "overall": "pass",
+  "hard_errors": [],
+  "error": null,
+  "motion_minor": [],
+  "minor": [
+   "framing_and_composition",
+   "shot_size_correctness"
+  ]
+ },
+ "version_receipt_location": "projects/P56_P1_B_INF3/output/project.json -> scenes[].shots[shot_id=s01_c02].video_versions / final_video（正册未内嵌，按此索引）",
+ "input_manifest_note": "job.params 内嵌若存在；版本级 manifest 见 project.json video_versions[].generation_basis.input_manifest"
+}

@@ -1,0 +1,18 @@
+{
+ "story": "I",
+ "project": "P53_I2",
+ "workflow": "P53_I2_W53",
+ "runId": "run_e0f1a17c44e5",
+ "started_at": 1791870602.837091,
+ "skill": [
+  "full-story-relay-calibration",
+  "1.6.0"
+ ],
+ "log": [
+  "project P53_I2 created",
+  "template create rev=1 ok=True",
+  "PUT ok=True",
+  "compile ok=True",
+  "run: run_e0f1a17c44e5 status: running"
+ ]
+}

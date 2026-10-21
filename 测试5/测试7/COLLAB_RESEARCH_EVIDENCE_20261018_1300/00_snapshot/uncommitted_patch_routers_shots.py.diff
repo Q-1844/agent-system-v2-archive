@@ -1,0 +1,36 @@
+diff --git a/routers/shots.py b/routers/shots.py
+index 2ad460e..a5ac5b9 100644
+--- a/routers/shots.py
++++ b/routers/shots.py
+@@ -894,6 +894,12 @@ class FirstFrameRequest(BaseModel):
+     force: bool = False
+     # 2026-09-17 验收轮：image provider 覆盖（sensenova = 商汤 u1.5-lite；默认 agnes 不变）
+     image_provider: str = "agnes"
++    # Phase56 B：BOUND 首帧参考模式显式传入（handler 本就消费 job.params——
++    # REST 面补齐；缺省 auto=确定性导演映射不变）。v2 接续链契约下批准包统一
++    # 用 full（场景图真实进首帧）。
++    scene_reference_mode: Optional[str] = None
++    human_reference_mode: Optional[str] = None
++    population_constraint: Optional[bool] = None
+ 
+ 
+ class ChooseFrameRequest(BaseModel):
+@@ -913,9 +919,15 @@ async def shot_first_frame(project_name: str, shot_id: str, req: FirstFrameReque
+         if ProjectStore(project_dir).load().get_shot(shot_id) is None:
+             raise HTTPException(404, f"镜头 {shot_id} 不存在")
+         q = get_job_queue()
+-        job = q.submit(project_name, "first_frame", shot_id,
+-                       variants=req.variants, force=req.force,
+-                       image_provider=req.image_provider)
++        extra = {"variants": req.variants, "force": req.force,
++                 "image_provider": req.image_provider}
++        if req.scene_reference_mode is not None:
++            extra["scene_reference_mode"] = req.scene_reference_mode
++        if req.human_reference_mode is not None:
++            extra["human_reference_mode"] = req.human_reference_mode
++        if req.population_constraint is not None:
++            extra["population_constraint"] = req.population_constraint
++        job = q.submit(project_name, "first_frame", shot_id, **extra)
+         return {"job_id": job.job_id, "shot_id": shot_id}
+     except FileNotFoundError:
+         raise HTTPException(404, "项目不存在")

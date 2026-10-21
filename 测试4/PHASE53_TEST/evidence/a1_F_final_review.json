@@ -1,0 +1,17 @@
+{
+ "int": "P53_F_final_review",
+ "ts": "2026-10-15T13:00:10",
+ "reviewer": "执行侧代行",
+ "film": "projects/P53_F/output/sequences/seq_8b14e452/srender_2f492acb.mp4",
+ "duration_s": 36.76,
+ "resolution": "1280x720",
+ "decision": "approve",
+ "selected": [
+  "s01_c01",
+  "s02_c01",
+  "s03_c02",
+  "s04_c01",
+  "s05_c01",
+  "s06_c02"
+ ]
+}

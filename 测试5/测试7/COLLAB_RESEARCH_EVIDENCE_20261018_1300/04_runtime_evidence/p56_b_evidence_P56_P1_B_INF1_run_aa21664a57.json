@@ -1,0 +1,443 @@
+{
+ "schema": "p56_b_run_evidence_v1",
+ "project": "P56_P1_B_INF1",
+ "run_id": "run_aa21664a57",
+ "mode_id": "combo_recommended",
+ "mode_version": "2.0.0",
+ "snapshot_hash": "sha256:a1190ae0a3f8e9e1",
+ "status": "completed",
+ "created_at": 1792270022.4160435,
+ "finished_at": 1792271619.5395496,
+ "concurrency_effect": {
+  "requested_media_inflight": 1,
+  "applied": true,
+  "workers": 1,
+  "source": "config:concurrency.video_inflight=1",
+  "changed": false
+ },
+ "authorization": {
+  "scope": "phase56_explicit_mode_start",
+  "machine_review": true,
+  "bounded_repair": true,
+  "granted_by": "phase56_b_benchmark",
+  "user_acceptance": "pending_user_review"
+ },
+ "steps": [
+  {
+   "step_id": "preflight",
+   "status": "done",
+   "started_at": 1792270022.4387662,
+   "finished_at": 1792270022.4387712,
+   "detail": {
+    "skipped": true,
+    "reason": "approved_package：批准快照克隆——资产已冻结，不重做"
+   }
+  },
+  {
+   "step_id": "grant",
+   "status": "done",
+   "started_at": 1792270022.4434962,
+   "finished_at": 1792270022.4541206,
+   "detail": {
+    "families": [
+     "assembly",
+     "character_designer",
+     "director",
+     "scene_designer",
+     "script_writer"
+    ],
+    "grant_id": "gr_2a18abe9",
+    "expires_at": 1792313222.4480627
+   }
+  },
+  {
+   "step_id": "producer_turn",
+   "status": "done",
+   "started_at": 1792270022.4584615,
+   "finished_at": 1792271425.5555139,
+   "detail": {
+    "delegates_enabled": true,
+    "assistant": "## P1《断电前的证词》批准工作包视频生产完成汇报\n\n### ① 调用了哪些 Agent、为什么\n本次全程由我（Producer，经 scoped grant 直接执行）完成，**未委派任何 Specialist**——批准工作包模式下的任务全部落在 Director/Assembly 域内的机械生成与装配操作，无需专业创作判断（无剧情/角色/场景/镜头结构修改需求），符合\"按真实问题调用\"的 Skip 纪律。\n\n### ② 各步骤做了什么（全部引用真实工具回执）\n\n**前置：批准工作包核验**\n- `project.inspect`：1 场景 / 5 镜头 / 3 角色在位 ✓\n- `character.list`：3 角色均有三视图 ✓\n- `scene.inventory`：地点/实例/approved LocationView/approved SIV 齐备，0 stale ✓\n- 逐镜 `shot.production.inspect`：5 镜全部 BOUND/READY，Look/SIV 全 approved ✓\n- 发现 c04 一处 cast 缺项（系统 prerequisite：文本提到安保负责人但未列 cast）——已用 `shot.update_many` 补全（changed_refs=characters）\n\n**视频生成（逐镜真实生成，全部 8s 动态镜配方，接续按 Skill 判定）**\n| 镜 | 接续策略 | 工具回执 |\n|---|---|---|\n| s01_c01 | i2v 独立起步（组首，清理 prev_tail 残留哨兵） | `done` job_id=bac2e9998070，vv_f3b36ebe，8s ✓ |\n| s01_c02 | multi+BOUND 尾帧接力（消费 c01 实际尾帧 vv_f3b36ebe；v2",
+    "receipts": 0,
+    "changed_refs": [],
+    "relays": 0,
+    "usage_totals": {
+     "calls": 69,
+     "prompt_tokens": 5852095,
+     "completion_tokens": 13123
+    }
+   }
+  },
+  {
+   "step_id": "independent_final_review",
+   "status": "done",
+   "started_at": 1792271425.5763402,
+   "finished_at": 1792271619.5350912,
+   "detail": {
+    "batch_id": "rvw_14b2c78d",
+    "shots_reviewed": 5,
+    "hard_error_shots": [],
+    "report_path": "projects\\P56_P1_B_INF1\\output\\agents\\review_pipeline\\rvw_14b2c78d.json"
+   }
+  }
+ ],
+ "review": {
+  "batch_id": "rvw_14b2c78d",
+  "shots_reviewed": 5,
+  "hard_error_shots": [],
+  "minor_shots": [],
+  "report_path": "projects\\P56_P1_B_INF1\\output\\agents\\review_pipeline\\rvw_14b2c78d.json"
+ },
+ "repair": null,
+ "relay_count": 0,
+ "result": {
+  "producer_session_id": "sess_f223c4d88478",
+  "assistant_excerpt": "## P1《断电前的证词》批准工作包视频生产完成汇报\n\n### ① 调用了哪些 Agent、为什么\n本次全程由我（Producer，经 scoped grant 直接执行）完成，**未委派任何 Specialist**——批准工作包模式下的任务全部落在 Director/Assembly 域内的机械生成与装配操作，无需专业创作判断（无剧情/角色/场景/镜头结构修改需求），符合\"按真实问题调用\"的 Skip 纪律。\n\n### ② 各步骤做了什么（全部引用真实工具回执）\n\n**前置：批准工作包核验**\n- `project.inspect`：1 场景 / 5 镜头 / 3 角色在位 ✓\n- `character.list`：3 角色均有三视图 ✓\n- `scene.inventory`：地点/实例/approved LocationView/approved SIV 齐备，0 stale ✓\n- 逐镜 `shot.production.inspect`：5 镜全部 BOUND/READY，Look/SIV 全 approved ✓\n- 发现 c04 一处 cast 缺项（系统 prerequisite：文本提到安保负责人但未列 cast）——已用 `shot.update_many` 补全（changed_refs=characters）\n\n**视频生成（逐镜真实生成，全部 8s 动态镜配方，接续按 Skill 判定）**\n| 镜 | 接续策略 | 工具回执 |\n|---|---|---|\n| s01_c01 | i2v 独立起步（组首，清理 prev_tail 残留哨兵） | `done` job_id=bac2e9998070，vv_f3b36ebe，8s ✓ |\n| s01_c02 | multi+BOUND 尾帧接力（消费 c01 实际尾帧 vv_f3b36ebe；v2 契约要求场景参考合法消费，改 reference_previous 通过） | `done` job_id=6881dc076c04，vv_e0414303，8s ✓ |\n| s01_c03 | i2v 独立 insert 特写（intentional cut，same_scene_recam；声明 cut_reason 通过 v2 校验） | `done` job_id=805e6d8a1e10，vv_c093e071，8s ✓ |\n| s01_c04 | i2v 独立反应镜（intentional cut；binding 换版后原首帧 boundary_frame_stale，按正式流程重生成首帧后再提交视频） | `done` job_id=dd687c9c707f，vv_cb30d005，8s ✓ |\n| s01_c05 | i2v 独立收束镜（intentional cut，构图拉远） | `done` job_id=c78c7e7a7c9b，vv_63c481f2，8s ✓ |\n\n生成中修正了若干 v2 契约校验与文本问题（均为生成前拦截，未消耗额度）：speaker 不在 cast 拒绝（dialogue 改带说话人前缀）、opening_cut_undeclared（补声明 cut_reason）、scene_reference_not_consumed（改 multi+BOUND）、dialogue 括号歧义（c03 改行首括号舞台指示）、c04 binding 换版（重生成首帧）。\n\n**收货核对（接缝测量 + 视觉证据 + 三档裁定 + trace 落档，cal_20261018_045856_0f99）**\n- c01 tail_to_first_mae=null（组首无接力）→ **none**\n- c02 tail_to_first_mae=21.6（正常接力区间 1.7–2.4 上沿偏宽，multi 语义参考固有重构图）→ **minor** accept+adapt（景别 MS 偏宽，叙事/身份/场景连续性完好）\n- c03 tail_to_first_mae=44.3（intentional cut 跨构图 26–60 正常）→ **minor**（景别 WS vs ECU，叙事核心道具可读）\n- c04 tail_to_first_mae=47.2（intentional cut）→ **none**\n- c05 tail_to_first_mae=38.2（intentional cut 收束拉远）→ **none**\n\n5 镜 trace 全部落档，裁定枚举字段非空（human_deviation_level/human_action 齐备），c02 的 mode_mismatch 警告已修正（generation_",
+  "events": 0,
+  "usage_totals": {
+   "calls": 69,
+   "prompt_tokens": 5852095,
+   "completion_tokens": 13123
+  }
+ },
+ "media_jobs": [
+  {
+   "job_id": "3e1cd839ffa1",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792265362.2092204,
+   "started_at": 1792265363.052848,
+   "finished_at": 1792265364.999789,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_e1a2ec95",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[language_missing] native dialogue control 需要可确定的对白语言：显式 request override 与 project.native_av.spoken_language 均缺失（18.md §5：fail closed，绝不恢复成让 Agnes 自己猜语言）"
+  },
+  {
+   "job_id": "8bdcaa795888",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792265379.6842163,
+   "started_at": 1792265380.5808325,
+   "finished_at": 1792265382.5389261,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_d258db5d",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[language_missing] native dialogue control 需要可确定的对白语言：显式 request override 与 project.native_av.spoken_language 均缺失（18.md §5：fail closed，绝不恢复成让 Agnes 自己猜语言）"
+  },
+  {
+   "job_id": "a5dde53f87f2",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792265411.137141,
+   "started_at": 1792265412.0577805,
+   "finished_at": 1792265414.2977989,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_0264be6b",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[language_missing] native dialogue control 需要可确定的对白语言：显式 request override 与 project.native_av.spoken_language 均缺失（18.md §5：fail closed，绝不恢复成让 Agnes 自己猜语言）"
+  },
+  {
+   "job_id": "4e0dea97f007",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792265692.5157642,
+   "started_at": 1792265693.3599956,
+   "finished_at": 1792265695.391674,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_868e3014",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[speaker_not_in_characters] 第 0 句内联 speaker '调查员（左侧，面向工程师）' 不在 Shot.characters ['调查员', '工程师', '安保负责人'] 中（17.md §8：reject，不自动加角色/不纠错）"
+  },
+  {
+   "job_id": "cde1df6ad3ae",
+   "shot_id": "s01_c01",
+   "state": "done",
+   "created_at": 1792265718.9557104,
+   "started_at": 1792265719.7659743,
+   "finished_at": 1792265905.0972297,
+   "provider_task_id": "task_WYHcgCuDylNzgSETrJwbydGpOHpHDBxi",
+   "origin_run_id": "dgv_10a85cf6",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "c6e266763561",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792266098.9959424,
+   "started_at": 1792266099.7621527,
+   "finished_at": 1792266406.8021853,
+   "provider_task_id": "task_adPPwfXVn3pYKmMIDAHpji5LwvPOkmPI",
+   "origin_run_id": "dgv_4b9206fa",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "9392015b4695",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792266410.4891436,
+   "started_at": 1792266411.315987,
+   "finished_at": 1792266670.1849287,
+   "provider_task_id": "task_YES6mxwMMljFqTFF1X37SKUlN98IuDG9",
+   "origin_run_id": "dgv_786db70c",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "0403ef73a9a7",
+   "shot_id": "s01_c04",
+   "state": "failed",
+   "created_at": 1792266684.2655563,
+   "started_at": 1792266685.0496547,
+   "finished_at": 1792266686.8765545,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_eba9adee",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_8b414ddc', 'field': 'binding_revision', 'recorded': '2239df88', 'current': '654b8c53"
+  },
+  {
+   "job_id": "b238972d8ce9",
+   "shot_id": "s01_c04",
+   "state": "done",
+   "created_at": 1792266770.3079388,
+   "started_at": 1792266771.2049434,
+   "finished_at": 1792267030.445546,
+   "provider_task_id": "task_c7O2KbzBwhwbXdX1auaVrD2A5eJAROCm",
+   "origin_run_id": "dgv_0b478165",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "3552142a69bc",
+   "shot_id": "s01_c05",
+   "state": "done",
+   "created_at": 1792267036.9510865,
+   "started_at": 1792267037.767595,
+   "finished_at": 1792267229.7616162,
+   "provider_task_id": "task_X5VXQI23Q0LEIBlbjYovhvjEUTYueHLw",
+   "origin_run_id": "dgv_e43ffeea",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "50879023b056",
+   "shot_id": "s01_c01",
+   "state": "done",
+   "created_at": 1792267611.8733962,
+   "started_at": 1792267612.4847004,
+   "finished_at": 1792267763.3923025,
+   "provider_task_id": "task_8ZBO95LPtmrBUi4tzelyBkRI4Fv5Jaf2",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 1,
+   "error": ""
+  },
+  {
+   "job_id": "de385872bac5",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792267820.3381333,
+   "started_at": 1792267821.0395615,
+   "finished_at": 1792268125.5737774,
+   "provider_task_id": "task_9IU02FCRhFlITmTQAhxMGvGYr2dqDJ9P",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 1,
+   "error": ""
+  },
+  {
+   "job_id": "a26162b7cf89",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792268176.4572408,
+   "started_at": 1792268177.2826834,
+   "finished_at": 1792268472.0038462,
+   "provider_task_id": "task_X7NXraNI2Y2k3F4tARKZ9umRkPAWVE5d",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 2,
+   "error": ""
+  },
+  {
+   "job_id": "8e6a46c73b8c",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792268528.8650475,
+   "started_at": 1792268529.5277114,
+   "finished_at": 1792268796.5908997,
+   "provider_task_id": "task_EScxCXWzhxAGXjoVtN77v9iZNuHtAo0o",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 3,
+   "error": ""
+  },
+  {
+   "job_id": "eb320e3a6c15",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792268851.9221427,
+   "started_at": 1792268852.527187,
+   "finished_at": 1792269022.8410695,
+   "provider_task_id": "task_x120Kz6x5T6D6JNuvdaCOUzzNUXeot7c",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 1,
+   "error": ""
+  },
+  {
+   "job_id": "3b9732199320",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792269077.7415588,
+   "started_at": 1792269078.4283602,
+   "finished_at": 1792269233.7377322,
+   "provider_task_id": "task_gvwfi3DfeTsPPw2fbnY469gBJC3uzsxB",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 2,
+   "error": ""
+  },
+  {
+   "job_id": "027492ab59f6",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792269300.1064599,
+   "started_at": 1792269300.7827675,
+   "finished_at": 1792269543.4226186,
+   "provider_task_id": "task_UhxAnYYsYIJozbPWGrCUWc1YSJYHsdhf",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 3,
+   "error": ""
+  },
+  {
+   "job_id": "f41b104073d5",
+   "shot_id": "s01_c05",
+   "state": "done",
+   "created_at": 1792269597.7300951,
+   "started_at": 1792269598.3212626,
+   "finished_at": 1792269794.8550603,
+   "provider_task_id": "task_g3uz9lD1ToOz2mvMO1gMeiftMrTypEsV",
+   "origin_run_id": "run_fba9de2066",
+   "repair_of_review": "rvw_d4421b7e",
+   "repair_attempt": 1,
+   "error": ""
+  },
+  {
+   "job_id": "f0ea4c993c49",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792270066.3204546,
+   "started_at": 1792270066.9514844,
+   "finished_at": 1792270068.4527628,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_dbcd938d",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[speaker_not_in_characters] 第 0 句内联 speaker '调查员（左侧，面向工程师）' 不在 Shot.characters ['调查员', '工程师', '安保负责人'] 中（17.md §8：reject，不自动加角色/不纠错）"
+  },
+  {
+   "job_id": "bac2e9998070",
+   "shot_id": "s01_c01",
+   "state": "done",
+   "created_at": 1792270074.647607,
+   "started_at": 1792270075.3060503,
+   "finished_at": 1792270225.2982767,
+   "provider_task_id": "task_8dbMwWxWNuGpmPYkqh79IhaOxxz0NS9C",
+   "origin_run_id": "dgv_eef9a843",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "6881dc076c04",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792270323.6686733,
+   "started_at": 1792270324.2520669,
+   "finished_at": 1792270527.8605795,
+   "provider_task_id": "task_ZTY5cl2LUiSrMd4290UG5WW4x6Xo4QCo",
+   "origin_run_id": "dgv_5d91b321",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "e229a0bf325f",
+   "shot_id": "s01_c03",
+   "state": "failed",
+   "created_at": 1792270552.6316094,
+   "started_at": 1792270553.2488532,
+   "finished_at": 1792270554.6662092,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_ca090c1c",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[ambiguous_dialogue_markup] 台词行 #0 的括号标记无法唯一解析（句中/句尾/嵌套括号）：'本镜无对白（仅低音量警报提示音与机柜低频嗡鸣作环境底噪）。'（18.md §7：spoken content 与 non-spoken direction 必须可确定性切分——整行括号=舞台指示；行首"
+  },
+  {
+   "job_id": "805e6d8a1e10",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792270564.429177,
+   "started_at": 1792270565.0247881,
+   "finished_at": 1792270724.9258125,
+   "provider_task_id": "task_1puP1P08ow410B5YRIYFhON6d0mezsxn",
+   "origin_run_id": "dgv_eea1614c",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "0ed7f907b7e6",
+   "shot_id": "s01_c04",
+   "state": "failed",
+   "created_at": 1792270853.0648816,
+   "started_at": 1792270854.334465,
+   "finished_at": 1792270855.8549662,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_6cd5abc8",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_8b414ddc', 'field': 'binding_revision', 'recorded': '2239df88', 'current': '5bb4e05d"
+  },
+  {
+   "job_id": "c78c7e7a7c9b",
+   "shot_id": "s01_c05",
+   "state": "done",
+   "created_at": 1792270853.6826324,
+   "started_at": 1792270856.553197,
+   "finished_at": 1792271028.393102,
+   "provider_task_id": "task_Iy5dIblm2AUgnyU3g5LrepgQdvhAtqob",
+   "origin_run_id": "dgv_0867d129",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "dd687c9c707f",
+   "shot_id": "s01_c04",
+   "state": "done",
+   "created_at": 1792271088.953906,
+   "started_at": 1792271089.6142802,
+   "finished_at": 1792271292.1711829,
+   "provider_task_id": "task_G7jpvdfpktIrd65GkSrouGlAgtdq9fJu",
+   "origin_run_id": "dgv_1ec9afd0",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  }
+ ]
+}

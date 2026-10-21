@@ -1,0 +1,17 @@
+{
+ "runs": [
+  "run_b0d9f55d87(41min,honest-stop:Yuki look 8轮0过审)",
+  "run_41a5a8803b(25min,cancelled:违反未改描述禁重掷纪律,~15图)",
+  "run_dbd0fff8bd(53min,honest-stop:language_missing输入缺口;s01全就绪)",
+  "run_6b1eb7785f(40min,cancelled:场景视图闸不收敛2/7)"
+ ],
+ "state": {
+  "script": "6段done",
+  "looks": "3 approved(描述放宽后)",
+  "scenes": "1 location/6 instances/2-7 views approved",
+  "first_frames": "6+1 done",
+  "videos": 0,
+  "shots_total": 6
+ },
+ "finding": "全流程墙钟被资产质量闸主导；机制全部按设计工作（诚实停/上交/fail-closed/豁免机制存在但producer未使用）"
+}

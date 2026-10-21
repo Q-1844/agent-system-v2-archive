@@ -1,0 +1,31 @@
+== s02_c01 overall=hard_error
+  [first] needs_fix dims=['duplicate_identity', 'unexpected_people'] summary=主要问题：cast_cardinality和duplicate_identity双重fail，画面出现3人且存在疑似角色复制，需精简至2人并消除重复。
+  [middle] needs_fix dims=['duplicate_identity', 'unexpected_people'] summary=hard fail：cast_cardinality/fail（3人超2人）、duplicate_identity（疑似复制）和unexpected_people（多出一名女性）三项硬性失败；WS景别、构图、场景身份均正确，整体质量高但角色配置偏离镜头意图。需移除一名女性或合并为单人。
+  [end] needs_fix dims=['duplicate_identity', 'unexpected_people'] summary=WS宽景成立但存在硬故障：画面出现3人形且左右两位女性疑似同一角色复制，同时镜头要求的侧脸对话细节未呈现，需重生成修正人物数量与机位角度。
+== s04_c01 overall=hard_error
+  [first] needs_fix dims=['unexpected_people', 'shot_size_correctness'] summary=硬门失败：景别错配（WS非MCU）+ 多出一个未计划的黑衣守军，需重生成或裁剪。
+  [middle] needs_fix dims=['unexpected_people', 'shot_size_correctness'] summary=cast_cardinality与unexpected_people失败（多出黑衣守军），shot_size_correctness失败（要求MCU实际为WS），其余维度基本通过。
+  [end] needs_fix dims=['shot_size_correctness'] summary=景别不符（要求 MCU 实为 WS），其余维度通过，人物身份/服装/道具/氛围成立。
+== s05_c01 overall=hard_error
+  [first] uncertain dims=[] summary=首帧构图完整呈现双人对峙，场景与角色造型准确，但缺乏动态元素与关键细节（疤痕、手电光柱），建议优化动作瞬间捕捉。
+  [middle] needs_fix dims=['unexpected_people'] summary=场景、人物造型、道具均准确，但背景雾中多出未要求的第三人形剪影导致cast_cardinality和unexpected_people双fail。
+  [end] needs_fix dims=['unexpected_people', 'missing_character', 'shot_size_correctness'] summary=MCU 错配、老覃缺席、额外守军过多，核心 cast 未完整呈现。
+== s13_c01 overall=hard_error
+  [first] needs_fix dims=['unexpected_people'] summary=MS景别正确，但场景地点(桥梁vs街道)和道具(青铜器vs蔬菜)严重不符意图，背景多出路人
+  [middle] needs_fix dims=['shot_size_correctness'] summary=Hard fail：景别不符（WS非MS）、道具错误（蔬菜代替青铜器文物），其余维度通过。
+  [end] needs_fix dims=['shot_size_correctness'] summary=景别偏WS且场景缺桥梁元素，但人物与道具基本符合意图。
+== s17_c01 overall=incomplete
+  [first] needs_fix dims=['unexpected_people'] summary=WS宽镜头景别与场景氛围达标，老覃及道具符合意图，但背景出现6个未要求的工人人形，导致cast_cardinality和unexpected_people两项fail，需移除多余人物后重新生成。
+  [middle] needs_fix dims=['unexpected_people'] summary=WS成立但cast_cardinality与prop_fidelity均fail（多余路人+夹克状态不符），需去除背景人物并调整夹克位置。
+== s18_c01 overall=uncertain
+  [first] needs_fix dims=['shot_size_correctness'] summary=核心问题：景别错误，导演要求EWS实际出MS近景，人物占比过大，环境主体性不足。
+  [middle] needs_fix dims=['shot_size_correctness'] summary=画面构图与光影表现优秀，但景别不符合EWS要求（实际为WS），人物占比过大；其余维度均通过，需重新生成或调整景别。
+  [end] needs_fix dims=['shot_size_correctness'] summary=EWS意图严重偏离为MS：人物过大、环境过小，码头全貌与清晨辽阔感未建立；其余维度无硬伤。
+== s21_c01 overall=hard_error
+  [first] needs_fix dims=['shot_size_correctness'] summary=主要问题：景别不符（要求MCU实际MS）、动作状态错误（静止并排而非奔跑/缓行）、时间氛围偏差（黄昏而非夜晚），Cast与Look正确。
+  [middle] needs_fix dims=['shot_size_correctness'] summary=景别错误（MS替代MCU），其余维度基本通过，建议调整景别并强化夜景氛围。
+  [end] needs_fix dims=['missing_character', 'shot_size_correctness'] summary=景别严重错配（要求MCU，实际WS），白手套缺失，公文包道具未见；环境氛围与场景身份符合，但cast与景别两硬伤需修正。
+== s23_c01 overall=hard_error
+  [first] needs_fix dims=['missing_character', 'framing_and_composition'] summary=景别和人物数量正确,但空间关系严重偏离意图:伊岚未在桥上独立,三人并排站位破坏了叙事张力。
+  [middle] needs_fix dims=['shot_size_correctness', 'framing_and_composition'] summary=三人齐全但场景、景别、构图三层全错配——是城市街道MS而非仓库桥吊WS，伊岚未置于桥上，警灯/桥吊/雾光等关键氛围元素缺失。
+  [end] needs_fix dims=['missing_character', 'shot_size_correctness'] summary=缺少伊岚且景别为MS而非WS，同时缺少警灯与桥吊区元素，需重生成。

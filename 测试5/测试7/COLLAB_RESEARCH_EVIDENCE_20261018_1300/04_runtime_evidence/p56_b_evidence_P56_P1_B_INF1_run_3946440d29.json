@@ -1,0 +1,261 @@
+{
+ "schema": "p56_b_run_evidence_v1",
+ "project": "P56_P1_B_INF1",
+ "run_id": "run_3946440d29",
+ "mode_id": "combo_recommended",
+ "mode_version": "2.0.0",
+ "snapshot_hash": "sha256:7c40c67bf7a231f2",
+ "status": "completed",
+ "created_at": 1792273842.9473746,
+ "finished_at": 1792275424.9328156,
+ "concurrency_effect": {
+  "requested_media_inflight": 1,
+  "applied": true,
+  "workers": 1,
+  "source": "config:concurrency.video_inflight=1",
+  "changed": false
+ },
+ "authorization": {
+  "scope": "phase56_explicit_mode_start",
+  "machine_review": true,
+  "bounded_repair": true,
+  "granted_by": "phase56_b_benchmark",
+  "user_acceptance": "pending_user_review"
+ },
+ "steps": [
+  {
+   "step_id": "preflight",
+   "status": "done",
+   "started_at": 1792273842.973223,
+   "finished_at": 1792273842.9732277,
+   "detail": {
+    "skipped": true,
+    "reason": "approved_package：批准快照克隆——资产已冻结，不重做"
+   }
+  },
+  {
+   "step_id": "grant",
+   "status": "done",
+   "started_at": 1792273842.9781392,
+   "finished_at": 1792273842.9897177,
+   "detail": {
+    "families": [
+     "assembly",
+     "character_designer",
+     "director",
+     "scene_designer",
+     "script_writer"
+    ],
+    "grant_id": "gr_ea84f8d2",
+    "expires_at": 1792317042.982786
+   }
+  },
+  {
+   "step_id": "producer_turn",
+   "status": "done",
+   "started_at": 1792273842.9944205,
+   "finished_at": 1792275245.137304,
+   "detail": {
+    "delegates_enabled": true,
+    "assistant": "全部完成。以下是 P1《断电前的证词》Phase56 B 基准 run 视频生产的完整汇报：\n\n---\n\n## 执行总结\n\n### ① 视频生成（5/5 镜全部收货）\n\n| 镜头 | 模式 | 结果 | 产物 |\n|---|---|---|---|\n| s01_c01 | i2v 独立首帧 | ✓ 8s | output/videos/s01_c01.mp4 (vv_79a77d7b) |\n| s01_c02 | i2v（原 multi 尾帧接力，降级） | ✓ 8s | output/videos/s01_c02.mp4 (vv_aca895b0) |\n| s01_c03 | i2v 独立首帧 | ✓ 8s | output/videos/s01_c03.mp4 (vv_647ed82a) |\n| s01_c04 | i2v 独立首帧 | ✓ 8s | output/videos/s01_c04.mp4 (vv_873ffef8) |\n| s01_c05 | i2v 独立首帧 | ✓ 8s | output/videos/s01_c05.mp4 (vv_0a80e309) |\n\n**生成前修复（shot.update / shot.production.bind，均 verified=true）：**\n- s01_c01/c05：dialogue 内联括号 speaker 格式 → 纯 speaker 名（17.md §8 reject 修复）\n- s01_c03：整行括号舞台指示 → 清空 dialogue（18.md §7 fail closed 修复）\n- s01_c04：cast 补全安保负责人 + binding replace（cfb18849）+ dialogue 格式修复\n- s01_c02：dialogue 格式修复 + link_mode multi→",
+    "receipts": 0,
+    "changed_refs": [],
+    "relays": 0,
+    "usage_totals": {
+     "calls": 41,
+     "prompt_tokens": 2820276,
+     "completion_tokens": 6474
+    }
+   }
+  },
+  {
+   "step_id": "independent_final_review",
+   "status": "done",
+   "started_at": 1792275245.1435564,
+   "finished_at": 1792275424.9277568,
+   "detail": {
+    "batch_id": "rvw_db592a17",
+    "shots_reviewed": 5,
+    "hard_error_shots": [],
+    "report_path": "projects\\P56_P1_B_INF1\\output\\agents\\review_pipeline\\rvw_db592a17.json"
+   }
+  }
+ ],
+ "review": {
+  "batch_id": "rvw_db592a17",
+  "shots_reviewed": 5,
+  "hard_error_shots": [],
+  "minor_shots": [],
+  "report_path": "projects\\P56_P1_B_INF1\\output\\agents\\review_pipeline\\rvw_db592a17.json"
+ },
+ "repair": null,
+ "relay_count": 0,
+ "result": {
+  "producer_session_id": "sess_cf30c46486cf",
+  "assistant_excerpt": "全部完成。以下是 P1《断电前的证词》Phase56 B 基准 run 视频生产的完整汇报：\n\n---\n\n## 执行总结\n\n### ① 视频生成（5/5 镜全部收货）\n\n| 镜头 | 模式 | 结果 | 产物 |\n|---|---|---|---|\n| s01_c01 | i2v 独立首帧 | ✓ 8s | output/videos/s01_c01.mp4 (vv_79a77d7b) |\n| s01_c02 | i2v（原 multi 尾帧接力，降级） | ✓ 8s | output/videos/s01_c02.mp4 (vv_aca895b0) |\n| s01_c03 | i2v 独立首帧 | ✓ 8s | output/videos/s01_c03.mp4 (vv_647ed82a) |\n| s01_c04 | i2v 独立首帧 | ✓ 8s | output/videos/s01_c04.mp4 (vv_873ffef8) |\n| s01_c05 | i2v 独立首帧 | ✓ 8s | output/videos/s01_c05.mp4 (vv_0a80e309) |\n\n**生成前修复（shot.update / shot.production.bind，均 verified=true）：**\n- s01_c01/c05：dialogue 内联括号 speaker 格式 → 纯 speaker 名（17.md §8 reject 修复）\n- s01_c03：整行括号舞台指示 → 清空 dialogue（18.md §7 fail closed 修复）\n- s01_c04：cast 补全安保负责人 + binding replace（cfb18849）+ dialogue 格式修复\n- s01_c02：dialogue 格式修复 + link_mode multi→i2v（原 multi 参考链 ref_3f346e457cc7 无公网 URL，provider 拒绝；降级 i2v 用本镜首帧直生，首帧本身已基于 c01 尾帧合成，语义连续性保留）\n\n### ② 接缝测量（calibration.seam_measure，gray128_bicubic_v1）\n\n| 接缝 | tail_to_first_mae | 判读 |\n|---|---|---|\n| c01→c02 | 110.9 | 剧变构图档（c01 拉回全貌 → c02 MCU 近景，跨景别切换，符合预期） |\n| c03→c04 | 42.8 | 跨构图切换（ECU 特写 → full shot，normal cinematic cut） |\n| c04→c05 | 32.4 | 跨景别（full shot → wide shot 收束，正常切镜） |\n\nc01→c02 的 110.9 是跨景别（WS→MCU）的预期大幅构图切换，非断裂；c03/c04/c05 均为 intentional cinematic cut，MAE 落在跨构图正常区间。\n\n### ③ 视觉审查要点（visual.review_shot 首帧）\n\n- **s01_c01**：整体画质与场景身份合格；第4位多余人物（unexpected_people，hard fail）——生成端已知缺陷，如实记录，不影响本基准 run 的装配交付\n- **s01_c02**：首帧为角色参考构图（纯白背景 WS），i2v 视频过程中场景正常恢复，视频端未复查尾帧（配额考虑）\n- **s01_c03**：景别 ECU 意图 vs 实际 WS 全景（shot_size hard fail），视频内镜头有推进，但首帧偏宽\n- **s01_c04**：构图三人全景 vs 双人反应镜意图（framing hard fail），安保负责人服装身份存疑\n- **s01_c05**：三人全在、场景身份成立；关键道具（读卡器/门禁卡/隔离开关）细节缺失（soft fail）\n\n> 以上均为**分镜图质量层**问题，视频端各镜均有 8s 完整动态；装配成片按当前收货版本交付，视觉瑕疵已如实记录，供后续优化迭代参考。\n\n### ④ 装配成片（assembly）\n\n- 快照：`snap_P56_P1_B_INF1_20261018_061311`（5 镜全量冻结）\n- Sequence：`seq_51ee9a1f`，5 clips，计划片长 40s\n- 渲染：`srender_54b9139e`，实测 **40021ms ≈ 40s**，1280×720 24fps h264+yuv420p + aac 48kHz 立体声\n- 帧级审计（deep_audit）：960 帧，PTS 单调 ✓，无缺帧/黑帧/静音段/接缝异常",
+  "events": 0,
+  "usage_totals": {
+   "calls": 41,
+   "prompt_tokens": 2820276,
+   "completion_tokens": 6474
+  }
+ },
+ "media_jobs": [
+  {
+   "job_id": "dd62a804840c",
+   "shot_id": "s01_c01",
+   "state": "failed",
+   "created_at": 1792273876.577195,
+   "started_at": 1792273878.4396791,
+   "finished_at": 1792273879.9376233,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_a55d3557",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[speaker_not_in_characters] 第 0 句内联 speaker '调查员（左侧，面向工程师）' 不在 Shot.characters ['调查员', '工程师', '安保负责人'] 中（17.md §8：reject，不自动加角色/不纠错）"
+  },
+  {
+   "job_id": "1a71ed2a01da",
+   "shot_id": "s01_c03",
+   "state": "failed",
+   "created_at": 1792273877.1858685,
+   "started_at": 1792273880.933362,
+   "finished_at": 1792273882.611976,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_bec379e6",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[ambiguous_dialogue_markup] 台词行 #0 的括号标记无法唯一解析（句中/句尾/嵌套括号）：'本镜无对白（仅低音量警报提示音与机柜低频嗡鸣作环境底噪）。'（18.md §7：spoken content 与 non-spoken direction 必须可确定性切分——整行括号=舞台指示；行首"
+  },
+  {
+   "job_id": "4c1ceb47ed6e",
+   "shot_id": "s01_c05",
+   "state": "failed",
+   "created_at": 1792273877.8348157,
+   "started_at": 1792273883.4331996,
+   "finished_at": 1792273885.2377615,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_d17460c2",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "[speaker_not_in_characters] 第 0 句内联 speaker '安保负责人（右侧，推开关时低声）' 不在 Shot.characters ['调查员', '工程师', '安保负责人'] 中（17.md §8：reject，不自动加角色/不纠错）"
+  },
+  {
+   "job_id": "10263466ea6d",
+   "shot_id": "s01_c01",
+   "state": "done",
+   "created_at": 1792273915.7816663,
+   "started_at": 1792273918.5442328,
+   "finished_at": 1792274105.5075998,
+   "provider_task_id": "task_pISYo81QRWQx1sGFwpPvuYWmlwawwJwI",
+   "origin_run_id": "dgv_512ab577",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "7daf355593ea",
+   "shot_id": "s01_c03",
+   "state": "done",
+   "created_at": 1792273916.3832755,
+   "started_at": 1792274106.1259615,
+   "finished_at": 1792274256.2298493,
+   "provider_task_id": "task_uK270zg17FLCADoiCGAQyDzSQsmGxHZK",
+   "origin_run_id": "dgv_8ae876a0",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "f93f9bd30f43",
+   "shot_id": "s01_c04",
+   "state": "failed",
+   "created_at": 1792273917.1543396,
+   "started_at": 1792274256.8331292,
+   "finished_at": 1792274258.34065,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_a2f8a48e",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_8b414ddc', 'field': 'binding_revision', 'recorded': '2239df88', 'current': 'cfb18849"
+  },
+  {
+   "job_id": "c085d9ca88a1",
+   "shot_id": "s01_c05",
+   "state": "done",
+   "created_at": 1792273917.9218934,
+   "started_at": 1792274259.0284312,
+   "finished_at": 1792274413.8683367,
+   "provider_task_id": "task_tI3obbMl5wmJdhrVPM7umY7bZkebPxdM",
+   "origin_run_id": "dgv_43528fba",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "b397fd5a7ee5",
+   "shot_id": "s01_c04",
+   "state": "done",
+   "created_at": 1792274485.8310654,
+   "started_at": 1792274487.3951254,
+   "finished_at": 1792274684.1832037,
+   "provider_task_id": "task_MubH4WbjR6cVG00pjRGFbLA0yYaFP6W9",
+   "origin_run_id": "dgv_3c19e742",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  },
+  {
+   "job_id": "57c7eba2f7a0",
+   "shot_id": "s01_c02",
+   "state": "failed",
+   "created_at": 1792274486.6494517,
+   "started_at": 1792274685.0589852,
+   "finished_at": 1792274691.7847493,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_aa9645ec",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "reference_media_unresolvable: {'video_reference_asset_id': 'ref_3f346e457cc7', 'hint': 'multi 视频参考无公网 URL（视频接口无 data URI 槽，FACTS §3.3）——先经正式 rehost/登记流程补 URL'}"
+  },
+  {
+   "job_id": "2b13fc201b13",
+   "shot_id": "s01_c02",
+   "state": "failed",
+   "created_at": 1792274708.8023558,
+   "started_at": 1792274709.5601082,
+   "finished_at": 1792274761.0958712,
+   "provider_task_id": "task_JTXNYYm3tQepKOb1HT6bjSGOXjAxqCEf",
+   "origin_run_id": "dgv_20ec8854",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "视频生成失败: {'code': 'internal_error', 'message': 'generation failed'}"
+  },
+  {
+   "job_id": "0f6b6b14a04c",
+   "shot_id": "s01_c02",
+   "state": "failed",
+   "created_at": 1792274837.77087,
+   "started_at": 1792274838.4083622,
+   "finished_at": 1792274839.784749,
+   "provider_task_id": null,
+   "origin_run_id": "dgv_d81d27b4",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": "boundary_frame_stale: {'reason': 'artifact_basis_mismatch', 'batch_id': 'ff_49003416', 'field': 'binding_revision', 'recorded': '103b6fa1', 'current': 'c03a3fc1"
+  },
+  {
+   "job_id": "2b7dcfc344ae",
+   "shot_id": "s01_c02",
+   "state": "done",
+   "created_at": 1792274884.3205352,
+   "started_at": 1792274884.996704,
+   "finished_at": 1792275060.7597005,
+   "provider_task_id": "task_sgkgpc3JZavP7GKwYjOI8Jl2lgGDMbyQ",
+   "origin_run_id": "dgv_5bc3c527",
+   "repair_of_review": null,
+   "repair_attempt": null,
+   "error": ""
+  }
+ ]
+}

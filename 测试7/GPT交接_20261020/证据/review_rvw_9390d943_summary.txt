@@ -1,0 +1,7 @@
+batch=rvw_9390d943 policy=None reviewed=6
+  s01_c01 v=vv_3d40291d9cf1 overall=incomplete hard=[] minor=None incomplete=None
+  s01_c02 v=vv_ff222382d710 overall=hard_error hard=['missing_character'] minor=None incomplete=None
+  s01_c03 v=vv_12483bd6bc4f overall=pass hard=[] minor=None incomplete=None
+  s01_c04 v=vv_f251876ceae6 overall=pass hard=[] minor=None incomplete=None
+  s01_c05 v=vv_acaee528eb9a overall=hard_error hard=['missing_character'] minor=None incomplete=None
+  s02_c01 v=vv_459793346579 overall=pass hard=[] minor=None incomplete=None
