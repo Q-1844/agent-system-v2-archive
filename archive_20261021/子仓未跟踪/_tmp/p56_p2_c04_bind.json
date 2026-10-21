@@ -1,1 +1,0 @@
-{"content": "【c04 绑定调整（已授权直接执行，operator 裁定）】守卫机器人 Look 多轮审查无法过（写实质感 vs 3D 渲染倾向=模型边界），机器人仅出现于 s01_c04 单镜（独立镜、无跨镜连续性负担）。裁定：c04 改为场景锚绑定——shot.production.bind s01_c04（mode=replace）：character_bindings=[]（机器人不进 Look 链，其外形由首帧锚定+prompt 描述），场景钉扎 sciv_cc69db6ae604 保持。完成后 inspect 确认 readiness=READY。机器人 Look 保持未批准状态如实留档。"}

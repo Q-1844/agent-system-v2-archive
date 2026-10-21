@@ -1,7 +1,0 @@
-{
-  "file": "src/components/agent/CollabRunPanel.vue",
-  "compiler_version": "3.5.38",
-  "script": "passed",
-  "template": "passed",
-  "scope": "SFC compilation; not full vue-tsc or browser integration"
-}

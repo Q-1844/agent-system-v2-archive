@@ -1,1 +1,0 @@
-{"content": "【绑定同步（已授权直接执行）】s01_c03 的 shot.characters 已清空（规格修正：该镜主体为读卡器与门禁卡特写，无人物主体）。请执行 shot.production.refresh（或必要时报 shot.production.bind）使 c03 的绑定与 canonical 一致：character_bindings 应为空/仅保留与人物无关项，场景钉扎 sciv_6752ae905441 保持。完成后 shot.production.inspect s01_c03 汇报 readiness 与 look 数量。不要生成图片或视频。"}

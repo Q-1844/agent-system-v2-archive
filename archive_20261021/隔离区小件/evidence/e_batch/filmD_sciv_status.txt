@@ -1,7 +1,0 @@
-sciv_3045649ec407 label=s01_scene_state        gen=none approval=unreviewed fp=None
-sciv_a6a81eafed32 label=s01_state_view         gen=ready approval=approved fp=49581685
-sciv_b55b9a97cdbb label=s02_state_view         gen=ready approval=unreviewed fp=None
-sciv_67c4179fde65 label=s03_state_view         gen=ready approval=unreviewed fp=None
-sciv_8ba857d44b72 label=s04_state_view         gen=ready approval=unreviewed fp=None
-sciv_74d6bdc6605b label=s05_state_view         gen=ready approval=approved fp=0cb9ad9a
-sciv_632131b89e4f label=s06_state_view         gen=ready approval=unreviewed fp=None

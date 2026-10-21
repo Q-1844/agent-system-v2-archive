@@ -1,1 +1,0 @@
-{"content": "【canonical 证据】我直接读 project.json：s01_c05 的 video_reference_asset_id 当前值是字符串 \"prev_tail\"（非 null）——你的 shot.read 视图与 canonical 不一致。请再次执行 shot.update(s01_c05, video_reference_asset_id=null)，强制写入（即使你认为无变化），然后 shot.read 回显。若 shot.update 拒绝写 null，用空字符串也可以（目标=清除哨兵，任何 falsy 值均可）。这是批准规格符合性修正：c05 是独立镜，不得带接力哨兵。"}

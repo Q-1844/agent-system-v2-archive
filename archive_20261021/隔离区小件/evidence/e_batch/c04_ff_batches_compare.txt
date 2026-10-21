@@ -1,7 +1,0 @@
-== P56_P2_SIGNAL: 1 batches
-  batch=ff_a0e685e7 sel=None binding_readiness=None keys=['image_provider', 'ratio', 'size_tier']
-== P56_P2_C_COMBO: 1 batches
-  batch=ff_a0e685e7 sel=None binding_readiness=None keys=['image_provider', 'ratio', 'size_tier']
-== P56_E_R11_A: 2 batches
-  batch=ff_a0e685e7 sel=None binding_readiness=None keys=['image_provider', 'ratio', 'size_tier']
-  batch=ff_27946388 sel=None binding_readiness='READY' keys=['binding_document_revision', 'binding_readiness', 'binding_revision', 'dependency_fingerprints', 'diagnostics', 'dropped_optional', 'human_reference_mode', 'image_provider', 'population_constraint', 'ratio']

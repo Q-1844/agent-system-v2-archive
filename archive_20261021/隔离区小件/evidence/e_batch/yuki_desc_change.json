@@ -1,9 +1,0 @@
-{
- "before": "30-year-old East Asian female laboratory records clerk, slim build with a slight forward hunch from long desk work, shoulder-length straight black hair with blunt bangs, round wire-frame glasses, clear skin with a small round beauty mark under her right eye, wearing a pale sage-green field jacket over a cream turtleneck, khaki trousers, round-toe brown leather ankle boots, holding a small canvas record folder loosely in her left hand at her side (not a crossbody bag), muted palette of sage, cream, and khaki",
- "after": "30-year-old East Asian female laboratory records clerk, slim build with a slight forward hunch from long desk work, shoulder-length straight black hair with blunt bangs, round wire-frame glasses, clear skin, wearing a pale sage-green field jacket over a cream turtleneck, khaki trousers, round-toe brown leather ankle boots, carrying a small canvas record folder in her left hand, muted palette of sage, cream, and khaki",
- "reason": "look review 8轮0过审（痣位置/挎法/年龄感三约束不可稳定同产）——输入侧策略放宽",
- "removed": [
-  "clear skin with a small round beauty mark under her right eye -> clear skin",
-  "holding a small canvas record folder loosely in her left hand at her side (not a crossbody bag) -> carrying a small canvas record folder in her left hand"
- ]
-}

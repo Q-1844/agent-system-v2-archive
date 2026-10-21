@@ -1,6 +1,0 @@
-{"nodeid": "tests/test_project_autopilot.py::test_case4_recover_rebinds_child", "when": "setup", "outcome": "passed", "duration": 0.7730409649998364, "failure": null}
-{"nodeid": "tests/test_project_autopilot.py::test_case4_recover_rebinds_child", "when": "call", "outcome": "passed", "duration": 8.566008046999741, "failure": null}
-{"nodeid": "tests/test_project_autopilot.py::test_case4_recover_rebinds_child", "when": "teardown", "outcome": "passed", "duration": 0.0011112039996987733, "failure": null}
-{"nodeid": "tests/test_full_project_autopilot.py::test_case7_production_child_crash_rebind", "when": "setup", "outcome": "passed", "duration": 0.0003722309998011042, "failure": null}
-{"nodeid": "tests/test_full_project_autopilot.py::test_case7_production_child_crash_rebind", "when": "call", "outcome": "passed", "duration": 6.315687424999851, "failure": null}
-{"nodeid": "tests/test_full_project_autopilot.py::test_case7_production_child_crash_rebind", "when": "teardown", "outcome": "passed", "duration": 0.004084830000010697, "failure": null}

@@ -1,5 +1,0 @@
-rev_72032db134 fp=7e127fce verdicts: [{'asset_id': 'ref_1df3cf1717a2', 'status': 'reviewed', 'identity_consistency': 
-rev_c44ed00967 fp=0b587502 verdicts: [{'asset_id': 'ref_35876e5d1021', 'status': 'reviewed', 'identity_consistency': 
-rev_860849db67 fp=6f855ac9 verdicts: [{'asset_id': 'ref_cb88ab68a5f1', 'status': 'reviewed', 'identity_consistency': 
-rev_703f2ee66e fp=aa8a36d7 verdicts: [{'asset_id': 'ref_eaa9bbdfbae4', 'status': 'reviewed', 'identity_consistency': 
-rev_8e25fbe333 fp=44f1bd4a verdicts: [{'asset_id': 'ref_3820231ebed0', 'status': 'reviewed', 'identity_consistency': 

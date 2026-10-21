@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="1.178" timestamp="2026-10-18T20:38:23.391290+08:00" hostname="bingqilin"><testcase classname="tests.test_ai_7ch_cancel_race" name="test_case1_stale_object_resurrection" time="0.728" /></testsuite></testsuites>

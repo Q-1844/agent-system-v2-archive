@@ -1,7 +1,0 @@
-review records: 8
-    3171s ago look.review_candidates look_e08768f6a7f completed
-    2715s ago look.review_candidates look_809d464778d completed
-    2647s ago look.review_candidates look_e08768f6a7f completed
-    2566s ago look.review_candidates look_809d464778d completed
-    2497s ago look.review_candidates look_e08768f6a7f completed
-look verdicts: {'pass': 7, 'concern': 1}

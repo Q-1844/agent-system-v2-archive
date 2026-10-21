@@ -1,9 +1,0 @@
-== P56_P2_SIGNAL selected_index=1 n_candidates=2
-  [0] batch=? sel=False binding_readiness=None basis_keys=[]
-  [1] batch=? sel=True binding_readiness=None basis_keys=[]
-== P56_P2_C_COMBO selected_index=1 n_candidates=2
-  [0] batch=? sel=False binding_readiness=None basis_keys=[]
-  [1] batch=? sel=True binding_readiness=None basis_keys=[]
-== P56_E_R11_A selected_index=1 n_candidates=2
-  [0] batch=? sel=False binding_readiness=None basis_keys=[]
-  [1] batch=? sel=True binding_readiness=None basis_keys=[]
