@@ -1,0 +1,61 @@
+# 已删除数据存档（用户 10-21 指令：早期素材全部删除）
+
+- 路径: `D:\isolated\archives\projects_archive_20261007`
+- 删除时间: 2026-10-21 10:02
+- 文件数: 5924
+- 体量: 5140MB
+- 顶层结构:
+  - _40_skill_replay
+  - _44b_swap_fixture
+  - _p4_accept
+  - _pvp_e2e_2d
+  - _pvp_e2e_photo
+  - 1
+  - 2
+  - AGNES_完整验收_A
+  - cache
+  - Crane_Lake_P39C
+  - Crane_Lake_P39D
+  - Crane_Lake_P40A
+  - Crane_Lake_P40A_expB
+  - Fable_Pilot_Fox_and_Grapes_V1
+  - Fable_Pilot_Fox_and_Grapes_V1_P39B
+  - Golden_31_Integration_Fixture
+  - Golden_Full_Production_V1
+  - Golden_山雨信
+  - P44D演练A
+  - P44D演练B
+  - P44D演练C
+  - P46_F_DualReview
+  - P46_Probe
+  - P46_repro
+  - P47_B_Probe
+  - P47_C_Templates
+  - P47_E_Recovery
+  - P48_B_Audio
+  - P48_C_Continuity
+  - P48_D_Cast
+  - P48_E_2D
+  - P48_E_Blind
+  - P48_E_Explainer
+  - P48_E_Proc
+  - P48_E_Realistic
+  - P48_E_RV1
+  - P48_E_RV2
+  - P48_E_RV3P
+  - P48_E_RV3W
+  - P48_E_Watercolor
+  - scene_style_gallery
+  - 场景封板_0916_2216
+  - 晨露快递
+  - 风后邮站
+  - 风铃山道
+  - 山雀夜航
+  - 我的动画短片
+  - 验收A_2D动漫
+  - 验收B_半写实电影插画
+  - 验收C_国风插画
+  - 验收D_写实视觉开发
+  - 夜邮刺猬
+  - 雨灯归航
+- 内容: 早期项目工作归档(雨灯归航/AGNES_完整验收_A 等, 含 roughcut 成片/逐镜渲染/场景图/生成记录)
