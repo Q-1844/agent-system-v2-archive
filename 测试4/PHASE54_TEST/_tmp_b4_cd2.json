@@ -1,1 +1,0 @@
-{"content": "继续完成角色生产资源：三角色（林远/苏然/标本库异常人形）的 character.generate_views 三视图全部真实生成，然后逐角色 resource.look.prepare（真实生成+审批，一次一步）。纪律不变：异常人形 needs_fix 调整一次再试；内容策略拒绝 2 次如实跳过。全部完成后汇报。", "thinking": true}

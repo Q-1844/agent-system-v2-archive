@@ -1,4 +1,0 @@
-84f953434200a65c3c42b6923a4345be0fda8e88d361ef80ed53ff63167dd506  GPT交接2_源码快照_20261020_整包.zip  ← 交给 GPT 的单文件
-aa2f0bbbba67649972297db6ad976f61ab4ce77b87b3046ee9ce368d66a44a7a  COLLAB_SOURCE_TAKEOVER_20261020.zip  (整包内含；内部逐文件校验=包内 MANIFEST.json)
-ef261db981d9f0543322290727272435334e6beb02df1c36a6b9f7d1c37d50a9  00_交接报告_源码快照与复核确认.md
-# 权威哈希记录（2026-10-20，本文件位于两 zip 之外）

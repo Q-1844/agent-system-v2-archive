@@ -1,7 +1,0 @@
-{
- "int": "INT-B4-02",
- "ts": "2026-10-17T05:35:08",
- "change": "negative_prompt cleared (merged into prompt_en tail) for all P54_M5 shots",
- "reason": "2.5 视频契约禁 negative_prompt 字段（agnes_client 650 校验）——M5 分镜写了该字段致视频提交全挡；错误信息 prescribed 并入 prompt。执行侧桥接。",
- "count": 15
-}
