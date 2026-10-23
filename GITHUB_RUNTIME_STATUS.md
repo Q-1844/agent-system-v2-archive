@@ -1,38 +1,32 @@
-# GitHub 运行态（2026-10-23，Codex 接手复核）
+# GitHub运行态（2026-10-23）
 
-**部署状态：A 修复分支提交 `a929e75` 已发布；默认分支仍为 `061735c`，尚未合入。默认分支更新被自动审批拦截，待用户批准具体 PR。以下修复说明指待合入代码；线上 cron 当前仍是原有 `*/10`。**
-A 默认分支为 `chore/migration-readiness`。本轮具体提交、逐项证据和验收结果见 [运行链修复报告](CODEX_RUNTIME_REVIEW_20261023.md)。
+**部署更新：PR #1与PR #2均已合入默认分支`chore/migration-readiness`；当前合并提交`8f81b677e41082118cf7433e5278883c34fb5064`。最终源码`f77f4aa`的两轮完整CI均成功。三分钟真实验收仍被D图床凭据403阻塞，尚未生成成片。**
 
-## 已核实的历史证据
+## 部署与绿色回归
 
-- 真实单段生产：run [39961036358](https://github.com/Q-1844/agent-system-v2/actions/runs/39961036358)，`workflow_dispatch/success`。
-- 巡检：run [39962609983](https://github.com/Q-1844/agent-system-v2/actions/runs/39962609983)，`workflow_dispatch/success`。
-- 原 B 资产 `669214514` 已重新下载，1,954,214 字节，SHA256 `102b5a8acfbef74ab6d8a701c65d100397f83b184b1cdaec4eb76500d5b56523`。
-- B1 demo1 权威状态已读回，为 `VERIFIED_RESTORABLE`。
+- A默认分支：chore/migration-readiness；当前提交：8f81b677e41082118cf7433e5278883c34fb5064。
+- PR #1：https://github.com/Q-1844/agent-system-v2/pull/1 ，已合入，修复巡检终态判定、失败退出码、CAS检查点及跨仓恢复。
+- PR #2：https://github.com/Q-1844/agent-system-v2/pull/2 ，已合入，暂停旧短片demo2并增加至少180秒原制作链验收及保护。
+- 最终源码f77f4aafc8a705888f9f32c7594c0284ffdcb8d3的两轮CI全部成功。实际run：39989582134, 39989572132。
+- 本机离线恢复/存储/长片保护340 passed、10 skipped；FullProject/Project/图床相关36 passed。集合有重叠，不相加成独立用例数。
+- 逐文件对账、统计与真实运行边界见[三分钟验收报告](CODEX_LONG_FILM_ACCEPTANCE_20261023.md)及其机器证据。
 
-这些证据证明单段 E2E 路径，不证明完整项目自动制作和素材生命周期已在云端完成。
+## 真实长片当前受阻
 
-审阅入口：[A 仓 PR #1](https://github.com/Q-1844/agent-system-v2/pull/1)。
+run [39988882623](https://github.com/Q-1844/agent-system-v2/actions/runs/39988882623)成功安装FFmpeg（17秒），随后在D图床PUT返回403后失败。发生在任何Agnes图片/视频调用之前，未生成视频，未消耗本轮Agnes生成配额。
 
-## 本轮修复与测试
+需要在A仓Settings → Secrets and variables → Actions配置/修复FRAME_HOST_TOKEN，凭据需对Q-1844/agnes-frame-host具备Contents: Read and write。当前会话Secrets API也403，不能代填。配置完成后用新nonce启动full-project-3min；不得把失败预检当作长片已开始生产。
 
-- 巡检按任务终态和归档引用去重；远端读错、失败、超时及坏回执使运行失败。
-- E2E 在付费请求前保存 B1 CAS 检查点；已知 ID 接续；不明确提交停止自动重发。
-- B 已保存、B1 未完成时支持基于同一资产和 operation_id 继续登记。
-- 两条生产工作流共用并发组；巡检上传逐任务证据；使用稀疏检出。
-- Vision 测试 Fake 增加 `max_tokens` 参数；API 测试用临时项目代替未入仓的本机项目。
-- 最新提交 a929e75 的 [PR CI 39978055917](https://github.com/Q-1844/agent-system-v2/actions/runs/39978055917) 与 [push CI 39978050453](https://github.com/Q-1844/agent-system-v2/actions/runs/39978050453) 全部成功：每轮完整回归 3162 passed、10 skipped、0 failed、0 errors；运行恢复专项 315 passed、10 skipped；Agent 冒烟 28 passed。默认分支尚未合入，因此这些绿色结果对应修复分支。
+nonce film3m-20261023-rescue1留下STARTING记录。当前会话读到该记录，但对B1补记阻塞状态的CAS写入403，没有成功修改该记录；主程序仍拒绝对同nonce盲目重跑。完整项目自动恢复尚未验收。
 
-旧报告的 `157 failed, 2730 passed, 10 skipped, 228 errors` 是历史记录。Codex 已找到部分明确原因并修复测试夹具；当前回归与逐节点对比见本分支本轮报告，不能统一归因于 relstore，也不能把“历史已有”理解成“无需处理”。
+## 已核实的单段历史证据
 
-## 定时触发
+- 真实单段生产39961036358、手动巡检39962609983均success。
+- 原B资产669214514：1,954,214字节；SHA256：102b5a8acfbef74ab6d8a701c65d100397f83b184b1cdaec4eb76500d5b56523；H.264、1280×720、5.184秒，完整解码通过。
+- B1 demo1为VERIFIED_RESTORABLE；已有任务去重39973691508、39976409645成功，无新增生成。
 
-最近一次只读 API 查询：`event=schedule` 的 total_count=0。狭义单段基线仍为 3/4，真实定时触发尚未验证；触发缺失原因尚未确诊。
+## 调度与保留事项
 
-GitHub schedule 是 best-effort，只在默认分支运行。计划的错峰 cron 是 `7,27,47 * * * *`（UTC，每 20 分钟），实际部署内容以 A 默认分支工作流为准。修改 cron 不等于已观察到触发；手动 dispatch 不算 schedule 证据。
+video-patrol active，默认分支cron为7,27,47 * * * *（UTC，每20分钟）；最近查询event=schedule仍为0。Actions仓库权限enabled=true、allowed_actions=all。原因尚未确诊，不能仅用“可能抖动”作为结案证据。
 
-## 保留事项
-
-完整 Director/Planner/多 SceneRun/合成的 GitHub 真实验收、真实任务源、进入/退出生命周期、预览页、跨仓素材管理及 Producer 新能力留待后续。现有任务队列仍是 `tasks/pending/*.json`。
-
-本地分叉先 fetch 对账并保留修改，建议使用独立 worktree。不要无条件 reset --hard。凭据只从 Secrets 或当前授权会话提供，不依赖旧报告提及的本地 Windows 凭据文件路径。
+完整三分钟成片、Director/Planner云端实际输出、跨场景素材一致性和完整项目归档恢复均仍待真实成功证据。人物/对白、多项目容量调度、Producer新能力、预览页及素材体系扩展不在本轮已验收范围。

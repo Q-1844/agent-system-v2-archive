@@ -1,0 +1,184 @@
+{
+  "source_commit": "f77f4aafc8a705888f9f32c7594c0284ffdcb8d3",
+  "source_files": [
+    {
+      "path": ".github/workflows/video-autoproduction-e2e.yml",
+      "git_blob_sha": "dabc94a5d32f56978af776fe991484f5a513b3d9",
+      "remote_match": true,
+      "sha256": "8873c53444c2ab0b42d2cfcce845b6de15c85543836173d2c2ae637eb28dc194"
+    },
+    {
+      "path": "tasks/pending/demo2.json",
+      "git_blob_sha": "29e933be2bca0cfdc2da54607d6916b1047c9263",
+      "remote_match": true,
+      "sha256": "e3e792cf94d0846ce24916ef2b44aa52a1e66886a31060ec3fe8ce1a73e7d652"
+    },
+    {
+      "path": "tests/relstore/test_full_project_cloud_acceptance.py",
+      "git_blob_sha": "14f354651bdc3a1aea626f8a70ba0ef4daf9bc06",
+      "remote_match": true,
+      "sha256": "b011727db0e6c0e596e6115c52fae474e39547c85cedb470a7fb292eccefc794"
+    },
+    {
+      "path": "tests/relstore/test_video_runtime_recovery.py",
+      "git_blob_sha": "e4c1bc8144cc55da0fdac788d607660ec4f53c8c",
+      "remote_match": true,
+      "sha256": "8050569f569204f63b0f9bfc2299ee1e30f1fb3f7199fcc1944fc4a31a21dc1e"
+    },
+    {
+      "path": "tests/test_project_autopilot.py",
+      "git_blob_sha": "226269007687f8016fbddd45397a1677b2b197ca",
+      "remote_match": true,
+      "sha256": "b13e11f977991528a98050f1add94b9b1a738d9ffac344c32c7fa31b1ce1b639"
+    },
+    {
+      "path": "tools/full_project_cloud_acceptance.py",
+      "git_blob_sha": "50a925c03400f12efa6812e956495ea8671a6a8d",
+      "remote_match": true,
+      "sha256": "61d5fdfd6260bfac9fbc0309765f28f29c7870e18a8ddb74b2045335f7053594"
+    },
+    {
+      "path": "tools/patrol_run.py",
+      "git_blob_sha": "8c68b98b8f0ac0d7a85401022573e940ca81ef47",
+      "remote_match": true,
+      "sha256": "74b1e783d4d81ff5d5cf9394b4d6bf29ebc1e79002709195d99dfb12b416e525"
+    },
+    {
+      "path": "tools/video_runtime_preflight.py",
+      "git_blob_sha": "cfb2919e92848c6a38b47750eaedb77896b96b81",
+      "remote_match": true,
+      "sha256": "c09b6605b60d702ed24f9edb17895c0727f68dd0c8ba20076a969c0021c2c57f"
+    },
+    {
+      "path": "tools/video_task_state.py",
+      "git_blob_sha": "b33cbed45bc8789d1cb323252b518d3e4af81a21",
+      "remote_match": true,
+      "sha256": "3c6e4a26ba42d11ab7abdff8737866c51bdae05a409255b5eec44145f58e9010"
+    }
+  ],
+  "local_tests": {
+    "runtime": {
+      "passed": 340,
+      "skipped": 10,
+      "failed": 0,
+      "errors": 0
+    },
+    "project_and_host": {
+      "passed": 36,
+      "failed": 0,
+      "errors": 0
+    }
+  },
+  "real_long_film": {
+    "run_id": 39988882623,
+    "source_commit": "c82c79ed39b585f4326736c5307d2337c37d89b7",
+    "conclusion": "failure",
+    "blocked_stage": "frame-host Contents PUT",
+    "http_status": 403,
+    "provider_image_calls": 0,
+    "provider_video_calls": 0,
+    "final_video_verified": false,
+    "ffmpeg_install_seconds": 17
+  },
+  "secret_management": {
+    "get_public_key_http": 403,
+    "list_secrets_http": 403
+  },
+  "schedule_event_count": 0,
+  "checkpoint_reconciliation": {
+    "read_phase": "STARTING",
+    "write_http_status": 403,
+    "updated": false
+  },
+  "deployment": {
+    "pr_1_merged": true,
+    "pr_2_merged": true,
+    "default_branch": "chore/migration-readiness",
+    "merge_commit": "8f81b677e41082118cf7433e5278883c34fb5064"
+  },
+  "cloud_ci": {
+    "source_commit": "f77f4aafc8a705888f9f32c7594c0284ffdcb8d3",
+    "runs": [
+      {
+        "id": 39989582134,
+        "head_sha": "f77f4aafc8a705888f9f32c7594c0284ffdcb8d3",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-23T16:46:38Z",
+        "updated_at": "2026-10-23T16:54:17Z",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39989582134"
+      },
+      {
+        "id": 39989572132,
+        "head_sha": "f77f4aafc8a705888f9f32c7594c0284ffdcb8d3",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-23T16:46:33Z",
+        "updated_at": "2026-10-23T16:54:41Z",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39989572132"
+      }
+    ],
+    "checks": [
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39989582134/job/120537556821"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39989582134/job/120537556798"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39989582134/job/120537556427"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39989572132/job/120537521644"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39989572132/job/120537521603"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39989572132/job/120537520995"
+      }
+    ],
+    "verified_pr_log_statistics": {
+      "mock_regression": {
+        "passed": 3187,
+        "skipped": 10,
+        "failed": 0,
+        "errors": 0
+      },
+      "runtime_regression": {
+        "passed": 340,
+        "skipped": 10,
+        "failed": 0,
+        "errors": 0
+      },
+      "pipeline_smoke": {
+        "passed": 28,
+        "failed": 0,
+        "errors": 0
+      }
+    },
+    "verified_push_log_summaries": {
+      "pipeline-smoke/5_Run animation pipeline smoke (AgentRuntime full chain, mock, zero external API).txt": "2026-10-23T16:47:14.0249640Z 28 passed, 1 warning in 1.72s\r",
+      "mock-regression/6_Run full mock regression (zero external API).txt": "2026-10-23T16:54:34.3892645Z 3187 passed, 10 skipped, 23 warnings in 401.03s (0:06:41)\r",
+      "runtime-regression/5_Offline storage and production recovery regression.txt": "2026-10-23T16:46:50.7232759Z 340 passed, 10 skipped, 1 warning in 1.03s"
+    }
+  }
+}
