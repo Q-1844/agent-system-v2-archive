@@ -1,3 +1,5 @@
+> 本文为PR #4历史记录。最新报告：[CODEX_COLD_START_CONTROLLER_FIX_20261023.md](CODEX_COLD_START_CONTROLLER_FIX_20261023.md)。
+
 > 最新状态：run 39998736879于17:54:46Z记为FAILED，0图片/0视频；下文早期RUNNING快照仅保留历史。修复分支collab/full-project-preparation-20261023，PR #5。
 
 # 运行环境与Windows并发锁修复（2026-10-23）

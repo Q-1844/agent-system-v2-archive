@@ -1,25 +1,21 @@
-> 最新状态：run 39998736879于17:54:46Z记为FAILED，0图片/0视频；下文早期RUNNING快照仅保留历史。修复分支collab/full-project-preparation-20261023，PR #5。
-
 # Codex接手入口（2026-10-23）
 
-**当前部署：PR #1–#4已合入默认分支。真实长片39998736879已在文本规划阶段停止：启动恢复重复派发同一FullRun，触发外部变更保护。图床新Secret与FFmpeg已通过；4次文本、0图片、0视频。PR #5修复控制器重复派发，当前待CI，暂不等待长片完成。**
+**当前部署：PR #1–#5均已合入默认分支`chore/migration-readiness`，合并提交`488ffa7fbc76499bee8037ae1078aa0d12de3b95`。最新三分钟真实验收运行[40002008268](https://github.com/Q-1844/agent-system-v2/actions/runs/40002008268)；截至2026-10-23T18:24:41.931326+00:00，workflow=in_progress、检查点=RUNNING。最终成片尚未验收。**
 
-最新修复、测试与真实运行状态见 [CODEX_RUNTIME_BOOTSTRAP_LOCK_FIX_20261023.md](CODEX_RUNTIME_BOOTSTRAP_LOCK_FIX_20261023.md)。
+最新报告：[CODEX_COLD_START_CONTROLLER_FIX_20261023.md](CODEX_COLD_START_CONTROLLER_FIX_20261023.md)。
 
-用户已批准整顿、修复与合入现有系统。任何真实视频验收成片至少180秒。Producer新能力、预览页等扩展后置；旧5秒demo2已暂缓(enabled=false)。
-
-先读最新报告，再读[GITHUB_RUNTIME_STATUS.md](GITHUB_RUNTIME_STATUS.md)。早期批次报告中的“待合入/Secret尚缺/5秒成功”是历史记录，不能覆盖当前部署事实或当作三分钟成功。
+用户已批准整顿、修复、合入；任何真实视频验收成片至少180秒。Producer新能力、预览页与素材扩展后置。先读最新报告，再读[GITHUB_RUNTIME_STATUS.md](GITHUB_RUNTIME_STATUS.md)；历史批次中的“缺Secret/待合入/5秒成功”不能覆盖当前状态。
 
 | 仓库 | 角色 |
 | --- | --- |
-| A Q-1844/agent-system-v2 | 代码与调度，默认chore/migration-readiness |
-| B Q-1844/agent-system-v2-rundata | Release视频与项目归档 |
-| B1 Q-1844/agent-system-v2-rundata-1 | Registry与持久检查点 |
+| A Q-1844/agent-system-v2 | 生产代码/调度；默认chore/migration-readiness |
+| B Q-1844/agent-system-v2-rundata | Release成片与项目归档 |
+| B1 Q-1844/agent-system-v2-rundata-1 | Registry/CAS持久检查点 |
 | C Q-1844/agent-system-v2-archive | 文档；交接分支feat/codex-handoff-20261023 |
-| D Q-1844/agnes-frame-host | 公网参考图托管 |
+| D Q-1844/agnes-frame-host | 公网参考图 |
 
-A仓Secrets名称：AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN。归档与图床凭据分开，不隐式回退。
+A仓Secrets：AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN；D凭据不再隐式复用B1。新FRAME_HOST_TOKEN已真实验证，无需再次索取。
 
-下一步查看[39998736879](https://github.com/Q-1844/agent-system-v2/actions/runs/39998736879)终态、成片真实视频流时长、所有独立源视频及B/B1归档恢复。不要盲目重启可能已有付费提交的任务。定时schedule实触发单独核查；手动触发不是证明。
+下一步核查[40002008268](https://github.com/Q-1844/agent-system-v2/actions/runs/40002008268)终态、视频流至少180秒、独立源视频及B/B1归档恢复；有付费提交或不明结果时先对账，不盲目重做。旧5秒demo2已enabled=false。schedule实触发单独保留未验证。
 
-先fetch并保留已有分叉、skill与未提交修改；不要无条件reset --hard。
+接手先fetch保留已有分叉与skill/未提交改动，不无条件reset --hard。
