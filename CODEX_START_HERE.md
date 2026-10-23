@@ -1,6 +1,8 @@
+> 最新状态：run 39998736879于17:54:46Z记为FAILED，0图片/0视频；下文早期RUNNING快照仅保留历史。修复分支collab/full-project-preparation-20261023，PR #5。
+
 # Codex接手入口（2026-10-23）
 
-**当前部署：PR #1–#4已合入默认分支 `chore/migration-readiness`，合并提交 `2ce24eac5005378c32ac5a484009329d037538e3`。最新真实长片运行 [39998736879](https://github.com/Q-1844/agent-system-v2/actions/runs/39998736879)，截至 2026-10-23T17:54:37.819275+00:00 状态 `in_progress`，检查点 `RUNNING`。三分钟成片尚待终态验收。**
+**当前部署：PR #1–#4已合入默认分支。真实长片39998736879已在文本规划阶段停止：启动恢复重复派发同一FullRun，触发外部变更保护。图床新Secret与FFmpeg已通过；4次文本、0图片、0视频。PR #5修复控制器重复派发，当前待CI，暂不等待长片完成。**
 
 最新修复、测试与真实运行状态见 [CODEX_RUNTIME_BOOTSTRAP_LOCK_FIX_20261023.md](CODEX_RUNTIME_BOOTSTRAP_LOCK_FIX_20261023.md)。
 

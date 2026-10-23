@@ -125,19 +125,19 @@
   "current_real_run": {
     "id": 39998736879,
     "head_sha": "2ce24eac5005378c32ac5a484009329d037538e3",
-    "status": "in_progress",
-    "conclusion": null,
+    "status": "completed",
+    "conclusion": "failure",
     "created_at": "2026-10-23T17:53:07Z",
-    "updated_at": "2026-10-23T17:53:12Z",
+    "updated_at": "2026-10-23T17:54:52Z",
     "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39998736879",
-    "checked_at": "2026-10-23T17:54:37.819275+00:00",
+    "checked_at": "2026-10-23T17:56:56.851856+00:00",
     "nonce": "film3m-20261023-rescue4",
     "scope": "full-project-at-least-180-seconds",
     "configuration_reported_updated_by_user": true,
     "jobs": [
       {
-        "status": "in_progress",
-        "conclusion": null,
+        "status": "completed",
+        "conclusion": "failure",
         "steps": [
           {
             "name": "Set up job",
@@ -205,53 +205,66 @@
           },
           {
             "name": "Real FullProject → Director/Planner → SceneRuns → >=180s final film → restore verification",
-            "status": "in_progress",
-            "conclusion": null,
+            "status": "completed",
+            "conclusion": "failure",
             "number": 9,
             "started_at": "2026-10-23T17:53:33Z",
-            "completed_at": null
+            "completed_at": "2026-10-23T17:54:48Z"
           },
           {
             "name": "Upload E2E evidence (MP4 + summary)",
-            "status": "pending",
-            "conclusion": null,
+            "status": "completed",
+            "conclusion": "success",
             "number": 10,
-            "started_at": null,
-            "completed_at": null
+            "started_at": "2026-10-23T17:54:48Z",
+            "completed_at": "2026-10-23T17:54:49Z"
           },
           {
             "name": "Post Run actions/setup-python@v5",
-            "status": "pending",
-            "conclusion": null,
+            "status": "completed",
+            "conclusion": "skipped",
             "number": 19,
-            "started_at": null,
-            "completed_at": null
+            "started_at": "2026-10-23T17:54:49Z",
+            "completed_at": "2026-10-23T17:54:49Z"
           },
           {
             "name": "Post Run actions/checkout@v4",
-            "status": "pending",
-            "conclusion": null,
+            "status": "completed",
+            "conclusion": "success",
             "number": 20,
-            "started_at": null,
-            "completed_at": null
+            "started_at": "2026-10-23T17:54:49Z",
+            "completed_at": "2026-10-23T17:54:49Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21,
+            "started_at": "2026-10-23T17:54:49Z",
+            "completed_at": "2026-10-23T17:54:49Z"
           }
         ]
       }
     ],
     "checkpoint_http_status": 200,
     "checkpoint": {
-      "phase": "RUNNING",
+      "phase": "FAILED",
       "github_run_id": "39998736879",
       "source_sha": "2ce24eac5005378c32ac5a484009329d037538e3",
       "project_name": "cloud3min_film3m-20261023-rescue4",
       "full_run_id": "frun_e624b1a36f",
       "image_calls": 0,
-      "text_calls": 0,
-      "updated_at": "2026-10-23T17:54:35Z",
-      "progress": null,
+      "text_calls": 4,
+      "updated_at": "2026-10-23T17:54:46Z",
+      "progress": {
+        "action": "director_plan",
+        "scene": "s01",
+        "stage": "prepare",
+        "status": "preparing"
+      },
       "video_attempts": [],
-      "terminal_status": null,
-      "error": null,
+      "terminal_status": "blocked",
+      "error": "项目的故事、角色或镜头规划在 AI 完整制作期间发生了变化。当前任务已安全停止。请确认最新内容后重新开始一次 AI 完整制作。",
       "blocked_stage": null,
       "no_media_submitted": null
     }
@@ -382,5 +395,10 @@
     ],
     "checkpoint_http_status": 404,
     "checkpoint_note": "No commit found for the ref test/e2e-film3m-20261023-rescue3"
+  },
+  "latest_update": {
+    "pr": 5,
+    "source_commit": "4d49895e139f641593c95651182701b19dd93459",
+    "reason": "startup recovery duplicated live FullRun; 6 regression tests reproduce on original code"
   }
 }
