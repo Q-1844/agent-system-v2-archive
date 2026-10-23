@@ -1,0 +1,33 @@
+{
+  "checked_at": "2026-10-23T17:09:47.474520+00:00",
+  "credential_label": "collab-rw",
+  "github_actor": "Q-1844",
+  "D_calibration_write": {
+    "status": 201,
+    "required_permissions": "contents=write; contents=write,workflows=write",
+    "rate_remaining": "4964",
+    "message": null,
+    "path": "objects/cbe4da3b93360751.png",
+    "commit": "3e84ade68d5f9a74063df39385239c142fad8573"
+  },
+  "A_secret_public_key": {
+    "status": 403,
+    "required_permissions": "secrets=read",
+    "rate_remaining": "4980",
+    "message": "Resource not accessible by personal access token"
+  },
+  "A_secret_names": {
+    "status": 403,
+    "required_permissions": "secrets=read",
+    "rate_remaining": "4965",
+    "message": "Resource not accessible by personal access token"
+  },
+  "previous_cloud_run": 39988882623,
+  "conclusion": "The session collab-rw token can write D. The identity of the credential supplied to the previous cloud run is not established. Current session token cannot manage A Actions Secrets.",
+  "public_calibration": {
+    "status": 200,
+    "sha256": "cbe4da3b93360751a0d12368ce3c8b511193f0db81307ff9b5864644077d1af8",
+    "bytes": 77,
+    "url": "https://q-1844.github.io/agnes-frame-host/objects/cbe4da3b93360751.png"
+  }
+}

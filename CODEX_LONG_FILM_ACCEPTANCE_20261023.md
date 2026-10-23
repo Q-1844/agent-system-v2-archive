@@ -65,3 +65,11 @@ PR #1已于2026-10-23T16:08:27Z合入默认分支，合并提交6f62dbf88ff79ae0
 - 官方schedule边界：https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule
 
 部署后手动巡检 [39991006999](https://github.com/Q-1844/agent-system-v2/actions/runs/39991006999) 已成功：produced=0、skipped=2、failed=0；只读预检needs_media=false，跳过FFmpeg安装。对应合并提交8f81b677e41082118cf7433e5278883c34fb5064；此为workflow_dispatch，不计为schedule实触发。
+
+## 当前collab-rw凭据的补充核验
+
+用户再次提供同一collab-rw后，已直接用它向D仓上传原有8×8校准图，PUT返回201，提交3e84ade68d5f9a74063df39385239c142fad8573。这证明该会话凭据能写D；不能把上次Actions中注入凭据的403解释为它没有D仓Contents写权限。它可以直接用作FRAME_HOST_TOKEN，无须另找一枚不同的图床token。
+
+但同一凭据访问A仓Get repository public key和List repository secrets仍403，响应头要求secrets=read。管理Repository Secrets是独立权限，Actions:write不包含它。当前并未新增或修改任何Actions Secret。
+
+继续路径：用户可直接把同一token保存到A仓名为FRAME_HOST_TOKEN的Repository Secret；或者为当前token补充Secrets: Read and write后，由Codex完成保存。无需再次把值贴入聊天。三分钟生成仍未启动；配置成功后再启动新的验收nonce。逐项HTTP回执见[权限核验记录](CODEX_TOKEN_PERMISSION_CHECK_20261023.json)。

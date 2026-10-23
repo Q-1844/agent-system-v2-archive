@@ -1,5 +1,7 @@
 # Codex 接手入口（2026-10-23，继续整顿）
 
+> 补充核验：会话中的collab-rw已成功写入D（201），可以直接用作FRAME_HOST_TOKEN；目前缺的是把它存入A仓Actions Secret的管理权限（Secrets API 403）。无需另外寻找图床token，详见[权限回执](CODEX_TOKEN_PERMISSION_CHECK_20261023.json)。
+
 **部署更新：PR #1与PR #2均已合入默认分支`chore/migration-readiness`；当前合并提交`8f81b677e41082118cf7433e5278883c34fb5064`。最终源码`f77f4aa`的两轮完整CI均成功。三分钟真实验收仍被D图床凭据403阻塞，尚未生成成片。**
 
 先读[三分钟真实验收与阻塞报告](CODEX_LONG_FILM_ACCEPTANCE_20261023.md)，再读[GITHUB_RUNTIME_STATUS.md](GITHUB_RUNTIME_STATUS.md)。首轮[运行链修复报告](CODEX_RUNTIME_REVIEW_20261023.md)及[GITHUB_AUTONOMY_E2E_REPORT.md](GITHUB_AUTONOMY_E2E_REPORT.md)保留历史证据，不能用其中“待合入”的历史状态覆盖当前部署事实。
