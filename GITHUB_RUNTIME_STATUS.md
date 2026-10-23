@@ -1,42 +1,22 @@
-# GitHub运行态（2026-10-23）
+# GitHub当前运行态（2026-10-23）
 
-**部署更新：PR #1与PR #2均已合入默认分支`chore/migration-readiness`；当前合并提交`8f81b677e41082118cf7433e5278883c34fb5064`。最终源码`f77f4aa`的两轮完整CI均成功。三分钟真实验收仍被D图床凭据403阻塞，尚未生成成片。**
+**当前部署：PR #1–#4已合入默认分支 `chore/migration-readiness`，合并提交 `2ce24eac5005378c32ac5a484009329d037538e3`。最新真实长片运行 [39998736879](https://github.com/Q-1844/agent-system-v2/actions/runs/39998736879)，截至 2026-10-23T17:54:37.819275+00:00 状态 `in_progress`，检查点 `RUNNING`。三分钟成片尚待终态验收。**
 
-## 部署与绿色回归
+最新修复、测试与真实运行状态见 [CODEX_RUNTIME_BOOTSTRAP_LOCK_FIX_20261023.md](CODEX_RUNTIME_BOOTSTRAP_LOCK_FIX_20261023.md)。
 
-- A默认分支：chore/migration-readiness；当前提交：8f81b677e41082118cf7433e5278883c34fb5064。
-- PR #1：https://github.com/Q-1844/agent-system-v2/pull/1 ，已合入，修复巡检终态判定、失败退出码、CAS检查点及跨仓恢复。
-- PR #2：https://github.com/Q-1844/agent-system-v2/pull/2 ，已合入，暂停旧短片demo2并增加至少180秒原制作链验收及保护。
-- 最终源码f77f4aafc8a705888f9f32c7594c0284ffdcb8d3的两轮CI全部成功。实际run：39989582134, 39989572132。
-- 本机离线恢复/存储/长片保护340 passed、10 skipped；FullProject/Project/图床相关36 passed。集合有重叠，不相加成独立用例数。
-- 逐文件对账、统计与真实运行边界见[三分钟验收报告](CODEX_LONG_FILM_ACCEPTANCE_20261023.md)及其机器证据。
+- PR #1巡检与恢复、#2三分钟验收及旧任务暂停、#3真实图床写权限预检、#4环境安装和Windows锁修复均已合入。
+- FRAME_HOST_TOKEN已由用户创建保存。新runner已通过每次新内容地址的图床上传与公网就绪预检，随后进入原制作链。
+- 真实运行nonce=film3m-20261023-rescue4；当前阶段=['Real FullProject → Director/Planner → SceneRuns → >=180s final film → restore verification']；视频提交=0；最终成片尚未验收。
+- 前次39994958081仅FFmpeg安装超时，媒体步骤skipped，未调用Agnes；新nonce不会重复该次媒体消耗。
 
-## 真实长片当前受阻
+| CI运行 | 完整Mock回归 | 存储/恢复专项 | Agent冒烟 | Linux媒体工具 |
+| --- | --- | --- | --- | --- |
+| [39997455184](https://github.com/Q-1844/agent-system-v2/actions/runs/39997455184) | 3192通过、10跳过 | 343通过、10跳过 | 28通过、0跳过 | 下载/SHA/编码/探测/解码通过 |
+| [39997447886](https://github.com/Q-1844/agent-system-v2/actions/runs/39997447886) | 3192通过、10跳过 | 343通过、10跳过 | 28通过、0跳过 | 下载/SHA/编码/探测/解码通过 |
 
-run [39988882623](https://github.com/Q-1844/agent-system-v2/actions/runs/39988882623)成功安装FFmpeg（17秒），随后在D图床PUT返回403后失败。发生在任何Agnes图片/视频调用之前，未生成视频，未消耗本轮Agnes生成配额。
 
-需要在A仓Settings → Secrets and variables → Actions配置/修复FRAME_HOST_TOKEN，凭据需对Q-1844/agnes-frame-host具备Contents: Read and write。当前会话Secrets API也403，不能代填。配置完成后用新nonce启动full-project-3min；不得把失败预检当作长片已开始生产。
+本机最终专项388通过、10跳过。首次全量3项失败及定向复核已在最新报告如实区分；不能把它写成本机全绿。
 
-nonce film3m-20261023-rescue1留下STARTING记录。当前会话读到该记录，但对B1补记阻塞状态的CAS写入403，没有成功修改该记录；主程序仍拒绝对同nonce盲目重跑。完整项目自动恢复尚未验收。
+原单段39961036358和手动patrol39962609983成功；部署后零生成巡检39991006999成功。原成片5.184秒/H.264/1280×720、1,954,214字节、SHA256 102b5a8acfbef74ab6d8a701c65d100397f83b184b1cdaec4eb76500d5b56523，仍只证明单段路径。
 
-## 已核实的单段历史证据
-
-- 真实单段生产39961036358、手动巡检39962609983均success。
-- 原B资产669214514：1,954,214字节；SHA256：102b5a8acfbef74ab6d8a701c65d100397f83b184b1cdaec4eb76500d5b56523；H.264、1280×720、5.184秒，完整解码通过。
-- B1 demo1为VERIFIED_RESTORABLE；已有任务去重39973691508、39976409645成功，无新增生成。
-
-## 调度与保留事项
-
-video-patrol active，默认分支cron为7,27,47 * * * *（UTC，每20分钟）；最近查询event=schedule仍为0。Actions仓库权限enabled=true、allowed_actions=all。原因尚未确诊，不能仅用“可能抖动”作为结案证据。
-
-完整三分钟成片、Director/Planner云端实际输出、跨场景素材一致性和完整项目归档恢复均仍待真实成功证据。人物/对白、多项目容量调度、Producer新能力、预览页及素材体系扩展不在本轮已验收范围。
-
-部署后手动巡检 [39991006999](https://github.com/Q-1844/agent-system-v2/actions/runs/39991006999) 已成功：produced=0、skipped=2、failed=0；只读预检needs_media=false，跳过FFmpeg安装。对应合并提交8f81b677e41082118cf7433e5278883c34fb5064；此为workflow_dispatch，不计为schedule实触发。
-
-## 当前collab-rw凭据的补充核验
-
-用户再次提供同一collab-rw后，已直接用它向D仓上传原有8×8校准图，PUT返回201，提交3e84ade68d5f9a74063df39385239c142fad8573。这证明该会话凭据能写D；不能把上次Actions中注入凭据的403解释为它没有D仓Contents写权限。它可以直接用作FRAME_HOST_TOKEN，无须另找一枚不同的图床token。
-
-但同一凭据访问A仓Get repository public key和List repository secrets仍403，响应头要求secrets=read。管理Repository Secrets是独立权限，Actions:write不包含它。当前并未新增或修改任何Actions Secret。
-
-继续路径：用户可直接把同一token保存到A仓名为FRAME_HOST_TOKEN的Repository Secret；或者为当前token补充Secrets: Read and write后，由Codex完成保存。无需再次把值贴入聊天。三分钟生成仍未启动；配置成功后再启动新的验收nonce。逐项HTTP回执见[权限核验记录](CODEX_TOKEN_PERMISSION_CHECK_20261023.json)。
+schedule最近仍无实触发证据；继续保留未验证。新Producer能力和预览页等扩展后置。

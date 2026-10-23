@@ -1,0 +1,369 @@
+{
+  "source_commit": "50f7c49777af49ac6557dce68b62dc85fa682ded",
+  "merge_commit": "94401281a5fca3802234aefb7efc70c7e8c66432",
+  "source_verification": {
+    "source": "50f7c49777af49ac6557dce68b62dc85fa682ded",
+    "files": [
+      {
+        "path": "tests/relstore/test_full_project_cloud_acceptance.py",
+        "git_blob_sha": "e03a22d508c7e9168734739f261d8d4c41c6bf3a",
+        "sha256": "273e91cab3bb304804cf2fbbd00ba3831d67aa058b6f1bab7797a0ccb6020525",
+        "remote_match": true
+      },
+      {
+        "path": "tools/full_project_cloud_acceptance.py",
+        "git_blob_sha": "1b23b9a13cfa9fa42c4e329218d1ff6edbea9cf0",
+        "sha256": "a4be6b354e5c0ade6f1c58bbccc2f5ca08bd15b3898cf240069e4874d4e4d4eb",
+        "remote_match": true
+      }
+    ]
+  },
+  "local_tests": {
+    "tests": 363,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 10,
+    "passed": 353
+  },
+  "cloud_ci": {
+    "source_commit": "50f7c49777af49ac6557dce68b62dc85fa682ded",
+    "checked_at": "2026-10-23T17:22:09.288191+00:00",
+    "checks": [
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993439024/job/120550760811"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993439024/job/120550760567"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993439024/job/120550760259"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993425034/job/120550712033"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993425034/job/120550711670"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993425034/job/120550711489"
+      }
+    ],
+    "runs": [
+      {
+        "id": 39993439024,
+        "name": "mock-regression",
+        "head_sha": "50f7c49777af49ac6557dce68b62dc85fa682ded",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-23T17:14:28Z",
+        "updated_at": "2026-10-23T17:21:31Z",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993439024"
+      },
+      {
+        "id": 39993425034,
+        "name": "mock-regression",
+        "head_sha": "50f7c49777af49ac6557dce68b62dc85fa682ded",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-23T17:14:22Z",
+        "updated_at": "2026-10-23T17:21:56Z",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993425034"
+      }
+    ],
+    "real_runs": [
+      {
+        "id": 39994174900,
+        "name": "video-autoproduction-e2e",
+        "head_sha": "50f7c49777af49ac6557dce68b62dc85fa682ded",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-10-23T17:19:56Z",
+        "updated_at": "2026-10-23T17:20:01Z",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39994174900"
+      }
+    ],
+    "all_current_checks": [
+      {
+        "name": "e2e",
+        "status": "in_progress",
+        "conclusion": null,
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39994174900/job/120553287958"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993439024/job/120550760811"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993439024/job/120550760567"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993439024/job/120550760259"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993425034/job/120550712033"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993425034/job/120550711670"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39993425034/job/120550711489"
+      }
+    ],
+    "verified_log_statistics": {
+      "pr3-pr-ci-logs.zip": {
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0,
+          "failed": 0,
+          "errors": 0
+        },
+        "mock-regression": {
+          "passed": 3189,
+          "skipped": 10,
+          "failed": 0,
+          "errors": 0
+        },
+        "runtime-regression": {
+          "passed": 342,
+          "skipped": 10,
+          "failed": 0,
+          "errors": 0
+        }
+      },
+      "pr3-push-ci-logs.zip": {
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0,
+          "failed": 0,
+          "errors": 0
+        },
+        "mock-regression": {
+          "passed": 3189,
+          "skipped": 10,
+          "failed": 0,
+          "errors": 0
+        },
+        "runtime-regression": {
+          "passed": 342,
+          "skipped": 10,
+          "failed": 0,
+          "errors": 0
+        }
+      }
+    }
+  },
+  "real_host_smoke": {
+    "checked_at": "2026-10-23T17:17:56Z",
+    "source_commit": "50f7c49777af49ac6557dce68b62dc85fa682ded",
+    "public_url": "https://Q-1844.github.io/agnes-frame-host/objects/35f69d04d87c1a86.png",
+    "public_http_status": 200,
+    "bytes": 139,
+    "sha256": "35f69d04d87c1a863e36872736dcf449ac6cca7a620b0d680e78088c2651a98f",
+    "redownload_bytes_match": true,
+    "provider_image_calls": 0,
+    "provider_video_calls": 0
+  },
+  "permissions": {
+    "checked_at": "2026-10-23T17:09:47.474520+00:00",
+    "credential_label": "collab-rw",
+    "github_actor": "Q-1844",
+    "D_calibration_write": {
+      "status": 201,
+      "required_permissions": "contents=write; contents=write,workflows=write",
+      "rate_remaining": "4964",
+      "message": null,
+      "path": "objects/cbe4da3b93360751.png",
+      "commit": "3e84ade68d5f9a74063df39385239c142fad8573"
+    },
+    "A_secret_public_key": {
+      "status": 403,
+      "required_permissions": "secrets=read",
+      "rate_remaining": "4980",
+      "message": "Resource not accessible by personal access token"
+    },
+    "A_secret_names": {
+      "status": 403,
+      "required_permissions": "secrets=read",
+      "rate_remaining": "4965",
+      "message": "Resource not accessible by personal access token"
+    },
+    "previous_cloud_run": 39988882623,
+    "conclusion": "The session collab-rw token can write D. The identity of the credential supplied to the previous cloud run is not established. Current session token cannot manage A Actions Secrets.",
+    "public_calibration": {
+      "status": 200,
+      "sha256": "cbe4da3b93360751a0d12368ce3c8b511193f0db81307ff9b5864644077d1af8",
+      "bytes": 77,
+      "url": "https://q-1844.github.io/agnes-frame-host/objects/cbe4da3b93360751.png"
+    }
+  },
+  "real_long_film_verified": false,
+  "configuration_reported_updated_by_user": true,
+  "current_long_film_run": {
+    "id": 39994958081,
+    "head_sha": "94401281a5fca3802234aefb7efc70c7e8c66432",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-10-23T17:25:36Z",
+    "updated_at": "2026-10-23T17:32:08Z",
+    "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39994958081",
+    "checked_at": "2026-10-23T17:33:22.062898+00:00",
+    "nonce": "film3m-20261023-rescue3",
+    "scope": "full-project-at-least-180-seconds",
+    "configuration_reported_updated_by_user": true,
+    "jobs": [
+      {
+        "status": "completed",
+        "conclusion": "failure",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-23T17:25:48Z",
+            "completed_at": "2026-10-23T17:25:49Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-23T17:25:49Z",
+            "completed_at": "2026-10-23T17:25:51Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-23T17:25:51Z",
+            "completed_at": "2026-10-23T17:25:51Z"
+          },
+          {
+            "name": "Install CI dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-23T17:25:51Z",
+            "completed_at": "2026-10-23T17:25:59Z"
+          },
+          {
+            "name": "Inspect existing task before media setup",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 5,
+            "started_at": "2026-10-23T17:25:59Z",
+            "completed_at": "2026-10-23T17:25:59Z"
+          },
+          {
+            "name": "Install ffmpeg",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 6,
+            "started_at": "2026-10-23T17:25:59Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Verify ffmpeg/ffprobe on PATH",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Run autonomous E2E (real Agnes gen → MP4 → ffprobe → save B1 → registry)",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Real FullProject → Director/Planner → SceneRuns → >=180s final film → restore verification",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 9,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Upload E2E evidence (MP4 + summary)",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 19,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:05Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21,
+            "started_at": "2026-10-23T17:32:05Z",
+            "completed_at": "2026-10-23T17:32:05Z"
+          }
+        ]
+      }
+    ],
+    "checkpoint_http_status": 404,
+    "checkpoint_note": "No commit found for the ref test/e2e-film3m-20261023-rescue3"
+  },
+  "superseded_run_media_step": "skipped",
+  "latest_update": {
+    "pr": 4,
+    "report": "CODEX_RUNTIME_BOOTSTRAP_LOCK_FIX_20261023.md",
+    "note": "rescue3 failed only in ffmpeg installation; media step skipped; user FRAME_HOST_TOKEN remains configured"
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "source_commit": "6a30ec94bfa56c2cf2743a2bb097af5e60e87480",
+  "merge_commit": "2ce24eac5005378c32ac5a484009329d037538e3",
+  "pr": 4,
+  "cloud_ci": {
+    "source_commit": "6a30ec94bfa56c2cf2743a2bb097af5e60e87480",
+    "checked_at": "2026-10-23T17:52:49.554355+00:00",
+    "checks": [
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39997455184/job/120564587139"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39997455184/job/120564586801"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39997455184/job/120564586543"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39997447886/job/120564560997"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39997447886/job/120564560931"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39997447886/job/120564560552"
+      }
+    ],
+    "runs": [
+      {
+        "id": 39997455184,
+        "head_sha": "6a30ec94bfa56c2cf2743a2bb097af5e60e87480",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39997455184",
+        "created_at": "2026-10-23T17:43:48Z",
+        "updated_at": "2026-10-23T17:51:43Z"
+      },
+      {
+        "id": 39997447886,
+        "head_sha": "6a30ec94bfa56c2cf2743a2bb097af5e60e87480",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39997447886",
+        "created_at": "2026-10-23T17:43:45Z",
+        "updated_at": "2026-10-23T17:51:11Z"
+      }
+    ],
+    "verified_log_statistics": {
+      "39997455184": {
+        "mock-regression": {
+          "passed": 3192,
+          "skipped": 10
+        },
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        },
+        "runtime-regression": {
+          "passed": 343,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true
+      },
+      "39997447886": {
+        "runtime-regression": {
+          "passed": 343,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true,
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        },
+        "mock-regression": {
+          "passed": 3192,
+          "skipped": 10
+        }
+      }
+    }
+  },
+  "local_targeted": {
+    "tests": 398,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 10,
+    "passed": 388
+  },
+  "initial_local_full": {
+    "tests": 3201,
+    "failures": 3,
+    "errors": 0,
+    "skipped": 10,
+    "passed": 3188
+  },
+  "local_failed_area_recheck": {
+    "tests": 20,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 20
+  },
+  "credential_reported_saved_by_user": true,
+  "credential_preflight_passed": true,
+  "long_film_final_verified": false,
+  "current_real_run": {
+    "id": 39998736879,
+    "head_sha": "2ce24eac5005378c32ac5a484009329d037538e3",
+    "status": "in_progress",
+    "conclusion": null,
+    "created_at": "2026-10-23T17:53:07Z",
+    "updated_at": "2026-10-23T17:53:12Z",
+    "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39998736879",
+    "checked_at": "2026-10-23T17:54:37.819275+00:00",
+    "nonce": "film3m-20261023-rescue4",
+    "scope": "full-project-at-least-180-seconds",
+    "configuration_reported_updated_by_user": true,
+    "jobs": [
+      {
+        "status": "in_progress",
+        "conclusion": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-23T17:53:12Z",
+            "completed_at": "2026-10-23T17:53:13Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-23T17:53:13Z",
+            "completed_at": "2026-10-23T17:53:15Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-23T17:53:15Z",
+            "completed_at": "2026-10-23T17:53:15Z"
+          },
+          {
+            "name": "Install CI dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-23T17:53:15Z",
+            "completed_at": "2026-10-23T17:53:24Z"
+          },
+          {
+            "name": "Inspect existing task before media setup",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 5,
+            "started_at": "2026-10-23T17:53:24Z",
+            "completed_at": "2026-10-23T17:53:24Z"
+          },
+          {
+            "name": "Install ffmpeg",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-23T17:53:24Z",
+            "completed_at": "2026-10-23T17:53:33Z"
+          },
+          {
+            "name": "Verify ffmpeg/ffprobe on PATH",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-23T17:53:33Z",
+            "completed_at": "2026-10-23T17:53:33Z"
+          },
+          {
+            "name": "Run autonomous E2E (real Agnes gen → MP4 → ffprobe → save B1 → registry)",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-23T17:53:33Z",
+            "completed_at": "2026-10-23T17:53:33Z"
+          },
+          {
+            "name": "Real FullProject → Director/Planner → SceneRuns → >=180s final film → restore verification",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 9,
+            "started_at": "2026-10-23T17:53:33Z",
+            "completed_at": null
+          },
+          {
+            "name": "Upload E2E evidence (MP4 + summary)",
+            "status": "pending",
+            "conclusion": null,
+            "number": 10,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "pending",
+            "conclusion": null,
+            "number": 19,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "pending",
+            "conclusion": null,
+            "number": 20,
+            "started_at": null,
+            "completed_at": null
+          }
+        ]
+      }
+    ],
+    "checkpoint_http_status": 200,
+    "checkpoint": {
+      "phase": "RUNNING",
+      "github_run_id": "39998736879",
+      "source_sha": "2ce24eac5005378c32ac5a484009329d037538e3",
+      "project_name": "cloud3min_film3m-20261023-rescue4",
+      "full_run_id": "frun_e624b1a36f",
+      "image_calls": 0,
+      "text_calls": 0,
+      "updated_at": "2026-10-23T17:54:35Z",
+      "progress": null,
+      "video_attempts": [],
+      "terminal_status": null,
+      "error": null,
+      "blocked_stage": null,
+      "no_media_submitted": null
+    }
+  },
+  "superseded_setup_failure": {
+    "id": 39994958081,
+    "head_sha": "94401281a5fca3802234aefb7efc70c7e8c66432",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-10-23T17:25:36Z",
+    "updated_at": "2026-10-23T17:32:08Z",
+    "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/39994958081",
+    "checked_at": "2026-10-23T17:33:22.062898+00:00",
+    "nonce": "film3m-20261023-rescue3",
+    "scope": "full-project-at-least-180-seconds",
+    "configuration_reported_updated_by_user": true,
+    "jobs": [
+      {
+        "status": "completed",
+        "conclusion": "failure",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-23T17:25:48Z",
+            "completed_at": "2026-10-23T17:25:49Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-23T17:25:49Z",
+            "completed_at": "2026-10-23T17:25:51Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-23T17:25:51Z",
+            "completed_at": "2026-10-23T17:25:51Z"
+          },
+          {
+            "name": "Install CI dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-23T17:25:51Z",
+            "completed_at": "2026-10-23T17:25:59Z"
+          },
+          {
+            "name": "Inspect existing task before media setup",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 5,
+            "started_at": "2026-10-23T17:25:59Z",
+            "completed_at": "2026-10-23T17:25:59Z"
+          },
+          {
+            "name": "Install ffmpeg",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 6,
+            "started_at": "2026-10-23T17:25:59Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Verify ffmpeg/ffprobe on PATH",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Run autonomous E2E (real Agnes gen → MP4 → ffprobe → save B1 → registry)",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Real FullProject → Director/Planner → SceneRuns → >=180s final film → restore verification",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 9,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Upload E2E evidence (MP4 + summary)",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 19,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:04Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20,
+            "started_at": "2026-10-23T17:32:04Z",
+            "completed_at": "2026-10-23T17:32:05Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21,
+            "started_at": "2026-10-23T17:32:05Z",
+            "completed_at": "2026-10-23T17:32:05Z"
+          }
+        ]
+      }
+    ],
+    "checkpoint_http_status": 404,
+    "checkpoint_note": "No commit found for the ref test/e2e-film3m-20261023-rescue3"
+  }
+}
