@@ -72,7 +72,7 @@
 
 最新专项为 325 passed/10 skipped，图像与 provenance 专项另有 13 passed。完整回归与专项有用例重叠，不把它们相加冒充独立测试数。上述均使用 Fake Provider；relstore 测试会话封锁外网 socket/DNS。没有通过删除失败用例或放宽生产审核来获得通过。
 
-本机末轮完整回归遇到执行环境连接中断，没有终态结果，不计入完整通过数。随后我的 stdin 包装器启动方式造成 spawn 子进程无法导入 `<stdin>`，租约用例报队列超时；该启动问题已独立复现。改用标准 `python -m pytest tests/test_collab_safety_revision.py::test_lease_cross_process_unique_holder -q` 后为 1 passed。没有修改租约逻辑或放宽断言。
+本机末轮完整回归遇到执行环境连接中断，没有终态结果，不计入完整通过数。随后我的 stdin 包装器启动方式造成 spawn 子进程无法导入 `<stdin>`，租约用例报队列超时；该启动问题已独立复现。该非标准包装器全量记录最终为 3161 passed、1 failed、10 skipped、0 errors，唯一失败就是无法导入 `<stdin>` 的跨进程租约用例；不将这个包装器结果当作正式源码验收。改用标准 `python -m pytest tests/test_collab_safety_revision.py::test_lease_cross_process_unique_holder -q` 后为 1 passed。没有修改租约逻辑或放宽断言。
 
 最终验收使用标准入口运行的两轮 GitHub CI：每轮完整回归均为 3162 passed、10 skipped、0 failed、0 errors；运行恢复专项为 315 passed、10 skipped，Agent 冒烟为 28 passed。两轮均全部成功：
 

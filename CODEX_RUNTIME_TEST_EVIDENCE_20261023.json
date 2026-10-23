@@ -1924,7 +1924,26 @@
     "reproduced": true,
     "canonical_command": "python -m pytest tests/test_collab_safety_revision.py::test_lease_cross_process_unique_holder -q",
     "canonical_result": "1 passed",
-    "used_as_product_regression": false
+    "used_as_product_regression": false,
+    "full_nonstandard_run": {
+      "counts": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "1",
+        "skipped": "10",
+        "tests": "3172",
+        "time": "864.482",
+        "timestamp": "2026-10-23T09:26:38.717340-06:00"
+      },
+      "passed": 3161,
+      "problems": [
+        {
+          "id": "tests.test_collab_safety_revision::test_lease_cross_process_unique_holder",
+          "message": "_queue.Empty"
+        }
+      ],
+      "acceptance_result": false
+    }
   },
   "dependency_metadata": {
     "Pillow": {
@@ -1937,5 +1956,6 @@
       "source": "https://pypi.org/pypi/numpy/2.3.5/json",
       "windows_cp313_wheel": true
     }
-  }
+  },
+  "schedule_last_observed_utc": "2026-10-23T15:42:53Z"
 }
