@@ -1828,9 +1828,52 @@
   },
   "final_local_full": "interrupted by execution environment disconnect; no terminal result claimed",
   "cloud_final_CI": {
+    "commit": "a929e758903b17a6d46f3ea4865a11edf5f8570d",
     "push_run": 39978050453,
     "pull_request_run": 39978055917,
-    "status": "in_progress; final results pending"
+    "status": "success",
+    "junit": {
+      "PR_full": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "10",
+        "tests": "3172",
+        "time": "375.897",
+        "timestamp": "2026-10-23T15:25:58.041119+00:00",
+        "passed": 3162
+      },
+      "push_full": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "10",
+        "tests": "3172",
+        "time": "299.152",
+        "timestamp": "2026-10-23T15:25:43.129572+00:00",
+        "passed": 3162
+      },
+      "runtime": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "10",
+        "tests": "325",
+        "time": "1.639",
+        "timestamp": "2026-10-23T15:25:10.413429+00:00",
+        "passed": 315
+      },
+      "smoke": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "28",
+        "time": "2.174",
+        "timestamp": "2026-10-23T15:25:33.521013+00:00",
+        "passed": 28
+      }
+    }
   },
   "cloud_dedup": [
     {
@@ -1863,5 +1906,36 @@
     "Pillow": "12.3.0",
     "numpy": "2.3.5",
     "CI_external_media_dependency": "ffmpeg + ffprobe installed explicitly"
+  },
+  "original_media_verified": {
+    "bytes": 1954214,
+    "sha256": "102b5a8acfbef74ab6d8a701c65d100397f83b184b1cdaec4eb76500d5b56523",
+    "duration_s": 5.184,
+    "video_codec": "h264",
+    "width": 1280,
+    "height": 720,
+    "audio_codec": "aac",
+    "ffprobe_exit": 0,
+    "full_decode_exit": 0
+  },
+  "local_harness_diagnostic": {
+    "invalid_launch": "pytest.main invoked through a stdin Python wrapper",
+    "observed_error": "spawn child cannot import review/<stdin>; queue timeout",
+    "reproduced": true,
+    "canonical_command": "python -m pytest tests/test_collab_safety_revision.py::test_lease_cross_process_unique_holder -q",
+    "canonical_result": "1 passed",
+    "used_as_product_regression": false
+  },
+  "dependency_metadata": {
+    "Pillow": {
+      "version": "12.3.0",
+      "source": "https://pypi.org/pypi/Pillow/12.3.0/json",
+      "windows_cp313_wheel": true
+    },
+    "numpy": {
+      "version": "2.3.5",
+      "source": "https://pypi.org/pypi/numpy/2.3.5/json",
+      "windows_cp313_wheel": true
+    }
   }
 }

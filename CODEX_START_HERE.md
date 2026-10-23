@@ -3,6 +3,8 @@
 **部署状态：A 修复分支提交 `a929e75` 已发布；默认分支仍为 `061735c`，尚未合入。默认分支更新被自动审批拦截，待用户批准具体 PR。以下修复说明指待合入代码；线上 cron 当前仍是原有 `*/10`。**
 先读 [本轮运行链复核与修复报告](CODEX_RUNTIME_REVIEW_20261023.md)，再读本分支 `GITHUB_RUNTIME_STATUS.md` 和历史 `GITHUB_AUTONOMY_E2E_REPORT.md`。
 
+两轮最终 GitHub CI 已全部成功，每轮完整回归为 3162 passed、10 skipped、0 failed、0 errors。
+
 审阅入口：[A 仓 PR #1](https://github.com/Q-1844/agent-system-v2/pull/1)。最终源码的机器证据见 `CODEX_RUNTIME_TEST_EVIDENCE_20261023.json`。
 
 ## 本轮范围与能力边界

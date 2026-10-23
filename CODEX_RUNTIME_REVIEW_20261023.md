@@ -60,7 +60,7 @@
 | Linux 中间修复版完整回归 | 3134 | 18 | 0 | 10 |
 | Linux 最新恢复与 API 专项 | 325 | 0 | 0 | 10 |
 | Windows 首版修复 CI（8172de5） | 3037 | 90 | 26 | 10 |
-| Windows 最新完整 CI（a929e75） | 等待最终回执 | — | — | — |
+| Windows 最终完整 CI（a929e75，PR 与 push 两轮一致） | 3162 | 0 | 0 | 10 |
 
 第一轮 Linux 剩余的 18 个失败节点均存在于原始基线，逐节点差集为空。随后已逐项完成定向修复和复测，包括：
 
@@ -70,9 +70,11 @@
 - skill 断言校准到仓库当前 1.6.1；不修改 skill 实体。
 - 完整项目恢复用例按同一 parent FullRun 验证唯一 child，并断言重新绑定原 ID。
 
-最新专项为 325 passed/10 skipped，图像与 provenance 专项另有 13 passed。上述均使用 Fake Provider；relstore 测试会话封锁外网 socket/DNS。没有通过删除失败用例或放宽生产审核来获得通过。
+最新专项为 325 passed/10 skipped，图像与 provenance 专项另有 13 passed。完整回归与专项有用例重叠，不把它们相加冒充独立测试数。上述均使用 Fake Provider；relstore 测试会话封锁外网 socket/DNS。没有通过删除失败用例或放宽生产审核来获得通过。
 
-本机末轮完整回归遇到执行环境连接中断，没有终态结果，因此不计入完整通过数。最终完整验收以当前源代码的 GitHub CI 回执为准：
+本机末轮完整回归遇到执行环境连接中断，没有终态结果，不计入完整通过数。随后我的 stdin 包装器启动方式造成 spawn 子进程无法导入 `<stdin>`，租约用例报队列超时；该启动问题已独立复现。改用标准 `python -m pytest tests/test_collab_safety_revision.py::test_lease_cross_process_unique_holder -q` 后为 1 passed。没有修改租约逻辑或放宽断言。
+
+最终验收使用标准入口运行的两轮 GitHub CI：每轮完整回归均为 3162 passed、10 skipped、0 failed、0 errors；运行恢复专项为 315 passed、10 skipped，Agent 冒烟为 28 passed。两轮均全部成功：
 
 - [PR CI 39978055917](https://github.com/Q-1844/agent-system-v2/actions/runs/39978055917)
 - [push CI 39978050453](https://github.com/Q-1844/agent-system-v2/actions/runs/39978050453)

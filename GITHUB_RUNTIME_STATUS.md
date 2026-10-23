@@ -21,7 +21,7 @@ A 默认分支为 `chore/migration-readiness`。本轮具体提交、逐项证�
 - B 已保存、B1 未完成时支持基于同一资产和 operation_id 继续登记。
 - 两条生产工作流共用并发组；巡检上传逐任务证据；使用稀疏检出。
 - Vision 测试 Fake 增加 `max_tokens` 参数；API 测试用临时项目代替未入仓的本机项目。
-- 新运行恢复 CI 与 Agent 冒烟在 [39973107428](https://github.com/Q-1844/agent-system-v2/actions/runs/39973107428) 已通过；完整回归单列，不用旧的 aggregate 数字替代本轮测量。
+- 最新提交 a929e75 的 [PR CI 39978055917](https://github.com/Q-1844/agent-system-v2/actions/runs/39978055917) 与 [push CI 39978050453](https://github.com/Q-1844/agent-system-v2/actions/runs/39978050453) 全部成功：每轮完整回归 3162 passed、10 skipped、0 failed、0 errors；运行恢复专项 315 passed、10 skipped；Agent 冒烟 28 passed。默认分支尚未合入，因此这些绿色结果对应修复分支。
 
 旧报告的 `157 failed, 2730 passed, 10 skipped, 228 errors` 是历史记录。Codex 已找到部分明确原因并修复测试夹具；当前回归与逐节点对比见本分支本轮报告，不能统一归因于 relstore，也不能把“历史已有”理解成“无需处理”。
 
