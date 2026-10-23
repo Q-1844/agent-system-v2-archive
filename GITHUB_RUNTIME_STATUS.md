@@ -1,52 +1,38 @@
-# GITHUB_RUNTIME_STATUS — 运行态与已知问题
+# GitHub 运行态（2026-10-23，Codex 接手复核）
 
-- 日期：2026-10-23 ｜ C 仓 `agent-system-v2-archive` 分支 `feat/codex-handoff-20261023`
+**部署状态：A 修复分支提交 `a929e75` 已发布；默认分支仍为 `061735c`，尚未合入。默认分支更新被自动审批拦截，待用户批准具体 PR。以下修复说明指待合入代码；线上 cron 当前仍是原有 `*/10`。**
+A 默认分支为 `chore/migration-readiness`。本轮具体提交、逐项证据和验收结果见 [运行链修复报告](CODEX_RUNTIME_REVIEW_20261023.md)。
 
-## 已部署工作流（A 仓 `Q-1844/agent-system-v2`，默认分支 `chore/migration-readiness`）
+## 已核实的历史证据
 
-| 工作流 | 文件 | 触发 | 状态 |
-|---|---|---|---|
-| mock-regression | `.github/workflows/ci.yml` | push/PR/workflow_dispatch | active；conclusion=failure（**预存诚实红基线，见下**，非本轮回归） |
-| video-autoproduction-e2e | `.github/workflows/video-autoproduction-e2e.yml` | workflow_dispatch | active；已验证 PASS (run 39961036358) |
-| video-patrol | `.github/workflows/video-patrol.yml` | schedule `*/10 * * * *` + workflow_dispatch | active；逻辑 PASS (run 39962609983)；schedule 实触发未观察到 |
+- 真实单段生产：run [39961036358](https://github.com/Q-1844/agent-system-v2/actions/runs/39961036358)，`workflow_dispatch/success`。
+- 巡检：run [39962609983](https://github.com/Q-1844/agent-system-v2/actions/runs/39962609983)，`workflow_dispatch/success`。
+- 原 B 资产 `669214514` 已重新下载，1,954,214 字节，SHA256 `102b5a8acfbef74ab6d8a701c65d100397f83b184b1cdaec4eb76500d5b56523`。
+- B1 demo1 权威状态已读回，为 `VERIFIED_RESTORABLE`。
 
-## 运行环境
+这些证据证明单段 E2E 路径，不证明完整项目自动制作和素材生命周期已在云端完成。
 
-- runner: `ubuntu-latest`（windows-latest 镜像无 ffmpeg 在 PATH；ubuntu 24.04 需 `apt install ffmpeg`，工作流已含该步）
-- python 3.13 + `requirements-ci.txt`（fastapi/httpx/pydantic/pytest 等）
-- 默认分支：A=`chore/migration-readiness`，B/B1/C=`main`
+审阅入口：[A 仓 PR #1](https://github.com/Q-1844/agent-system-v2/pull/1)。
 
-## 必需 Secrets（仅名称，已在 A 仓配置）
+## 本轮修复与测试
 
-- `AGNES_API_KEY` — 真实 Agnes 生成
-- `B1_ARCHIVE_TOKEN` — B/B1 fine-grained PAT（永久 Contents:write），A 工作流跨仓写 B Release + B1 state.json
-- 不在仓库存任何密钥值；config.yaml 全 `${...}` 占位符
+- 巡检按任务终态和归档引用去重；远端读错、失败、超时及坏回执使运行失败。
+- E2E 在付费请求前保存 B1 CAS 检查点；已知 ID 接续；不明确提交停止自动重发。
+- B 已保存、B1 未完成时支持基于同一资产和 operation_id 继续登记。
+- 两条生产工作流共用并发组；巡检上传逐任务证据；使用稀疏检出。
+- Vision 测试 Fake 增加 `max_tokens` 参数；API 测试用临时项目代替未入仓的本机项目。
+- 新运行恢复 CI 与 Agent 冒烟在 [39973107428](https://github.com/Q-1844/agent-system-v2/actions/runs/39973107428) 已通过；完整回归单列，不用旧的 aggregate 数字替代本轮测量。
 
-## 已知问题（Codex 接手处理）
+旧报告的 `157 failed, 2730 passed, 10 skipped, 228 errors` 是历史记录。Codex 已找到部分明确原因并修复测试夹具；当前回归与逐节点对比见本分支本轮报告，不能统一归因于 relstore，也不能把“历史已有”理解成“无需处理”。
 
-1. **ci.yml mock-regression failure = 预存基线，非回归**
-   - `157 failed, 2730 passed, 10 skipped, 228 errors`（run 39963298829 等）
-   - 失败全在 `tests/test_video_multi_mode_34.py` 等（`review_candidates` 返回 'uncertain' 非 'pass'）
-   - 这是 10-21 记录的"诚实红"基线（`2847/157F+228E` 待校准），与 relstore/E2E 工作无关
-   - relstore 278 测试在 CI 全 PASS（归入 2730 passed）
-   - Codex 校准该基线（非本轮职责）
-2. **schedule 实触发未观察到** — video-patrol 的 cron 已配，GitHub 未在测试窗口 fire；Codex 观察一次即闭环 `GITHUB_BASELINE_OPERATIONAL=YES`
-3. **cron `*/10` 演示用** — 改合理间隔或事件驱动（每 10 分钟跑一次浪费）
-4. **任务源** — 当前 `tasks/pending/*.json` 手动提交；Codex 接真实源（issue/API/Registry 驱动）
-5. **真生成模式** — 当前 t2v（无需图，最简）；可换 i2v（需公开图 URL，身份一致性更好）
-6. **A 仓 git 历史** — 远端含 Contents-API 提交（ubuntu/ffmpeg/patrol 等），本地 `feat/relstore-integration-handoff` 分叉；Codex 如需 git 推送先 `fetch + reset --hard` 到远端 HEAD
+## 定时触发
 
-## Codex 可直接继续优化的模块与优先级
+最近一次只读 API 查询：`event=schedule` 的 total_count=0。狭义单段基线仍为 3/4，真实定时触发尚未验证；触发缺失原因尚未确诊。
 
-1. 观察 video-patrol schedule 实触发（最后一环）
-2. 校准 ci.yml 基线（预存诚实红）
-3. cron 频率/事件驱动化
-4. 真实任务源接线（替代手动 tasks/pending）
-5. i2v 模式 + 公开图托管
-6. git 历史对账
-7. 视频质量/一致性优化（项目既有 backlog）
+GitHub schedule 是 best-effort，只在默认分支运行。计划的错峰 cron 是 `7,27,47 * * * *`（UTC，每 20 分钟），实际部署内容以 A 默认分支工作流为准。修改 cron 不等于已观察到触发；手动 dispatch 不算 schedule 证据。
 
-## 凭据交接
+## 保留事项
 
-- `collab-rw` PAT（fine-grained, All-repos Contents/PR/Pages/Actions:write）由用户直接交付 Codex（不入仓、不入本文档）
-- B/B1 PAT = `B1_ARCHIVE_TOKEN` secret（值在 `C:\Users\Public\Documents\g3b_token.txt`，已入 A 仓 secret，不入仓）
+完整 Director/Planner/多 SceneRun/合成的 GitHub 真实验收、真实任务源、进入/退出生命周期、预览页、跨仓素材管理及 Producer 新能力留待后续。现有任务队列仍是 `tasks/pending/*.json`。
+
+本地分叉先 fetch 对账并保留修改，建议使用独立 worktree。不要无条件 reset --hard。凭据只从 Secrets 或当前授权会话提供，不依赖旧报告提及的本地 Windows 凭据文件路径。

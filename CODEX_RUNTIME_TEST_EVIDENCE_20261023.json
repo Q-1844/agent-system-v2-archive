@@ -1,0 +1,1867 @@
+{
+  "base_commit": "061735c28a4f2c77850e28a60a5959e1377ece93",
+  "repair_commit": "a929e758903b17a6d46f3ea4865a11edf5f8570d",
+  "source_integrity": {
+    "files": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "bytes": 3358,
+        "sha256": "c8cffdbe97da6c86c0e56043d42806520f82587aaeb425a87cc7a06918745af6",
+        "git_blob_sha": "90bb79ed8e5c8a076dca0fb128f9afa300d6897e",
+        "remote_blob_sha": "90bb79ed8e5c8a076dca0fb128f9afa300d6897e",
+        "matches_remote": true
+      },
+      {
+        "path": ".github/workflows/video-autoproduction-e2e.yml",
+        "bytes": 2412,
+        "sha256": "3284b2d5cb386c1f6b9c32720795279a1a90b58f7561e30479baab2abd8008c7",
+        "git_blob_sha": "4b96d222d41a04e10e8d2b779f00f320818b0901",
+        "remote_blob_sha": "4b96d222d41a04e10e8d2b779f00f320818b0901",
+        "matches_remote": true
+      },
+      {
+        "path": ".github/workflows/video-patrol.yml",
+        "bytes": 2033,
+        "sha256": "a896787ae275da972de9045d364658b2ad30955859555d27b3f5886474184514",
+        "git_blob_sha": "1fa1b6d8d409ba8043a868ee570f330ab723d7eb",
+        "remote_blob_sha": "1fa1b6d8d409ba8043a868ee570f330ab723d7eb",
+        "matches_remote": true
+      },
+      {
+        "path": "requirements-ci.txt",
+        "bytes": 812,
+        "sha256": "58d94417a2f8046772f272795b0d4f80c36344231f5ef238226c7d153d6df902",
+        "git_blob_sha": "437f8c8f8b7c56963b654388810d13efbf8de062",
+        "remote_blob_sha": "437f8c8f8b7c56963b654388810d13efbf8de062",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_api.py",
+        "bytes": 3954,
+        "sha256": "a24e2360e943e1a17cb22148d475598f6ae762ea7d3e21b5bef2c3fdf54ec10d",
+        "git_blob_sha": "95adf27e60e3c3cd588bcb1e343e22a682e136d4",
+        "remote_blob_sha": "95adf27e60e3c3cd588bcb1e343e22a682e136d4",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_full_project_autopilot.py",
+        "bytes": 31350,
+        "sha256": "927decc43387b007464afc7b30aece37c334d37f819fdc7ddccd9316bbf222b6",
+        "git_blob_sha": "10322094e5e5e0620e3086c88369470a5d30589c",
+        "remote_blob_sha": "10322094e5e5e0620e3086c88369470a5d30589c",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_native_av_b1_prompt_integration.py",
+        "bytes": 14277,
+        "sha256": "ce01e23d23d5e97cf055bbfca474119ac2e3687ecea3171d935f9812dbff1e2e",
+        "git_blob_sha": "ed33244a0dc03287be2034d5234c84eb94b3e9ef",
+        "remote_blob_sha": "ed33244a0dc03287be2034d5234c84eb94b3e9ef",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_native_av_c1_routing_policy.py",
+        "bytes": 11661,
+        "sha256": "3a1243d673004a29f36de22fd575a87d5834fcf82ecac78ca2b14d3ca228245f",
+        "git_blob_sha": "eb60249238ae303203effe6684543ffc35b2acfb",
+        "remote_blob_sha": "eb60249238ae303203effe6684543ffc35b2acfb",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_p39d_prechecks.py",
+        "bytes": 18078,
+        "sha256": "237b11a31d37d94d9d9f63d112a0053e7cca0d6c337b255d4f68fea4e12a1856",
+        "git_blob_sha": "00c209a9169725916f92734c5198fc0df1a73142",
+        "remote_blob_sha": "00c209a9169725916f92734c5198fc0df1a73142",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_p39f_semantic_closure.py",
+        "bytes": 35066,
+        "sha256": "8573df8b72bf7398c64eb54013cff4947d80323b0323a60b4d804061546af6fc",
+        "git_blob_sha": "3f32904eb1bcb8aa929c976855c9d6878ced1d98",
+        "remote_blob_sha": "3f32904eb1bcb8aa929c976855c9d6878ced1d98",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_camera_review.py",
+        "bytes": 9964,
+        "sha256": "a34af26533b712bf26d91edcf388d90b9d14e29e1ea47563c0c31909ac89c533",
+        "git_blob_sha": "3aff7c48d16e8d0f8f35258aeb428d28fb5b93c9",
+        "remote_blob_sha": "3aff7c48d16e8d0f8f35258aeb428d28fb5b93c9",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_designer_agent.py",
+        "bytes": 80063,
+        "sha256": "d5305ee597452b2476333f11e53e61c01f406ae7f30b61d6e117d1f9e6ba7740",
+        "git_blob_sha": "6e0a8687c31219f72e2ca828f476343fd65149d1",
+        "remote_blob_sha": "6e0a8687c31219f72e2ca828f476343fd65149d1",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_system_baseview_profile_fp.py",
+        "bytes": 7354,
+        "sha256": "a557894f1e54942dccc9b8e2ece15bf7947526f97e5c94cb502e990f590430aa",
+        "git_blob_sha": "ac8e4a14f84b0222bc455d2df4f466eb897e318b",
+        "remote_blob_sha": "ac8e4a14f84b0222bc455d2df4f466eb897e318b",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_system_s2a_approval.py",
+        "bytes": 14148,
+        "sha256": "a0b4ca5db4f12da21af28c1d4fa277f48f772e81c3e2b0a2e1cb042f5c44a1d0",
+        "git_blob_sha": "aeb2edac4b59ecf5f67739bd0277a8b73d6c9010",
+        "remote_blob_sha": "aeb2edac4b59ecf5f67739bd0277a8b73d6c9010",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_system_s2a_master.py",
+        "bytes": 16933,
+        "sha256": "b1c9f1d2e2dbbcf86b00c3ff9414d7a70189f9b2fce6aaf50ef90482b08f38e2",
+        "git_blob_sha": "d85fe33e77f89cd331927f369eaa62f48c84b3b1",
+        "remote_blob_sha": "d85fe33e77f89cd331927f369eaa62f48c84b3b1",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_system_s2a_review.py",
+        "bytes": 9902,
+        "sha256": "6ff735a0ac0e0f78a19e679c0f1aab95093d0f0bb872f268846f4d0f50428cb6",
+        "git_blob_sha": "662bef1822a2cb6d556df78ce3d31bab43f83bed",
+        "remote_blob_sha": "662bef1822a2cb6d556df78ce3d31bab43f83bed",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_system_s2b1.py",
+        "bytes": 17523,
+        "sha256": "a8b5d3c37db6489364d281090c5ec09a6db8b23112efe4b55c2f83f3d9ee8ce0",
+        "git_blob_sha": "1ff2ea43a4777843abf00a3f57eaab007279fc51",
+        "remote_blob_sha": "1ff2ea43a4777843abf00a3f57eaab007279fc51",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_system_s2b_approval.py",
+        "bytes": 16902,
+        "sha256": "93a5c29a752ccb66b37f57e2876ef186809926039646afe699decfbed7eab8d8",
+        "git_blob_sha": "f5eafea866632108696531b341ebefd6cb475f25",
+        "remote_blob_sha": "f5eafea866632108696531b341ebefd6cb475f25",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_system_s2b_master.py",
+        "bytes": 14397,
+        "sha256": "86f38be5203d873f5689bcc4b51225e94be7eb01239297dfeb78b19a0c2dccd2",
+        "git_blob_sha": "872e7c2d40f7fa98654768d210e9c8bf814459f1",
+        "remote_blob_sha": "872e7c2d40f7fa98654768d210e9c8bf814459f1",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_scene_system_s2b_review.py",
+        "bytes": 8526,
+        "sha256": "1140ac8f78ce226f6c696b7e5b87dd9259f114728ea454ca0dfea3426dd3d4c0",
+        "git_blob_sha": "693d4b4b04df3d30a0282c6f6e425ac0a05ae6c7",
+        "remote_blob_sha": "693d4b4b04df3d30a0282c6f6e425ac0a05ae6c7",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_shot_binding_s3c2.py",
+        "bytes": 43657,
+        "sha256": "deb8e6a93ce41175a3c2106b23bf14ef69ff0f7c39d2eb6906fbd0c288fdbafd",
+        "git_blob_sha": "eb273670e747e59a0ba52c78904b730207097ebb",
+        "remote_blob_sha": "eb273670e747e59a0ba52c78904b730207097ebb",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_skill_p42_recipes.py",
+        "bytes": 6879,
+        "sha256": "2c8fbfa437fed3ca0f88d0f24189d199442265fd9f270fcdf924f9a69dc99af9",
+        "git_blob_sha": "aa7cb970fadf5a4ed5fa7b9de2bdf48cbad946b2",
+        "remote_blob_sha": "aa7cb970fadf5a4ed5fa7b9de2bdf48cbad946b2",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_skill_system.py",
+        "bytes": 14037,
+        "sha256": "75c431a56cf30f280673f20ec760bdf3c2eede02668b6aa77930959660ac9a07",
+        "git_blob_sha": "f2317fd0b779178dba7f1a8d2e6a69ba8c2a3603",
+        "remote_blob_sha": "f2317fd0b779178dba7f1a8d2e6a69ba8c2a3603",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_skill_turn.py",
+        "bytes": 6368,
+        "sha256": "cb919f91fa698a05dfc3c455f8651571f4a46eda4af0a84f9f2f18de0b9a9dc8",
+        "git_blob_sha": "a507888054506d560eee228f22ab9693d2739adf",
+        "remote_blob_sha": "a507888054506d560eee228f22ab9693d2739adf",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/test_visual_profile_p1.py",
+        "bytes": 32514,
+        "sha256": "30af8242722e28f055b9c647bdac0493e3f301b2f4d4128b3dfed14cd17bf1ec",
+        "git_blob_sha": "dbf5ca96623beac6424e13e646da0a6112f4bb6e",
+        "remote_blob_sha": "dbf5ca96623beac6424e13e646da0a6112f4bb6e",
+        "matches_remote": true
+      },
+      {
+        "path": "tools/e2e_autonomous_run.py",
+        "bytes": 13867,
+        "sha256": "adca8dac9a519ff2f06688e9df8145577815955c34b032d0b049ddb691e9fa07",
+        "git_blob_sha": "9bedc510b25fe88793d327eea9b8267528b6f37f",
+        "remote_blob_sha": "9bedc510b25fe88793d327eea9b8267528b6f37f",
+        "matches_remote": true
+      },
+      {
+        "path": "tools/patrol_run.py",
+        "bytes": 5083,
+        "sha256": "490de6d036e614e3b4c62e78d6b8a01a5c2b2c10bcf99c10ae6563a2b56cba2e",
+        "git_blob_sha": "dc46fa3051e145b7ca01a5bab719bcd0f7418ead",
+        "remote_blob_sha": "dc46fa3051e145b7ca01a5bab719bcd0f7418ead",
+        "matches_remote": true
+      },
+      {
+        "path": "tools/video_task_state.py",
+        "bytes": 4332,
+        "sha256": "cab0260b5eb3515cd7b633aec8e8259b75f84598cbf63ae4a17e2f847a19ed74",
+        "git_blob_sha": "231f876b4ab2bc9c211278d7e030182687939e02",
+        "remote_blob_sha": "231f876b4ab2bc9c211278d7e030182687939e02",
+        "matches_remote": true
+      },
+      {
+        "path": "tools/video_runtime_preflight.py",
+        "bytes": 1664,
+        "sha256": "6ee241ca36cef028650696415fee2afe8e5f17abc29f977d1bd5144dea190fe8",
+        "git_blob_sha": "bad905e3ae65221a3e18a1b787329fd9bf45446e",
+        "remote_blob_sha": "bad905e3ae65221a3e18a1b787329fd9bf45446e",
+        "matches_remote": true
+      },
+      {
+        "path": "tests/relstore/test_video_runtime_recovery.py",
+        "bytes": 14626,
+        "sha256": "d9c677615150c6aa73dda620650362140bda55e76fbff5c13be3c271ab3dbfa3",
+        "git_blob_sha": "f97b529b83b853484f63aa4633694f755e53f022",
+        "remote_blob_sha": "f97b529b83b853484f63aa4633694f755e53f022",
+        "matches_remote": true
+      }
+    ],
+    "all_match": true
+  },
+  "local_python": "3.12",
+  "baseline_full": {
+    "counts": {
+      "name": "pytest",
+      "errors": "205",
+      "failures": "85",
+      "skipped": "10",
+      "tests": "3125",
+      "time": "1220.767",
+      "timestamp": "2026-10-23T08:44:06.874470-06:00"
+    },
+    "problems": [
+      {
+        "id": "tests.test_api::test_get_shots",
+        "outcome": "failure",
+        "message": "assert 404 == 200\n +  where 404 = <Response [404 Not Found]>.status_code"
+      },
+      {
+        "id": "tests.test_api::test_get_timing",
+        "outcome": "failure",
+        "message": "assert 404 == 200\n +  where 404 = <Response [404 Not Found]>.status_code"
+      },
+      {
+        "id": "tests.test_api::test_orchestrate_dry_run",
+        "outcome": "failure",
+        "message": "assert 404 == 200\n +  where 404 = <Response [404 Not Found]>.status_code"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C6_inspect_ready",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_dafec01fa589', 'scene_instance_view_id': 'sciv_425e84b142ae', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C7_inspect_not_ready_revoked_look",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b6877acae56b', 'scene_instance_view_id': 'sciv_f97fc71ac2dd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C8_inspect_stale_look",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c820f26e5eba', 'scene_instance_view_id': 'sciv_a40600871240', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C12_inspect_scene_view_missing",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0a3794b45ec6', 'scene_instance_view_id': 'sciv_1f1eae4b691f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C13_inspect_profile_unspecified",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f60544b52ddb', 'scene_instance_view_id': 'sciv_3c64eba4f880', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C14_only_current_shot_resources",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f1d071757418', 'scene_instance_view_id': 'sciv_31c15979f445', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C18_director_fix_cast_clears_warning",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_2936fd0a191c', 'scene_instance_view_id': 'sciv_7afa57e3e511', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C19_binding_strict_cast_still_enforced",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_d900167a3651', 'scene_instance_view_id': 'sciv_07fa3ab88c8e', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C25_invalid_scene_view_rejected",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b2878b720023', 'scene_instance_view_id': 'sciv_94480350696d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C26_revoked_scene_view_rejected",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b64f48749dbd', 'scene_instance_view_id': 'sciv_56b3aaa170be', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C30_bind_receipt_ready_state",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_80c2d4b50ea0', 'scene_instance_view_id': 'sciv_7177ce9c2fd1', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C32_refresh_stale_snapshot_to_ready",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0f93073956f3', 'scene_instance_view_id': 'sciv_1ba0061db96f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C33_C36_refresh_fails_when_dependency_invalid",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_57aef6c8484d', 'scene_instance_view_id': 'sciv_902407c24902', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C35_refresh_profile_unspecified_fails",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_adbc9060a7ca', 'scene_instance_view_id': 'sciv_40f0973b335a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C37_unbound_legacy_allowed_old_behavior",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e1e5a4e8f121', 'scene_instance_view_id': 'sciv_0cd58275eacd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C38_unbound_bound_required_blocked_before_job",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_4905a532c552', 'scene_instance_view_id': 'sciv_eed88666b7d8', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C39_not_ready_bound_required_structured_issues",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ba081ded353a', 'scene_instance_view_id': 'sciv_bcfcf5f227b0', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_c1_director_production::test_C40_ready_bound_required_job_submitted",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_83fbb616d538', 'scene_instance_view_id': 'sciv_c771007a25d8', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_full_project_autopilot::test_case7_production_child_crash_rebind",
+        "outcome": "failure",
+        "message": "AssertionError: 应只有 1 个 production child，实际 2\nassert 2 == 1\n +  where 2 = len([ProjectProductionRun(run_id='prun_bb0ba532bd', project_name='_test_full_project', parent_full_run_id='frun_f5bfa76499...None, shot_actions=None, parent_change_execution_id=None, created_at=1792767107.323538, updated_at=1792767107.3439143)])"
+      },
+      {
+        "id": "tests.test_generation_provenance::test_first_frame_bound_full_provenance",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c95fe445138b', 'scene_instance_view_id': 'sciv_48f8884bedb6', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_generation_provenance::test_first_frame_unbound_legacy_basis_minimal",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_5acec6f59423', 'scene_instance_view_id': 'sciv_3daed042781c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_generation_provenance::test_first_frame_budget_crop_derivation_provenance",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_3efe1fd3bca6', 'scene_instance_view_id': 'sciv_dda47063d7ac', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_generation_provenance::test_first_frame_budget_crop_derivation_fails_honestly",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_77af76206289', 'scene_instance_view_id': 'sciv_12cf5e432200', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_generation_provenance::test_last_frame_bound_full_provenance",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_7b587e3a8da0', 'scene_instance_view_id': 'sciv_9405c5069f2f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_generation_request_seam::test_handler_first_frame_client_receives_compiled_call",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_9872f85147e1', 'scene_instance_view_id': 'sciv_38a418bf5fb7', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_generation_request_seam::test_handler_first_frame_layout_flag_records_continuity",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_7ddc32bec3da', 'scene_instance_view_id': 'sciv_36e019ec7e25', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_identity_crop::test_crop_mode_replaces_look_media_with_derivation",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_bcaafdf722a6', 'scene_instance_view_id': 'sciv_dd8b2ed21836', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_identity_crop::test_keep_mode_source_media_untouched",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b80817adbc4d', 'scene_instance_view_id': 'sciv_d37dc5d0230d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_identity_crop::test_crop_failure_falls_back_with_diagnostic",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_4d3cd3fd1157', 'scene_instance_view_id': 'sciv_7eebc212f056', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_flag_off_dialogue_stays_out_of_prompt",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Animate this...named people.' == 'Animate this...it consistent'\n  \n  Skipping 77 identical leading characters in diff, use -v to show\n  -  consistent\n  +  consistent Population constraint: exactly one person appears in this frame; no bystanders, no background crowd, no extra unnamed people."
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_flag_off_keyframes_behavior_unchanged",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Create a smo...ground crowd.' == 'Create a smo... scene layout'\n  \n  Skipping 171 identical leading characters in diff, use -v to show\n  - cene layout\n  + cene layout Population constraint: exactly 2 people appear in this frame — the characters described above; no other people, no background crowd."
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_bound_flag_off_identical",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_968fe73f841b', 'scene_instance_view_id': 'sciv_6a885af0fa7a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_bound_flag_on_block_at_tail_with_diagnostic",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1c6a6f1d067d', 'scene_instance_view_id': 'sciv_b41289df0c58', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_bound_flag_on_no_dialogue_no_block",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_45081ee644fa', 'scene_instance_view_id': 'sciv_5a2456cfcbf8', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_bound_flag_on_speaker_not_in_characters_fail_closed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_32de98cde1ec', 'scene_instance_view_id': 'sciv_e8be32b898b0', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_bound_handler_flag_on_dialogue_reaches_provider",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c0e4ff2c0ac0', 'scene_instance_view_id': 'sciv_2daa0b5c7163', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_bound_handler_flag_on_ambiguous_fail_closed_zero_calls",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_8dce1d3fb69a', 'scene_instance_view_id': 'sciv_6e1c629b478a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_native_av_c1_routing_policy::test_default_on_no_dialogue_unchanged",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Animate this...named people.' == 'Animate this...it consistent'\n  \n  Skipping 77 identical leading characters in diff, use -v to show\n  -  consistent\n  +  consistent Population constraint: exactly one person appears in this frame; no bystanders, no background crowd, no extra unnamed people."
+      },
+      {
+        "id": "tests.test_native_av_c1_routing_policy::test_explicit_false_override_off",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Animate this...named people.' == 'Animate this...it consistent'\n  \n  Skipping 77 identical leading characters in diff, use -v to show\n  -  consistent\n  +  consistent Population constraint: exactly one person appears in this frame; no bystanders, no background crowd, no extra unnamed people."
+      },
+      {
+        "id": "tests.test_p39d_prechecks::test_caseA_reference_only_soft_not_block",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_eb78e609d336', 'scene_instance_view_id': 'sciv_a23d30e79930', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_p39d_prechecks::test_caseA_wiring_video_proceeds_with_soft_diagnostic",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b532a25b35e6', 'scene_instance_view_id': 'sciv_b2640988ae75', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_p39d_prechecks::test_caseA_wiring_bound_required_images_not_blocked",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ba0934b856ea', 'scene_instance_view_id': 'sciv_fbe90f5de382', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_p39d_prechecks::test_caseB_i2v_standing_ref_as_first_frame_blocks",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_089667e934bb', 'scene_instance_view_id': 'sciv_cb8eedc1af9e', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_p39d_prechecks::test_caseC_relay_boundary_no_pose_gate",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_afad164a053f', 'scene_instance_view_id': 'sciv_f1804ff92ce3', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_p39d_prechecks::test_caseC_relay_not_ready_blocked_at_precheck",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e56e15b5b180', 'scene_instance_view_id': 'sciv_16800b45523a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_p39d_prechecks::test_caseA_multi_first_shot_needs_no_first_frame",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_6ec647a7b067', 'scene_instance_view_id': 'sciv_b541e8cf5232', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_p39f_interlude_structure::test_one_interlude_full_structure",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ff98fa0f0547', 'scene_instance_view_id': 'sciv_f68800025e9b', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_interlude_structure::test_two_consecutive_interludes_structure",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c756f610b4ba', 'scene_instance_view_id': 'sciv_b2083ac46312', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_interlude_structure::test_inherit_relay_chain_insertion_guard",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_48fa9f35f939', 'scene_instance_view_id': 'sciv_f2d27aa2121b', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_case_a1_character_look_reference_rerun_keeps_multi",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_13f5fd949438', 'scene_instance_view_id': 'sciv_8803124a747d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_case_a2_scene_reference_synced_to_slot_rerun_keeps_multi",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_82465d8d39b0', 'scene_instance_view_id': 'sciv_415bc0cd71f9', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_case_c_synced_reference_never_becomes_hard_frame_on_mode_switch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e53e7f1b7081', 'scene_instance_view_id': 'sciv_90fba2398d77', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_case_b_multi_relay_rerun_keeps_relay_semantics",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_22ad027edea0', 'scene_instance_view_id': 'sciv_1a4d9d2e466c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p2_multi_character_look_input_visuals_matches_dispatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_359f4dd9b47b', 'scene_instance_view_id': 'sciv_f414042d5d0f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p2_multi_scene_reference_input_visuals_matches_dispatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_bff6dcd5da24', 'scene_instance_view_id': 'sciv_33adf751d3b2', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p2_multi_relay_prev_tail_input_visuals_matches_dispatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_13e91c7b82c9', 'scene_instance_view_id': 'sciv_c97d449eda16', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p2_i2v_hard_start_input_visuals_matches_dispatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b1414b317a74', 'scene_instance_view_id': 'sciv_680e60867985', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p2_keyframes_both_boundaries_input_visuals_matches_dispatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e9de44f3f49d', 'scene_instance_view_id': 'sciv_af112888c822', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p2_i2v_inherit_relay_hard_start_matches_dispatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_2d7819241af5', 'scene_instance_view_id': 'sciv_6130dc7d333a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p2_legacy_unbound_i2v_input_visuals_best_effort",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c774e9b828bd', 'scene_instance_view_id': 'sciv_29768db88825', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p2_recover_path_honest_provenance_and_no_phantom_version",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_916af0dea10f', 'scene_instance_view_id': 'sciv_1058cef11296', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p3_relay_freshness_and_historical_immutability",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f5f8e3b9c66c', 'scene_instance_view_id': 'sciv_8797e425a89e', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p3_i2v_inherit_relay_stale_verdict",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_4da3093bd507', 'scene_instance_view_id': 'sciv_80bff2d8eb54', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_sync_slot_does_not_touch_semantics_config",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0498305c1658', 'scene_instance_view_id': 'sciv_db75e0718705', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p10_pregen_check_unavailable_diagnostic",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_81029ee42eba', 'scene_instance_view_id': 'sciv_be3cfde53a0f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_population_constraint::test_clause_off_by_default_and_on_by_param",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_326a408fb427', 'scene_instance_view_id': 'sciv_edec8666a532', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_population_constraint::test_clause_multi_character_count",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0f33656f0d3a', 'scene_instance_view_id': 'sciv_361efca236f9', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_population_constraint::test_handler_threads_population_param",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_57d575751622', 'scene_instance_view_id': 'sciv_d62882fa7c71', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_population_constraint::test_unbound_never_contains_clause",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_699f172df326', 'scene_instance_view_id': 'sciv_d0f81f6af04d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_prompt_freshness_37::test_adapter_gate_multi_missing_en_with_desc_fails_closed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_567bf0bec6aa', 'scene_instance_view_id': 'sciv_62066d1f8d53', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_prompt_freshness_37::test_adapter_gate_multi_stale_en_ignored_not_shadowing",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_85bf4ad8d642', 'scene_instance_view_id': 'sciv_6cefec71f0d2', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_prompt_freshness_37::test_adapter_gate_multi_fresh_en_used",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_3f2a55d6c767', 'scene_instance_view_id': 'sciv_a85f79451b17', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_prompt_freshness_37::test_ensure_multi_video_prompt_rebuild_and_fresh_skip",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_21b48b1cc39a', 'scene_instance_view_id': 'sciv_b163e29b4994', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_prompt_freshness_37::test_ensure_multi_video_prompt_empty_reply_fail_closed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_106f8a0cef52', 'scene_instance_view_id': 'sciv_53ea10df519c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_scene_camera_review::test_feature_checklist_fake_overhead_is_needs_fix",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_camera_review::test_no_observed_evidence_caps_to_uncertain",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_designer_agent::test_S31_S32_view_prepare_create_generate_pass",
+        "outcome": "failure",
+        "message": "AssertionError: assert None == 'pass'"
+      },
+      {
+        "id": "tests.test_scene_designer_agent::test_S33_S34_needs_fix_and_review_only_no_approve",
+        "outcome": "failure",
+        "message": "AssertionError: assert (True and None == 'needs_fix')"
+      },
+      {
+        "id": "tests.test_scene_designer_agent::test_S35_approve_if_pass_auto_approves",
+        "outcome": "failure",
+        "message": "AssertionError: (None, None)\nassert (True and False is True)"
+      },
+      {
+        "id": "tests.test_scene_designer_agent::test_S36_camera_wrong_needs_fix",
+        "outcome": "failure",
+        "message": "AssertionError: assert None == 'needs_fix'"
+      },
+      {
+        "id": "tests.test_scene_designer_agent::test_S37_anchor_visibility_missing_needs_fix",
+        "outcome": "failure",
+        "message": "AssertionError: assert None == 'needs_fix'"
+      },
+      {
+        "id": "tests.test_scene_designer_agent::test_S38_same_basis_failure_guard",
+        "outcome": "failure",
+        "message": "AssertionError: assert (True and None == 'needs_fix')"
+      },
+      {
+        "id": "tests.test_scene_designer_agent::test_S51_sciv_pass_and_approve",
+        "outcome": "failure",
+        "message": "AssertionError: (None, None)\nassert (True and False is True)"
+      },
+      {
+        "id": "tests.test_scene_designer_agent::test_S52_sciv_needs_fix_not_approve",
+        "outcome": "failure",
+        "message": "AssertionError: (None, [])\nassert (True and None == 'needs_fix')"
+      },
+      {
+        "id": "tests.test_scene_system_baseview_profile_fp::test_case1_same_profile_base_view_fresh_and_siv_gate_proceeds",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene.review_candidates', 'review_id': 'srev_f624764be268', 'view_id': 'view_1f464baa7ff6', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_scene_system_baseview_profile_fp::test_case2_profile_change_base_view_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene.review_candidates', 'review_id': 'srev_3edeaf5de2d9', 'view_id': 'view_481f5ca1d89f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_scene_system_s2a_approval::test_t30_pass_does_not_auto_approve",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene.review_candidates', 'review_id': 'srev_ad7a20aeb9b5', 'view_id': 'view_fe5b86366105', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_approval::test_t31_t32_explicit_approval_success_and_resource_registration",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene.review_candidates', 'review_id': 'srev_4fbd3ec54aca', 'view_id': 'view_e842b9e1f177', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_approval::test_t33a_stale_approval_basis_does_not_attach",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene.review_candidates', 'review_id': 'srev_8b69692b3425', 'view_id': 'view_e71a9df8bc1f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_approval::test_t33b_orphan_reference_asset_recorded_never_attached",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene.review_candidates', 'review_id': 'srev_1b89707b3af3', 'view_id': 'view_cacc1ea6dd92', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_approval::test_t34_revoke",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene.review_candidates', 'review_id': 'srev_a0b8621c259b', 'view_id': 'view_04613240e6e7', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_master::test_t35_restart_persistence_visual_state",
+        "outcome": "failure",
+        "message": "AssertionError: assert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_master::test_t36_project_json_bytes_unchanged",
+        "outcome": "failure",
+        "message": "AssertionError: review_pass_required\nassert False"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_master::test_t37_resources_schema_unchanged",
+        "outcome": "failure",
+        "message": "AssertionError: review_pass_required\nassert False"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_master::test_http_visual_full_chain_and_status_mapping",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_review::test_t27_review_dimensions_all_present",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_review::test_t28_overall_deterministic_key_dim_fail",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_review::test_t28c_missing_dimension_fail_closed",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_review::test_t28d_anchor_missing_from_reply_fail_closed",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_system_s2a_review::test_t28e_anchor_partially_is_not_pass",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_system_s2b1::test_refresh_cycle_stale_peer_excluded_and_regenerated",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0ee785aeac09', 'scene_instance_view_id': 'sciv_dca68af5f6a6', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_approval::test_t36_approve_without_pass_rejected",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f40986d197d7', 'scene_instance_view_id': 'sciv_aa3663216e66', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_approval::test_t37_explicit_approve_success",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_db060da44b9e', 'scene_instance_view_id': 'sciv_155200133ec0', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_approval::test_t38_saga_b_to_c_stale_orphan",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_a0c76324eb6e', 'scene_instance_view_id': 'sciv_5bae5015856f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_approval::test_t39_revoke",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_81430bce41c3', 'scene_instance_view_id': 'sciv_75e6b31664d8', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_approval::test_t40_global_state_change_makes_approved_views_stale",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e64d9cde05d1', 'scene_instance_view_id': 'sciv_4555554ae987', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_approval::test_t41_invisible_state_change_no_stale",
+        "outcome": "failure",
+        "message": "AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_2685eedefb7f', 'scene_instance_view_id': 'sciv_7f9bad3d749b', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_master::test_t42_restart_persistence",
+        "outcome": "failure",
+        "message": "AssertionError: assert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_master::test_t43_project_json_unchanged",
+        "outcome": "failure",
+        "message": "AssertionError: review_pass_required\nassert False"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_master::test_t44_resources_schema_unchanged",
+        "outcome": "failure",
+        "message": "AssertionError: review_pass_required\nassert False"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_master::test_http_s2b_full_chain",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_review::test_t32_seven_dimensions_present",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_review::test_t33_per_anchor_state_evidence_fail_closed",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_review::test_t34_per_prop_evidence_fail_closed",
+        "outcome": "failure",
+        "message": "KeyError: 'dimensions'"
+      },
+      {
+        "id": "tests.test_scene_system_s2b_review::test_t35_deterministic_overall",
+        "outcome": "failure",
+        "message": "AssertionError: assert ('uncertain' == 'pass'\n  \n  - pass\n  + uncertain)"
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_a3_valid_bound_shot_ready",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e5be82aa3d38', 'scene_instance_view_id': 'sciv_ddcc5b97bba7', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_a4_repeated_read_deterministic",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_7aff1f00319c', 'scene_instance_view_id': 'sciv_d153c30e8974', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_a5_a8_read_never_mutates_any_canonical",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_cc1d100066b3', 'scene_instance_view_id': 'sciv_e0458600f255', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_b9_b10_orphan_not_ready_and_never_gc",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_cdb36c0f975a', 'scene_instance_view_id': 'sciv_02a67814eff0', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_b11_shot_cast_changed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_01ce47568f6d', 'scene_instance_view_id': 'sciv_5882a8dda6a6', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_b12_shot_scene_changed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_7cedafea0f74', 'scene_instance_view_id': 'sciv_ce343976ebe6', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_b13_instance_story_scene_mismatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c764f5a1a4d8', 'scene_instance_view_id': 'sciv_b1f78f06939b', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_c14_look_missing",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e003d035daf7', 'scene_instance_view_id': 'sciv_88e74e2f02af', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_c15_look_no_longer_approved",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_952a2c1a8f97', 'scene_instance_view_id': 'sciv_55f796b94596', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_c16_look_fingerprint_changed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_cedbf0cdcded', 'scene_instance_view_id': 'sciv_827ec352f7b8', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_c17_unrelated_look_change_no_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1cababceb133', 'scene_instance_view_id': 'sciv_7bb9ce94e477', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_d18_d20_prop_missing_unapproved_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f320418f2a87', 'scene_instance_view_id': 'sciv_8bd9beebc831', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_e22_e23_e24_composition_missing_unapproved_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c15542fd351f', 'scene_instance_view_id': 'sciv_f23dc1d66c65', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_e25_conflict_recheck_at_validity",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1bf16033988d', 'scene_instance_view_id': 'sciv_3521c11d7cdd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_e26_no_invented_recursive_revoke_policy",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_8ecd04bcc17e', 'scene_instance_view_id': 'sciv_2bef5d6757eb', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_f27_f29_scene_structural_missing",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_91de6994e561', 'scene_instance_view_id': 'sciv_3082fe1f2e8c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_f28_scene_instance_inactive",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e11044e114a4', 'scene_instance_view_id': 'sciv_f33f0141f028', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_f30_f31_f32_pinned_siv_structural_mismatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_7e3f3f417d28', 'scene_instance_view_id': 'sciv_0273a18a624f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_f33_pinned_siv_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_3fbe437aa6e5', 'scene_instance_view_id': 'sciv_3dfc0f627348', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_f34_valid_pinned_siv_ready",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_a02cf529f369', 'scene_instance_view_id': 'sciv_192c2afe586a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_g35_unpinned_resolves_single_valid",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0eff7732ee41', 'scene_instance_view_id': 'sciv_e1a5a01fc3eb', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_g36_unpinned_no_valid_siv",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_a17117e07bde', 'scene_instance_view_id': 'sciv_b716e168701a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_g37_unpinned_ambiguous_fail_closed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_060d8f8d114e', 'scene_instance_view_id': 'sciv_6806f0d48a73', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_g38_read_never_pins",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1da0f48772a8', 'scene_instance_view_id': 'sciv_559aa1b704ad', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_g39_unrelated_siv_change_no_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f511f89404b1', 'scene_instance_view_id': 'sciv_166222bf0935', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_h40_visible_state_change_stales",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0a3093e191df', 'scene_instance_view_id': 'sciv_0254156f5294', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_h41_invisible_state_change_does_not_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f59658cb7f92', 'scene_instance_view_id': 'sciv_592f28be378e', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_h42_unrelated_location_view_change_no_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1ef813325918', 'scene_instance_view_id': 'sciv_3bbdb40c59e2', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_i43_specified_profile_valid",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_95363df40d14', 'scene_instance_view_id': 'sciv_ea982f03824d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_i44_profile_fingerprint_changed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_2470b96b1fcf', 'scene_instance_view_id': 'sciv_8f48a9dfbac4', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_i45_profile_unspecified_not_ready",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_9aee70fe7f7f', 'scene_instance_view_id': 'sciv_23c01af76982', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_i46_unrelated_project_metadata_no_stale",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_99ba2c544dd3', 'scene_instance_view_id': 'sciv_12b502077f51', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j47_j48_j49_j61_refresh_stale_but_valid",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_df9beb9c32fb', 'scene_instance_view_id': 'sciv_155a9ae53b3b', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j50_j51_refresh_requires_expected_revision",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_dc862d63deb3', 'scene_instance_view_id': 'sciv_290c54d757ee', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j52_j42_refresh_failure_atomic",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e34d1ed36ffc', 'scene_instance_view_id': 'sciv_0d8782000b5d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j53_refresh_preserves_intent_exactly",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_be0b63b7fdd5', 'scene_instance_view_id': 'sciv_f1d6cc408cbf', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j54_j63_refresh_does_not_pin_and_records_basis",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1fd382b7c0d4', 'scene_instance_view_id': 'sciv_7026a845e8bd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j55_j56_refresh_rejects_missing_and_unapproved",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_d7c1e345dd2c', 'scene_instance_view_id': 'sciv_162eca9aea2d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j57_refresh_rejects_profile_unspecified",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_2fa5d9d82c4b', 'scene_instance_view_id': 'sciv_7562c86ece99', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j58_refresh_rejects_orphan",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b346d271193d', 'scene_instance_view_id': 'sciv_8953a2723272', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j59_refresh_rejects_cast_mismatch",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_691f5eb21ff7', 'scene_instance_view_id': 'sciv_549d27f5b0b2', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j60_refresh_rejects_conflict",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0977d0458a10', 'scene_instance_view_id': 'sciv_3ac30163e3cc', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j_refresh_unpinned_siv_missing_rejected",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_38aee42edaf1', 'scene_instance_view_id': 'sciv_774a622c24ed', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j_refresh_siv_reapproved_fingerprint_mismatch_then_ready",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_5df380abe898', 'scene_instance_view_id': 'sciv_004b2d8e418f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_j41_concurrent_refresh_exactly_one_success",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c175996669a6', 'scene_instance_view_id': 'sciv_879520cd7533', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_k62_66_false_stale_protection_suite",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_dda7679b1b13', 'scene_instance_view_id': 'sciv_5496f03b5740', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_integration_full_cross_domain_flow",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_a8f35fc5a5db', 'scene_instance_view_id': 'sciv_e2ff54dddf83', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b2::test_corrupt_bindings_file_raises_not_not_ready",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_76e313d9dc23', 'scene_instance_view_id': 'sciv_226b622d9607', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_a1_unbound_blocked",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_3b0f3ed72a42', 'scene_instance_view_id': 'sciv_08acbdcdfd97', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_a2_a3_not_ready_blocked_issues_forwarded",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_78a5f5f616e5', 'scene_instance_view_id': 'sciv_0bf7cf8f8868', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_a4_ready_compiled",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0ac382954421', 'scene_instance_view_id': 'sciv_d89bb3d182c5', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_a5_a6_compile_never_refreshes_or_revises",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ac4daebea51d', 'scene_instance_view_id': 'sciv_4757509d9cea', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_b1_b4_compile_read_only_repeated",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_502c7fad4343', 'scene_instance_view_id': 'sciv_b8cfb24ef073', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_b2_b3_no_pack_store",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1521b264b83e', 'scene_instance_view_id': 'sciv_f7fb6bd19a8f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_c1_c4_deterministic",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_744123bc7bb5', 'scene_instance_view_id': 'sciv_23da028d83d5', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_d1_d3_d5_unpinned_resolved_siv_in_pack",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_600f48d420ff', 'scene_instance_view_id': 'sciv_dfaed9a5b22f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_d2_pinned_exact_siv",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_00228f1b127d', 'scene_instance_view_id': 'sciv_75f699f7eeec', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_d4_compile_never_pins",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_bc5fbec24bce', 'scene_instance_view_id': 'sciv_6f5733c893e2', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_d6_d7_view_relevant_projection_reused",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_665fc9ef71da', 'scene_instance_view_id': 'sciv_651d27c0b15b', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_e1_e2_profile_semantics_and_fingerprint",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_3636a9adc787', 'scene_instance_view_id': 'sciv_1b3b812d27c2', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_e3_no_prompt_output",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0dd8bd197b93', 'scene_instance_view_id': 'sciv_5cfdd6afaa61', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_e4_no_styleanchor_fallback",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_8b173ec0fa5e', 'scene_instance_view_id': 'sciv_c66c9b0023f7', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_e5_profile_unspecified_blocked",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_744bbf1a9262', 'scene_instance_view_id': 'sciv_11bcb298b542', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_f1_f3_f4_look_primary_only_cast",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_21f36e728eff', 'scene_instance_view_id': 'sciv_2de285c5ca1d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_f2_identity_refs_supporting",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_a2166f5e1fc6', 'scene_instance_view_id': 'sciv_ef96c0f6b73c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_g1_g2_static_composition_primary_with_metadata",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e713a244d525', 'scene_instance_view_id': 'sciv_425aea89b9bc', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_g3_standalone_prop_identity_no_relation_copy",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_a5e3d70f62be', 'scene_instance_view_id': 'sciv_7262edf22b94', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_g4_conflict_blocked",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_6ae9d6582945', 'scene_instance_view_id': 'sciv_b50f85576688', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_h1_h2_direct_prop_identity_and_vocabulary",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f4757bb91d9d', 'scene_instance_view_id': 'sciv_5f9d7ba5b0f6', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_h3_action_subject_resolves",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_71d64f4ebadf', 'scene_instance_view_id': 'sciv_1d9e21f29f26', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_h4_h5_multi_cast_ambiguous_never_guess",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0e0b93ef0e17', 'scene_instance_view_id': 'sciv_1b9e8c01cf1b', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_h6_zero_cast_prop_fail_closed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f17974f004ca', 'scene_instance_view_id': 'sciv_91dceba3c45e', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_i1_pick_up_composition_is_end_not_start",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_9226794f4371', 'scene_instance_view_id': 'sciv_f7b747a66902', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_j1_put_down_composition_is_start",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_15be2c42e8c1', 'scene_instance_view_id': 'sciv_31c84db3ddcd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_k1_hand_off_unique_mapping_classified",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f342baa42322', 'scene_instance_view_id': 'sciv_9eab685848c6', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_k2_hand_off_no_recipient_blocked",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_4db8f82b4927', 'scene_instance_view_id': 'sciv_4b937b91a7ab', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_k3_hand_off_two_receivers_ambiguous",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_58f5ae82b530', 'scene_instance_view_id': 'sciv_df3211880faf', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_l1_l2_l3_custom_action_metadata_only",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e8e7cbf10415', 'scene_instance_view_id': 'sciv_d090dda8038c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_m1_two_comps_same_prop_blocked",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e1c4672feff8', 'scene_instance_view_id': 'sciv_e079239130fc', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_n1_approved_refs_resolve",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ce412a0e5a0e', 'scene_instance_view_id': 'sciv_8ac2669ee52d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_n2_unresolvable_blocked_no_glob",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_6f24b2877d38', 'scene_instance_view_id': 'sciv_f7cff8552ae6', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_o1_no_provider_fields",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_dfad96139efa', 'scene_instance_view_id': 'sciv_5d91c0d0aced', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_p1_no_raw_path_identity",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_66cd8083c0af', 'scene_instance_view_id': 'sciv_224c0ec37f8c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_q1_race_dependency_changed_during_compile",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_76ab17f289c7', 'scene_instance_view_id': 'sciv_ab279879a656', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_r1_unrelated_mutation_still_compiles",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0452e5a3f55f', 'scene_instance_view_id': 'sciv_1b83b36a0dfd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_s1_race_profile_changed_blocked",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_dd8920267134', 'scene_instance_view_id': 'sciv_71cb8e94c747', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_t1_race_siv_revoked_blocked",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_db8c10bf8fe5', 'scene_instance_view_id': 'sciv_5588e9952c50', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_integration_full_flow",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_cd906d7c749a', 'scene_instance_view_id': 'sciv_155d268ae378', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3b3::test_binding_schema_unchanged",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_99a04e6d87c8', 'scene_instance_view_id': 'sciv_165789ffc7ca', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_b1_ready_compiles_and_provider_called_once",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_a615cea90353', 'scene_instance_view_id': 'sciv_7f3e6d83d334', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_b2_b3_not_ready_provider_never_called_no_legacy_fallback",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_9b631406e194', 'scene_instance_view_id': 'sciv_6dc959dbb2dd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_q1_unbound_legacy_behavior_identical",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_78be4478dc32', 'scene_instance_view_id': 'sciv_c5c780349495', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_q3_ready_only_pack_path",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_19d9dc12e37e', 'scene_instance_view_id': 'sciv_228516812daa', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_d1_pick_up_first_frame_excludes_holding_composition",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_974e65c13e03', 'scene_instance_view_id': 'sciv_5685183c7f48', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_e1_put_down_start_composition_included",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b836f5c69e6e', 'scene_instance_view_id': 'sciv_def5447ae729', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_f1_hand_off_start_in_end_out",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_2024aaa58df0', 'scene_instance_view_id': 'sciv_a90ec2b4d59d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_f2_hand_off_ambiguous_not_reinterpreted",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b8f6288fad33', 'scene_instance_view_id': 'sciv_b013f4965c88', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_g1_static_composition_primary_and_relation_text",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c0fab0d7210c', 'scene_instance_view_id': 'sciv_337644ac08d0', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_h1_scene_reference_in_request",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_daeac19f7ce2', 'scene_instance_view_id': 'sciv_5c60dbf318e3', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_h2_unrelated_view_change_request_unchanged",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_a7f80fd460fc', 'scene_instance_view_id': 'sciv_9a41ee72775a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_h3_bound_siv_stale_provider_not_called",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_e46f7708f54a', 'scene_instance_view_id': 'sciv_b9b7cffc707f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_i1_profile_overrides_conflicting_styleanchor",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_55b2fe57cf4e', 'scene_instance_view_id': 'sciv_5a0856abe350', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_j1_unbound_look_never_enters_request",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_46bbee9da28f', 'scene_instance_view_id': 'sciv_6817699dcf7d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_k1_approved_asset_resolves",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c0e59d200a0d', 'scene_instance_view_id': 'sciv_8b0461a34d9c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_k2_primary_unresolvable_provider_not_called",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_9cf6b299166e', 'scene_instance_view_id': 'sciv_1dd16700aad4', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_k4_legacy_identity_via_compatibility_resolver",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_81db4d331b53', 'scene_instance_view_id': 'sciv_307ab00c13b3', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_m1_race_dependency_changed_before_generation",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_9106e2172d2a', 'scene_instance_view_id': 'sciv_5ef898ace689', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_n1_unrelated_race_proceeds",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f4b761882523', 'scene_instance_view_id': 'sciv_b1314364c89d', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_o1_deterministic_request",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ba51ddf694e7', 'scene_instance_view_id': 'sciv_b893e19bc83c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_p1_no_canonical_mutation",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_361319e191c5', 'scene_instance_view_id': 'sciv_2ee47ee466d4', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_continuity_ref_appended_for_bound_shot",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_9fa9eded9fb1', 'scene_instance_view_id': 'sciv_3f1000e450f3', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_handler_no_canonical_mutation",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_9d38215bd751', 'scene_instance_view_id': 'sciv_b030e44cf9fd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_D2_build_bound_request_records_scene_mode",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_3d620b36d3ba', 'scene_instance_view_id': 'sciv_109eba669246', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_D2_build_bound_request_context_only",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_8195568af44e', 'scene_instance_view_id': 'sciv_74ec99e45d0e', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c1::test_D2_select_frame_executor",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_3e0581414a74', 'scene_instance_view_id': 'sciv_7eed355b3d86', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_b1_ready_video_adapter_and_provider_called_once",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f6b9adaae7c3', 'scene_instance_view_id': 'sciv_6cefd581efd8', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_b2_not_ready_video_provider_never_called",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ac45a387664e', 'scene_instance_view_id': 'sciv_b3d2d999f20f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_b3_bound_stale_never_legacy_fallback",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1863fd2b3d2d', 'scene_instance_view_id': 'sciv_8c2015db2fbe', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_b4_unbound_legacy_video_behavior_identical",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_26a0a475e383', 'scene_instance_view_id': 'sciv_63665e4c718c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_c2_last_frame_adapter_pick_up_temporal_roles",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_593964280412', 'scene_instance_view_id': 'sciv_fe21764b2b71', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_d1_pick_up_video_i2v_end_ref_never_conditions_first_slot",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_d20051099c99', 'scene_instance_view_id': 'sciv_eaf9150227bd', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_d2_pick_up_keyframes_slots_correctly_mapped",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_1b74c03759cd', 'scene_instance_view_id': 'sciv_c6a4314a8280', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_e1_put_down_last_frame_excludes_start_only_evidence",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_92785aa69141', 'scene_instance_view_id': 'sciv_aa7886365168', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_e2_put_down_first_frame_holding_eligible_and_video_mirror",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f2539c227af3', 'scene_instance_view_id': 'sciv_6ab75a52b45e', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_f1_hand_off_start_to_first_end_to_last",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_32fa45cb73a5', 'scene_instance_view_id': 'sciv_7b5133d9108c', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_f2_hand_off_ambiguous_adapter_never_reinterprets",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_6c89720451dc', 'scene_instance_view_id': 'sciv_6b9166ce7f29', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_g1_static_eligible_in_both_boundaries_and_stable",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_13c551ac94b4', 'scene_instance_view_id': 'sciv_a666440180c9', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_h1_scene_enters_boundary_and_video_production_context",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_78aaf9e38c82', 'scene_instance_view_id': 'sciv_8fda46fdc2e7', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_h2_unrelated_view_change_video_request_unchanged",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b7a1e5ca77d6', 'scene_instance_view_id': 'sciv_f9037774b242', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_h3_bound_siv_stale_video_provider_not_called",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f4583f0c6e1a', 'scene_instance_view_id': 'sciv_f9c636310483', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_i1_profile_replaces_styleanchor_in_video_and_last_frame",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_6a2e18479311', 'scene_instance_view_id': 'sciv_f36869988ab0', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_j5_handler_records_generation_basis",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_cac040df667d', 'scene_instance_view_id': 'sciv_ef39724503c7', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_j1_j2_j3_boundary_freshness_policies",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_bf6b4ffb4fb2', 'scene_instance_view_id': 'sciv_3fcb160755fb', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_j4_last_frame_from_stale_first_frame_fail_closed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b405cb28c4d6', 'scene_instance_view_id': 'sciv_544693eff9d0', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_j6_relay_base_no_basis_diagnostic_not_block",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0baf2de18bfa', 'scene_instance_view_id': 'sciv_7b85b538eb41', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_k1_no_invented_provider_fields",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_6aea07049cd7', 'scene_instance_view_id': 'sciv_4fa3fc95e530', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_m1_video_race_related_mutation_blocks",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c1d411cf474f', 'scene_instance_view_id': 'sciv_6ce44ec0ce8a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_n1_video_race_unrelated_mutation_proceeds",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f1cad1e00fc9', 'scene_instance_view_id': 'sciv_086611fd9590', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_o1_video_request_deterministic",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_3469316da4ff', 'scene_instance_view_id': 'sciv_08f700984f50', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_p1_video_adapter_no_canonical_mutation",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_793e2a713ebd', 'scene_instance_view_id': 'sciv_2d339ac49a85', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_p2_video_handler_truth_files_byte_identical",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_2c58dae07065', 'scene_instance_view_id': 'sciv_f3dcdd3c7b63', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_q1_unbound_last_frame_legacy_identical",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_66e17da95238', 'scene_instance_view_id': 'sciv_22af7b8a5c3a', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_q2_unbound_video_keyframes_legacy_identical",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_cfb2e3e5b023', 'scene_instance_view_id': 'sciv_029231530c29', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_q3_not_ready_never_legacy_last_frame",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_71a553ab76fe', 'scene_instance_view_id': 'sciv_9d1cacc07595', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_q4_ready_only_pack_path_no_styleanchor",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_c9119eada434', 'scene_instance_view_id': 'sciv_b8716897f3bc', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_cross_domain_pick_up_full_chain",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_8298d09246f4', 'scene_instance_view_id': 'sciv_70887b9db097', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_generation_post_commit_guard::test_guard_passes_when_basis_current",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_187cbdb881ef', 'scene_instance_view_id': 'sciv_cb12997fbfca', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_generation_post_commit_guard::test_guard_blocks_when_dependency_invalidated",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_41daaa33468c', 'scene_instance_view_id': 'sciv_5922ac122712', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_generation_post_commit_guard::test_first_frame_race_blocks_commit",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_5beab39ca3f1', 'scene_instance_view_id': 'sciv_9ff59adf2540', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_generation_post_commit_guard::test_first_frame_unrelated_mutation_commits",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_b7930cdcb733', 'scene_instance_view_id': 'sciv_f8a65b0a3191', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_generation_post_commit_guard::test_last_frame_race_blocks_commit",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0c4eb43b2c70', 'scene_instance_view_id': 'sciv_d0189c11ce7f', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_shot_generation_post_commit_guard::test_last_frame_unrelated_mutation_commits",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_5b844451b88b', 'scene_instance_view_id': 'sciv_e6d68f3a2f4e', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_skill_p42_recipes::test_registry_loads_v131",
+        "outcome": "failure",
+        "message": "AssertionError: assert (SkillPackage(skill_id='full-story-relay-calibration', version='1.6.1', name='全片尾帧接力连续性校准', description='整条故事镜头链的尾帧接力连续...tch/aa31764dfca3/agent-system-v2/src/agents/skill_system/builtin/full-story-relay-calibration'), _validation_errors=[]) is not None and '1.6.1' == '1.6.0'\n  \n  - 1.6.0\n  ?     ^\n  + 1.6.1\n  ?     ^)"
+      },
+      {
+        "id": "tests.test_skill_system::test_builtin_registry_loads_two_golden_skills",
+        "outcome": "failure",
+        "message": "AssertionError: assert ('1.6.1' == '1.6.0'\n  \n  - 1.6.0\n  ?     ^\n  + 1.6.1\n  ?     ^)"
+      },
+      {
+        "id": "tests.test_skill_system::test_structured_trace_jsonl",
+        "outcome": "failure",
+        "message": "AssertionError: assert '1.6.1' == '1.6.0'\n  \n  - 1.6.0\n  ?     ^\n  + 1.6.1\n  ?     ^"
+      },
+      {
+        "id": "tests.test_skill_turn::test_director_turn_loads_skill_via_official_entry",
+        "outcome": "failure",
+        "message": "AssertionError: assert '1.6.1' == '1.6.0'\n  \n  - 1.6.0\n  ?     ^\n  + 1.6.1\n  ?     ^"
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_bound_multi_resolves_look_hero_reference",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_49bcad1b82bd', 'scene_instance_view_id': 'sciv_94bee945f050', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_bound_multi_handler_end_to_end_fake_provider",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_f39165f96dc7', 'scene_instance_view_id': 'sciv_c3e5005fd556', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_bound_multi_preflight_skips_first_frame_requirement",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_0034b26fb498', 'scene_instance_view_id': 'sciv_bbf7d33ed09b', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_unbound_multi_fail_closed",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_141f8a9318f2', 'scene_instance_view_id': 'sciv_e6e042a62a21', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_freshness_read_model_multi_mode_mapping",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_aec96a8d3a08', 'scene_instance_view_id': 'sciv_da7b38ab6662', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_scene_only_binding_multi_uses_scene_reference",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_fe7fbe222ccf', 'scene_instance_view_id': 'sciv_fb36ac496f36', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_multi_relay_prev_tail_reference",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_88206cda4eeb', 'scene_instance_view_id': 'sciv_8d402e85e008', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_multi_relay_prev_missing_end_frame_falls_back",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ba2288169bc1', 'scene_instance_view_id': 'sciv_bc3f97a6c1f5', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_multi_relay_identity_dual_reference",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_adcb0c0b5c19', 'scene_instance_view_id': 'sciv_c1afd34a5761', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_multi_relay_identity_fingerprint_differs_from_plain_relay",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_89267a966ccd', 'scene_instance_view_id': 'sciv_2f21cdbe1128', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_multi_relay_identity_fail_closed_without_look",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_ff8dff77497f', 'scene_instance_view_id': 'sciv_eee67a062de3', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_multi_relay_scene_triple_reference",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_50e78b26fd50', 'scene_instance_view_id': 'sciv_4f5ceffabd27', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_video_multi_mode_34::test_multi_relay_scene_fingerprint_differs_from_dual",
+        "outcome": "error",
+        "message": "failed on setup with \"AssertionError: {'ok': True, 'operation': 'scene_instance_view.review_candidates', 'review_id': 'sirev_87fe045b619c', 'scene_instance_view_id': 'sciv_f5c2f7dfb004', ...}\nassert (True and 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain)\""
+      },
+      {
+        "id": "tests.test_visual_profile_p1::test_t14_prop_has_no_generation_but_review_records_style_scope",
+        "outcome": "failure",
+        "message": "KeyError: 'project_style_consistency'"
+      },
+      {
+        "id": "tests.test_visual_profile_p1::test_t19_t20_look_review_style_dimension_and_hard_gate",
+        "outcome": "failure",
+        "message": "KeyError: 'project_style_consistency'"
+      },
+      {
+        "id": "tests.test_visual_profile_p1::test_t19b_unspecified_profile_review_has_no_style_dimension",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'uncertain' == 'pass'\n  \n  - pass\n  + uncertain"
+      }
+    ]
+  },
+  "intermediate_full": {
+    "counts": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "18",
+      "skipped": "10",
+      "tests": "3162",
+      "time": "1154.871",
+      "timestamp": "2026-10-23T08:47:17.912593-06:00"
+    },
+    "problems": [
+      {
+        "id": "tests.test_api::test_get_shots",
+        "outcome": "failure",
+        "message": "assert 404 == 200\n +  where 404 = <Response [404 Not Found]>.status_code"
+      },
+      {
+        "id": "tests.test_api::test_get_timing",
+        "outcome": "failure",
+        "message": "assert 404 == 200\n +  where 404 = <Response [404 Not Found]>.status_code"
+      },
+      {
+        "id": "tests.test_api::test_orchestrate_dry_run",
+        "outcome": "failure",
+        "message": "assert 404 == 200\n +  where 404 = <Response [404 Not Found]>.status_code"
+      },
+      {
+        "id": "tests.test_full_project_autopilot::test_case7_production_child_crash_rebind",
+        "outcome": "failure",
+        "message": "AssertionError: 应只有 1 个 production child，实际 2\nassert 2 == 1\n +  where 2 = len([ProjectProductionRun(run_id='prun_1c18273e31', project_name='_test_full_project', parent_full_run_id='frun_b129b6b2a5...None, shot_actions=None, parent_change_execution_id=None, created_at=1792767399.896348, updated_at=1792767405.9034252)])"
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_flag_off_dialogue_stays_out_of_prompt",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Animate this...named people.' == 'Animate this...it consistent'\n  \n  Skipping 77 identical leading characters in diff, use -v to show\n  -  consistent\n  +  consistent Population constraint: exactly one person appears in this frame; no bystanders, no background crowd, no extra unnamed people."
+      },
+      {
+        "id": "tests.test_native_av_b1_prompt_integration::test_flag_off_keyframes_behavior_unchanged",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Create a smo...ground crowd.' == 'Create a smo... scene layout'\n  \n  Skipping 171 identical leading characters in diff, use -v to show\n  - cene layout\n  + cene layout Population constraint: exactly 2 people appear in this frame — the characters described above; no other people, no background crowd."
+      },
+      {
+        "id": "tests.test_native_av_c1_routing_policy::test_default_on_no_dialogue_unchanged",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Animate this...named people.' == 'Animate this...it consistent'\n  \n  Skipping 77 identical leading characters in diff, use -v to show\n  -  consistent\n  +  consistent Population constraint: exactly one person appears in this frame; no bystanders, no background crowd, no extra unnamed people."
+      },
+      {
+        "id": "tests.test_native_av_c1_routing_policy::test_explicit_false_override_off",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Animate this...named people.' == 'Animate this...it consistent'\n  \n  Skipping 77 identical leading characters in diff, use -v to show\n  -  consistent\n  +  consistent Population constraint: exactly one person appears in this frame; no bystanders, no background crowd, no extra unnamed people."
+      },
+      {
+        "id": "tests.test_p39d_prechecks::test_caseC_relay_boundary_no_pose_gate",
+        "outcome": "failure",
+        "message": "AssertionError: relay 就绪即提交（multi 无首帧前置）\nassert 0 == 1\n +  where 0 = len([])\n +    where [] = <tests.test_p39d_prechecks._FakeQueue object at 0x7f5acde546e0>.submitted"
+      },
+      {
+        "id": "tests.test_p39f_interlude_structure::test_one_interlude_full_structure",
+        "outcome": "failure",
+        "message": "AssertionError: assert 's01_c01' == 's01_c03'\n  \n  - s01_c03\n  ?       ^\n  + s01_c01\n  ?       ^"
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_p3_relay_freshness_and_historical_immutability",
+        "outcome": "failure",
+        "message": "AssertionError: assert 1 == 2\n +  where 1 = len([VideoVersion(version_id='vv_9b5e5eba6bff', created_at=1792767603.7916164, status='done', prompt_snapshot='subtle natu...rce_shot_id': 's01_c02', 'end_source_version': 'vv_a1', 'reference_asset_id': None}], previous_submit_uncertain=False)])"
+      },
+      {
+        "id": "tests.test_p39f_semantic_closure::test_sync_slot_does_not_touch_semantics_config",
+        "outcome": "failure",
+        "message": "AssertionError: assert ('pending' == 'done'\n  \n  - done\n  + pending)"
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_b4_unbound_legacy_video_behavior_identical",
+        "outcome": "failure",
+        "message": "RuntimeError: 视频时长契约：帧规划时长 3.7s 超出 2.5 契约 4-12s（num_frames=89@24fps）——请调整时长后重试（此前该请求会被静默夹取到 12s）"
+      },
+      {
+        "id": "tests.test_shot_binding_s3c2::test_q2_unbound_video_keyframes_legacy_identical",
+        "outcome": "failure",
+        "message": "AssertionError: assert 'Create a smo...named people.' == 'Create a smo... scene layout'\n  \n  Skipping 171 identical leading characters in diff, use -v to show\n  - cene layout\n  + cene layout Population constraint: exactly one person appears in this frame; no bystanders, no background crowd, no extra unnamed people."
+      },
+      {
+        "id": "tests.test_skill_p42_recipes::test_registry_loads_v131",
+        "outcome": "failure",
+        "message": "AssertionError: assert (SkillPackage(skill_id='full-story-relay-calibration', version='1.6.1', name='全片尾帧接力连续性校准', description='整条故事镜头链的尾帧接力连续...pace/scratch/aa31764dfca3/review/src/agents/skill_system/builtin/full-story-relay-calibration'), _validation_errors=[]) is not None and '1.6.1' == '1.6.0'\n  \n  - 1.6.0\n  ?     ^\n  + 1.6.1\n  ?     ^)"
+      },
+      {
+        "id": "tests.test_skill_system::test_builtin_registry_loads_two_golden_skills",
+        "outcome": "failure",
+        "message": "AssertionError: assert ('1.6.1' == '1.6.0'\n  \n  - 1.6.0\n  ?     ^\n  + 1.6.1\n  ?     ^)"
+      },
+      {
+        "id": "tests.test_skill_system::test_structured_trace_jsonl",
+        "outcome": "failure",
+        "message": "AssertionError: assert '1.6.1' == '1.6.0'\n  \n  - 1.6.0\n  ?     ^\n  + 1.6.1\n  ?     ^"
+      },
+      {
+        "id": "tests.test_skill_turn::test_director_turn_loads_skill_via_official_entry",
+        "outcome": "failure",
+        "message": "AssertionError: assert '1.6.1' == '1.6.0'\n  \n  - 1.6.0\n  ?     ^\n  + 1.6.1\n  ?     ^"
+      }
+    ]
+  },
+  "intermediate_new_problem_ids": [],
+  "final_runtime_and_API": {
+    "counts": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "10",
+      "tests": "335",
+      "time": "21.465",
+      "timestamp": "2026-10-23T09:10:53.486339-06:00"
+    },
+    "problems": []
+  },
+  "final_local_full": "interrupted by execution environment disconnect; no terminal result claimed",
+  "cloud_final_CI": {
+    "push_run": 39978050453,
+    "pull_request_run": 39978055917,
+    "status": "in_progress; final results pending"
+  },
+  "cloud_dedup": [
+    {
+      "id": 39973691508,
+      "conclusion": "success",
+      "artifact_summary": {
+        "nonce": "demo1",
+        "status": "PASS",
+        "deduplicated": true
+      }
+    },
+    {
+      "id": 39976409645,
+      "conclusion": "success",
+      "artifact_summary": {
+        "nonce": "demo1",
+        "status": "PASS",
+        "deduplicated": true,
+        "started_at": "2026-10-23T15:13:39Z",
+        "finished_at": "2026-10-23T15:13:40Z",
+        "preflight": "needs_media=false; media install skipped"
+      }
+    }
+  ],
+  "schedule_observed": false,
+  "rollout": "default branch update rejected by automatic approval review; feature branch only",
+  "pull_request": "https://github.com/Q-1844/agent-system-v2/pull/1",
+  "test_environment": {
+    "python": "3.12 locally / 3.13 in GitHub Actions",
+    "Pillow": "12.3.0",
+    "numpy": "2.3.5",
+    "CI_external_media_dependency": "ffmpeg + ffprobe installed explicitly"
+  }
+}

@@ -1,48 +1,39 @@
-# CODEX_START_HERE — GitHub 自主视频生产系统交接（给 Codex 中转站）
+# Codex 接手入口（2026-10-23）
 
-- 日期：2026-10-23 ｜ 由 Claude Code 完成 + 提交本文件到 C 仓 `agent-system-v2-archive` 分支 `feat/codex-handoff-20261023`
-- 交接前提：A/B/B1/C 仓真实远端已部署可运行工作流；relstore 代码已在 A 仓默认分支
-- 本文件 = Codex 入口；详细证据见同分支 `GITHUB_AUTONOMY_E2E_REPORT.md`，运行态见 `GITHUB_RUNTIME_STATUS.md`
+**部署状态：A 修复分支提交 `a929e75` 已发布；默认分支仍为 `061735c`，尚未合入。默认分支更新被自动审批拦截，待用户批准具体 PR。以下修复说明指待合入代码；线上 cron 当前仍是原有 `*/10`。**
+先读 [本轮运行链复核与修复报告](CODEX_RUNTIME_REVIEW_20261023.md)，再读本分支 `GITHUB_RUNTIME_STATUS.md` 和历史 `GITHUB_AUTONOMY_E2E_REPORT.md`。
 
-## 一句话现状
+审阅入口：[A 仓 PR #1](https://github.com/Q-1844/agent-system-v2/pull/1)。最终源码的机器证据见 `CODEX_RUNTIME_TEST_EVIDENCE_20261023.json`。
 
-GitHub 上**真实 Agnes 视频生产 + 跨仓保存 + 状态整理 + 巡检循环逻辑已跑通并交叉核验**（非 mock）。唯一未"亲眼看到"的是 GitHub 调度器自己按 cron 触发的那一次 schedule 巡检（已配置 active，GitHub schedule 有抖动/跳过，未在测试窗口内观察到 fire）。
+## 本轮范围与能力边界
 
-## 仓库职责（真实远端默认分支）
+用户最新决定：先整理并修复既有系统；Producer 自主工具、预览页、跨仓素材扩展和新任务来源留在后续设计。
 
-| 仓 | 远端 | 默认分支 | 职责 |
-|---|---|---|---|
-| A | `Q-1844/agent-system-v2` | `chore/migration-readiness` | 代码 + 工作流 + 驱动（relstore 在 `tools/relstore/`、`tools/e2e_autonomous_run.py`、`tools/patrol_run.py`） |
-| B | `Q-1844/agent-system-v2-rundata` | `main` | 成品持久存储（Release + asset，含历史 15 战役 tar） |
-| B1 | `Q-1844/agent-system-v2-rundata-1` | `main` | 活跃项目 Registry 状态（CAS state.json，测试命名空间 `test/e2e-*`） |
-| C | `Q-1844/agent-system-v2-archive` | `main` | 报告 + 交接文档（本文件所在） |
-| D | `Q-1844/agnes-frame-host` | — | 图床（非本轮） |
+原真实 Agnes 单段 t2v → MP4 → B Release → B1 Registry 已通过运行记录与原始字节 SHA 重新核实。该成功来自 `tools/e2e_autonomous_run.py`，不等于完整 Director/Planner/SceneRun/composition 系统已在 GitHub 自主运行；E2E 分支内的单项目 Registry 也不证明全局多项目容量调度。
 
-## 已部署工作流（均在 A 仓默认分支 `chore/migration-readiness`，active）
+本轮补上终态去重、失败退出码、逐任务回执、付费提交前持久化检查点、已知视频接续、跨仓中断恢复与 Registry CAS 校验。提交结果不明且没有 video_id 的任务会保留检查点等待对账，不自动重发。旧版缺少检查点的中断任务需要单独对账。
 
-1. `ci.yml`（mock-regression）— 预存；**当前 failure**（加 relstore 进 `tests/` 后，见 runtime-status 已知问题）
-2. `video-autoproduction-e2e.yml` — `workflow_dispatch` 单次真实生产（Agnes t2v→MP4→ffprobe→存 B Release→B1 Registry）
-3. `video-patrol.yml` — `schedule: '*/10 * * * *'` + `workflow_dispatch`；巡检 `tasks/pending/*.json`，B1 state.json 存在性做 dedup，无任务 idle
+## 仓库职责
 
-## 必需 GitHub Secrets（仅名称，不含值；已在 A 仓配置）
+| 仓库 | 默认分支 | 职责 |
+| --- | --- | --- |
+| `Q-1844/agent-system-v2`（A） | `chore/migration-readiness` | 代码、测试、工作流与驱动 |
+| `Q-1844/agent-system-v2-rundata`（B） | `main` | Release 成品与归档 |
+| `Q-1844/agent-system-v2-rundata-1`（B1） | `main` | Registry；当前 E2E 使用隔离的 `test/e2e-*` 分支 |
+| `Q-1844/agent-system-v2-archive`（C） | `main` | 报告和交接；本交接在 `feat/codex-handoff-20261023` |
+| `Q-1844/agnes-frame-host`（D） | 以仓库实际设置为准 | 图片托管，本轮未扩展 |
 
-- `AGNES_API_KEY` — 真实 Agnes 生成（廉价 key，用户政策可入 secret）
-- `B1_ARCHIVE_TOKEN` — B/B1 仓 fine-grained PAT（永久 Contents:write），用于 A 工作流跨仓写 B Release + B1 state.json
+## 工作流与凭据
 
-## Codex 接手优先级
+- `video-autoproduction-e2e.yml`：手动单次单段生产或已有任务的幂等核对。
+- `video-patrol.yml`：文件任务队列巡检，定时和手动触发；定时成功须有 `event=schedule` 的真实运行证据。
+- `ci.yml`：运行恢复专项、完整 mock 回归、既有 Agent 管线冒烟。各项结果分别查验，完整回归不因专项通过而自动算绿。
+- A 仓 Secrets：`AGNES_API_KEY`、`B1_ARCHIVE_TOKEN`。这里只记录名称；不要把值、Authorization 或凭据文件提交入仓。
 
-1. **观察一次真实 schedule 触发的 video-patrol run**（GitHub 按 cron 自己 fire；本轮未在窗口内观察到）→ 拿到后即满足 `GITHUB_BASELINE_OPERATIONAL=YES` 的最后一环
-2. 修复 `ci.yml` mock-regression failure（relstore 测试进 `pytest tests/` 后的 collection/交互问题）
-3. cron `*/10` 是演示用，改为合理间隔或事件驱动（避免每 10 分钟跑一次）
-4. 任务源目前是 `tasks/pending/*.json` 手动提交；Codex 可接真实任务源（issue/API/Registry 驱动）
-5. 真生成可选 i2v（需公开图 URL）替代 t2v（身份一致性更好）
-6. A 仓 git 历史 reconciliation：远端有 Contents-API 提交，本地 `feat/relstore-integration-handoff` 分叉；如需 git 推送先 `fetch + reset --hard` 到远端 HEAD
+具体部署提交、测试数字和实际定时触发状态以 A 仓本轮报告和 `GITHUB_RUNTIME_STATUS.md` 为准。历史报告中的 `3/4` 只指单段云端基线的四个环节，不是完整系统完成率。
 
-## 调用方式（Codex 自取）
+## 本地接手
 
-- 触发单次生产：`POST /repos/Q-1844/agent-system-v2/actions/workflows/video-autoproduction-e2e.yml/dispatches` `{ref,inputs:{task_nonce}}`
-- 触发巡检：同上 `video-patrol.yml`
-- 读 run：`GET /repos/.../actions/runs/{id}` + `/logs`（zip）
-- collab-rw PAT（All-repos Contents/PR/Pages/Actions:write）由用户直接交付 Codex（不入仓）
+先 `git fetch` 核对远端。已有分叉和未提交修改要保留，尤其已有 skill 修改。推荐从远端建立独立 worktree；不能沿用旧交接中无条件 `reset --hard` 的建议。
 
-详细证据 + 运行态 + 已知问题见同分支另两份文档。
+任务 nonce 代表不可变单段请求。新增任务仍使用既有 `tasks/pending/*.json`；任务接入与 Producer 新能力尚未扩展。
