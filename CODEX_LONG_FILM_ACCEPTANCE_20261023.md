@@ -63,3 +63,5 @@ PR #1已于2026-10-23T16:08:27Z合入默认分支，合并提交6f62dbf88ff79ae0
 - Actions Secrets设置：https://github.com/Q-1844/agent-system-v2/settings/secrets/actions
 - 官方Secrets API权限：https://docs.github.com/en/rest/actions/secrets
 - 官方schedule边界：https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule
+
+部署后手动巡检 [39991006999](https://github.com/Q-1844/agent-system-v2/actions/runs/39991006999) 已成功：produced=0、skipped=2、failed=0；只读预检needs_media=false，跳过FFmpeg安装。对应合并提交8f81b677e41082118cf7433e5278883c34fb5064；此为workflow_dispatch，不计为schedule实触发。

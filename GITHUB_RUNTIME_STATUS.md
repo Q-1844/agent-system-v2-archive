@@ -30,3 +30,5 @@ nonce film3m-20261023-rescue1留下STARTING记录。当前会话读到该记录�
 video-patrol active，默认分支cron为7,27,47 * * * *（UTC，每20分钟）；最近查询event=schedule仍为0。Actions仓库权限enabled=true、allowed_actions=all。原因尚未确诊，不能仅用“可能抖动”作为结案证据。
 
 完整三分钟成片、Director/Planner云端实际输出、跨场景素材一致性和完整项目归档恢复均仍待真实成功证据。人物/对白、多项目容量调度、Producer新能力、预览页及素材体系扩展不在本轮已验收范围。
+
+部署后手动巡检 [39991006999](https://github.com/Q-1844/agent-system-v2/actions/runs/39991006999) 已成功：produced=0、skipped=2、failed=0；只读预检needs_media=false，跳过FFmpeg安装。对应合并提交8f81b677e41082118cf7433e5278883c34fb5064；此为workflow_dispatch，不计为schedule实触发。
