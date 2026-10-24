@@ -1,12 +1,12 @@
-# Codex接手入口（最新复核）
+# Codex接手入口（2026-10-24T02:49:44.394459+00:00）
 
-**最新复核：原长片40002008268已于洛杉矶2026-10-23 11:33（18:33 UTC）失败，未达到180秒。两段各10.125秒的视频已完整解码并备份到B；PR #6修复下载与原任务接续。定时schedule已观察到3次成功，狭义单段云端基线现为4/4；三分钟完整制作仍未验收。**
+**最新复核（2026-10-24T02:49:44.394459+00:00）：PR #6–#8已合入；原项目接续运行40055563112，当前RUNNING，累计3次视频提交（含原两个已完成视频），三分钟成片尚未验收。真实schedule已观察到3次成功，狭义单段云端基线4/4。**
 
-先读[下载与接续报告](CODEX_MEDIA_RECOVERY_REVIEW_20261024.md)。历史文档的RUNNING、schedule=0或“待合入PR #5”均是早期快照，不能覆盖最新状态。
+先读[下载、尾帧与接续复核报告](CODEX_MEDIA_RECOVERY_REVIEW_20261024.md)。历史文档的RUNNING、schedule=0、待合入PR #5/#6/#7均是早期快照。
 
-- A默认分支chore/migration-readiness，PR #1–#5已合入；PR #6分支collab/media-download-resume-20261024待最终回归与合入。
-- 三分钟测试原nonce=film3m-20261023-rescue5，原失败run=40002008268。接续必须复用其快照、累计提交预算和已完成视频，禁止盲目换nonce重做。
-- B/B1归档与图床凭据：AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN；新图床Secret已实证可写。
-- B仓部分成果备份draft Release 422455125 / asset 670987705，状态PARTIAL_NOT_ACCEPTED。
-- A=生产代码，B=Release资产，B1=Registry/检查点，C=文档，D=公网参考图。C交接分支feat/codex-handoff-20261023。
+- A默认分支chore/migration-readiness；PR #1–#8已合入；最新merge `c3afe255bec6bccdb52aa8ad3e2bf98ab14db9c2`。
+- 当前真实测试[40055563112](https://github.com/Q-1844/agent-system-v2/actions/runs/40055563112)；source `c3afe255bec6bccdb52aa8ad3e2bf98ab14db9c2`；scope=full-project-3min；原nonce=film3m-20261023-rescue5，必须复用其快照、累计预算和已受理视频，禁止换nonce清零。
+- 失败历史：40002008268为CDN GET超时，40053946925为内联尾帧缺公网URL。两个原视频与新尾帧已备份B、SHA重下载核对；新运行的素材验收仍待最终回执。
+- 凭据名称AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN；不保存或展示token值。
+- A=生产代码；B=Release资产；B1=Registry/检查点；C=文档；D=公网参考图。C分支feat/codex-handoff-20261023。
 - 用户已批准整顿、修复、合入与真实测试；真实成片至少180秒。Producer新能力、预览页、素材扩展后置。旧5秒demo2仍enabled=false。
