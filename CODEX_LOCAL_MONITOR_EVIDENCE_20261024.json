@@ -1,0 +1,480 @@
+{
+  "checked_at": "2026-10-24T03:58:28.758382+00:00",
+  "run_observation": {
+    "checked_at": "2026-10-24T03:58:28.699481+00:00",
+    "run": {
+      "id": 40055563112,
+      "name": "video-autoproduction-e2e",
+      "node_id": "WFR_kwLOVRCIE88AAAAJU39jaA",
+      "head_branch": "chore/migration-readiness",
+      "head_sha": "c3afe255bec6bccdb52aa8ad3e2bf98ab14db9c2",
+      "path": ".github/workflows/video-autoproduction-e2e.yml",
+      "display_title": "video-autoproduction-e2e",
+      "run_number": 14,
+      "event": "workflow_dispatch",
+      "status": "in_progress",
+      "conclusion": null,
+      "workflow_id": 394049087,
+      "check_suite_id": 108572575165,
+      "check_suite_node_id": "CS_kwDOVRCIE88AAAAZR24FvQ",
+      "url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40055563112",
+      "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40055563112",
+      "pull_requests": [],
+      "created_at": "2026-10-24T02:46:23Z",
+      "updated_at": "2026-10-24T02:46:28Z",
+      "actor": {
+        "login": "Q-1844",
+        "id": 224496659,
+        "node_id": "U_kgDODWGMEw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/224496659?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Q-1844",
+        "html_url": "https://github.com/Q-1844",
+        "followers_url": "https://api.github.com/users/Q-1844/followers",
+        "following_url": "https://api.github.com/users/Q-1844/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Q-1844/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Q-1844/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Q-1844/subscriptions",
+        "organizations_url": "https://api.github.com/users/Q-1844/orgs",
+        "repos_url": "https://api.github.com/users/Q-1844/repos",
+        "events_url": "https://api.github.com/users/Q-1844/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Q-1844/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "run_attempt": 1,
+      "referenced_workflows": [],
+      "run_started_at": "2026-10-24T02:46:23Z",
+      "triggering_actor": {
+        "login": "Q-1844",
+        "id": 224496659,
+        "node_id": "U_kgDODWGMEw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/224496659?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Q-1844",
+        "html_url": "https://github.com/Q-1844",
+        "followers_url": "https://api.github.com/users/Q-1844/followers",
+        "following_url": "https://api.github.com/users/Q-1844/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Q-1844/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Q-1844/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Q-1844/subscriptions",
+        "organizations_url": "https://api.github.com/users/Q-1844/orgs",
+        "repos_url": "https://api.github.com/users/Q-1844/repos",
+        "events_url": "https://api.github.com/users/Q-1844/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Q-1844/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "jobs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40055563112/jobs",
+      "logs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40055563112/logs",
+      "check_suite_url": "https://api.github.com/repos/Q-1844/agent-system-v2/check-suites/108572575165",
+      "artifacts_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40055563112/artifacts",
+      "cancel_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40055563112/cancel",
+      "rerun_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40055563112/rerun",
+      "previous_attempt_url": null,
+      "workflow_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/workflows/394049087",
+      "head_commit": {
+        "id": "c3afe255bec6bccdb52aa8ad3e2bf98ab14db9c2",
+        "tree_id": "102bbea082efca8400b0ff78783295882fff468c",
+        "message": "Merge PR #8: publish existing inline tail frames before video submission\n\nPublish completed inline tail frames before keyframe video submission",
+        "timestamp": "2026-10-24T02:45:52Z",
+        "author": {
+          "name": "Q-1844",
+          "email": "wenqi1234567890@qq.com"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com"
+        }
+      },
+      "repository": {
+        "id": 1427146771,
+        "node_id": "R_kgDOVRCIEw",
+        "name": "agent-system-v2",
+        "full_name": "Q-1844/agent-system-v2",
+        "private": false,
+        "owner": {
+          "login": "Q-1844",
+          "id": 224496659,
+          "node_id": "U_kgDODWGMEw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/224496659?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Q-1844",
+          "html_url": "https://github.com/Q-1844",
+          "followers_url": "https://api.github.com/users/Q-1844/followers",
+          "following_url": "https://api.github.com/users/Q-1844/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Q-1844/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Q-1844/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Q-1844/subscriptions",
+          "organizations_url": "https://api.github.com/users/Q-1844/orgs",
+          "repos_url": "https://api.github.com/users/Q-1844/repos",
+          "events_url": "https://api.github.com/users/Q-1844/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Q-1844/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "html_url": "https://github.com/Q-1844/agent-system-v2",
+        "description": null,
+        "fork": false,
+        "url": "https://api.github.com/repos/Q-1844/agent-system-v2",
+        "forks_url": "https://api.github.com/repos/Q-1844/agent-system-v2/forks",
+        "keys_url": "https://api.github.com/repos/Q-1844/agent-system-v2/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/Q-1844/agent-system-v2/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/Q-1844/agent-system-v2/teams",
+        "hooks_url": "https://api.github.com/repos/Q-1844/agent-system-v2/hooks",
+        "issue_events_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/Q-1844/agent-system-v2/events",
+        "assignees_url": "https://api.github.com/repos/Q-1844/agent-system-v2/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/Q-1844/agent-system-v2/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/Q-1844/agent-system-v2/tags",
+        "blobs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/Q-1844/agent-system-v2/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/Q-1844/agent-system-v2/languages",
+        "stargazers_url": "https://api.github.com/repos/Q-1844/agent-system-v2/stargazers",
+        "contributors_url": "https://api.github.com/repos/Q-1844/agent-system-v2/contributors",
+        "subscribers_url": "https://api.github.com/repos/Q-1844/agent-system-v2/subscribers",
+        "subscription_url": "https://api.github.com/repos/Q-1844/agent-system-v2/subscription",
+        "commits_url": "https://api.github.com/repos/Q-1844/agent-system-v2/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/Q-1844/agent-system-v2/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/Q-1844/agent-system-v2/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/Q-1844/agent-system-v2/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/Q-1844/agent-system-v2/merges",
+        "archive_url": "https://api.github.com/repos/Q-1844/agent-system-v2/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/Q-1844/agent-system-v2/downloads",
+        "issues_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/Q-1844/agent-system-v2/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/Q-1844/agent-system-v2/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/Q-1844/agent-system-v2/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/Q-1844/agent-system-v2/labels{/name}",
+        "releases_url": "https://api.github.com/repos/Q-1844/agent-system-v2/releases{/id}",
+        "deployments_url": "https://api.github.com/repos/Q-1844/agent-system-v2/deployments"
+      },
+      "head_repository": {
+        "id": 1427146771,
+        "node_id": "R_kgDOVRCIEw",
+        "name": "agent-system-v2",
+        "full_name": "Q-1844/agent-system-v2",
+        "private": false,
+        "owner": {
+          "login": "Q-1844",
+          "id": 224496659,
+          "node_id": "U_kgDODWGMEw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/224496659?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Q-1844",
+          "html_url": "https://github.com/Q-1844",
+          "followers_url": "https://api.github.com/users/Q-1844/followers",
+          "following_url": "https://api.github.com/users/Q-1844/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Q-1844/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Q-1844/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Q-1844/subscriptions",
+          "organizations_url": "https://api.github.com/users/Q-1844/orgs",
+          "repos_url": "https://api.github.com/users/Q-1844/repos",
+          "events_url": "https://api.github.com/users/Q-1844/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Q-1844/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "html_url": "https://github.com/Q-1844/agent-system-v2",
+        "description": null,
+        "fork": false,
+        "url": "https://api.github.com/repos/Q-1844/agent-system-v2",
+        "forks_url": "https://api.github.com/repos/Q-1844/agent-system-v2/forks",
+        "keys_url": "https://api.github.com/repos/Q-1844/agent-system-v2/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/Q-1844/agent-system-v2/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/Q-1844/agent-system-v2/teams",
+        "hooks_url": "https://api.github.com/repos/Q-1844/agent-system-v2/hooks",
+        "issue_events_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/Q-1844/agent-system-v2/events",
+        "assignees_url": "https://api.github.com/repos/Q-1844/agent-system-v2/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/Q-1844/agent-system-v2/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/Q-1844/agent-system-v2/tags",
+        "blobs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/Q-1844/agent-system-v2/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/Q-1844/agent-system-v2/languages",
+        "stargazers_url": "https://api.github.com/repos/Q-1844/agent-system-v2/stargazers",
+        "contributors_url": "https://api.github.com/repos/Q-1844/agent-system-v2/contributors",
+        "subscribers_url": "https://api.github.com/repos/Q-1844/agent-system-v2/subscribers",
+        "subscription_url": "https://api.github.com/repos/Q-1844/agent-system-v2/subscription",
+        "commits_url": "https://api.github.com/repos/Q-1844/agent-system-v2/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/Q-1844/agent-system-v2/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/Q-1844/agent-system-v2/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/Q-1844/agent-system-v2/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/Q-1844/agent-system-v2/merges",
+        "archive_url": "https://api.github.com/repos/Q-1844/agent-system-v2/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/Q-1844/agent-system-v2/downloads",
+        "issues_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/Q-1844/agent-system-v2/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/Q-1844/agent-system-v2/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/Q-1844/agent-system-v2/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/Q-1844/agent-system-v2/labels{/name}",
+        "releases_url": "https://api.github.com/repos/Q-1844/agent-system-v2/releases{/id}",
+        "deployments_url": "https://api.github.com/repos/Q-1844/agent-system-v2/deployments"
+      }
+    },
+    "checkpoint": {
+      "error": null,
+      "full_run_id": "frun_80b1bd5120",
+      "github_run_id": "40055563112",
+      "image_calls": 21,
+      "nonce": "film3m-20261023-rescue5",
+      "phase": "RUNNING",
+      "progress": {
+        "action": null,
+        "scene": null,
+        "stage": "production",
+        "status": "producing"
+      },
+      "project_name": "cloud3min_film3m-20261023-rescue5",
+      "request_sha256": "8b42d98b28eff6c83369555143ade3d60a28f1f69b5ddddc3a855150bced5583",
+      "resume_from_run_id": "40053946925",
+      "resume_history": [
+        {
+          "artifact_bytes": 10365423,
+          "artifact_id": 12523292315,
+          "artifact_sha256": "f88ea85661ad2433b267a04328ad9f2660bbac6f06dc0caebfcb023be6d72dac",
+          "previous_error": "影片制作失败：故事段 s01: 镜头 s01_c03: stage last_frame 失败: 尾帧生成失败（2 次 batch 均无成功候选）",
+          "previous_terminal_status": "failed",
+          "run_id": "40002008268",
+          "source_sha": "d7bc39ae70b69e1d32322eeff54d0c80068d7681"
+        },
+        {
+          "artifact_bytes": 11585394,
+          "artifact_id": 12544802340,
+          "artifact_sha256": "456617913ea97de27ab848834c8b367b9199d3d11335468d5157b269ab984a61",
+          "previous_error": "影片制作失败：故事段 s01: 镜头 s01_c03: stage video 失败: 视频生成失败: 等待尾帧超时（尾帧尚未生成完成），请重试",
+          "previous_terminal_status": "failed",
+          "run_id": "40053946925",
+          "source_sha": "0a4154175b381ebbcd9004e618116f8c414a9465"
+        }
+      ],
+      "schema_version": 1,
+      "source_sha": "c3afe255bec6bccdb52aa8ad3e2bf98ab14db9c2",
+      "terminal_status": null,
+      "text_calls": 35,
+      "updated_at": "2026-10-24T03:58:17Z",
+      "video_attempts": [
+        {
+          "ordinal": 1,
+          "prompt_sha256": "bcdf61d9a5a979a09d3e289c2188cd527f1cdcb27ab5f9749e07fa849f81f9a6",
+          "seconds": 10,
+          "started_at": "2026-10-23T18:19:53Z",
+          "state": "ACCEPTED",
+          "video_id": "task_pkraULzuWocnwoTcMBlawZw0YxYohxo2"
+        },
+        {
+          "ordinal": 2,
+          "prompt_sha256": "f94b16bb77e79ad9a6ef6253747644ad7403676a12363284e7a890ba74217c02",
+          "seconds": 10,
+          "started_at": "2026-10-23T18:25:38Z",
+          "state": "ACCEPTED",
+          "video_id": "task_zdzn0NXGfj2w4tWoxefFWauIpCqvSmwC"
+        },
+        {
+          "ordinal": 3,
+          "prompt_sha256": "43ccd36c96704cb579825770c39ab07a3ff96075375d3a284146a072a43bb67f",
+          "seconds": 10,
+          "started_at": "2026-10-24T02:48:45Z",
+          "state": "ACCEPTED",
+          "video_id": "task_BdcD56zvE3RqhGWNuNpNlutpOfCRTW2W"
+        },
+        {
+          "ordinal": 4,
+          "prompt_sha256": "f5a1cbf5659d676ba75f675772161215f0f102ce932aa289a2c90d4a81089bd5",
+          "seconds": 10,
+          "started_at": "2026-10-24T02:57:53Z",
+          "state": "ACCEPTED",
+          "video_id": "task_zCevNJ1V6d3p8iPej1B2QL5QtZfZ1dCz"
+        },
+        {
+          "ordinal": 5,
+          "prompt_sha256": "37776fd63cd4858df057de9378b595e3d81ff18dd90dd0ded814d76137f40cc7",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:07:00Z",
+          "state": "ACCEPTED",
+          "video_id": "task_QXAaeMXVEKi6d2uAjweStmIHxPiDSpCe"
+        },
+        {
+          "ordinal": 6,
+          "prompt_sha256": "efc898ea80c4b46d6de1f5a715534ac070e71638eb9b6ef6f30331089a480dae",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:14:58Z",
+          "state": "ACCEPTED",
+          "video_id": "task_cX5OG06F4jp53uigFRw2CFL9px9mcBII"
+        },
+        {
+          "ordinal": 7,
+          "prompt_sha256": "6867a60c455d788ad277e945c999bf76143601a1d1d4b6a9f87ecf0fdcc61b59",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:23:39Z",
+          "state": "ACCEPTED",
+          "video_id": "task_dUS7m5qo2owP1gi8otcdHLnLPiHgQbOw"
+        },
+        {
+          "ordinal": 8,
+          "prompt_sha256": "732a6a146ba143fb8a149d7479c178137de90c01caee695ae44f8300fc6316d5",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:29:24Z",
+          "state": "ACCEPTED",
+          "video_id": "task_HJenj8lSB9z3qCmDQupLe1FkhU4uadUe"
+        },
+        {
+          "ordinal": 9,
+          "prompt_sha256": "53311b7233d36e2312822c57595be2d78ce7f98aeef89a60184b4a90a43cdc70",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:39:05Z",
+          "state": "ACCEPTED",
+          "video_id": "task_qqrj4NWhvC5d5f9x6Da8orY9Wb1mkpKc"
+        },
+        {
+          "ordinal": 10,
+          "prompt_sha256": "1fb572121ffc3de4f978fb475c934da01bba32355e51f11eaf0be57ecf476682",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:49:27Z",
+          "state": "ACCEPTED",
+          "video_id": "task_53rOii4dS68UTfJMjK0QhIsErOEJVpgg"
+        },
+        {
+          "ordinal": 11,
+          "prompt_sha256": "06af455499ee7eec57f089d27ab85dae83fc92c04beb79b0deb55fdd6270e8e2",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:56:01Z",
+          "state": "ACCEPTED",
+          "video_id": "task_sILrEy5aKkDcV1kqdHigLQ8wk96NLZk5"
+        }
+      ]
+    },
+    "state": "ACTIVE",
+    "accepted_tasks": 11,
+    "submitted_seconds": 110,
+    "image_calls": 21,
+    "text_calls": 35,
+    "note": "Accepted tasks are not completed clips or final-film duration."
+  },
+  "merged_pr9": {
+    "sha": "12b1ca4355cc743aa3e12eaeb22f67a015d1038b",
+    "merged": true,
+    "message": "Pull Request successfully merged"
+  },
+  "source_commit": "1e5193258501d9df0951ecef845ea15c6c649251",
+  "ci": {
+    "source_commit": "1e5193258501d9df0951ecef845ea15c6c649251",
+    "checked_at": "2026-10-24T03:57:37.008343+00:00",
+    "checks": [
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40059904480/job/120770951156"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40059904480/job/120770951151"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40059904480/job/120770951058"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40059897928/job/120770930622"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40059897928/job/120770930587"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40059897928/job/120770930364"
+      }
+    ],
+    "runs": [
+      {
+        "id": 40059904480,
+        "head_sha": "1e5193258501d9df0951ecef845ea15c6c649251",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40059904480",
+        "created_at": "2026-10-24T03:49:58Z",
+        "updated_at": "2026-10-24T03:56:19Z"
+      },
+      {
+        "id": 40059897928,
+        "head_sha": "1e5193258501d9df0951ecef845ea15c6c649251",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40059897928",
+        "created_at": "2026-10-24T03:49:52Z",
+        "updated_at": "2026-10-24T03:57:08Z"
+      }
+    ],
+    "verified_log_statistics": {
+      "40059904480": {
+        "runtime-regression": {
+          "passed": 416,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true,
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        },
+        "mock-regression": {
+          "passed": 3265,
+          "skipped": 10
+        }
+      },
+      "40059897928": {
+        "mock-regression": {
+          "passed": 3265,
+          "skipped": 10
+        },
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        },
+        "runtime-regression": {
+          "passed": 416,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true
+      }
+    }
+  },
+  "local_full": {
+    "passed": 3265,
+    "skipped": 10,
+    "failures": 0,
+    "errors": 0
+  },
+  "targeted_passed": 57,
+  "current_runner_hot_updated": false,
+  "current_runner_source": "c3afe255bec6bccdb52aa8ad3e2bf98ab14db9c2",
+  "full_project_180s_independently_verified": false
+}
