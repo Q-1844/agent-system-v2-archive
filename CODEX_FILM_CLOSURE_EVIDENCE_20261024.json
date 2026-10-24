@@ -1,0 +1,2321 @@
+{
+  "checked_at": "2026-10-24T09:33:40.177589+00:00",
+  "current_run": {
+    "checked_at": "2026-10-24T09:32:08.508552+00:00",
+    "run": {
+      "id": 40081890414,
+      "name": "video-autoproduction-e2e",
+      "node_id": "WFR_kwLOVRCIE88AAAAJVREcbg",
+      "head_branch": "chore/migration-readiness",
+      "head_sha": "5251984899affbff986b1b1f2c9a2e97b99ed2a7",
+      "path": ".github/workflows/video-autoproduction-e2e.yml",
+      "display_title": "video-autoproduction-e2e",
+      "run_number": 16,
+      "event": "workflow_dispatch",
+      "status": "completed",
+      "conclusion": "success",
+      "workflow_id": 394049087,
+      "check_suite_id": 108642597039,
+      "check_suite_node_id": "CS_kwDOVRCIE88AAAAZS5p4rw",
+      "url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40081890414",
+      "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081890414",
+      "pull_requests": [],
+      "created_at": "2026-10-24T09:25:27Z",
+      "updated_at": "2026-10-24T09:28:28Z",
+      "actor": {
+        "login": "Q-1844",
+        "id": 224496659,
+        "node_id": "U_kgDODWGMEw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/224496659?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Q-1844",
+        "html_url": "https://github.com/Q-1844",
+        "followers_url": "https://api.github.com/users/Q-1844/followers",
+        "following_url": "https://api.github.com/users/Q-1844/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Q-1844/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Q-1844/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Q-1844/subscriptions",
+        "organizations_url": "https://api.github.com/users/Q-1844/orgs",
+        "repos_url": "https://api.github.com/users/Q-1844/repos",
+        "events_url": "https://api.github.com/users/Q-1844/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Q-1844/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "run_attempt": 1,
+      "referenced_workflows": [],
+      "run_started_at": "2026-10-24T09:25:27Z",
+      "triggering_actor": {
+        "login": "Q-1844",
+        "id": 224496659,
+        "node_id": "U_kgDODWGMEw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/224496659?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Q-1844",
+        "html_url": "https://github.com/Q-1844",
+        "followers_url": "https://api.github.com/users/Q-1844/followers",
+        "following_url": "https://api.github.com/users/Q-1844/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Q-1844/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Q-1844/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Q-1844/subscriptions",
+        "organizations_url": "https://api.github.com/users/Q-1844/orgs",
+        "repos_url": "https://api.github.com/users/Q-1844/repos",
+        "events_url": "https://api.github.com/users/Q-1844/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Q-1844/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "jobs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40081890414/jobs",
+      "logs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40081890414/logs",
+      "check_suite_url": "https://api.github.com/repos/Q-1844/agent-system-v2/check-suites/108642597039",
+      "artifacts_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40081890414/artifacts",
+      "cancel_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40081890414/cancel",
+      "rerun_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/runs/40081890414/rerun",
+      "previous_attempt_url": null,
+      "workflow_url": "https://api.github.com/repos/Q-1844/agent-system-v2/actions/workflows/394049087",
+      "head_commit": {
+        "id": "5251984899affbff986b1b1f2c9a2e97b99ed2a7",
+        "tree_id": "33a18e67fe102b7a19f20c4fab49d6dd42e9d331",
+        "message": "Merge PR #12: complete source input and recover completed-film archival\n\nRestore full input provenance and resume archival of an already completed film",
+        "timestamp": "2026-10-24T09:23:34Z",
+        "author": {
+          "name": "Q-1844",
+          "email": "wenqi1234567890@qq.com"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com"
+        }
+      },
+      "repository": {
+        "id": 1427146771,
+        "node_id": "R_kgDOVRCIEw",
+        "name": "agent-system-v2",
+        "full_name": "Q-1844/agent-system-v2",
+        "private": false,
+        "owner": {
+          "login": "Q-1844",
+          "id": 224496659,
+          "node_id": "U_kgDODWGMEw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/224496659?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Q-1844",
+          "html_url": "https://github.com/Q-1844",
+          "followers_url": "https://api.github.com/users/Q-1844/followers",
+          "following_url": "https://api.github.com/users/Q-1844/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Q-1844/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Q-1844/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Q-1844/subscriptions",
+          "organizations_url": "https://api.github.com/users/Q-1844/orgs",
+          "repos_url": "https://api.github.com/users/Q-1844/repos",
+          "events_url": "https://api.github.com/users/Q-1844/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Q-1844/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "html_url": "https://github.com/Q-1844/agent-system-v2",
+        "description": null,
+        "fork": false,
+        "url": "https://api.github.com/repos/Q-1844/agent-system-v2",
+        "forks_url": "https://api.github.com/repos/Q-1844/agent-system-v2/forks",
+        "keys_url": "https://api.github.com/repos/Q-1844/agent-system-v2/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/Q-1844/agent-system-v2/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/Q-1844/agent-system-v2/teams",
+        "hooks_url": "https://api.github.com/repos/Q-1844/agent-system-v2/hooks",
+        "issue_events_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/Q-1844/agent-system-v2/events",
+        "assignees_url": "https://api.github.com/repos/Q-1844/agent-system-v2/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/Q-1844/agent-system-v2/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/Q-1844/agent-system-v2/tags",
+        "blobs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/Q-1844/agent-system-v2/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/Q-1844/agent-system-v2/languages",
+        "stargazers_url": "https://api.github.com/repos/Q-1844/agent-system-v2/stargazers",
+        "contributors_url": "https://api.github.com/repos/Q-1844/agent-system-v2/contributors",
+        "subscribers_url": "https://api.github.com/repos/Q-1844/agent-system-v2/subscribers",
+        "subscription_url": "https://api.github.com/repos/Q-1844/agent-system-v2/subscription",
+        "commits_url": "https://api.github.com/repos/Q-1844/agent-system-v2/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/Q-1844/agent-system-v2/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/Q-1844/agent-system-v2/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/Q-1844/agent-system-v2/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/Q-1844/agent-system-v2/merges",
+        "archive_url": "https://api.github.com/repos/Q-1844/agent-system-v2/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/Q-1844/agent-system-v2/downloads",
+        "issues_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/Q-1844/agent-system-v2/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/Q-1844/agent-system-v2/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/Q-1844/agent-system-v2/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/Q-1844/agent-system-v2/labels{/name}",
+        "releases_url": "https://api.github.com/repos/Q-1844/agent-system-v2/releases{/id}",
+        "deployments_url": "https://api.github.com/repos/Q-1844/agent-system-v2/deployments"
+      },
+      "head_repository": {
+        "id": 1427146771,
+        "node_id": "R_kgDOVRCIEw",
+        "name": "agent-system-v2",
+        "full_name": "Q-1844/agent-system-v2",
+        "private": false,
+        "owner": {
+          "login": "Q-1844",
+          "id": 224496659,
+          "node_id": "U_kgDODWGMEw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/224496659?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Q-1844",
+          "html_url": "https://github.com/Q-1844",
+          "followers_url": "https://api.github.com/users/Q-1844/followers",
+          "following_url": "https://api.github.com/users/Q-1844/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Q-1844/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Q-1844/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Q-1844/subscriptions",
+          "organizations_url": "https://api.github.com/users/Q-1844/orgs",
+          "repos_url": "https://api.github.com/users/Q-1844/repos",
+          "events_url": "https://api.github.com/users/Q-1844/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Q-1844/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "html_url": "https://github.com/Q-1844/agent-system-v2",
+        "description": null,
+        "fork": false,
+        "url": "https://api.github.com/repos/Q-1844/agent-system-v2",
+        "forks_url": "https://api.github.com/repos/Q-1844/agent-system-v2/forks",
+        "keys_url": "https://api.github.com/repos/Q-1844/agent-system-v2/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/Q-1844/agent-system-v2/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/Q-1844/agent-system-v2/teams",
+        "hooks_url": "https://api.github.com/repos/Q-1844/agent-system-v2/hooks",
+        "issue_events_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/Q-1844/agent-system-v2/events",
+        "assignees_url": "https://api.github.com/repos/Q-1844/agent-system-v2/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/Q-1844/agent-system-v2/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/Q-1844/agent-system-v2/tags",
+        "blobs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/Q-1844/agent-system-v2/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/Q-1844/agent-system-v2/languages",
+        "stargazers_url": "https://api.github.com/repos/Q-1844/agent-system-v2/stargazers",
+        "contributors_url": "https://api.github.com/repos/Q-1844/agent-system-v2/contributors",
+        "subscribers_url": "https://api.github.com/repos/Q-1844/agent-system-v2/subscribers",
+        "subscription_url": "https://api.github.com/repos/Q-1844/agent-system-v2/subscription",
+        "commits_url": "https://api.github.com/repos/Q-1844/agent-system-v2/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/Q-1844/agent-system-v2/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/Q-1844/agent-system-v2/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/Q-1844/agent-system-v2/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/Q-1844/agent-system-v2/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/Q-1844/agent-system-v2/merges",
+        "archive_url": "https://api.github.com/repos/Q-1844/agent-system-v2/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/Q-1844/agent-system-v2/downloads",
+        "issues_url": "https://api.github.com/repos/Q-1844/agent-system-v2/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/Q-1844/agent-system-v2/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/Q-1844/agent-system-v2/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/Q-1844/agent-system-v2/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/Q-1844/agent-system-v2/labels{/name}",
+        "releases_url": "https://api.github.com/repos/Q-1844/agent-system-v2/releases{/id}",
+        "deployments_url": "https://api.github.com/repos/Q-1844/agent-system-v2/deployments"
+      }
+    },
+    "checkpoint": {
+      "duration_s": 202.861003,
+      "error": null,
+      "full_run_id": "frun_80b1bd5120",
+      "github_run_id": "40081890414",
+      "image_calls": 41,
+      "nonce": "film3m-20261023-rescue5",
+      "phase": "COMPLETE",
+      "progress": {
+        "action": null,
+        "scene": null,
+        "stage": "production",
+        "status": "producing"
+      },
+      "project_name": "cloud3min_film3m-20261023-rescue5",
+      "request_sha256": "8b42d98b28eff6c83369555143ade3d60a28f1f69b5ddddc3a855150bced5583",
+      "resume_from_run_id": "40080231475",
+      "resume_history": [
+        {
+          "artifact_bytes": 10365423,
+          "artifact_id": 12523292315,
+          "artifact_sha256": "f88ea85661ad2433b267a04328ad9f2660bbac6f06dc0caebfcb023be6d72dac",
+          "previous_error": "影片制作失败：故事段 s01: 镜头 s01_c03: stage last_frame 失败: 尾帧生成失败（2 次 batch 均无成功候选）",
+          "previous_terminal_status": "failed",
+          "run_id": "40002008268",
+          "source_sha": "d7bc39ae70b69e1d32322eeff54d0c80068d7681"
+        },
+        {
+          "artifact_bytes": 11585394,
+          "artifact_id": 12544802340,
+          "artifact_sha256": "456617913ea97de27ab848834c8b367b9199d3d11335468d5157b269ab984a61",
+          "previous_error": "影片制作失败：故事段 s01: 镜头 s01_c03: stage video 失败: 视频生成失败: 等待尾帧超时（尾帧尚未生成完成），请重试",
+          "previous_terminal_status": "failed",
+          "run_id": "40053946925",
+          "source_sha": "0a4154175b381ebbcd9004e618116f8c414a9465"
+        },
+        {
+          "artifact_bytes": 135862027,
+          "artifact_id": 12548693050,
+          "artifact_sha256": "e2d08aa8160901374974cec41ec11f15eea961564704b09a023333a63ed2fdb5",
+          "previous_error": null,
+          "previous_terminal_status": null,
+          "run_id": "40055563112",
+          "source_sha": "c3afe255bec6bccdb52aa8ad3e2bf98ab14db9c2"
+        },
+        {
+          "artifact_bytes": 1030602548,
+          "artifact_id": 12554758972,
+          "artifact_sha256": "f43d8e3efec7d7b5375d9693f04b55d1bd2b310cd19486be66258bf84e264d35",
+          "previous_error": null,
+          "previous_terminal_status": null,
+          "run_id": "40080231475",
+          "source_sha": "c91a92fe12c1fc040f051476dd43a248a97d1cf9"
+        }
+      ],
+      "saved": {
+        "archive_ref": {
+          "asset_id": "671834416",
+          "asset_name": "project-40081890414.tar",
+          "bytes": 258488320,
+          "final_mp4_asset_id": "671782040",
+          "final_mp4_sha256": "e6c3a743f2d6453b1930ad3dbbf21fc0b546a97b42271c7cd166e392970ea49f",
+          "release_id": "422624439",
+          "release_tag": "full-project/film3m-20261023-rescue5",
+          "repo": "Q-1844/agent-system-v2-rundata",
+          "sha256": "24cbce1725001f51c60495082945f077ab3889b31bcf8c957d517d7ce1990574",
+          "tree_fingerprint": "6c1403ddad960940475b4e5facfccc35861c7c7de116f699d2e45815dfe3e313"
+        },
+        "registry": {
+          "activity_seq": 2,
+          "archive_queue": [
+            "film3m-20261023-rescue5"
+          ],
+          "operation_dedup": {
+            "film3m-20261023-rescue5-activity": {
+              "at": 1792834067.5784705,
+              "kind": "record_activity",
+              "project_id": "film3m-20261023-rescue5",
+              "result": {
+                "activity_seq": 2,
+                "effective": true,
+                "ranked": true,
+                "unmarked": false
+              }
+            },
+            "film3m-20261023-rescue5-create": {
+              "at": 1792834066.043649,
+              "kind": "create_project",
+              "project_id": "film3m-20261023-rescue5",
+              "result": {
+                "ok": true
+              }
+            },
+            "film3m-20261023-rescue5-plan": {
+              "at": 1792834068.7505548,
+              "kind": "plan_archive",
+              "project_id": "film3m-20261023-rescue5",
+              "result": {
+                "archive_status": "PLANNED",
+                "ok": true
+              }
+            },
+            "film3m-20261023-rescue5-snapshot": {
+              "at": 1792834069.801878,
+              "kind": "begin_snapshot",
+              "project_id": "film3m-20261023-rescue5",
+              "result": {
+                "ok": true
+              }
+            },
+            "film3m-20261023-rescue5-verified": {
+              "at": 1792834071.0017905,
+              "kind": "set_verified_restorable",
+              "project_id": "film3m-20261023-rescue5",
+              "result": {
+                "evict_permitted": false,
+                "level": "full",
+                "ok": true
+              }
+            }
+          },
+          "projects": {
+            "film3m-20261023-rescue5": {
+              "active_operation_id": null,
+              "alias": "cloud3min_film3m-20261023-rescue5",
+              "archive_ref": {
+                "asset_id": "671834416",
+                "asset_name": "project-40081890414.tar",
+                "bytes": 258488320,
+                "final_mp4_asset_id": "671782040",
+                "final_mp4_sha256": "e6c3a743f2d6453b1930ad3dbbf21fc0b546a97b42271c7cd166e392970ea49f",
+                "release_id": "422624439",
+                "release_tag": "full-project/film3m-20261023-rescue5",
+                "repo": "Q-1844/agent-system-v2-rundata",
+                "sha256": "24cbce1725001f51c60495082945f077ab3889b31bcf8c957d517d7ce1990574",
+                "tree_fingerprint": "6c1403ddad960940475b4e5facfccc35861c7c7de116f699d2e45815dfe3e313"
+              },
+              "archive_status": "VERIFIED_RESTORABLE",
+              "last_activity_at": 1792834067.5784574,
+              "last_activity_kind": "generate_video",
+              "last_activity_seq": 2,
+              "marked_at_seq": null,
+              "missing_required": [],
+              "open_jobs": 0,
+              "pending_sync_intents": [],
+              "production_status": "IN_PROGRESS",
+              "project_id": "film3m-20261023-rescue5",
+              "project_revision": 0,
+              "residency": "RESIDENT",
+              "retrieved_at": null,
+              "retrieved_reassess_at": null,
+              "slot_status": "ACTIVE",
+              "snapshot_fingerprint": "6c1403ddad960940475b4e5facfccc35861c7c7de116f699d2e45815dfe3e313"
+            }
+          },
+          "registry_revision": 5
+        },
+        "restorable_level": "full",
+        "restore_files_checked": 140
+      },
+      "schema_version": 1,
+      "source_sha": "5251984899affbff986b1b1f2c9a2e97b99ed2a7",
+      "terminal_status": null,
+      "text_calls": 57,
+      "updated_at": "2026-10-24T09:27:52Z",
+      "video_attempts": [
+        {
+          "ordinal": 1,
+          "prompt_sha256": "bcdf61d9a5a979a09d3e289c2188cd527f1cdcb27ab5f9749e07fa849f81f9a6",
+          "seconds": 10,
+          "started_at": "2026-10-23T18:19:53Z",
+          "state": "ACCEPTED",
+          "video_id": "task_pkraULzuWocnwoTcMBlawZw0YxYohxo2"
+        },
+        {
+          "ordinal": 2,
+          "prompt_sha256": "f94b16bb77e79ad9a6ef6253747644ad7403676a12363284e7a890ba74217c02",
+          "seconds": 10,
+          "started_at": "2026-10-23T18:25:38Z",
+          "state": "ACCEPTED",
+          "video_id": "task_zdzn0NXGfj2w4tWoxefFWauIpCqvSmwC"
+        },
+        {
+          "ordinal": 3,
+          "prompt_sha256": "43ccd36c96704cb579825770c39ab07a3ff96075375d3a284146a072a43bb67f",
+          "seconds": 10,
+          "started_at": "2026-10-24T02:48:45Z",
+          "state": "ACCEPTED",
+          "video_id": "task_BdcD56zvE3RqhGWNuNpNlutpOfCRTW2W"
+        },
+        {
+          "ordinal": 4,
+          "prompt_sha256": "f5a1cbf5659d676ba75f675772161215f0f102ce932aa289a2c90d4a81089bd5",
+          "seconds": 10,
+          "started_at": "2026-10-24T02:57:53Z",
+          "state": "ACCEPTED",
+          "video_id": "task_zCevNJ1V6d3p8iPej1B2QL5QtZfZ1dCz"
+        },
+        {
+          "ordinal": 5,
+          "prompt_sha256": "37776fd63cd4858df057de9378b595e3d81ff18dd90dd0ded814d76137f40cc7",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:07:00Z",
+          "state": "ACCEPTED",
+          "video_id": "task_QXAaeMXVEKi6d2uAjweStmIHxPiDSpCe"
+        },
+        {
+          "ordinal": 6,
+          "prompt_sha256": "efc898ea80c4b46d6de1f5a715534ac070e71638eb9b6ef6f30331089a480dae",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:14:58Z",
+          "state": "ACCEPTED",
+          "video_id": "task_cX5OG06F4jp53uigFRw2CFL9px9mcBII"
+        },
+        {
+          "ordinal": 7,
+          "prompt_sha256": "6867a60c455d788ad277e945c999bf76143601a1d1d4b6a9f87ecf0fdcc61b59",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:23:39Z",
+          "state": "ACCEPTED",
+          "video_id": "task_dUS7m5qo2owP1gi8otcdHLnLPiHgQbOw"
+        },
+        {
+          "ordinal": 8,
+          "prompt_sha256": "732a6a146ba143fb8a149d7479c178137de90c01caee695ae44f8300fc6316d5",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:29:24Z",
+          "state": "ACCEPTED",
+          "video_id": "task_HJenj8lSB9z3qCmDQupLe1FkhU4uadUe"
+        },
+        {
+          "ordinal": 9,
+          "prompt_sha256": "53311b7233d36e2312822c57595be2d78ce7f98aeef89a60184b4a90a43cdc70",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:39:05Z",
+          "state": "ACCEPTED",
+          "video_id": "task_qqrj4NWhvC5d5f9x6Da8orY9Wb1mkpKc"
+        },
+        {
+          "ordinal": 10,
+          "prompt_sha256": "1fb572121ffc3de4f978fb475c934da01bba32355e51f11eaf0be57ecf476682",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:49:27Z",
+          "state": "ACCEPTED",
+          "video_id": "task_53rOii4dS68UTfJMjK0QhIsErOEJVpgg"
+        },
+        {
+          "ordinal": 11,
+          "prompt_sha256": "06af455499ee7eec57f089d27ab85dae83fc92c04beb79b0deb55fdd6270e8e2",
+          "seconds": 10,
+          "started_at": "2026-10-24T03:56:01Z",
+          "state": "ACCEPTED",
+          "video_id": "task_sILrEy5aKkDcV1kqdHigLQ8wk96NLZk5"
+        },
+        {
+          "ordinal": 12,
+          "prompt_sha256": "9eeb17afddb6a6df51b936fdcf2a8d48d200b80ff9ce3177590e4712739b0259",
+          "seconds": 10,
+          "started_at": "2026-10-24T04:02:50Z",
+          "state": "ACCEPTED",
+          "video_id": "task_mc4YPPSgKbDkpFtQuEmcvpYEm2hPwPH2"
+        },
+        {
+          "ordinal": 13,
+          "prompt_sha256": "86ed824205d48144c8da3bda005b66e6b283755b4302728e3e474e04e45a00d6",
+          "seconds": 10,
+          "started_at": "2026-10-24T04:11:27Z",
+          "state": "ACCEPTED",
+          "video_id": "task_5b5EfDI37jgO3i4ZOQpQXEHOuIXVigHn"
+        },
+        {
+          "ordinal": 14,
+          "prompt_sha256": "1aaa5ffb9cb33e6fc9dde460016f70f319023be076af4ce3852cd67de1a2f5cd",
+          "seconds": 10,
+          "started_at": "2026-10-24T04:18:38Z",
+          "state": "ACCEPTED",
+          "video_id": "task_ZuWfjf7WgxyxP8PW9vnMDFkJVz8Vas5a"
+        },
+        {
+          "ordinal": 15,
+          "prompt_sha256": "c3713424585a39d47c9c85d4608de855d25e4a3b4166447f4d6697d7e4775dd7",
+          "seconds": 10,
+          "started_at": "2026-10-24T04:24:48Z",
+          "state": "ACCEPTED",
+          "video_id": "task_cEnJ5TKQXj3anxn0TOtEGE1yERwOBYRl"
+        },
+        {
+          "ordinal": 16,
+          "prompt_sha256": "3aaf07553042c87b760612c67d9817c83478d1a0cab9bf48e66268c515f95b15",
+          "seconds": 10,
+          "started_at": "2026-10-24T04:32:03Z",
+          "state": "ACCEPTED",
+          "video_id": "task_3TDIPzLGPFkExxwGn4FVMlw06leciiVk"
+        },
+        {
+          "ordinal": 17,
+          "prompt_sha256": "85b19d4857ef04285b92ed3c8406e87037087e60e631e45654f30983d8d30eb2",
+          "seconds": 10,
+          "started_at": "2026-10-24T04:39:44Z",
+          "state": "ACCEPTED",
+          "video_id": "task_86xqREJvYOuNTTm9EI6sWgyFyxU4LPnz"
+        },
+        {
+          "ordinal": 18,
+          "prompt_sha256": "a995ba17a8748b85d279d38d9209806fbc0eb06c64258460ab5eaec8733f4a76",
+          "seconds": 10,
+          "started_at": "2026-10-24T04:50:36Z",
+          "state": "ACCEPTED",
+          "video_id": "task_fAQfzCsvZwBi47ZTFoJ1gf7U51Hy9BwT"
+        },
+        {
+          "ordinal": 19,
+          "prompt_sha256": "c9a7f977dfeac8030c5a8d9d55c3c37ab17fe9221459b79351c426234b178179",
+          "seconds": 10,
+          "started_at": "2026-10-24T05:00:31Z",
+          "state": "ACCEPTED",
+          "video_id": "task_sbnMompOvH2NnH3IrAmqFD9D5R1OAdx7"
+        },
+        {
+          "ordinal": 20,
+          "prompt_sha256": "0763349c2b2618f5b5be92b783532ec6938e079213730466b0a6391af6b753bb",
+          "seconds": 10,
+          "started_at": "2026-10-24T05:10:35Z",
+          "state": "ACCEPTED",
+          "video_id": "task_T35hRvn6Ui7B7827yhF6w8pWtmgZTcoG"
+        }
+      ]
+    },
+    "state": "CLOUD_PASS_REQUIRES_LOCAL_AUDIT",
+    "accepted_tasks": 20,
+    "submitted_seconds": 200,
+    "image_calls": 41,
+    "text_calls": 57,
+    "note": "Accepted tasks are not completed clips or final-film duration."
+  },
+  "ci": {
+    "source_commit": "88498aef0f8aba6bd08923914c073481bd29397c",
+    "checked_at": "2026-10-24T08:59:33.271138+00:00",
+    "checks": [
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40079629975/job/120830280131"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40079629975/job/120830279989"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40079629975/job/120830279864"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40079626325/job/120830269626"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40079626325/job/120830269594"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40079626325/job/120830269547"
+      }
+    ],
+    "runs": [
+      {
+        "id": 40079629975,
+        "head_sha": "88498aef0f8aba6bd08923914c073481bd29397c",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40079629975",
+        "created_at": "2026-10-24T08:50:55Z",
+        "updated_at": "2026-10-24T08:59:07Z"
+      },
+      {
+        "id": 40079626325,
+        "head_sha": "88498aef0f8aba6bd08923914c073481bd29397c",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40079626325",
+        "created_at": "2026-10-24T08:50:51Z",
+        "updated_at": "2026-10-24T08:57:23Z"
+      }
+    ],
+    "verified_log_statistics": {
+      "40079629975": {
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        },
+        "runtime-regression": {
+          "passed": 434,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true,
+        "mock-regression": {
+          "passed": 3283,
+          "skipped": 10
+        }
+      },
+      "40079626325": {
+        "runtime-regression": {
+          "passed": 434,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true,
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        },
+        "mock-regression": {
+          "passed": 3283,
+          "skipped": 10
+        }
+      }
+    }
+  },
+  "merge": {
+    "sha": "c91a92fe12c1fc040f051476dd43a248a97d1cf9",
+    "merged": true,
+    "message": "Pull Request successfully merged"
+  },
+  "heartbeat_fix_merge": {
+    "sha": "9c587f2a96172ba8d60cc544b2643fa05c6900dc",
+    "merged": true,
+    "message": "Pull Request successfully merged"
+  },
+  "heartbeat_fix_ci": {
+    "source_commit": "fe86e437fccdda459137be59372e6fdb2ef3e6a0",
+    "checked_at": "2026-10-24T09:14:04.594941+00:00",
+    "checks": [
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40080609310/job/120833177944"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40080609310/job/120833177896"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40080609310/job/120833177716"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40080604321/job/120833163166"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40080604321/job/120833163054"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40080604321/job/120833162919"
+      }
+    ],
+    "runs": [
+      {
+        "id": 40080609310,
+        "head_sha": "fe86e437fccdda459137be59372e6fdb2ef3e6a0",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40080609310",
+        "created_at": "2026-10-24T09:05:57Z",
+        "updated_at": "2026-10-24T09:13:26Z"
+      },
+      {
+        "id": 40080604321,
+        "head_sha": "fe86e437fccdda459137be59372e6fdb2ef3e6a0",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40080604321",
+        "created_at": "2026-10-24T09:05:53Z",
+        "updated_at": "2026-10-24T09:13:37Z"
+      }
+    ],
+    "verified_log_statistics": {
+      "40080609310": {
+        "runtime-regression": {
+          "passed": 434,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true,
+        "mock-regression": {
+          "passed": 3283,
+          "skipped": 10
+        },
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        }
+      },
+      "40080604321": {
+        "runtime-regression": {
+          "passed": 434,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true,
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        },
+        "mock-regression": {
+          "passed": 3283,
+          "skipped": 10
+        }
+      }
+    }
+  },
+  "archive_fix_merge": {
+    "sha": "5251984899affbff986b1b1f2c9a2e97b99ed2a7",
+    "merged": true,
+    "message": "Pull Request successfully merged"
+  },
+  "archive_fix_ci": {
+    "source_commit": "455c8f50994ddbe5e1c84855c36a9b4c818b3fc4",
+    "checked_at": "2026-10-24T09:23:26.721098+00:00",
+    "checks": [
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081233409/job/120835044856"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081233409/job/120835044824"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081233409/job/120835044685"
+      },
+      {
+        "name": "mock-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081226907/job/120835026529"
+      },
+      {
+        "name": "runtime-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081226907/job/120835026485"
+      },
+      {
+        "name": "pipeline-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081226907/job/120835026374"
+      }
+    ],
+    "runs": [
+      {
+        "id": 40081233409,
+        "head_sha": "455c8f50994ddbe5e1c84855c36a9b4c818b3fc4",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081233409",
+        "created_at": "2026-10-24T09:15:26Z",
+        "updated_at": "2026-10-24T09:22:51Z"
+      },
+      {
+        "id": 40081226907,
+        "head_sha": "455c8f50994ddbe5e1c84855c36a9b4c818b3fc4",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40081226907",
+        "created_at": "2026-10-24T09:15:20Z",
+        "updated_at": "2026-10-24T09:22:54Z"
+      }
+    ],
+    "verified_log_statistics": {
+      "40081233409": {
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        },
+        "mock-regression": {
+          "passed": 3286,
+          "skipped": 10
+        },
+        "runtime-regression": {
+          "passed": 437,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true
+      },
+      "40081226907": {
+        "mock-regression": {
+          "passed": 3286,
+          "skipped": 10
+        },
+        "runtime-regression": {
+          "passed": 437,
+          "skipped": 10
+        },
+        "linux_media_bootstrap_verified": true,
+        "h264_encode_probe_decode_verified": true,
+        "pipeline-smoke": {
+          "passed": 28,
+          "skipped": 0
+        }
+      }
+    }
+  },
+  "original_artifact_sha256": "e2d08aa8160901374974cec41ec11f15eea961564704b09a023333a63ed2fdb5",
+  "source_media_audit": [
+    {
+      "shot_id": "s01_c01",
+      "video_id": "task_pkraULzuWocnwoTcMBlawZw0YxYohxo2",
+      "version_id": "vv_bf8c36681a10",
+      "bytes": 3841027,
+      "sha256": "2271cfc9a107f24a89c64aa785bf4b84c2275cf98ecf7ecd328747ebb221a7a4",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s01_c02",
+      "video_id": "task_zdzn0NXGfj2w4tWoxefFWauIpCqvSmwC",
+      "version_id": "vv_9db44576590e",
+      "bytes": 3059330,
+      "sha256": "8a202054ed5134f653ec182c953c67c05a3e03332ed7aeb797c7e116effc00d3",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s01_c03",
+      "video_id": "task_BdcD56zvE3RqhGWNuNpNlutpOfCRTW2W",
+      "version_id": "vv_fa9b1ccc5bac",
+      "bytes": 4086648,
+      "sha256": "13d6f64c14c44838e29f8ae6d700bde6dba9f34088e2bb1345f3d50bcf7b82dd",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s01_c04",
+      "video_id": "task_zCevNJ1V6d3p8iPej1B2QL5QtZfZ1dCz",
+      "version_id": "vv_d8b98b4a2eac",
+      "bytes": 3950260,
+      "sha256": "aa88b5e9a9e81df9ddb5d45e9595a74397aaa634da41665c80b3b9d6b768857f",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s02_c01",
+      "video_id": "task_QXAaeMXVEKi6d2uAjweStmIHxPiDSpCe",
+      "version_id": "vv_f1d0b39fd95f",
+      "bytes": 4203915,
+      "sha256": "eaacd9c4614b9259b15873857872341023fa030643318f102c29471857d20ce1",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s02_c02",
+      "video_id": "task_cX5OG06F4jp53uigFRw2CFL9px9mcBII",
+      "version_id": "vv_65e21ddd8876",
+      "bytes": 3945670,
+      "sha256": "b0fe9aaf1db7d5d42523c8668d448e20a08867d442569b575a465ea6a64d150a",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s02_c03",
+      "video_id": "task_dUS7m5qo2owP1gi8otcdHLnLPiHgQbOw",
+      "version_id": "vv_5611fa858c82",
+      "bytes": 2788333,
+      "sha256": "788571a686426f8a6f2472fec31dd9fc9b813151abd2fa85ccbc9a10c2f5a403",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s02_c04",
+      "video_id": "task_HJenj8lSB9z3qCmDQupLe1FkhU4uadUe",
+      "version_id": "vv_d585c82e1077",
+      "bytes": 3614249,
+      "sha256": "3c2dd14ccc97f95abf88ae62b73137dbb5f8afc591ee0570a80176db65ec44c4",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s03_c01",
+      "video_id": "task_qqrj4NWhvC5d5f9x6Da8orY9Wb1mkpKc",
+      "version_id": "vv_c41993bfe8cc",
+      "bytes": 2117538,
+      "sha256": "df0b689cfbecf7a39d04c9e2720fcc54d66dca63e59ccbd5484e85fbceabff4e",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s03_c02",
+      "video_id": "task_53rOii4dS68UTfJMjK0QhIsErOEJVpgg",
+      "version_id": "vv_e1aa080c3d45",
+      "bytes": 2802038,
+      "sha256": "4d1246364dc2223f6a3697773959c87015e07dc9bef4d4bbf6a7e9d7c98f0943",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s03_c03",
+      "video_id": "task_sILrEy5aKkDcV1kqdHigLQ8wk96NLZk5",
+      "version_id": "vv_2b08113243e4",
+      "bytes": 2652421,
+      "sha256": "75d8e50732db657ff092ea479fcbf18faeae611f474042aa7209beac3995a3de",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s03_c04",
+      "video_id": "task_mc4YPPSgKbDkpFtQuEmcvpYEm2hPwPH2",
+      "version_id": "vv_da3664e33b39",
+      "bytes": 3660288,
+      "sha256": "05e51199323927bcba29962d2ab7da8f122487cc35a8215d57f16dca8cd4f678",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s04_c01",
+      "video_id": "task_5b5EfDI37jgO3i4ZOQpQXEHOuIXVigHn",
+      "version_id": "vv_f1f26e57c9d9",
+      "bytes": 3770282,
+      "sha256": "acf22a6214cca6da8ca1df33dafb180f95927ecf1e1412d484139edd7d49c0ca",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s04_c02",
+      "video_id": "task_ZuWfjf7WgxyxP8PW9vnMDFkJVz8Vas5a",
+      "version_id": "vv_1bd086bbe334",
+      "bytes": 4110075,
+      "sha256": "b32278b9021ec6e5aad063307122d6af0d81861b2930f617c5fec96ea5555cd1",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s04_c03",
+      "video_id": "task_cEnJ5TKQXj3anxn0TOtEGE1yERwOBYRl",
+      "version_id": "vv_d00baf58b23f",
+      "bytes": 4365693,
+      "sha256": "f0bf6f19150146e65d49f41f236f659fce61829f55ce13774e1df4d4e09c207a",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s04_c04",
+      "video_id": "task_3TDIPzLGPFkExxwGn4FVMlw06leciiVk",
+      "version_id": "vv_9085d7a2e656",
+      "bytes": 5347533,
+      "sha256": "4771cb29a0e46bf59849a0a7c4491ba65fcf4bb76f00874a2165e953349003cd",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s05_c01",
+      "video_id": "task_86xqREJvYOuNTTm9EI6sWgyFyxU4LPnz",
+      "version_id": "vv_05f08bb0ddbd",
+      "bytes": 2757800,
+      "sha256": "2165d04fa2062f38fbe5568867cd7b33e75d045b184dde5b2d6c2ca5e957bb56",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s05_c02",
+      "video_id": "task_fAQfzCsvZwBi47ZTFoJ1gf7U51Hy9BwT",
+      "version_id": "vv_844459a8397e",
+      "bytes": 6203639,
+      "sha256": "1de3d4cfa0f6fcafd476d9a776610ccaffa02458b4299a0b53c72fce78956c58",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s05_c03",
+      "video_id": "task_sbnMompOvH2NnH3IrAmqFD9D5R1OAdx7",
+      "version_id": "vv_8b64cd3f06a6",
+      "bytes": 2853115,
+      "sha256": "8c34146f623e2676b110b84fdfd4b43a65cbec943e748c99ecc8070740bd273c",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    },
+    {
+      "shot_id": "s05_c04",
+      "video_id": "task_T35hRvn6Ui7B7827yhF6w8pWtmgZTcoG",
+      "version_id": "vv_b0c76b8f4bc3",
+      "bytes": 3002801,
+      "sha256": "5733d40a5f6e1d36cc6c17d8276b84bd7f96937442a0a90807ebbc42774440c1",
+      "video_duration": 10.125,
+      "full_decode_ok": true
+    }
+  ],
+  "offline_restore": {
+    "run_id": "40055563112",
+    "source_sha": "c3afe255bec6bccdb52aa8ad3e2bf98ab14db9c2",
+    "artifact_id": 12548693050,
+    "artifact_sha256": "e2d08aa8160901374974cec41ec11f15eea961564704b09a023333a63ed2fdb5",
+    "project_name": "cloud3min_film3m-20261023-rescue5",
+    "full_run_id": "frun_80b1bd5120",
+    "reused_completed_videos": [
+      {
+        "video_id": "task_pkraULzuWocnwoTcMBlawZw0YxYohxo2",
+        "version_id": "vv_bf8c36681a10",
+        "bytes": 3841027,
+        "sha256": "2271cfc9a107f24a89c64aa785bf4b84c2275cf98ecf7ecd328747ebb221a7a4"
+      },
+      {
+        "video_id": "task_zdzn0NXGfj2w4tWoxefFWauIpCqvSmwC",
+        "version_id": "vv_9db44576590e",
+        "bytes": 3059330,
+        "sha256": "8a202054ed5134f653ec182c953c67c05a3e03332ed7aeb797c7e116effc00d3"
+      },
+      {
+        "video_id": "task_BdcD56zvE3RqhGWNuNpNlutpOfCRTW2W",
+        "version_id": "vv_fa9b1ccc5bac",
+        "bytes": 4086648,
+        "sha256": "13d6f64c14c44838e29f8ae6d700bde6dba9f34088e2bb1345f3d50bcf7b82dd"
+      },
+      {
+        "video_id": "task_zCevNJ1V6d3p8iPej1B2QL5QtZfZ1dCz",
+        "version_id": "vv_d8b98b4a2eac",
+        "bytes": 3950260,
+        "sha256": "aa88b5e9a9e81df9ddb5d45e9595a74397aaa634da41665c80b3b9d6b768857f"
+      },
+      {
+        "video_id": "task_QXAaeMXVEKi6d2uAjweStmIHxPiDSpCe",
+        "version_id": "vv_f1d0b39fd95f",
+        "bytes": 4203915,
+        "sha256": "eaacd9c4614b9259b15873857872341023fa030643318f102c29471857d20ce1"
+      },
+      {
+        "video_id": "task_cX5OG06F4jp53uigFRw2CFL9px9mcBII",
+        "version_id": "vv_65e21ddd8876",
+        "bytes": 3945670,
+        "sha256": "b0fe9aaf1db7d5d42523c8668d448e20a08867d442569b575a465ea6a64d150a"
+      },
+      {
+        "video_id": "task_dUS7m5qo2owP1gi8otcdHLnLPiHgQbOw",
+        "version_id": "vv_5611fa858c82",
+        "bytes": 2788333,
+        "sha256": "788571a686426f8a6f2472fec31dd9fc9b813151abd2fa85ccbc9a10c2f5a403"
+      },
+      {
+        "video_id": "task_HJenj8lSB9z3qCmDQupLe1FkhU4uadUe",
+        "version_id": "vv_d585c82e1077",
+        "bytes": 3614249,
+        "sha256": "3c2dd14ccc97f95abf88ae62b73137dbb5f8afc591ee0570a80176db65ec44c4"
+      },
+      {
+        "video_id": "task_qqrj4NWhvC5d5f9x6Da8orY9Wb1mkpKc",
+        "version_id": "vv_c41993bfe8cc",
+        "bytes": 2117538,
+        "sha256": "df0b689cfbecf7a39d04c9e2720fcc54d66dca63e59ccbd5484e85fbceabff4e"
+      },
+      {
+        "video_id": "task_53rOii4dS68UTfJMjK0QhIsErOEJVpgg",
+        "version_id": "vv_e1aa080c3d45",
+        "bytes": 2802038,
+        "sha256": "4d1246364dc2223f6a3697773959c87015e07dc9bef4d4bbf6a7e9d7c98f0943"
+      },
+      {
+        "video_id": "task_sILrEy5aKkDcV1kqdHigLQ8wk96NLZk5",
+        "version_id": "vv_2b08113243e4",
+        "bytes": 2652421,
+        "sha256": "75d8e50732db657ff092ea479fcbf18faeae611f474042aa7209beac3995a3de"
+      },
+      {
+        "video_id": "task_mc4YPPSgKbDkpFtQuEmcvpYEm2hPwPH2",
+        "version_id": "vv_da3664e33b39",
+        "bytes": 3660288,
+        "sha256": "05e51199323927bcba29962d2ab7da8f122487cc35a8215d57f16dca8cd4f678"
+      },
+      {
+        "video_id": "task_5b5EfDI37jgO3i4ZOQpQXEHOuIXVigHn",
+        "version_id": "vv_f1f26e57c9d9",
+        "bytes": 3770282,
+        "sha256": "acf22a6214cca6da8ca1df33dafb180f95927ecf1e1412d484139edd7d49c0ca"
+      },
+      {
+        "video_id": "task_ZuWfjf7WgxyxP8PW9vnMDFkJVz8Vas5a",
+        "version_id": "vv_1bd086bbe334",
+        "bytes": 4110075,
+        "sha256": "b32278b9021ec6e5aad063307122d6af0d81861b2930f617c5fec96ea5555cd1"
+      },
+      {
+        "video_id": "task_cEnJ5TKQXj3anxn0TOtEGE1yERwOBYRl",
+        "version_id": "vv_d00baf58b23f",
+        "bytes": 4365693,
+        "sha256": "f0bf6f19150146e65d49f41f236f659fce61829f55ce13774e1df4d4e09c207a"
+      },
+      {
+        "video_id": "task_3TDIPzLGPFkExxwGn4FVMlw06leciiVk",
+        "version_id": "vv_9085d7a2e656",
+        "bytes": 5347533,
+        "sha256": "4771cb29a0e46bf59849a0a7c4491ba65fcf4bb76f00874a2165e953349003cd"
+      },
+      {
+        "video_id": "task_86xqREJvYOuNTTm9EI6sWgyFyxU4LPnz",
+        "version_id": "vv_05f08bb0ddbd",
+        "bytes": 2757800,
+        "sha256": "2165d04fa2062f38fbe5568867cd7b33e75d045b184dde5b2d6c2ca5e957bb56"
+      },
+      {
+        "video_id": "task_fAQfzCsvZwBi47ZTFoJ1gf7U51Hy9BwT",
+        "version_id": "vv_844459a8397e",
+        "bytes": 6203639,
+        "sha256": "1de3d4cfa0f6fcafd476d9a776610ccaffa02458b4299a0b53c72fce78956c58"
+      },
+      {
+        "video_id": "task_sbnMompOvH2NnH3IrAmqFD9D5R1OAdx7",
+        "version_id": "vv_8b64cd3f06a6",
+        "bytes": 2853115,
+        "sha256": "8c34146f623e2676b110b84fdfd4b43a65cbec943e748c99ecc8070740bd273c"
+      },
+      {
+        "video_id": "task_T35hRvn6Ui7B7827yhF6w8pWtmgZTcoG",
+        "version_id": "vv_b0c76b8f4bc3",
+        "bytes": 3002801,
+        "sha256": "5733d40a5f6e1d36cc6c17d8276b84bd7f96937442a0a90807ebbc42774440c1"
+      }
+    ],
+    "previous_video_seconds": 200,
+    "finalize_only": true,
+    "reconciled_jobs": [
+      "f960e35cc110"
+    ]
+  },
+  "original_receipts_unchanged": true,
+  "archive_input_materialization": {
+    "previous_missing_required": [
+      "project_input:/input"
+    ],
+    "fixed_missing_required": [],
+    "input": {
+      "schema_version": 1,
+      "provenance": "materialized_from_canonical_project_source",
+      "nonce": "film3m-20261023-rescue5",
+      "project_name": "cloud3min_film3m-20261023-rescue5",
+      "story_text": "《失联深海站》：橙色双灯、双机械爪救援无人机潜入淹水的研究站，取回唯一的银色记录匣，在舱体变形中撤离并返回救援船。五段共约200秒；不重复素材，不使用静帧或循环补时长。此次只验收设备动作、跨场景生产和归档；不声称验收人物或对白一致性。",
+      "scenes": [
+        {
+          "scene_id": "s01",
+          "title": "失联",
+          "summary": "深海研究站失去联系，一台橙色双灯、双机械爪的水下救援无人机前来取回记录匣。四镜依次：船底放下无人机；无人机下潜进入黑暗；探照灯照见破损站体；无人机靠近半开的舱门。 本段必须规划4个连续镜头，每镜10秒，总计40秒；每镜只表现上述一个动作。无人物，无对白。"
+        },
+        {
+          "scene_id": "s02",
+          "title": "入舱",
+          "summary": "同一台橙色双灯、双机械爪无人机进入淹水的研究站。四镜依次：侧身穿过舱门；灯束扫过漂浮的纸张；避开摇摆电缆；在实验台下发现银色记录匣。 本段必须规划4个连续镜头，每镜10秒，总计40秒；每镜只表现上述一个动作。无人物，无对白。"
+        },
+        {
+          "scene_id": "s03",
+          "title": "取证",
+          "summary": "同一无人机要取出银色记录匣。四镜依次：机械爪靠近卡扣；卡扣松开；机械爪夹起记录匣；记录匣收入机身下方固定架。每镜单一动作，记录匣始终只有一个。 本段必须规划4个连续镜头，每镜10秒，总计40秒；每镜只表现上述一个动作。无人物，无对白。"
+        },
+        {
+          "scene_id": "s04",
+          "title": "脱险",
+          "summary": "无人机带着记录匣离开时舱体继续变形。四镜依次：舱顶落下碎屑；通道闸门缓慢合拢；无人机从闸门侧隙穿出；冲出站体避开扬起的泥沙。无人机与记录匣外观保持不变。 本段必须规划4个连续镜头，每镜10秒，总计40秒；每镜只表现上述一个动作。无人物，无对白。"
+        },
+        {
+          "scene_id": "s05",
+          "title": "回收",
+          "summary": "同一无人机带着唯一的银色记录匣返回海面救援船。四镜依次：无人机向上穿过光柱；浮出波浪；回收吊篮托起无人机；固定架里的记录匣在甲板工作灯下显露。镜头只拍设备，不出现人物。 本段必须规划4个连续镜头，每镜10秒，总计40秒；每镜只表现上述一个动作。无人物，无对白。"
+        }
+      ],
+      "style": {
+        "art_style": "photorealistic cinematic underwater rescue thriller, coherent practical machinery",
+        "palette": "deep ocean blue, safety orange, warm work lights",
+        "aspect_ratio": "16:9",
+        "size_tier": "1K",
+        "era": "",
+        "extra": "high detail, consistent art style"
+      }
+    },
+    "canonical_project_bytes_unchanged": true
+  },
+  "new_generation_calls": 0,
+  "registry_production_status": "IN_PROGRESS",
+  "registry_lifecycle_followup_pending": true,
+  "full_project_180s_independently_verified": true,
+  "independent_verification": {
+    "passed": true,
+    "run_id": 40081890414,
+    "source_sha": "5251984899affbff986b1b1f2c9a2e97b99ed2a7",
+    "nonce": "film3m-20261023-rescue5",
+    "media": {
+      "duration_s": 202.861003,
+      "container_duration_s": 202.901333,
+      "video": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 720,
+          "avg_frame_rate": "14929920/623189"
+        }
+      ],
+      "audio_streams": 1,
+      "full_decode_ok": true
+    },
+    "final_mp4_sha256": "e6c3a743f2d6453b1930ad3dbbf21fc0b546a97b42271c7cd166e392970ea49f",
+    "archive_ref": {
+      "asset_id": "671834416",
+      "asset_name": "project-40081890414.tar",
+      "bytes": 258488320,
+      "final_mp4_asset_id": "671782040",
+      "final_mp4_sha256": "e6c3a743f2d6453b1930ad3dbbf21fc0b546a97b42271c7cd166e392970ea49f",
+      "release_id": "422624439",
+      "release_tag": "full-project/film3m-20261023-rescue5",
+      "repo": "Q-1844/agent-system-v2-rundata",
+      "sha256": "24cbce1725001f51c60495082945f077ab3889b31bcf8c957d517d7ce1990574",
+      "tree_fingerprint": "6c1403ddad960940475b4e5facfccc35861c7c7de116f699d2e45815dfe3e313"
+    },
+    "restore": {
+      "mode": "payload-v2",
+      "payload": {
+        "archive_operation_id": "archive-film3m-20261023-rescue5",
+        "created_at": 1792834051.4893765,
+        "dependencies": {
+          "external_pointers": [],
+          "input_files": [
+            "input/cloud-acceptance-source.json"
+          ],
+          "input_present": true,
+          "missing_required": [],
+          "skill_load_fail_events": 0
+        },
+        "empty_dirs": [
+          "output/agents/change_analysis"
+        ],
+        "external_refs": {
+          "signed_or_expiring_urls": 0,
+          "url_hosts": [
+            "Q-1844.github.io",
+            "cos-platform-outputs.agnes-ai.cn"
+          ]
+        },
+        "files": [
+          {
+            "bytes": 0,
+            "path": ".project.write.lock",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "bytes": 3044,
+            "path": "input/cloud-acceptance-source.json",
+            "required_for_restore": true,
+            "role": "project_input",
+            "sha256": "6063725cbf75654ac3fb8f5f7f4e986410f90f1d40d52f9bc1169107a993183c"
+          },
+          {
+            "bytes": 211,
+            "path": "output/agents/team_threads/thread_c1068032aa22.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "64918a6406c982f4cb96dd833c09fdda6f0910f807b922f489c3bcd647889b88"
+          },
+          {
+            "bytes": 7542,
+            "path": "output/ai/autopilot_runs/run_0b176509a3.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "5de7afec2775f96a4a563949888cfe32e2b066b8118961857f74b3a70b275d34"
+          },
+          {
+            "bytes": 7911,
+            "path": "output/ai/autopilot_runs/run_4029a80181.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "4fbc4fc269d2aaa3d2303200ceecf8aeb0f8618e09a7ab49854c80ded2a44492"
+          },
+          {
+            "bytes": 8144,
+            "path": "output/ai/autopilot_runs/run_4fd33013a0.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "7655090683ad37f579037a989c33848ef8fe1924cd1a8d1d49e234b1f1e1a5dc"
+          },
+          {
+            "bytes": 7660,
+            "path": "output/ai/autopilot_runs/run_767d3212e2.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "0060f9d8c5ad34ebe19fe158fadd3564b4ebe691aaae05b72361fa64ca88b372"
+          },
+          {
+            "bytes": 8055,
+            "path": "output/ai/autopilot_runs/run_7ae23acf6d.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "81ba1564ccd09d16c8a954d04b756f65a4ebcf06f6584153a3b590a0a611f96c"
+          },
+          {
+            "bytes": 10665,
+            "path": "output/ai/director_drafts.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "4cb1dd43b76e92cce5b57b55b13602b6fbce79e8f2a511260cabae7b4eacf0fe"
+          },
+          {
+            "bytes": 20919,
+            "path": "output/ai/production_plans.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "74942b14bafe362f9db731d41a0bc9cc1b3a394b6f365720ae8e32866663c6d7"
+          },
+          {
+            "bytes": 40672347,
+            "path": "output/cache/segments/concat.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "e6c3a743f2d6453b1930ad3dbbf21fc0b546a97b42271c7cd166e392970ea49f"
+          },
+          {
+            "bytes": 2940,
+            "path": "output/cache/segments/concat.txt",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "c9f7d36371541981c4e429040efcd7565e1d99c4fee8dabe0bfa06f3a66de662"
+          },
+          {
+            "bytes": 2058688,
+            "path": "output/cache/segments/manifest_000_s01_c01.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "c2e78410d713327d5d4cdaaa4d8de3baf5da19206f95419b9f13145c7349d6c7"
+          },
+          {
+            "bytes": 1618348,
+            "path": "output/cache/segments/manifest_001_s01_c02.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "8a3bcdc1b58602ec055d7e8e12aba37a46b1ab09cf12b972320b1494ce6e56fd"
+          },
+          {
+            "bytes": 2208399,
+            "path": "output/cache/segments/manifest_002_s01_c03.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "78c2108d729105154a16e415a1bf9fbffd656a3dc91d115b2a9046a45ed3f733"
+          },
+          {
+            "bytes": 2204443,
+            "path": "output/cache/segments/manifest_003_s01_c04.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "8c07eda7fcea5378433535c230e1a006f98d1f52adc47e90d28ef75adac4db9b"
+          },
+          {
+            "bytes": 2431304,
+            "path": "output/cache/segments/manifest_004_s02_c01.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "e9dcc55fc2a2bd271ce8d43f9891a6574992c860a226afcbe393b2566a3b2974"
+          },
+          {
+            "bytes": 2156484,
+            "path": "output/cache/segments/manifest_005_s02_c02.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "09548ddb151925438e3ad9daa82c114f5f5cc164fa1f9688eefb85e5c145190b"
+          },
+          {
+            "bytes": 1547862,
+            "path": "output/cache/segments/manifest_006_s02_c03.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "b5a2d358ff272f83344a043d9cbd3bc9147916cee14718f63d53a466efa207f0"
+          },
+          {
+            "bytes": 1981995,
+            "path": "output/cache/segments/manifest_007_s02_c04.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "22f2ca01aefd13173fbc57adfd46640a981d4d392495ec27ef5cbbc37afe0833"
+          },
+          {
+            "bytes": 1294596,
+            "path": "output/cache/segments/manifest_008_s03_c01.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "2275fbfdc0724170c35add9e03bc26ba6b04074f530f642a679ed32a256422e6"
+          },
+          {
+            "bytes": 1630694,
+            "path": "output/cache/segments/manifest_009_s03_c02.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "5a3aee6edcb827200eafdb13074e0784ae0285ab1c219b720b4cb4d7cb4766f7"
+          },
+          {
+            "bytes": 1575722,
+            "path": "output/cache/segments/manifest_010_s03_c03.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "2ac1658de5243913a8c9bde0fcc7f102bb9830c9e3e826fb6ff5217bb3d68b5d"
+          },
+          {
+            "bytes": 1990188,
+            "path": "output/cache/segments/manifest_011_s03_c04.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "66ff9120e8f722fb4a60e18f76e3bf228a3ddcdadf435e45dcbb8801285d3313"
+          },
+          {
+            "bytes": 2127207,
+            "path": "output/cache/segments/manifest_012_s04_c01.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "41566b2bc94609d9df7aa4d5ec03572b4a8686e1e067149c753b804ab7e9c9ee"
+          },
+          {
+            "bytes": 2259740,
+            "path": "output/cache/segments/manifest_013_s04_c02.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "b3d76d5b600fa1c0b055e34a14686e55dcc3a847ca68eb0c8a69e187d20c06f4"
+          },
+          {
+            "bytes": 2379015,
+            "path": "output/cache/segments/manifest_014_s04_c03.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "f2c2786a7e99c794071db8bfcb5f6874a441e13b0cf9e662bdabbfd5674d620f"
+          },
+          {
+            "bytes": 3011645,
+            "path": "output/cache/segments/manifest_015_s04_c04.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "c8dc5cdb7980177980e2c2bfc4b6856728ffa934345aa69a2d1ca50b811ec90c"
+          },
+          {
+            "bytes": 1547730,
+            "path": "output/cache/segments/manifest_016_s05_c01.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "c2dcf44d1daaabc00dd867283263602dbdc90f48d5d6a6bbf71db513f4d2d838"
+          },
+          {
+            "bytes": 3355136,
+            "path": "output/cache/segments/manifest_017_s05_c02.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "274a7277d6128458cef5342009d44058f4dee25f8ea82bbd4fe9b2bb78d8a240"
+          },
+          {
+            "bytes": 1642203,
+            "path": "output/cache/segments/manifest_018_s05_c03.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "3e39f690e6789ae1d96807c6cfaf385677b4357060776e11033bdc18e4c82b5d"
+          },
+          {
+            "bytes": 1676127,
+            "path": "output/cache/segments/manifest_019_s05_c04.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "3e47f7fa342c7f06a0a9af35851fa7673d8bea6a2ed00303cd89a163c257dc9e"
+          },
+          {
+            "bytes": 1126326,
+            "path": "output/frames/s01_c01_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "dab6382c7da13ba7bc3efbacfae876cb3989333bb160963f70e3b6597906e5f4"
+          },
+          {
+            "bytes": 990884,
+            "path": "output/frames/s01_c01_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "e5a89c11e10567ef013f5b55f7b620aaecc25375ae2181b03e9cb258fedfaa9d"
+          },
+          {
+            "bytes": 109564,
+            "path": "output/frames/s01_c01_video_end_vv_bf8c36681a10.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "cdfd00049ce093ac9ffd3c33e0e76eee0bc77288e5e28e92816cd2da5a58f820"
+          },
+          {
+            "bytes": 725502,
+            "path": "output/frames/s01_c01_video_end_vv_bf8c36681a10.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "4a02a9e38f01e87060b1f40ff52111ceddc676eefa2b8f7afe85f913e409607e"
+          },
+          {
+            "bytes": 62559,
+            "path": "output/frames/s01_c02_video_end_vv_9db44576590e.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "e0571836196cc5aafe16306822e5428a54fc5e1d62ade6d76c929f2d0b4e7c17"
+          },
+          {
+            "bytes": 398422,
+            "path": "output/frames/s01_c02_video_end_vv_9db44576590e.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "77030c54b7c02bab1e828e307bea127cf059f40f662ababefafafd1595aa78a7"
+          },
+          {
+            "bytes": 1218394,
+            "path": "output/frames/s01_c03_last_lf_983a8fd6.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "d3e885eb2551c4593aaa6f76e0fd16d6b5f5901eb8d6518255db8db0cb8c8b19"
+          },
+          {
+            "bytes": 152893,
+            "path": "output/frames/s01_c03_video_end_vv_fa9b1ccc5bac.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "9bcc7fb0f2cd99be43f7e1fcba18bcbfb65220f30e99b045b164ed8201eecb15"
+          },
+          {
+            "bytes": 974475,
+            "path": "output/frames/s01_c03_video_end_vv_fa9b1ccc5bac.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "f5bc277de8ad4612de1c8ff17b48a455475477e566f517cc54e89b6fcab028d8"
+          },
+          {
+            "bytes": 1177815,
+            "path": "output/frames/s01_c04_last_lf_68353c3c.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "cd444ad04dd5b1030b5f5f9ed337d6c256306697eb596d941768a8ba91cbc097"
+          },
+          {
+            "bytes": 173336,
+            "path": "output/frames/s01_c04_video_end_vv_d8b98b4a2eac.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "40ec8a4bf670b2bec074b2259bfbdbe50d3267b8614c27776ce8143a69e1b4ff"
+          },
+          {
+            "bytes": 1066087,
+            "path": "output/frames/s01_c04_video_end_vv_d8b98b4a2eac.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "86c6c81ba1ae0781797b6d4b13a874b83777bbed5910d8c8bfc6175d0c2d63b4"
+          },
+          {
+            "bytes": 1196453,
+            "path": "output/frames/s02_c01_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "ca4a0300e25c05f8f12c746be1464ba76c4a02e37dcf9311d3159072fb323e19"
+          },
+          {
+            "bytes": 1182687,
+            "path": "output/frames/s02_c01_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "c597398b753eb765ec330ddbfd9df7098f37f9a90216543b5ebe7a995def6c59"
+          },
+          {
+            "bytes": 1213335,
+            "path": "output/frames/s02_c01_last_lf_33185192.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "60638279c9be2f8feede843b58a2e81e5d0a61b6c68ca93c473ba6382ecbb39d"
+          },
+          {
+            "bytes": 148518,
+            "path": "output/frames/s02_c01_video_end_vv_f1d0b39fd95f.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "d49bdac49a2d18bfafe0c748a6cce2f457da07527922f12803162659d6741110"
+          },
+          {
+            "bytes": 989031,
+            "path": "output/frames/s02_c01_video_end_vv_f1d0b39fd95f.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "b2af0fae377e01510b725afa170744aa92fad083b111ad227cc594960f16a932"
+          },
+          {
+            "bytes": 1168773,
+            "path": "output/frames/s02_c02_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "d1f83f64f0aebb569f5dab8bfecbb9879b841c46b53bc78c533e11ca236fddbd"
+          },
+          {
+            "bytes": 1191326,
+            "path": "output/frames/s02_c02_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "c52038bceb09e0e8d28f2d0a539a5df74b38e3ceae7aa9e5678d9a25bb250c67"
+          },
+          {
+            "bytes": 157761,
+            "path": "output/frames/s02_c02_video_end_vv_65e21ddd8876.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "e64d66ba33b393e764d3b27a73962504f1e0d9c2b814fbb500dd2997ef7ebda3"
+          },
+          {
+            "bytes": 1017983,
+            "path": "output/frames/s02_c02_video_end_vv_65e21ddd8876.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "9ba1b5a1d71cee902f9a9c500491bb09f62a552765be698900b2d28556f47a58"
+          },
+          {
+            "bytes": 1085397,
+            "path": "output/frames/s02_c03_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "d6f3999891d37b91a79578cc29d0b80dcb0c3075715f8d332495b3932826d760"
+          },
+          {
+            "bytes": 1120269,
+            "path": "output/frames/s02_c03_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "a641c5870cd3d56152c4d44e12133c30e9a71a45fd80110faf32140f274e2d8d"
+          },
+          {
+            "bytes": 1005053,
+            "path": "output/frames/s02_c03_last_lf_b3d5c017.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "43ab486df015262d3e8333b1a93035abccf62630aec9a134b1f777bce79d4683"
+          },
+          {
+            "bytes": 111516,
+            "path": "output/frames/s02_c03_video_end_vv_5611fa858c82.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "337f44535e204e4d0da2ead327d43c3616b6abd16222c60a2519e6061ed396ed"
+          },
+          {
+            "bytes": 838242,
+            "path": "output/frames/s02_c03_video_end_vv_5611fa858c82.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "f7f01d0ea62b9f1c1fcdb6debebed9d64c450ef56fc0b315c2f0f09c3cc93629"
+          },
+          {
+            "bytes": 1114144,
+            "path": "output/frames/s02_c04_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "e816eb24893f3e5d7b4bb3a4a147065f5127c6afbe510809211785cb17f3fa22"
+          },
+          {
+            "bytes": 1086080,
+            "path": "output/frames/s02_c04_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "c5dea4f2c44b14ba9c623bb80f0972123ca92e3ff1cf3db1391a86f62c455bfd"
+          },
+          {
+            "bytes": 158852,
+            "path": "output/frames/s02_c04_video_end_vv_d585c82e1077.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "41aa79e4a871814be99d71859ff0f74f0c7a64f7ca992a344edc31eb1b5d5af8"
+          },
+          {
+            "bytes": 996222,
+            "path": "output/frames/s02_c04_video_end_vv_d585c82e1077.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "3ae1e3e5da8a3a4258b2f56dad1f5f040a2c5068f07810b5c8afa693cbb033af"
+          },
+          {
+            "bytes": 1000336,
+            "path": "output/frames/s03_c01_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "925e18a4ba55766f3d81c8132c276bf2860314c3f91fed41e2865be9e4363edd"
+          },
+          {
+            "bytes": 973103,
+            "path": "output/frames/s03_c01_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "e1292d7e3f24c678fa8e2aa17225195ae76274f85e53b4c6ba1ac4341573487e"
+          },
+          {
+            "bytes": 964980,
+            "path": "output/frames/s03_c01_last_lf_2e6e2799.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "6434fbbeefbd6a15ce550632fc6e424612f75993bfb48d8880be6db9c759ad22"
+          },
+          {
+            "bytes": 119538,
+            "path": "output/frames/s03_c01_video_end_vv_c41993bfe8cc.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "c2bf8e0bca59ad364a8d23b12e58c4bec7727a2f97c2073a44d56074f34fc959"
+          },
+          {
+            "bytes": 880068,
+            "path": "output/frames/s03_c01_video_end_vv_c41993bfe8cc.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "8ad0b5a04a76e258f55f20bf343f98825437f77030ce00a4936b713c585d3f01"
+          },
+          {
+            "bytes": 989573,
+            "path": "output/frames/s03_c02_last_lf_d4d3fe7e.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "0e24573de11b9b55934269491661277032b74cff97531d382420f0cf96c90d89"
+          },
+          {
+            "bytes": 120399,
+            "path": "output/frames/s03_c02_video_end_vv_e1aa080c3d45.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "43afa09763576471f48067b8043b717ef187a9664b149558a39cb3eb130da7ef"
+          },
+          {
+            "bytes": 870818,
+            "path": "output/frames/s03_c02_video_end_vv_e1aa080c3d45.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "06a65001c2315a7a8bdd6696bf8004f3a402d80a3d9b391fb313306110416d78"
+          },
+          {
+            "bytes": 1015142,
+            "path": "output/frames/s03_c03_last_lf_375085f8.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "f4e2738643ed01a64ca6543034dba2e13fe0b62c83ed496a6cda5f3bbe7cffba"
+          },
+          {
+            "bytes": 127642,
+            "path": "output/frames/s03_c03_video_end_vv_2b08113243e4.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "d6bd49065bb85404cac1b5a93b4f7c7cb8af8e75d78e9c56590a05c85b1547f4"
+          },
+          {
+            "bytes": 890568,
+            "path": "output/frames/s03_c03_video_end_vv_2b08113243e4.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "919d9a7c6d8bb03caaa5d1ace064fa381bbc383d9b99ea97b7e1e24cbe508c72"
+          },
+          {
+            "bytes": 111725,
+            "path": "output/frames/s03_c04_video_end_vv_da3664e33b39.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "996adfa2790f19f85a7f0a0853bc88e1470f4bee13e17113b7d8d31128d80474"
+          },
+          {
+            "bytes": 794330,
+            "path": "output/frames/s03_c04_video_end_vv_da3664e33b39.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "3b819998ab2a7e49269c0176c5b2c25c496e25fae4a24e2a563a2fbf8efb35ac"
+          },
+          {
+            "bytes": 1219842,
+            "path": "output/frames/s04_c01_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "3d852537055e4a84eed557844a4f53bce6fece7f12e6dff0cea32f6d3de8286b"
+          },
+          {
+            "bytes": 1264835,
+            "path": "output/frames/s04_c01_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "31eba6389d5903241a92eaeb48d686eb6770f424996e87b123fab2def704b337"
+          },
+          {
+            "bytes": 1239896,
+            "path": "output/frames/s04_c01_last_lf_445cedef.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "1a5197e50ef19f5f437276be4ea8ba8f9ced4e3c2050d7e9ed461ca32df1d15b"
+          },
+          {
+            "bytes": 156922,
+            "path": "output/frames/s04_c01_video_end_vv_f1f26e57c9d9.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "0663ac7b3bc56c8869984e3c0e8244f85374dca10a09233d8a0e2b8d03ebbfa4"
+          },
+          {
+            "bytes": 1032466,
+            "path": "output/frames/s04_c01_video_end_vv_f1f26e57c9d9.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "8123d8a45a12c3314a5920523a9a43614d6cbc22f989bc0de4f27e01cc8c704e"
+          },
+          {
+            "bytes": 1125187,
+            "path": "output/frames/s04_c02_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "446cea469124a31824d83ed45f2894289a096d83c11103def27106b587ac57f2"
+          },
+          {
+            "bytes": 1131407,
+            "path": "output/frames/s04_c02_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "c35ad604a658f88865807e63ff878b9a935bfa0b9d6cc48891a3587445229e29"
+          },
+          {
+            "bytes": 114602,
+            "path": "output/frames/s04_c02_video_end_vv_1bd086bbe334.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "a98f4bc71ed68a2e08875d481e03f18bf25a97e2597cc552d50fa24ad2a80c84"
+          },
+          {
+            "bytes": 784651,
+            "path": "output/frames/s04_c02_video_end_vv_1bd086bbe334.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "43f2f4db5edc0c66501893fa9934549622ccda3899c395037ef5c242f3cb8028"
+          },
+          {
+            "bytes": 1179815,
+            "path": "output/frames/s04_c03_last_lf_5d2b6ad6.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "34185986f8971866b32c63ebe839e9c6446de1baa9d62b413ab7d2c81d883628"
+          },
+          {
+            "bytes": 158411,
+            "path": "output/frames/s04_c03_video_end_vv_d00baf58b23f.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "27bb885700d5100ec072e9974352e4eb3528878c5bf484c7ca2460b35c19a720"
+          },
+          {
+            "bytes": 1005626,
+            "path": "output/frames/s04_c03_video_end_vv_d00baf58b23f.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "1311b7dcf61ac1a88c865962b01b3582b230c10f8bf4c14023f7f439d2e803a8"
+          },
+          {
+            "bytes": 1291134,
+            "path": "output/frames/s04_c04_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "8d94a54c6b17cc2a78407d39724c1326c3e6e3e41061e6c926b8cfbc0855a48f"
+          },
+          {
+            "bytes": 1343900,
+            "path": "output/frames/s04_c04_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "38930b8f1c12dd530cdd99ee229d6552aeee26599456513e98aff101c502e305"
+          },
+          {
+            "bytes": 77040,
+            "path": "output/frames/s04_c04_video_end_vv_9085d7a2e656.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "016d370f1a0440bfb4b244e3fe3a5dca0914bb81be96ce30d578eade23ec19de"
+          },
+          {
+            "bytes": 596992,
+            "path": "output/frames/s04_c04_video_end_vv_9085d7a2e656.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "f7e428782bf8b4472ccf4a78e2ddd26b74456c52513275ea4d84215e884a4f4f"
+          },
+          {
+            "bytes": 899108,
+            "path": "output/frames/s05_c01_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "1a4c56116a9d1f7b083d87ff29eb938ee9b9ef1c38fe6f1e631c47c2ae5cbea1"
+          },
+          {
+            "bytes": 852499,
+            "path": "output/frames/s05_c01_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "4f8525bace4a1ab66457c8350d1a570d49a9905ad1108ce1427716d1ece1ce3f"
+          },
+          {
+            "bytes": 893743,
+            "path": "output/frames/s05_c01_last_lf_8782a6e2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "f010f30fb33001042d123fa1bf9482d265f11b067c9ad85265f2484c8b1ffb30"
+          },
+          {
+            "bytes": 79941,
+            "path": "output/frames/s05_c01_video_end_vv_05f08bb0ddbd.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "1eba7484e48e215fdc944b0fa5a517def6ba73216636c10ca7373c629cc4bfb9"
+          },
+          {
+            "bytes": 534208,
+            "path": "output/frames/s05_c01_video_end_vv_05f08bb0ddbd.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "f0ed29c869e8f2a79ec144deb1510934b75190252a381029c2a60388e887c06b"
+          },
+          {
+            "bytes": 1302450,
+            "path": "output/frames/s05_c02_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "36370c79553ef6ad37a562dfec4732280e84e0df36b2d588173c1c29b59ee7fd"
+          },
+          {
+            "bytes": 1231547,
+            "path": "output/frames/s05_c02_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "fad4b82ae6aa5c32780e8200ada2c77b84e68669b9e94dafa3ba4a23d49a5522"
+          },
+          {
+            "bytes": 1056407,
+            "path": "output/frames/s05_c02_last_lf_67e54056.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "d7bb1ba7677eb77d4de45e228c187ba675bbaa4fc60ddca5260f55a15ffda63e"
+          },
+          {
+            "bytes": 121222,
+            "path": "output/frames/s05_c02_video_end_vv_844459a8397e.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "bc65fc009071f6faf1ad9abf937d5e71f4b749c5e121186b803988e978b06fd0"
+          },
+          {
+            "bytes": 829184,
+            "path": "output/frames/s05_c02_video_end_vv_844459a8397e.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "71a2beb1685aad3d930a8ee7bd2c6499341808c5d909c38ec98cb34e8d6395d4"
+          },
+          {
+            "bytes": 1128136,
+            "path": "output/frames/s05_c03_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "903eb2607a4ecc7465323a59522e98d90d9568f737089900e3c699a626173e77"
+          },
+          {
+            "bytes": 1157517,
+            "path": "output/frames/s05_c03_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "733885d29e3c5c0575cfa5792d7943d4da334ca823a4d1bf0e8ad513b227c9e5"
+          },
+          {
+            "bytes": 1016568,
+            "path": "output/frames/s05_c03_last_lf_3f38f76a.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "be649b9457eda775afe114e6967906dec95264aa42fc915c114d2beb1c459948"
+          },
+          {
+            "bytes": 113882,
+            "path": "output/frames/s05_c03_video_end_vv_8b64cd3f06a6.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "43d63a971d51a6e2d16195d8e8ae96a4dfe373e53995320cc93f8cd4f573364c"
+          },
+          {
+            "bytes": 814853,
+            "path": "output/frames/s05_c03_video_end_vv_8b64cd3f06a6.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "72f7415aea0c5ece676f853858d7baca593dfdf6313f61cb58c33f7f822767d5"
+          },
+          {
+            "bytes": 1090467,
+            "path": "output/frames/s05_c04_first_v1.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "8d3d75cb099998301fc853736419c2220a9e5dcd333917a8cf446f46d12d2445"
+          },
+          {
+            "bytes": 1079187,
+            "path": "output/frames/s05_c04_first_v2.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "4b89b7cd9d238cc1436157a8fc68cf8a0bb1ba7ea20f7656a1d481e8d76aa77f"
+          },
+          {
+            "bytes": 1012255,
+            "path": "output/frames/s05_c04_last_lf_5586f61d.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "b38f329fc58c3b3b30b1175f2a154bef388eb81781247659986c43e9657d6aa3"
+          },
+          {
+            "bytes": 124541,
+            "path": "output/frames/s05_c04_video_end_vv_b0c76b8f4bc3.jpg",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "6a1eb1613735329085476ac955cd326d8986db906037ba9045e39df462047a2d"
+          },
+          {
+            "bytes": 864080,
+            "path": "output/frames/s05_c04_video_end_vv_b0c76b8f4bc3.png",
+            "required_for_restore": true,
+            "role": "frame_image",
+            "sha256": "1cbf9db90d9d1cd6d5dd41b03d90aece612503cc1894fe970632a973f37b1666"
+          },
+          {
+            "bytes": 3031,
+            "path": "output/full_runs/frun_80b1bd5120/initial_source_snapshot.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "4d6697c44c4bc6e40fcf5149e804759efd7e0d67f6a945b120653279c47024b7"
+          },
+          {
+            "bytes": 36542,
+            "path": "output/full_runs/frun_80b1bd5120/preparation_manifest.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "515514f4676244bb643c4dfe240ecd0c85c5e8bbc8c27a4bca878d689fd02ca8"
+          },
+          {
+            "bytes": 14288,
+            "path": "output/full_runs/frun_80b1bd5120/run.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "78ba08f1b96d6b3d754e215b391432b97b42d8380296cbaca1b551c3f3df400c"
+          },
+          {
+            "bytes": 9213,
+            "path": "output/production_runs/prun_4ddff9a28f/composition_manifest.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "72fbc9d40f6cdb47b37b13ccfc4ff57faa4e8611df3116441572305bb2e2005d"
+          },
+          {
+            "bytes": 40672347,
+            "path": "output/production_runs/prun_4ddff9a28f/final.mp4",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "e6c3a743f2d6453b1930ad3dbbf21fc0b546a97b42271c7cd166e392970ea49f"
+          },
+          {
+            "bytes": 20919,
+            "path": "output/production_runs/prun_4ddff9a28f/production_plans.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "74942b14bafe362f9db731d41a0bc9cc1b3a394b6f365720ae8e32866663c6d7"
+          },
+          {
+            "bytes": 11772,
+            "path": "output/production_runs/prun_4ddff9a28f/run.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "525695ff8ed387166782317ba30a69d215e599284cb316d7c5fabb3a88da8672"
+          },
+          {
+            "bytes": 8921,
+            "path": "output/production_runs/prun_4ddff9a28f/source_snapshot.json",
+            "required_for_restore": true,
+            "role": "other",
+            "sha256": "87448465ecad895dc19fad18a7dcf5dfd269af8d000d6f22b5a98f4a9fc66620"
+          },
+          {
+            "bytes": 244020,
+            "path": "output/project.json",
+            "required_for_restore": true,
+            "role": "canonical_project",
+            "sha256": "15ae3393599899652927bea7b8ac08832967acc7b745534cbb0cf26499f4d5a1"
+          },
+          {
+            "bytes": 3841027,
+            "path": "output/videos/s01_c01_vv_bf8c36681a10.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "2271cfc9a107f24a89c64aa785bf4b84c2275cf98ecf7ecd328747ebb221a7a4"
+          },
+          {
+            "bytes": 3059330,
+            "path": "output/videos/s01_c02_vv_9db44576590e.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "8a202054ed5134f653ec182c953c67c05a3e03332ed7aeb797c7e116effc00d3"
+          },
+          {
+            "bytes": 4086648,
+            "path": "output/videos/s01_c03_vv_fa9b1ccc5bac.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "13d6f64c14c44838e29f8ae6d700bde6dba9f34088e2bb1345f3d50bcf7b82dd"
+          },
+          {
+            "bytes": 3950260,
+            "path": "output/videos/s01_c04_vv_d8b98b4a2eac.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "aa88b5e9a9e81df9ddb5d45e9595a74397aaa634da41665c80b3b9d6b768857f"
+          },
+          {
+            "bytes": 4203915,
+            "path": "output/videos/s02_c01_vv_f1d0b39fd95f.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "eaacd9c4614b9259b15873857872341023fa030643318f102c29471857d20ce1"
+          },
+          {
+            "bytes": 3945670,
+            "path": "output/videos/s02_c02_vv_65e21ddd8876.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "b0fe9aaf1db7d5d42523c8668d448e20a08867d442569b575a465ea6a64d150a"
+          },
+          {
+            "bytes": 2788333,
+            "path": "output/videos/s02_c03_vv_5611fa858c82.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "788571a686426f8a6f2472fec31dd9fc9b813151abd2fa85ccbc9a10c2f5a403"
+          },
+          {
+            "bytes": 3614249,
+            "path": "output/videos/s02_c04_vv_d585c82e1077.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "3c2dd14ccc97f95abf88ae62b73137dbb5f8afc591ee0570a80176db65ec44c4"
+          },
+          {
+            "bytes": 2117538,
+            "path": "output/videos/s03_c01_vv_c41993bfe8cc.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "df0b689cfbecf7a39d04c9e2720fcc54d66dca63e59ccbd5484e85fbceabff4e"
+          },
+          {
+            "bytes": 2802038,
+            "path": "output/videos/s03_c02_vv_e1aa080c3d45.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "4d1246364dc2223f6a3697773959c87015e07dc9bef4d4bbf6a7e9d7c98f0943"
+          },
+          {
+            "bytes": 2652421,
+            "path": "output/videos/s03_c03_vv_2b08113243e4.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "75d8e50732db657ff092ea479fcbf18faeae611f474042aa7209beac3995a3de"
+          },
+          {
+            "bytes": 3660288,
+            "path": "output/videos/s03_c04_vv_da3664e33b39.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "05e51199323927bcba29962d2ab7da8f122487cc35a8215d57f16dca8cd4f678"
+          },
+          {
+            "bytes": 3770282,
+            "path": "output/videos/s04_c01_vv_f1f26e57c9d9.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "acf22a6214cca6da8ca1df33dafb180f95927ecf1e1412d484139edd7d49c0ca"
+          },
+          {
+            "bytes": 4110075,
+            "path": "output/videos/s04_c02_vv_1bd086bbe334.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "b32278b9021ec6e5aad063307122d6af0d81861b2930f617c5fec96ea5555cd1"
+          },
+          {
+            "bytes": 4365693,
+            "path": "output/videos/s04_c03_vv_d00baf58b23f.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "f0bf6f19150146e65d49f41f236f659fce61829f55ce13774e1df4d4e09c207a"
+          },
+          {
+            "bytes": 5347533,
+            "path": "output/videos/s04_c04_vv_9085d7a2e656.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "4771cb29a0e46bf59849a0a7c4491ba65fcf4bb76f00874a2165e953349003cd"
+          },
+          {
+            "bytes": 2757800,
+            "path": "output/videos/s05_c01_vv_05f08bb0ddbd.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "2165d04fa2062f38fbe5568867cd7b33e75d045b184dde5b2d6c2ca5e957bb56"
+          },
+          {
+            "bytes": 6203639,
+            "path": "output/videos/s05_c02_vv_844459a8397e.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "1de3d4cfa0f6fcafd476d9a776610ccaffa02458b4299a0b53c72fce78956c58"
+          },
+          {
+            "bytes": 2853115,
+            "path": "output/videos/s05_c03_vv_8b64cd3f06a6.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "8c34146f623e2676b110b84fdfd4b43a65cbec943e748c99ecc8070740bd273c"
+          },
+          {
+            "bytes": 3002801,
+            "path": "output/videos/s05_c04_vv_b0c76b8f4bc3.mp4",
+            "required_for_restore": true,
+            "role": "shot_video",
+            "sha256": "5733d40a5f6e1d36cc6c17d8276b84bd7f96937442a0a90807ebbc42774440c1"
+          }
+        ],
+        "legacy_alias": "cloud3min_film3m-20261023-rescue5",
+        "lifecycle_status": "completed",
+        "manifest_kind": "project_archive_payload",
+        "packaging": {
+          "compression": "none",
+          "format": "tar-pax"
+        },
+        "project": {
+          "name": "cloud3min_film3m-20261023-rescue5",
+          "open_production_tasks": 0,
+          "unfinished": []
+        },
+        "project_id": "film3m-20261023-rescue5",
+        "revision": 1,
+        "schema_version": 2,
+        "security_scan": {
+          "secret_filename_hits": [],
+          "secret_pattern_hits": [],
+          "signed_urls": []
+        },
+        "skill_refs": [],
+        "snapshot_fingerprint": "6c1403ddad960940475b4e5facfccc35861c7c7de116f699d2e45815dfe3e313",
+        "source_code_commit": "5251984899affbff986b1b1f2c9a2e97b99ed2a7",
+        "tool_versions": {}
+      },
+      "manifest_payload_sha256": "98f80dd7475d3a4d022494186834f073ba40a42b6eff300e5f49d2a0ec8138ac",
+      "files_checked": 140,
+      "hash_bad": [],
+      "missing": [],
+      "embedded_refs": 79,
+      "missing_required": [],
+      "restorable_level": "full",
+      "lease": {
+        "present": false
+      },
+      "alias": "cloud3min_film3m-20261023-rescue5",
+      "project_root": "/workspace/scratch/50974407642a/film3min-independent-restore/restore_dce0abb77897/cloud3min_film3m-20261023-rescue5"
+    },
+    "original_twenty_source_files_unchanged": true,
+    "source_clips_checked": 20,
+    "new_generation_calls": 0,
+    "cumulative_video_seconds": 200,
+    "registry_verified_restorable": true
+  }
+}

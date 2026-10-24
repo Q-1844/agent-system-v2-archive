@@ -1,13 +1,12 @@
-# GitHub运行态（2026-10-24T03:58:28.758382+00:00）
+# GitHub运行态（2026-10-24T09:33:40.177589+00:00）
 
-截至 2026-10-24T03:58:28.699481+00:00：运行40055563112为in_progress，B1=RUNNING，累计11个视频任务ACCEPTED（不代表均已完成），图片21次、文本35次。最终>=180秒成片仍待本地独立验收。
+截至2026-10-24T09:32:08.508552+00:00：显式收尾运行40081890414，Actions=completed/success、B1=COMPLETE；累计仍20个视频/200秒，图片41次、文本57次，原20个视频回执完整未变。
 
-先读[本地值守与代码复核](CODEX_LOCAL_MONITOR_REVIEW_20261024.md)，再读[GLM 5.3执行说明](CODEX_GLM53_HANDOFF_20261024.md)。较早报告是历史证据，不覆盖此处的新状态。
+先读[本轮收尾报告](CODEX_FILM_CLOSURE_REVIEW_20261024.md)，再读[操作说明](FILM_FINALIZATION_20261024.md)。GLM原终态对账报告保留为原始证据。
 
-- 用户新分工：Codex专注代码修复和测试；本地GLM 5.3负责长时间值守与后续证据核验。
-- A默认分支chore/migration-readiness，PR #1–#9已合入；最新merge `12b1ca4355cc743aa3e12eaeb22f67a015d1038b`。
-- 当前真实长片[40055563112](https://github.com/Q-1844/agent-system-v2/actions/runs/40055563112)固定旧source c3afe255，未热更新、未重启；新deadline收尾修复只影响后续运行。
-- 原nonce film3m-20261023-rescue5，FullRun frun_80b1bd5120；严禁新nonce清零重做；累计视频提交预算240秒包含原20秒。
-- 三次真实schedule已验证，狭义单段云端基线4/4；完整>=180秒FullProject成片尚未独立验收。
-- 凭据名称AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN；本地监控只需GitHub只读权限，不包含任何凭据值。
-- A代码、B Release资产、B1 Registry/检查点、C交接文档、D公网参考图。旧5秒demo2继续enabled=false；Producer扩展后置。
+- PR #1–#12已合入A默认分支chore/migration-readiness；最新merge `5251984899affbff986b1b1f2c9a2e97b99ed2a7`。
+- 当前[收尾运行40081890414](https://github.com/Q-1844/agent-system-v2/actions/runs/40081890414)，resume_run_id=40080231475，finalize_only=true，driver60分钟；封锁新Agnes生成，不清零nonce。
+- 20/20选中视频已解码，原始视频流合计202.5秒；当前终态COMPLETE，独立成片与B/B1验收以机器证据为准。
+- 后续正常制作330分钟driver/360分钟job，单视频并发1、累计视频预算240秒保持。用户确认从零3.2分钟片4.5–5小时；不再用固定150分钟估算。
+- 本地GLM负责长时间值守，Codex负责代码修复；较大的日排产/真实任务接入后续按项目需求实施。旧5秒demo2仍停用，Producer扩展后置。
+- 凭据名AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN；不保存任何凭据值。
