@@ -1,0 +1,276 @@
+{
+  "source_commit": "50966f807e260503ba91de93c565193784c8e96d",
+  "pr": 6,
+  "failed_long_run": {
+    "id": 40002008268,
+    "head_sha": "d7bc39ae70b69e1d32322eeff54d0c80068d7681",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-10-23T18:16:56Z",
+    "updated_at": "2026-10-23T18:33:58Z",
+    "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40002008268",
+    "checked_at": "2026-10-24T01:39:06.391196+00:00",
+    "nonce": "film3m-20261023-rescue5",
+    "scope": "full-project-at-least-180-seconds",
+    "configuration_reported_updated_by_user": true,
+    "jobs": [
+      {
+        "status": "completed",
+        "conclusion": "failure",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-23T18:17:01Z",
+            "completed_at": "2026-10-23T18:17:02Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-23T18:17:02Z",
+            "completed_at": "2026-10-23T18:17:04Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-23T18:17:04Z",
+            "completed_at": "2026-10-23T18:17:04Z"
+          },
+          {
+            "name": "Install CI dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-23T18:17:04Z",
+            "completed_at": "2026-10-23T18:17:15Z"
+          },
+          {
+            "name": "Inspect existing task before media setup",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 5,
+            "started_at": "2026-10-23T18:17:15Z",
+            "completed_at": "2026-10-23T18:17:15Z"
+          },
+          {
+            "name": "Install ffmpeg",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-23T18:17:15Z",
+            "completed_at": "2026-10-23T18:17:26Z"
+          },
+          {
+            "name": "Verify ffmpeg/ffprobe on PATH",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-23T18:17:26Z",
+            "completed_at": "2026-10-23T18:17:26Z"
+          },
+          {
+            "name": "Run autonomous E2E (real Agnes gen → MP4 → ffprobe → save B1 → registry)",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-23T18:17:26Z",
+            "completed_at": "2026-10-23T18:17:26Z"
+          },
+          {
+            "name": "Real FullProject → Director/Planner → SceneRuns → >=180s final film → restore verification",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 9,
+            "started_at": "2026-10-23T18:17:26Z",
+            "completed_at": "2026-10-23T18:33:53Z"
+          },
+          {
+            "name": "Upload E2E evidence (MP4 + summary)",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-23T18:33:53Z",
+            "completed_at": "2026-10-23T18:33:55Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 19,
+            "started_at": "2026-10-23T18:33:55Z",
+            "completed_at": "2026-10-23T18:33:55Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20,
+            "started_at": "2026-10-23T18:33:55Z",
+            "completed_at": "2026-10-23T18:33:55Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21,
+            "started_at": "2026-10-23T18:33:55Z",
+            "completed_at": "2026-10-23T18:33:55Z"
+          }
+        ]
+      }
+    ],
+    "checkpoint_http_status": 200,
+    "checkpoint": {
+      "phase": "FAILED",
+      "github_run_id": "40002008268",
+      "source_sha": "d7bc39ae70b69e1d32322eeff54d0c80068d7681",
+      "project_name": "cloud3min_film3m-20261023-rescue5",
+      "full_run_id": "frun_80b1bd5120",
+      "image_calls": 4,
+      "text_calls": 15,
+      "updated_at": "2026-10-23T18:33:52Z",
+      "progress": {
+        "action": null,
+        "scene": null,
+        "stage": "production",
+        "status": "producing"
+      },
+      "video_attempts": [
+        {
+          "ordinal": 1,
+          "prompt_sha256": "bcdf61d9a5a979a09d3e289c2188cd527f1cdcb27ab5f9749e07fa849f81f9a6",
+          "seconds": 10,
+          "started_at": "2026-10-23T18:19:53Z",
+          "state": "ACCEPTED",
+          "video_id": "task_pkraULzuWocnwoTcMBlawZw0YxYohxo2"
+        },
+        {
+          "ordinal": 2,
+          "prompt_sha256": "f94b16bb77e79ad9a6ef6253747644ad7403676a12363284e7a890ba74217c02",
+          "seconds": 10,
+          "started_at": "2026-10-23T18:25:38Z",
+          "state": "ACCEPTED",
+          "video_id": "task_zdzn0NXGfj2w4tWoxefFWauIpCqvSmwC"
+        }
+      ],
+      "terminal_status": "failed",
+      "error": "影片制作失败：故事段 s01: 镜头 s01_c03: stage last_frame 失败: 尾帧生成失败（2 次 batch 均无成功候选）",
+      "blocked_stage": null,
+      "no_media_submitted": null
+    }
+  },
+  "original_artifact_sha256": "f88ea85661ad2433b267a04328ad9f2660bbac6f06dc0caebfcb023be6d72dac",
+  "partial_backup": {
+    "status": "PARTIAL_NOT_ACCEPTED",
+    "source_run_id": "40002008268",
+    "repo": "Q-1844/agent-system-v2-rundata",
+    "release_tag": "partial-film/film3m-20261023-rescue5/run-40002008268",
+    "release_id": "422455125",
+    "asset_id": "670987705",
+    "asset_name": "original-actions-snapshot.zip",
+    "bytes": 10365423,
+    "sha256": "f88ea85661ad2433b267a04328ad9f2660bbac6f06dc0caebfcb023be6d72dac",
+    "redownload_sha256_verified": true,
+    "reused_videos": [
+      {
+        "video_id": "task_pkraULzuWocnwoTcMBlawZw0YxYohxo2",
+        "version_id": "vv_bf8c36681a10",
+        "bytes": 3841027,
+        "sha256": "2271cfc9a107f24a89c64aa785bf4b84c2275cf98ecf7ecd328747ebb221a7a4"
+      },
+      {
+        "video_id": "task_zdzn0NXGfj2w4tWoxefFWauIpCqvSmwC",
+        "version_id": "vv_9db44576590e",
+        "bytes": 3059330,
+        "sha256": "8a202054ed5134f653ec182c953c67c05a3e03332ed7aeb797c7e116effc00d3"
+      }
+    ]
+  },
+  "offline_restore": {
+    "run_id": "40002008268",
+    "source_sha": "d7bc39ae70b69e1d32322eeff54d0c80068d7681",
+    "artifact_sha256": "f88ea85661ad2433b267a04328ad9f2660bbac6f06dc0caebfcb023be6d72dac",
+    "project_name": "cloud3min_film3m-20261023-rescue5",
+    "full_run_id": "frun_80b1bd5120",
+    "reused_completed_videos": [
+      {
+        "video_id": "task_pkraULzuWocnwoTcMBlawZw0YxYohxo2",
+        "version_id": "vv_bf8c36681a10",
+        "bytes": 3841027,
+        "sha256": "2271cfc9a107f24a89c64aa785bf4b84c2275cf98ecf7ecd328747ebb221a7a4"
+      },
+      {
+        "video_id": "task_zdzn0NXGfj2w4tWoxefFWauIpCqvSmwC",
+        "version_id": "vv_9db44576590e",
+        "bytes": 3059330,
+        "sha256": "8a202054ed5134f653ec182c953c67c05a3e03332ed7aeb797c7e116effc00d3"
+      }
+    ],
+    "previous_video_seconds": 20,
+    "planned_duration": {
+      "scene_count": 5,
+      "shot_count": 20,
+      "planned_seconds": 200,
+      "durations": [
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ]
+    }
+  },
+  "schedule_runs": [
+    {
+      "id": 40050012987,
+      "head_sha": "488ffa7fbc76499bee8037ae1078aa0d12de3b95",
+      "event": "schedule",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-24T01:29:22Z",
+      "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40050012987"
+    },
+    {
+      "id": 40037377899,
+      "head_sha": "488ffa7fbc76499bee8037ae1078aa0d12de3b95",
+      "event": "schedule",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-23T23:02:58Z",
+      "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40037377899"
+    },
+    {
+      "id": 40015702924,
+      "head_sha": "488ffa7fbc76499bee8037ae1078aa0d12de3b95",
+      "event": "schedule",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-23T19:59:23Z",
+      "html_url": "https://github.com/Q-1844/agent-system-v2/actions/runs/40015702924"
+    }
+  ],
+  "single_clip_baseline_operational": "4/4",
+  "full_project_180s_verified": false,
+  "new_resume_started": false
+}

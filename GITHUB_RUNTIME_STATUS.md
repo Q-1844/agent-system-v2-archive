@@ -1,21 +1,12 @@
-# GitHub运行态（2026-10-23）
+# GitHub运行态（最新复核）
 
-**当前部署：PR #1–#5均已合入默认分支`chore/migration-readiness`，合并提交`488ffa7fbc76499bee8037ae1078aa0d12de3b95`。最新三分钟真实验收运行[40002008268](https://github.com/Q-1844/agent-system-v2/actions/runs/40002008268)；截至2026-10-23T18:24:41.931326+00:00，workflow=in_progress、检查点=RUNNING。最终成片尚未验收。**
+**最新复核：原长片40002008268已于洛杉矶2026-10-23 11:33（18:33 UTC）失败，未达到180秒。两段各10.125秒的视频已完整解码并备份到B；PR #6修复下载与原任务接续。定时schedule已观察到3次成功，狭义单段云端基线现为4/4；三分钟完整制作仍未验收。**
 
-最新报告：[CODEX_COLD_START_CONTROLLER_FIX_20261023.md](CODEX_COLD_START_CONTROLLER_FIX_20261023.md)。
+先读[下载与接续报告](CODEX_MEDIA_RECOVERY_REVIEW_20261024.md)。历史文档的RUNNING、schedule=0或“待合入PR #5”均是早期快照，不能覆盖最新状态。
 
-PR #1巡检/恢复、#2三分钟验收/旧任务暂停、#3真实图床PUT预检、#4媒体环境/Windows锁、#5冷启动控制器去重均已合入。
-
-当前真实nonce=film3m-20261023-rescue5，阶段={'action': None, 'scene': None, 'stage': 'production', 'status': 'producing'}；视频提交=1；已确认Provider ID=1；成片未验收。
-
-前次39998736879：新Secret/媒体环境通过，重复控制器导致文本阶段blocked，4文本、0图片、0视频。更早39994958081仅FFmpeg安装失败，媒体未执行。
-
-| 云端运行 | 完整Mock | 存储/恢复 | Agent冒烟 | Linux媒体工具 |
-| --- | --- | --- | --- | --- |
-| [40001872646](https://github.com/Q-1844/agent-system-v2/actions/runs/40001872646) | 3198通过、10跳过 | 349通过、10跳过 | 28通过、0跳过 | 下载/SHA/编码/探测/解码通过 |
-| [40001864912](https://github.com/Q-1844/agent-system-v2/actions/runs/40001864912) | 3198通过、10跳过 | 349通过、10跳过 | 28通过、0跳过 | 下载/SHA/编码/探测/解码通过 |
-
-
-本机专项399通过、10跳过。最终全量3198通过、0失败、10跳过；此前后台任务清理及随机指纹误报均已修复，证据见最新报告。
-
-原5.184秒单段39961036358及手动巡检39962609983成功；它们不能充当本次三分钟完整制作验收。schedule最新总数仍0；Producer扩展、预览页与新任务来源后置。
+- A默认分支chore/migration-readiness，PR #1–#5已合入；PR #6分支collab/media-download-resume-20261024待最终回归与合入。
+- 三分钟测试原nonce=film3m-20261023-rescue5，原失败run=40002008268。接续必须复用其快照、累计提交预算和已完成视频，禁止盲目换nonce重做。
+- B/B1归档与图床凭据：AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN；新图床Secret已实证可写。
+- B仓部分成果备份draft Release 422455125 / asset 670987705，状态PARTIAL_NOT_ACCEPTED。
+- A=生产代码，B=Release资产，B1=Registry/检查点，C=文档，D=公网参考图。C交接分支feat/codex-handoff-20261023。
+- 用户已批准整顿、修复、合入与真实测试；真实成片至少180秒。Producer新能力、预览页、素材扩展后置。旧5秒demo2仍enabled=false。

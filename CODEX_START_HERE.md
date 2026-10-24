@@ -1,21 +1,12 @@
-# Codex接手入口（2026-10-23）
+# Codex接手入口（最新复核）
 
-**当前部署：PR #1–#5均已合入默认分支`chore/migration-readiness`，合并提交`488ffa7fbc76499bee8037ae1078aa0d12de3b95`。最新三分钟真实验收运行[40002008268](https://github.com/Q-1844/agent-system-v2/actions/runs/40002008268)；截至2026-10-23T18:24:41.931326+00:00，workflow=in_progress、检查点=RUNNING。最终成片尚未验收。**
+**最新复核：原长片40002008268已于洛杉矶2026-10-23 11:33（18:33 UTC）失败，未达到180秒。两段各10.125秒的视频已完整解码并备份到B；PR #6修复下载与原任务接续。定时schedule已观察到3次成功，狭义单段云端基线现为4/4；三分钟完整制作仍未验收。**
 
-最新报告：[CODEX_COLD_START_CONTROLLER_FIX_20261023.md](CODEX_COLD_START_CONTROLLER_FIX_20261023.md)。
+先读[下载与接续报告](CODEX_MEDIA_RECOVERY_REVIEW_20261024.md)。历史文档的RUNNING、schedule=0或“待合入PR #5”均是早期快照，不能覆盖最新状态。
 
-用户已批准整顿、修复、合入；任何真实视频验收成片至少180秒。Producer新能力、预览页与素材扩展后置。先读最新报告，再读[GITHUB_RUNTIME_STATUS.md](GITHUB_RUNTIME_STATUS.md)；历史批次中的“缺Secret/待合入/5秒成功”不能覆盖当前状态。
-
-| 仓库 | 角色 |
-| --- | --- |
-| A Q-1844/agent-system-v2 | 生产代码/调度；默认chore/migration-readiness |
-| B Q-1844/agent-system-v2-rundata | Release成片与项目归档 |
-| B1 Q-1844/agent-system-v2-rundata-1 | Registry/CAS持久检查点 |
-| C Q-1844/agent-system-v2-archive | 文档；交接分支feat/codex-handoff-20261023 |
-| D Q-1844/agnes-frame-host | 公网参考图 |
-
-A仓Secrets：AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN；D凭据不再隐式复用B1。新FRAME_HOST_TOKEN已真实验证，无需再次索取。
-
-下一步核查[40002008268](https://github.com/Q-1844/agent-system-v2/actions/runs/40002008268)终态、视频流至少180秒、独立源视频及B/B1归档恢复；有付费提交或不明结果时先对账，不盲目重做。旧5秒demo2已enabled=false。schedule实触发单独保留未验证。
-
-接手先fetch保留已有分叉与skill/未提交改动，不无条件reset --hard。
+- A默认分支chore/migration-readiness，PR #1–#5已合入；PR #6分支collab/media-download-resume-20261024待最终回归与合入。
+- 三分钟测试原nonce=film3m-20261023-rescue5，原失败run=40002008268。接续必须复用其快照、累计提交预算和已完成视频，禁止盲目换nonce重做。
+- B/B1归档与图床凭据：AGNES_API_KEY、B1_ARCHIVE_TOKEN、FRAME_HOST_TOKEN；新图床Secret已实证可写。
+- B仓部分成果备份draft Release 422455125 / asset 670987705，状态PARTIAL_NOT_ACCEPTED。
+- A=生产代码，B=Release资产，B1=Registry/检查点，C=文档，D=公网参考图。C交接分支feat/codex-handoff-20261023。
+- 用户已批准整顿、修复、合入与真实测试；真实成片至少180秒。Producer新能力、预览页、素材扩展后置。旧5秒demo2仍enabled=false。
