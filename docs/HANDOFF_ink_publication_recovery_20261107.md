@@ -39,3 +39,7 @@
 检查同一 FullRun / nonce / 计划指纹；114 镜基线全部保留；两个失败尾帧成功；新有效视频超过 114。随后等待145镜完成、最终 MP4 全量解码通过、归档回读与 restore full 通过，且 B1 / 注册表均 COMPLETE，才能宣告本次长片整链完全成功。
 
 A 仓审查与机读证据：`docs/REVIEW_ink_publication_recovery_20261107.md`、`docs/evidence/ink-publication-audit-20261107.json`。本轮不新开影片，不等待长片生产完成。
+
+## 最后一次启动核验
+
+新 run 已于 `2026-11-06T19:03:51Z` 落为 RESTORED，owner 为 `42276180756`，error / terminal_status 均为空；FullRun 与计划指纹一致，全部 114 条原始 video_attempts 与恢复前逐项完全一致。尚未把新增视频生产或成片完成作为已验收事实。停止监控，后续仍按上述完整完成判据验收。
