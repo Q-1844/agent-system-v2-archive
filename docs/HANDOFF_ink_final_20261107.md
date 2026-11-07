@@ -26,3 +26,7 @@
 PR #53 已合并 `c4535b14d4d487ed6842d7b5197d1fa0dbb4bbba`。补充后全量 **3934 passed，0 failed/errors/skipped，473.418秒**。
 
 更新探针 [42330221975](https://github.com/Q-1844/agent-system-v2/actions/runs/42330221975) SUCCESS，使用真实 FRAME_HOST_TOKEN 走Contents恢复提交路径。D仓commit `10b9432f400ac0af4d042f02eb36317a6ad88556` 只有一个新增恢复标记文件，零图片覆盖、零Agnes调用；已触发Pages构建。当前等待这次构建built，再提交原片最后8镜的接续。
+
+## 续跑前最后的入口修复
+
+生产令牌探针对应的D仓Pages运行42330239152已SUCCESS。另发现每次恢复和finalize_only仍发布随机canary，超时会改成巡检不接手的BLOCKED_PREFLIGHT。PR #54保留新任务新写入预检；恢复改用已存在的逐实际输入公开校验，finalize_only不写图床。119项关联通过，最终全量进行中。尚未派发付费续跑。
