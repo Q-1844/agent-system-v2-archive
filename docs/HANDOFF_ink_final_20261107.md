@@ -40,7 +40,7 @@
 - 本跳owner：`42332397687`；源artifact run：`42276180756`
 - target：`auto`；media_inflight：`2`；driver_timeout_minutes：`40`；本nonce既有UNKNOWN风险授权延续。
 
-本跳已RESTORED→RUNNING，error=null，旧pause_reason与额度闸门清除。原137条完整回执逐字段一致；新增s05_c18已获得供应商任务号。最新可复核状态见[真实恢复证据](evidence/ink-final-resume-20261107.json)和B1权威检查点。ACCEPTED只是受理，不得算为下载完成的视频。
+本跳已RESTORED→RUNNING，error=null，旧pause_reason与额度闸门清除。原137条完整回执逐字段一致；新增s05_c18已获得供应商任务号并轮询完成，当前138/145个视频已完成，仍为RUNNING、error=null。Codex已停止持续监控，外部制作运行继续；没有启动新影片。最新可复核状态见[真实恢复证据](evidence/ink-final-resume-20261107.json)和B1权威检查点。ACCEPTED只是受理，不得算为下载完成的视频。
 
 B1：仓`agent-system-v2-rundata-1`，分支`test/e2e-ink-diffusion-20m-20261105`，文件`e2e/ink-diffusion-20m-20261105/full-project-production.json`。
 
