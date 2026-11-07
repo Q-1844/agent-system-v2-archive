@@ -1,0 +1,37 @@
+{
+  "nonce": "ink-diffusion-20m-20261105",
+  "run_id": "42332397687",
+  "source_sha": "5931c62c57e945ab3d51d8e8c0575aba6e993804",
+  "phase": "RUNNING",
+  "updated_at": "2026-11-07T03:12:40Z",
+  "error": null,
+  "accepted": 138,
+  "completed_intents": 137,
+  "original_137_receipts_exactly_unchanged": true,
+  "original_137_clips_full_decode": true,
+  "original_137_sha256_baseline": "docs/evidence/ink-137-preserved-clips-20261107.json",
+  "new_attempts": [
+    {
+      "attempt_id": "2c846588ec9e4e58bf6386e9bd40a42a",
+      "immutable_input_digest": "63a9f7768291a278db2e4ea6621d1dfe2a169d0706453be0ff32bbaf4e9a8c04",
+      "intent_id": "6e89aa137f634fcf84b5b50731a8a598",
+      "logical_shot_id": "s05_c18",
+      "ordinal": 139,
+      "prompt_sha256": "7b8fe36f6d055614568de19118080eaab38ebeaf611ff1aeee24139cfd3a3588",
+      "provider_model": "agnes-video-2.5-flash",
+      "revision_id": null,
+      "seconds": 8,
+      "started_at": "2026-11-07T03:08:40Z",
+      "state": "ACCEPTED",
+      "video_id": "task_otvMMb0JzCS2ZoEOVCdyFDgWLuU1Dufz"
+    }
+  ],
+  "full_tests": {
+    "passed": 3939,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "production_frame_token_probe": "42330221975",
+  "production_frame_token_pages_run": "42330239152"
+}
