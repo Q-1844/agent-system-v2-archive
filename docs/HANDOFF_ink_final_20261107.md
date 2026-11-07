@@ -30,3 +30,7 @@ PR #53 已合并 `c4535b14d4d487ed6842d7b5197d1fa0dbb4bbba`。补充后全量 **
 ## 续跑前最后的入口修复
 
 生产令牌探针对应的D仓Pages运行42330239152已SUCCESS。另发现每次恢复和finalize_only仍发布随机canary，超时会改成巡检不接手的BLOCKED_PREFLIGHT。PR #54保留新任务新写入预检；恢复改用已存在的逐实际输入公开校验，finalize_only不写图床。119项关联通过，最终全量进行中。尚未派发付费续跑。
+
+## 已派发原片真实续跑
+
+PR #54已合并`5931c62c57e945ab3d51d8e8c0575aba6e993804`。最终全量3939 passed，0 failed/errors/skipped，475.17秒。新run [42332397687](https://github.com/Q-1844/agent-system-v2/actions/runs/42332397687)，从42276180756恢复，auto、原nonce、两路并行、driver 40分钟，原风险授权延续。仍须检查新增视频、成片和归档，不可把派发成功当作完成。
