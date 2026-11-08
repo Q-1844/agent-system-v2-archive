@@ -1,0 +1,63 @@
+{
+  "nonce": "quota24x2m-20261108",
+  "final_run": "42453709415",
+  "status": "COMPLETE",
+  "shots": 11,
+  "requested_seconds": 91,
+  "duration_s": 95.245036,
+  "full_decode": true,
+  "restore_level": "full",
+  "restore_files": 91,
+  "missing_required": [],
+  "registry_complete": true,
+  "automatic_resumes": 4,
+  "windows": [
+    {
+      "owner": "42449798562",
+      "completed_clips": 3,
+      "daily_used": 22.0,
+      "window_used": 22,
+      "cycle": 0,
+      "old_media_preserved": true
+    },
+    {
+      "owner": "42451698938",
+      "completed_clips": 5,
+      "daily_used": 41.0,
+      "window_used": 19,
+      "cycle": 1,
+      "old_media_preserved": true
+    },
+    {
+      "owner": "42452208391",
+      "completed_clips": 8,
+      "daily_used": 62.0,
+      "window_used": 21,
+      "cycle": 2,
+      "old_media_preserved": true
+    },
+    {
+      "owner": "42453175163",
+      "completed_clips": 10,
+      "daily_used": 81.0,
+      "window_used": 19,
+      "cycle": 3,
+      "old_media_preserved": true
+    }
+  ],
+  "unique_provider_ids": 11,
+  "unique_source_hashes": 11,
+  "all_previous_media_preserved": true,
+  "archive_ref": {
+    "asset_id": "723094176",
+    "asset_name": "project.tar",
+    "bytes": 129290240,
+    "final_mp4_asset_id": "723094065",
+    "final_mp4_sha256": "df94348dafefa97b8b39223a5aa1f3dbce5a688cb207672aa013473c8d87fbdb",
+    "release_id": "438071050",
+    "release_tag": "full-project/quota24x2m-20261108",
+    "repo": "Q-1844/agent-system-v2-rundata",
+    "sha256": "0e79b92ed8649b4a09fbbb7425ab1b2688a9914ede1ea6d736007a26f6f0755d",
+    "tree_fingerprint": "374d5963d86146196043d9c8a04bbf818172a629c6f337292312b45223f1e299"
+  }
+}
