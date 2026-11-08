@@ -44,3 +44,11 @@ GLM的215跳事故补丁已读（A仓`docs/HANDOFF_starter_zombie_and_quota_sim_
 独立回读347322006字节MP4、2092421120字节重建tar，SHA与B1一致；MP4完整解码，视频1213.184001秒，音频/容器1213.205333秒。145镜顺序及选版、145个源SHA唯一、原137镜任务号/版本/SHA全部保持；882文件restore full、missing_required为空；B1与注册表COMPLETE。
 
 机读报告：[ink-complete-audit-20261108.json](evidence/ink-complete-audit-20261108.json)。这确认修复后的影片最终完成，不等于此前全程无人干预无故障。
+
+## 实测补充：首轮窗口与并发边界
+
+旧三分钟片已COMPLETE并独立验收：23镜、视频181.983968秒，166文件restore full，原22镜版本和SHA全部保持。报告[evidence/quota-legacy-complete-20261108.json](evidence/quota-legacy-complete-20261108.json)。
+
+新片首轮在22/24秒正常暂停，3个视频全部落盘，零running视频Job，闸门05:27:13Z。自动完成事件唤醒42450816469正确选中short_timer=true；但通用巡检15分钟死链宽限导致已开闸仍rearm。PR #57只为显式短测试、completed+drained+SHA/仓库/workflow匹配的源跳过该宽限，近期派发去重和全部存活检查保留；683项关联通过，最终全量进行中。
+
+故障注入另复现POST回执重叠导致同一余额两次通过（12秒窗记16秒）。[PR #56](https://github.com/Q-1844/agent-system-v2/pull/56)已合并`f5ec4dfb26b62e7d6824a6aa495caeee16bf6658`，限流槽后把额度复检、POST和2xx记账串行化，生成及轮询仍并行。修复后该场景1 POST/8秒，第二请求安全等待；全量3987 passed、零失败/跳过，439.04秒。
