@@ -1,0 +1,40 @@
+{
+  "nonce": "film3m-42394136215",
+  "owner": "42449663784",
+  "phase": "COMPLETE",
+  "shots": 23,
+  "original22_preserved": true,
+  "unique_source_hashes": 23,
+  "media": {
+    "duration_s": 181.983968,
+    "container_duration_s": 182.005333,
+    "video": [
+      {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "avg_frame_rate": "53637120/2236219"
+      }
+    ],
+    "audio_streams": 1,
+    "full_decode_ok": true
+  },
+  "archive_ref": {
+    "asset_id": "722968736",
+    "asset_name": "project.tar",
+    "bytes": 186091520,
+    "final_mp4_asset_id": "722968530",
+    "final_mp4_sha256": "dafb807f896f262c5d5b89f45af51f516f056162214ef881fc6091c74d412a24",
+    "release_id": "438048427",
+    "release_tag": "full-project/film3m-42394136215",
+    "repo": "Q-1844/agent-system-v2-rundata",
+    "sha256": "37d274ba16ebd34cd5013e06e6a8f9252c9b4fb1e2bcdbe649bd92e748774344",
+    "tree_fingerprint": "f4199fec3994edf73d8c0f873ac19b6911269ad15356e9d35ee61fa33da818b4"
+  },
+  "registry_complete": true,
+  "restore": {
+    "restorable_level": "full",
+    "files_checked": 166,
+    "missing_required": []
+  }
+}
