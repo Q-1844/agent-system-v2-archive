@@ -1,0 +1,27 @@
+{
+  "owner": "42449798562",
+  "nonce": "quota24x2m-20261108",
+  "artifact_id": 13605112911,
+  "artifact_sha256": "4a4704017d8a5cd3be17f4230a292f971adfdd8306d182b3ec53f72a470fc63f",
+  "quota": {
+    "date": "2026-11-08",
+    "video_seconds": 22.0,
+    "images": 6,
+    "text_calls": 18,
+    "video_test": {
+      "policy": {
+        "schema_version": 1,
+        "nonce": "quota24x2m-20261108",
+        "video_seconds": 24,
+        "wait_minutes": 2
+      },
+      "used": 22,
+      "reset_at": 1794115633,
+      "cycle": 0
+    }
+  },
+  "completed_clips": 3,
+  "running_video_jobs": [],
+  "all_previous_clips_preserved": true,
+  "unique_source_hashes": 3
+}
