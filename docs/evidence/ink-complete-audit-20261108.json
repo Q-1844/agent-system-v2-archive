@@ -1,0 +1,41 @@
+{
+  "nonce": "ink-diffusion-20m-20261105",
+  "owner": "42335593731",
+  "phase": "COMPLETE",
+  "shots": 145,
+  "original_137_unchanged": true,
+  "unique_selected_source_hashes": 145,
+  "composition_order_verified": true,
+  "media": {
+    "duration_s": 1213.184001,
+    "container_duration_s": 1213.205333,
+    "video": [
+      {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "avg_frame_rate": "357347328/14907605"
+      }
+    ],
+    "audio_streams": 1,
+    "full_decode_ok": true
+  },
+  "archive_ref": {
+    "asset_id": "721242885",
+    "asset_name": "project-rebuilt-1649070199b6-42391322297.tar",
+    "bytes": 2092421120,
+    "final_mp4_asset_id": "719596083",
+    "final_mp4_sha256": "0e47e109b09e2ce62d2ed28e6a4dff0f59c9d5f8099abd7f5a45282866a89764",
+    "release_id": "437329843",
+    "release_tag": "full-project/ink-diffusion-20m-20261105",
+    "repo": "Q-1844/agent-system-v2-rundata",
+    "sha256": "1649070199b6159511b8b1e5558ae9bc3666f9fb97d513ffa0a0c6365c77d6e5",
+    "tree_fingerprint": "754189e7748ebfddab1dd7d85d0e307aac161b93e59aea8b3acc67f6c528716a"
+  },
+  "registry_complete": true,
+  "restore": {
+    "restorable_level": "full",
+    "files_checked": 882,
+    "missing_required": []
+  }
+}
