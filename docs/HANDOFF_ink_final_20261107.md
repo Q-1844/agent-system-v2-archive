@@ -1,3 +1,5 @@
+> 最新复核：本片现已正式完成。独立回读最终MP4及重建tar，SHA与B1一致；视频完整解码通过（视频1213.184001秒、含音频容器1213.205333秒）；145镜选版与合成顺序正确；137镜原任务号、版本及SHA全部保持；882文件restore full、零缺失；B1和注册表均COMPLETE。详见[evidence/ink-complete-audit-20261108.json](evidence/ink-complete-audit-20261108.json)。下文保留此前修复时的历史状态。
+
 # ink-diffusion 原片最终续跑交接
 
 ## 结论与范围
